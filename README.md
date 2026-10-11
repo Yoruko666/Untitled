@@ -15,6 +15,7 @@ Unity 2.5D 经营 / 冒险 Demo
 | 渲染管线 | URP 14.0.12 |
 | 输入 | Input System 1.14.2 |
 | 资源加载 | Addressables 1.22.3 |
+| 配表序列化 | Google.Protobuf（`Assets/Plugins` 下的 DLL） |
 | 文本 | TextMeshPro 3.0.7 |
 
 ---
@@ -24,9 +25,11 @@ Unity 2.5D 经营 / 冒险 Demo
 ```
 Untitled/
 ├─ Assets/
-│  ├─ AddressableAssetsData/          Addressables 配置（UI 面板在 Panel 组，地址 = 面板名）
+│  ├─ AddressableAssetsData/          Addressables 配置（UI 面板在 Panel 组，地址 = 面板名；配表在 Configs 组）
 │  ├─ Art/                            Audio / Materials / Models / Sprites / Textures
-│  ├─ Configs/Cave/CaveLayout.asset   洞穴布局配置（CaveMapLayout）
+│  ├─ Configs/
+│  │  ├─ Cave/CaveLayout.asset        洞穴布局配置（CaveMapLayout）
+│  │  └─ Database/Proto/              *.proto 与导出产物 <Table>.bytes（配表二进制）
 │  ├─ Editor/
 │  │  ├─ Cave/                        CaveMapBuilder / CaveMapEditor / CavePresentationEditor
 │  │  └─ HybridProps/                 HybridPropWindow（道具素材浏览器）
@@ -41,16 +44,20 @@ Untitled/
 │  │  ├─ Bussiness.unity              白天经营
 │  │  └─ Props/                       HybridPropGallery / ContainerComparison 展厅
 │  ├─ Scripts/
-│  │  ├─ Core/                        Boot / Manager / Event / Camera / Rendering
+│  │  ├─ Core/                        Boot / Manager / Event / Camera / Rendering / Database（配表框架）
 │  │  ├─ Data/                        纯 C# 数据（GameData、Inventory、Package、Items、Cave）
+│  │  │  └─ Generated/                protoc 生成的配表类型（不手改）
 │  │  ├─ Debug/                       HybridGalleryViewer
 │  │  ├─ Gameplay/                    Entity（Player / Collection）、Adventure、Bussiness
 │  │  ├─ Levels/Cave/                 CaveMap / CaveCoordinates
 │  │  └─ UI/                          UIManager / PanelBase / UIPanel / MenuPanel
 │  ├─ Settings/                       URP 配置
 │  └─ Shaders/                        CaveWater、hd2d_pixel_prop
+├─ Config/Table/                      配表 Excel 源表（唯一权威来源）
 ├─ docs/                              道具清单等文档
-├─ tools/export_cave_layout.gd        洞穴布局导出脚本（离线）
+├─ tools/
+│  ├─ export_cave_layout.gd           洞穴布局导出脚本（离线）
+│  └─ export_config.py                配表导出脚本（Excel → protobuf，离线）
 ├─ Packages/
 └─ ProjectSettings/
 ```
@@ -63,13 +70,15 @@ Untitled/
 
 纯 C# 管理器继承 `ManagerBase<T>`，由 `Bootstrap` 统一注册，之后通过 `Instance` 单例访问：
 
-```7:13:Assets/Scripts/Core/Boot/Bootstrap.cs
+```7:15:Assets/Scripts/Core/Boot/Bootstrap.cs
 private void Awake()
 {
+    RegisterManager(new DatabaseManager());
     RegisterManager(new GameManager());
     RegisterManager(new InputManager());
     RegisterManager(new UIManager());
     RegisterManager(new InteractManager());
+    RegisterManager(new DebugManager());
 }
 ```
 
@@ -90,7 +99,7 @@ EventCenter.Invoke(GameEventType.Interact);
 
 - `GameData` 聚合 `Money`、`InventoryData`（仓库）、`PackageData`（冒险背包）。
 - `InventoryData` / `PackageData` 提供 `AddItem` / `ConsumeItem` / `GetItemCount` / `HasItem` / `Clear`。
-- `ItemData`（id + 数量）、`ItemConfig`（名称 / 类型 / 描述 / 图标）。
+- `ItemData`（id + 数量）是背包 / 仓库中的物品实例，名称、类型、描述等静态数值来自配表 `Item`（见「配表与数据库」）。
 - 冒险结束时把背包物品结算进仓库，下一轮冒险开始时清空背包。
 
 ### 4. UI
@@ -129,6 +138,25 @@ public class Collection : EntityBase, IInteractable
 - `CaveMap`：按布局生成地图，提供 `CellToWorld` / `WorldToCell` / `IsWalkable` / `SpawnPosition`。
 - `CaveCoordinates`：像素、格子与本地坐标互转。
 - Editor 工具在 `Assets/Editor/Cave/`，布局源文件由 `tools/export_cave_layout.gd` 离线导出。
+
+### 8. 配表与数据库
+
+配表链路为 **Excel 源表 → protobuf 二进制 → Addressables 加载 → `DatabaseManager` 内存表**，不使用 SQLite 等数据库引擎。
+
+- 源表：`Config/Table/*.xlsx`。每个 sheet 第 1 行为字段名（须与 proto 一致）、第 2 行类型说明、第 3 行中文注释，第 4 行起为数据，第一列为主键。
+- proto 定义：`Assets/Configs/Database/Proto/*.proto`，`csharp_namespace` 为 `Untitled.Config`。
+- 导出：`python tools/export_config.py [表名]`（离线，需 `protoc` 与 `openpyxl`）。脚本刷新 `Assets/Scripts/Data/Generated` 的 C# 代码，并写出 `Assets/Configs/Database/Proto/<Table>.bytes`。
+- 运行时：`DatabaseManager` 由 `Bootstrap` 注册，从 Addressables `Configs` 组读取地址与 `.bytes` 文件同名的资产，`Load` 时按主键建索引：
+
+```csharp
+Item item = DatabaseManager.Instance.ItemDatabase.Get(1001);
+if (DatabaseManager.Instance.ItemDatabase.TryGet(1001, out Item row)) { }
+```
+
+- 表访问类继承 `DatabaseBase<TRow>`（`Assets/Scripts/Core/Database/`），重写 `KeyOf` 与 `Parse`；Addressables 地址常量集中在 `DatabasePath`。
+- 新增表：加 proto → 在 `export_config.py` 的 `TABLES` 注册 → 新增 `XxxDatabase` 与 `DatabasePath` 常量 → 在 `DatabaseManager.Initialize` 注册 → 把 `.bytes` 加入 Addressables `Configs` 组并使用同名地址。
+- `Assets/Scripts/Data/Generated` 为 protoc 生成物，不要手改。
+- 目前只有 `Item` 一张表（`ItemTable.bytes`），已加载但尚未接入背包与 UI 显示。
 
 
 ## 可放置道具素材

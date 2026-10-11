@@ -18,8 +18,8 @@
 
 ## 目录与代码
 
-- `Assets/Scripts/`：`Core` 放启动、Manager、事件、相机与公共渲染；`Gameplay` 放实体和玩法；`Data` 放纯 C# 数据；`UI`、`Debug`、`Utils` 按职责使用。
-- `Assets/Scenes/` 放场景，`Prefabs/` 放可复用对象，`Configs/` 放配置，`Art/` 放美术，`Shaders/` 和 `Settings/` 放渲染相关内容，`Input/` 放输入定义。
+- `Assets/Scripts/`：`Core` 放启动、Manager、事件、相机、公共渲染与配表框架；`Gameplay` 放实体和玩法；`Data` 放纯 C# 数据，`Data/Generated` 放 protoc 生成的配表类型；`UI`、`Debug`、`Utils` 按职责使用。
+- `Assets/Scenes/` 放场景，`Prefabs/` 放可复用对象，`Configs/` 放配置（`Configs/Database/Proto` 放 proto 与 `.bytes`），`Art/` 放美术，`Shaders/` 和 `Settings/` 放渲染相关内容，`Input/` 放输入定义，`Config/Table/` 放配表 Excel 源表。
 - Editor 工具放 `Assets/Editor/<Feature>/`；runtime 不依赖 `UnityEditor`。关卡专属脚本、测试、`docs/` 和离线 `tools/` 按需创建，不预建空目录。
 - 沿用 `Untitled` namespace 与已有命名，包括 `Bussiness`。C# 类型、文件及公开成员使用 PascalCase，局部变量和私有字段使用 camelCase，四空格缩进；美术文件使用小写 snake_case。
 - 新增或修改文本使用 UTF-8、LF、一个末尾换行，无行尾空格；不批量格式化无关文件。
@@ -33,6 +33,17 @@
 - 配置资产与运行状态分开，避免 Play Mode 污染共享配置。需要保存的字段遵循 Unity 序列化规则，不假定 Dictionary、HashSet 可直接保存。
 - 资源与 `.meta` 一起处理和提交，移动或重命名保留 GUID；修改序列化字段时保留已有值和引用，必要时使用 `FormerlySerializedAs`。
 - 输入修改使用 `Assets/Input/InputActions.inputactions`，由 importer 生成 wrapper，不手改 `InputActions.cs`。
+
+## 配表与数据库
+
+- 配表链路为 Excel 源表 → protobuf 二进制 → Addressables → `DatabaseManager` 内存表，不使用数据库引擎；唯一权威来源是 `Config/Table/*.xlsx`。
+- 源表每个 sheet：第 1 行为字段名（须与 proto 一致）、第 2 行类型说明、第 3 行中文注释，第 4 行起为数据，第一列为主键。
+- proto 放 `Assets/Configs/Database/Proto/*.proto`，`csharp_namespace` 使用 `Untitled.Config`；导出物 `<Table>.bytes` 与之同目录，由 Addressables `Configs` 组加载、地址与文件名一致。
+- protoc 生成的 C# 位于 `Assets/Scripts/Data/Generated`，不手改；字段改动先改 proto 再重新导出。
+- 离线导出用 `tools/export_config.py`，新增表需在脚本 `TABLES` 注册；导出依赖 `protoc` 与 `openpyxl`，脚本会把生成物换行统一为 LF。
+- 运行框架在 `Assets/Scripts/Core/Database/`：表类继承 `DatabaseBase<TRow>` 并重写 `KeyOf`、`Parse`，Addressables 地址常量集中在 `DatabasePath`，新表在 `DatabaseManager.Initialize` 注册。
+- 配表只读，运行时不写回；通过 `DatabaseManager.Instance.XxxDatabase.Get(id)` / `TryGet` 查询，不逐帧查找。`.bytes` 与生成的 C# 作为导出产物一起提交。
+- Protobuf 运行时来自 `Assets/Plugins` 下的 DLL，不通过 Package Manager 安装，不随任务替换版本。
 
 ## HD-2D 与地图
 
