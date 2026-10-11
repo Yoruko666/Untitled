@@ -217,6 +217,11 @@ namespace Untitled.Editor
                 Vector2 start = SettlementBridgeStart+side*sign;
                 Vector2 end = SettlementBridgeEnd+side*sign;
                 Rail(bridge,start.x,start.y,end.x,end.y,0.04f);
+                var barrier = Group("BridgeAirWall", bridge);
+                barrier.position = (a+b)*0.5f + deck.right*sign*map.CellSize + Vector3.up*1.4f;
+                barrier.rotation = deck.rotation;
+                var collider = barrier.gameObject.AddComponent<BoxCollider>();
+                collider.size = new Vector3(0.18f, 3, (b-a).magnitude+0.5f);
             }
             foreach (float t in new[] { 0.45f,0.65f })
                 foreach (float sign in new[] { -1f,1f })
