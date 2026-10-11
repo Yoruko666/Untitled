@@ -49,7 +49,7 @@ MonoBehaviour:
   assetId: StoneCistern_Wide_HD2D
   displayName: "\u77F3\u6C34\u7F38\xB7\u5BBD / HD-2D"
   category: "\u5BB9\u5668 HD-2D"
-  implementation: "\u5355\u5F20\u53D7\u5149\u50CF\u7D20\u9762\u7247\uFF1B\u671D\u5411\u76F8\u673A\uFF1B\u4FDD\u7559\u539F\u56FE\u8F6E\u5ED3\u3002\u539F\u56FE\u4EC5\u4E00\u4E2A\u5B8C\u6574\u65B9\u5411\u3002"
+  implementation: "\u5355\u5f20\u53d7\u5149\u50cf\u7d20\u9762\u7247\uff1b\u56fa\u5b9a\u6446\u653e\u671d\u5411\uff1b\u4fdd\u7559\u539f\u56fe\u8f6e\u5ed3\u3002\u539f\u56fe\u4ec5\u4e00\u4e2a\u5b8c\u6574\u65b9\u5411\u3002"
   referenceImages:
   - {fileID: 2800000, guid: 40d6b30a94da4211b9c807e80861205c, type: 3}
   sourceFiles: "Assets/Art/References/Kitchen/stone_water_basins_reference.jpg"
