@@ -48,6 +48,7 @@ namespace Untitled.Editor
             var floors = CaveMap.ReadCells(map.FloorTilemap);
             var rivers = CaveMap.ReadCells(map.RiverTilemap);
             CaveElevation elevation = map.Elevation;
+            BoxCollider[] bridgeDecks = FindBridgeDecks(map);
             float waterDrop = elevation != null ? elevation.RiverSurfaceDrop : 0.10f * map.CellSize;
             float bedDrop = elevation != null ? Mathf.Max(elevation.RiverBedDrop, waterDrop + 0.2f) : 0.42f * map.CellSize;
             float wallBase = elevation != null
@@ -72,6 +73,51 @@ namespace Untitled.Editor
                 Vector3 origin = map.LayoutGrid.transform.localPosition;
                 return new Vector3(origin.x + Mathf.Round((visible.x-origin.x)/map.CellSize)*map.CellSize,
                     visible.y, origin.z + Mathf.Round((visible.z-origin.z)/map.CellSize)*map.CellSize);
+            }
+            void RiverBarrier(TerrainChunk chunk, Vector3 start, Vector3 end)
+            {
+                Vector3 a = BoundaryPoint(start), b = BoundaryPoint(end);
+                float openingStart = 1, openingEnd = 1;
+                foreach (BoxCollider bridgeDeck in bridgeDecks)
+                {
+                    Vector3 deckTop = bridgeDeck.transform.TransformPoint(bridgeDeck.center + Vector3.up * bridgeDeck.size.y * 0.5f);
+                    Vector3 worldA = map.transform.TransformPoint(a), worldB = map.transform.TransformPoint(b);
+                    if (Mathf.Abs(deckTop.y - worldA.y) < 0.3f && Mathf.Abs(deckTop.y - worldB.y) < 0.3f)
+                    {
+                        Vector3 localA = bridgeDeck.transform.InverseTransformPoint(worldA) - bridgeDeck.center;
+                        Vector3 localB = bridgeDeck.transform.InverseTransformPoint(worldB) - bridgeDeck.center;
+                        float first = 0, last = 1;
+                        bool intersects = true;
+                        foreach (int axis in new[] { 0, 2 })
+                        {
+                            float half = bridgeDeck.size[axis] * 0.5f;
+                            float delta = localB[axis] - localA[axis];
+                            if (Mathf.Abs(delta) < 0.0001f)
+                            {
+                                if (Mathf.Abs(localA[axis]) > half) intersects = false;
+                                continue;
+                            }
+                            float near = (-half - localA[axis]) / delta, far = (half - localA[axis]) / delta;
+                            first = Mathf.Max(first, Mathf.Min(near, far));
+                            last = Mathf.Min(last, Mathf.Max(near, far));
+                        }
+                        if (intersects && first < last) { openingStart = first; openingEnd = last; }
+                    }
+                }
+                // Only the physical deck footprint opens the bank barrier; Bridge cell flags are wider guides.
+                Segment(0, openingStart);
+                Segment(openingEnd, 1);
+                void Segment(float from, float to)
+                {
+                    if (to - from < 0.001f) return;
+                    Vector3 low = Vector3.Lerp(a, b, from), high = Vector3.Lerp(a, b, to);
+                    float bottom = Mathf.Min(low.y, high.y) - 0.6f, top = Mathf.Max(low.y, high.y) + 3;
+                    Vector3 center = (low + high) * 0.5f;
+                    center.y = (bottom + top) * 0.5f;
+                    // Thickness covers the visible outline jitter and seals adjacent cell corners.
+                    chunk.RiverBarrier.Box(center, new Vector3(Mathf.Abs(high.x-low.x)+0.65f, top-bottom,
+                        Mathf.Abs(high.z-low.z)+0.65f), 0);
+                }
             }
             float Height(float x, float y)
             {
@@ -139,6 +185,7 @@ namespace Untitled.Editor
                     }
                     Vector4 other = elevation.Surface(otherCell).Heights;
                     bool waterEdge = rivers.Contains(otherCell);
+                    if (waterEdge) RiverBarrier(chunk, start, end);
                     float lowStart = other[otherStart] - (waterEdge ? bedDrop : 0);
                     float lowEnd = other[otherEnd] - (waterEdge ? bedDrop : 0);
                     if (!waterEdge && Mathf.Max(start.y - lowStart, end.y - lowEnd) <= 0.2f) return;
@@ -239,6 +286,11 @@ namespace Untitled.Editor
                     var renderer = Render("RockMass", chunk, mesh, new[] { map.WallMaterial, style.RockCap });
                     renderer.gameObject.AddComponent<MeshCollider>().sharedMesh = mesh;
                 }
+                if (data.RiverBarrier.HasVertices)
+                {
+                    Mesh barrier = Save(data.RiverBarrier.Build(name + "_RiverAirWalls"), path, "RiverAirWalls");
+                    Create("RiverAirWalls", chunk).gameObject.AddComponent<MeshCollider>().sharedMesh = barrier;
+                }
                 if (data.Cliff.HasVertices)
                 {
                     Mesh mesh = Save(data.Cliff.Build(name + "_Cliffs"), path, "Cliffs");
@@ -270,7 +322,13 @@ namespace Untitled.Editor
 
         private static string Hash(CaveMap map, CaveTerrainStyle style)
         {
-            var text = new StringBuilder("hd2d-terrain-v7|");
+            var text = new StringBuilder("hd2d-terrain-v9|");
+            foreach (BoxCollider bridgeDeck in FindBridgeDecks(map))
+            {
+                Matrix4x4 matrix = bridgeDeck.transform.localToWorldMatrix;
+                for (int i = 0; i < 16; i++) text.Append(matrix[i].ToString("R", CultureInfo.InvariantCulture)).Append(',');
+                text.Append(bridgeDeck.size).Append('|');
+            }
             text.Append(style.NaturalOutline).Append('|');
             foreach (float value in new[] { map.CellSize, style.RockHeight, style.RockVariation, style.RockMargin, style.Seed })
                 text.Append(value.ToString("R", CultureInfo.InvariantCulture)).Append('|');
@@ -304,6 +362,10 @@ namespace Untitled.Editor
             go.transform.SetParent(parent, false);
             return go.transform;
         }
+
+        private static BoxCollider[] FindBridgeDecks(CaveMap map)
+            => map.GetComponentsInChildren<BoxCollider>().Where(c => c.name == "BridgeDeck")
+                .OrderBy(c => c.transform.position.x).ToArray();
 
         private static MeshRenderer Render(string name, Transform parent, Mesh mesh, Material[] materials)
         {
@@ -355,6 +417,7 @@ namespace Untitled.Editor
             public readonly Surface Rock = new Surface(2);
             public readonly Surface Water = new Surface(1);
             public readonly Surface Cliff = new Surface(1);
+            public readonly Surface RiverBarrier = new Surface(1);
         }
 
         private sealed class Surface
