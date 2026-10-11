@@ -172,6 +172,18 @@ namespace Untitled.Editor
             var rivers = CaveMap.ReadCells(map.RiverTilemap);
             if (floors.Count == 0 || !map.IsWalkable(map.SpawnPosition) || !rivers.IsSubsetOf(floors))
                 throw new InvalidOperationException("Floor cannot be empty; spawn and every river cell must be on floor.");
+            if (map.Elevation != null)
+            {
+                var seen = new HashSet<Vector2Int>();
+                foreach (var surface in map.Elevation.Surfaces)
+                {
+                    if (!seen.Add(surface.Cell) || surface.Material < 0 || surface.Material > 3)
+                        throw new InvalidOperationException("Elevation cells must be unique and use a valid ground material.");
+                    for (int i = 0; i < 4; i++)
+                        if (float.IsNaN(surface.Heights[i]) || float.IsInfinity(surface.Heights[i]))
+                            throw new InvalidOperationException("Elevation corner heights must be finite.");
+                }
+            }
         }
 
         private static string ComputeHash(CaveMap map, HashSet<Vector2Int> floors, HashSet<Vector2Int> rivers)

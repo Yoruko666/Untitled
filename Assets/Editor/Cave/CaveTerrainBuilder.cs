@@ -47,6 +47,7 @@ namespace Untitled.Editor
 
             var floors = CaveMap.ReadCells(map.FloorTilemap);
             var rivers = CaveMap.ReadCells(map.RiverTilemap);
+            CaveElevation elevation = map.Elevation;
             var chunks = new Dictionary<Vector2Int, TerrainChunk>();
             TerrainChunk Chunk(Vector2Int cell)
             {
@@ -57,26 +58,70 @@ namespace Untitled.Editor
             Vector3 Point(float x, float y, float height)
             {
                 Vector3 origin = map.LayoutGrid.transform.localPosition;
-                return origin + new Vector3(x * map.CellSize, height * map.CellSize, -y * map.CellSize);
+                return origin + new Vector3(x * map.CellSize, height, -y * map.CellSize);
             }
             float Height(float x, float y)
             {
                 // Shared corner heights keep adjoining chunks seamless. No runtime generation.
                 float noise = Mathf.PerlinNoise((x + style.Seed) * 0.16f, (y - style.Seed) * 0.16f);
-                return style.RockHeight + (noise - 0.5f) * 2f * style.RockVariation;
+                float baseHeight = 0f;
+                if (elevation != null)
+                {
+                    float nearest = float.PositiveInfinity;
+                    var around = new Vector2Int(Mathf.FloorToInt(x), Mathf.FloorToInt(y));
+                    for (int dy = -3; dy <= 3; dy++)
+                        for (int dx = -3; dx <= 3; dx++)
+                        {
+                            Vector2Int cell = around + new Vector2Int(dx, dy);
+                            if (!floors.Contains(cell)) continue;
+                            float distance = (new Vector2(cell.x + 0.5f, cell.y + 0.5f) - new Vector2(x, y)).sqrMagnitude;
+                            if (distance >= nearest) continue;
+                            nearest = distance;
+                            baseHeight = elevation.Height(cell.x + 0.5f, cell.y + 0.5f);
+                        }
+                }
+                return baseHeight + (style.RockHeight + (noise - 0.5f) * 2f * style.RockVariation) * map.CellSize;
             }
 
             foreach (Vector2Int cell in floors.OrderBy(c => c.y).ThenBy(c => c.x))
             {
                 var chunk = Chunk(cell);
-                int material = GroundMaterial(cell);
+                var surface = elevation != null ? elevation.Surface(cell) : default;
+                int material = elevation != null ? surface.Material : GroundMaterial(cell);
                 bool river = rivers.Contains(cell);
-                Vector3 a = Point(cell.x, cell.y, 0), b = Point(cell.x + 1, cell.y, 0);
-                Vector3 c = Point(cell.x + 1, cell.y + 1, 0), d = Point(cell.x, cell.y + 1, 0);
-                chunk.Collision.Quad(a, b, c, d, 0);
+                Vector4 heights = elevation != null ? surface.Heights : Vector4.zero;
+                Vector3 a = Point(cell.x, cell.y, heights.x), b = Point(cell.x + 1, cell.y, heights.y);
+                Vector3 c = Point(cell.x + 1, cell.y + 1, heights.z), d = Point(cell.x, cell.y + 1, heights.w);
+                if (elevation == null || !river || surface.Bridge) chunk.Collision.Quad(a, b, c, d, 0);
                 float bed = river ? -0.42f * map.CellSize : 0f;
                 chunk.Ground.Quad(a + Vector3.up * bed, b + Vector3.up * bed,
                     c + Vector3.up * bed, d + Vector3.up * bed, river ? 2 : material);
+                if (elevation != null && !river)
+                {
+                    Edge(Vector2Int.up, d, c, 0, 1);
+                    Edge(Vector2Int.right, c, b, 3, 0);
+                    Edge(Vector2Int.down, b, a, 2, 3);
+                    Edge(Vector2Int.left, a, d, 1, 2);
+                }
+                void Edge(Vector2Int offset, Vector3 start, Vector3 end, int otherStart, int otherEnd)
+                {
+                    Vector2Int otherCell = cell + offset;
+                    if (!floors.Contains(otherCell)) return; // The outer rock wall supplies the boundary.
+                    Vector4 other = elevation.Surface(otherCell).Heights;
+                    bool waterEdge = rivers.Contains(otherCell) && !elevation.Surface(otherCell).Bridge;
+                    float lowStart = waterEdge ? start.y - 0.42f * map.CellSize : other[otherStart];
+                    float lowEnd = waterEdge ? end.y - 0.42f * map.CellSize : other[otherEnd];
+                    if (!waterEdge && Mathf.Max(start.y - lowStart, end.y - lowEnd) <= 0.2f) return;
+                    Vector3 lowerStart = new Vector3(start.x, lowStart, start.z);
+                    Vector3 lowerEnd = new Vector3(end.x, lowEnd, end.z);
+                    chunk.Cliff.Quad(start, end, lowerEnd, lowerStart, 0, Color.red);
+                    // A visible low rock rim prevents accidental drops into the river or off a terrace.
+                    Vector3 size = new Vector3(Mathf.Abs(end.x - start.x) + 0.12f, 0.45f,
+                        Mathf.Abs(end.z - start.z) + 0.12f);
+                    Vector3 center = (start + end) * 0.5f + Vector3.up * 0.225f;
+                    chunk.Cliff.Box(center, size, 0, Color.red);
+                    chunk.Collision.Box(center, size, 0);
+                }
                 if (!river) continue;
                 Color banks = new Color(
                     rivers.Contains(cell + Vector2Int.left) ? 0 : 1,
@@ -115,8 +160,8 @@ namespace Untitled.Editor
                     void Wall(Vector3 start, Vector3 end, Vector3 inward)
                     {
                         // A broken, sloping rock profile gives thickness without occupying floor cells.
-                        Vector3 lowA = new Vector3(start.x, -0.5f * map.CellSize, start.z);
-                        Vector3 lowB = new Vector3(end.x, -0.5f * map.CellSize, end.z);
+                        Vector3 lowA = new Vector3(start.x, elevation != null ? -2.0f : -0.5f * map.CellSize, start.z);
+                        Vector3 lowB = new Vector3(end.x, elevation != null ? -2.0f : -0.5f * map.CellSize, end.z);
                         Vector3 midA = Vector3.Lerp(lowA, start, 0.45f) - inward * (0.16f * map.CellSize);
                         Vector3 midB = Vector3.Lerp(lowB, end, 0.45f) - inward * (0.16f * map.CellSize);
                         rock.Quad(lowA, lowB, midB, midA, 0, Color.red);
@@ -141,6 +186,12 @@ namespace Untitled.Editor
                 {
                     Mesh mesh = Save(data.Rock.Build(name + "_Rock"), path, "Rock");
                     var renderer = Render("RockMass", chunk, mesh, new[] { map.WallMaterial, style.RockCap });
+                    renderer.gameObject.AddComponent<MeshCollider>().sharedMesh = mesh;
+                }
+                if (data.Cliff.HasVertices)
+                {
+                    Mesh mesh = Save(data.Cliff.Build(name + "_Cliffs"), path, "Cliffs");
+                    var renderer = Render("TerraceCliffs", chunk, mesh, new[] { map.WallMaterial });
                     renderer.gameObject.AddComponent<MeshCollider>().sharedMesh = mesh;
                 }
                 if (data.Water.HasVertices)
@@ -172,6 +223,16 @@ namespace Untitled.Editor
             foreach (float value in new[] { map.CellSize, style.RockHeight, style.RockVariation, style.RockMargin, style.Seed })
                 text.Append(value.ToString("R", CultureInfo.InvariantCulture)).Append('|');
             text.Append(map.LayoutGrid.transform.localPosition).Append('|');
+            if (map.Elevation != null)
+            {
+                text.Append("elevation-v1|");
+                foreach (var surface in map.Elevation.Surfaces.OrderBy(s => s.Cell.y).ThenBy(s => s.Cell.x))
+                {
+                    text.Append(surface.Cell.x).Append(',').Append(surface.Cell.y).Append(':');
+                    for (int i = 0; i < 4; i++) text.Append(surface.Heights[i].ToString("R", CultureInfo.InvariantCulture)).Append(',');
+                    text.Append(surface.Material).Append(',').Append(surface.Bridge).Append(';');
+                }
+            }
             foreach (var material in new[] { style.Soil, style.Settlement, style.WetGround, style.Hall, style.RockCap, map.WallMaterial, map.RiverMaterial })
                 text.Append(AssetDatabase.GetAssetPath(material)).Append('|');
             foreach (var cells in new[] { CaveMap.ReadCells(map.FloorTilemap), CaveMap.ReadCells(map.RiverTilemap) })
@@ -210,7 +271,16 @@ namespace Untitled.Editor
             {
                 mesh.name = saved.name;
                 Undo.RegisterCompleteObjectUndo(saved, "Update cave terrain mesh");
-                EditorUtility.CopySerialized(mesh, saved);
+                // Update through Mesh APIs so the open Editor refreshes its render buffers as well as saved data.
+                saved.Clear();
+                saved.indexFormat = mesh.indexFormat;
+                saved.SetVertices(mesh.vertices);
+                saved.SetNormals(mesh.normals);
+                saved.SetUVs(0, mesh.uv);
+                saved.SetColors(mesh.colors);
+                saved.subMeshCount = mesh.subMeshCount;
+                for (int i = 0; i < mesh.subMeshCount; i++) saved.SetTriangles(mesh.GetTriangles(i), i);
+                saved.RecalculateBounds();
                 EditorUtility.SetDirty(saved);
                 UnityEngine.Object.DestroyImmediate(mesh);
                 return saved;
@@ -230,6 +300,7 @@ namespace Untitled.Editor
             public readonly Surface Collision = new Surface(1);
             public readonly Surface Rock = new Surface(2);
             public readonly Surface Water = new Surface(1);
+            public readonly Surface Cliff = new Surface(1);
         }
 
         private sealed class Surface
@@ -241,6 +312,17 @@ namespace Untitled.Editor
             private readonly List<int>[] triangles;
             public bool HasVertices => vertices.Count > 0;
             public Surface(int count) => triangles = Enumerable.Range(0, count).Select(_ => new List<int>()).ToArray();
+
+            public void Box(Vector3 center, Vector3 size, int material, Color color = default)
+            {
+                Vector3 half = size * 0.5f;
+                Vector3 V(float x, float y, float z) => center + Vector3.Scale(half, new Vector3(x, y, z));
+                Quad(V(-1,1,-1), V(1,1,-1), V(1,1,1), V(-1,1,1), material, color);
+                Quad(V(-1,-1,-1), V(-1,1,-1), V(1,1,-1), V(1,-1,-1), material, color);
+                Quad(V(1,-1,1), V(1,1,1), V(-1,1,1), V(-1,-1,1), material, color);
+                Quad(V(-1,-1,1), V(-1,1,1), V(-1,1,-1), V(-1,-1,-1), material, color);
+                Quad(V(1,-1,-1), V(1,1,-1), V(1,1,1), V(1,-1,1), material, color);
+            }
 
             public void Quad(Vector3 a, Vector3 b, Vector3 c, Vector3 d, int material, Color color = default)
             {

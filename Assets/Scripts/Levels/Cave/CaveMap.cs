@@ -11,6 +11,7 @@ namespace Untitled
         [SerializeField] private Tilemap floorTilemap;
         [SerializeField] private Tilemap riverTilemap;
         [SerializeField] private Transform spawnPoint;
+        [SerializeField] private CaveElevation elevation;
         [SerializeField] private Material groundMaterial;
         [SerializeField] private Material wallMaterial;
         [SerializeField] private Material riverMaterial;
@@ -26,6 +27,7 @@ namespace Untitled
         public Tilemap FloorTilemap => floorTilemap;
         public Tilemap RiverTilemap => riverTilemap;
         public Transform SpawnPoint => spawnPoint;
+        public CaveElevation Elevation => elevation;
         public bool HasEditableLayout => layoutGrid != null && floorTilemap != null && riverTilemap != null && spawnPoint != null;
         public float CellSize => layoutGrid.cellSize.x;
         public string GeometryAssetPrefix => geometryAssetPrefix;
@@ -46,14 +48,20 @@ namespace Untitled
                     renderer.forceRenderingOff = true;
         }
 
-        public Vector3 CellToWorld(Vector2Int cell) => CaveCoordinates.CellCenter(cell, layoutGrid);
+        public Vector3 CellToWorld(Vector2Int cell)
+        {
+            Vector3 position = CaveCoordinates.CellCenter(cell, layoutGrid);
+            if (elevation != null) position += transform.TransformVector(Vector3.up * elevation.Height(cell.x + 0.5f, cell.y + 0.5f));
+            return position;
+        }
         public Vector2Int WorldToCell(Vector3 position) => CaveCoordinates.WorldToCell(position, layoutGrid);
 
         public bool IsWalkable(Vector3 position)
         {
             if (!HasEditableLayout) return false;
             Vector2Int cell = WorldToCell(position);
-            return floorTilemap.HasTile(new Vector3Int(cell.x, cell.y, 0));
+            var tile = new Vector3Int(cell.x, cell.y, 0);
+            return floorTilemap.HasTile(tile) && (elevation == null || !riverTilemap.HasTile(tile) || elevation.Surface(cell).Bridge);
         }
 
         public static HashSet<Vector2Int> ReadCells(Tilemap tilemap)

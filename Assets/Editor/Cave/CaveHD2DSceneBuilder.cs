@@ -10,7 +10,7 @@ using UnityEngine.Rendering.Universal;
 
 namespace Untitled.Editor
 {
-    public static class CaveHD2DSceneBuilder
+    public static partial class CaveHD2DSceneBuilder
     {
         private const string ScenePath = "Assets/Scenes/CaveHD2D.unity";
         private const string MaterialFolder = "Assets/Art/Materials/CaveHD2D";
@@ -478,7 +478,8 @@ namespace Untitled.Editor
         private static Vector3 Position(float x, float y, float height = 0)
         {
             Vector3 origin = map.LayoutGrid.transform.localPosition;
-            return map.transform.TransformPoint(origin + new Vector3(x * map.CellSize, height * map.CellSize, -y * map.CellSize));
+            float surfaceHeight = map.Elevation != null ? map.Elevation.Height(x, y) : 0f;
+            return map.transform.TransformPoint(origin + new Vector3(x * map.CellSize, surfaceHeight + height * map.CellSize, -y * map.CellSize));
         }
 
         private static void Pad(Transform parent, string name, float x, float y, float width, float length, float height, Material material)
