@@ -19,6 +19,9 @@ namespace Untitled
         }
 
         public List<CellSurface> Surfaces = new();
+        // World-unit drops below the authored river-bank/bridge datum.
+        [Min(0.01f)] public float RiverSurfaceDrop = 0.2f;
+        [Min(0.02f)] public float RiverBedDrop = 0.84f;
         private Dictionary<Vector2Int, CellSurface> lookup;
 
         public void Invalidate() => lookup = null;

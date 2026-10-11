@@ -160,19 +160,21 @@ namespace Untitled.Editor
                 Vector3 p = Vector3.Lerp(a,b,(float)i/count);
                 Beam(parent,"HandrailPost",p,p+Vector3.up*map.CellSize*0.9f,0.10f,wood,true);
             }
-            foreach (float h in new[] { 0.4f,0.78f })
-                Beam(parent,"RopeRail",a+Vector3.up*h*map.CellSize,b+Vector3.up*h*map.CellSize,0.035f,rope);
+            foreach (float h in new[] { 0.28f,0.78f })
+                Beam(parent,"RopeRail",a+Vector3.up*h*map.CellSize,b+Vector3.up*h*map.CellSize,0.035f,rope,true);
         }
 
         private static void SettlementRockwork(Transform architecture)
         {
             var group = Group("00_SculptedCaveRocks",architecture);
             var floors = CaveMap.ReadCells(map.FloorTilemap);
+            var rivers = CaveMap.ReadCells(map.RiverTilemap);
             int index = 0;
             foreach (var cell in floors.OrderBy(c=>c.y).ThenBy(c=>c.x))
             {
-                // Leave the narrow elder neck and the upper ascent clear of visual shoulders.
-                if (cell.x >= 50 && cell.y >= 9 && cell.y <= 18) continue;
+                // Keep the hall approach, elder branch and river openings clear of visual shoulders.
+                if (rivers.Contains(cell) || cell.x >= 46 && cell.y >= 9 && cell.y <= 23
+                    || cell.x >= 10 && cell.x <= 20 && cell.y <= 6) continue;
                 foreach (Vector2Int direction in new[] { Vector2Int.left,Vector2Int.up,Vector2Int.right,Vector2Int.down })
                 {
                     if (floors.Contains(cell+direction)) continue;
@@ -191,11 +193,12 @@ namespace Untitled.Editor
             for (int i = 0; i < 11; i++)
             {
                 float x = 33.5f+i*1.6f, y = 17.35f+0.15f*Mathf.Sin(i*0.8f);
+                if (x > 45) continue;
                 Piece(group,"ChieftainCliffButtress",boulder,i%3==0?rockLight:rock,
                     Position(x,y)-Vector3.up*map.Elevation.Height(x,y),
                     new Vector3(1.0f,4.8f+0.25f*Mathf.Sin(i),0.65f)*map.CellSize);
             }
-            foreach (Vector2 p in new[] { new Vector2(43,38),new Vector2(54,38),new Vector2(43,28),new Vector2(54,28) })
+            foreach (Vector2 p in new[] { new Vector2(48,41),new Vector2(58,41),new Vector2(45,28),new Vector2(58,28) })
                 Rock(group,"ResidenceRockSpur",p.x,p.y,-0.25f,0.7f,1.2f,0.8f);
         }
 
@@ -215,6 +218,51 @@ namespace Untitled.Editor
                 Vector2 end = SettlementBridgeEnd+side*sign;
                 Rail(bridge,start.x,start.y,end.x,end.y,0.04f);
             }
+            foreach (float t in new[] { 0.45f,0.65f })
+                foreach (float sign in new[] { -1f,1f })
+                {
+                    Vector2 p = Vector2.Lerp(SettlementBridgeStart,SettlementBridgeEnd,t)+side*sign*0.8f;
+                    Beam(bridge,"BridgeSupport",RiverPosition(p.x,p.y,-7.2f),RiverPosition(p.x,p.y,-4),0.12f,wood);
+                }
+        }
+
+        private static Vector3 RiverPosition(float x, float y, float height)
+            => map.transform.TransformPoint(map.LayoutGrid.transform.localPosition+new Vector3(x*map.CellSize,height,-y*map.CellSize));
+
+        private static void SettlementRiverExit(Transform landform)
+        {
+            Transform exit = Group("RiverDaylightExit",landform);
+            foreach (float x in new[] { 11.5f,18.5f })
+                Piece(exit,"PortalRockJamb",boulder,rock,RiverPosition(x,1,-4),new Vector3(1.8f,4,2)*map.CellSize,true);
+            Piece(exit,"PortalRockCrown",boulder,rockLight,RiverPosition(15,1,2),new Vector3(6.5f,1.2f,2)*map.CellSize);
+            Material daylight = Solid("river_exit_daylight",new Color(0.65f,0.82f,0.96f));
+            Undo.RecordObject(daylight,"Show daylight beyond cave mouth");
+            daylight.SetColor("_EmissionColor",new Color(0.65f,0.85f,1.0f)*1.8f);
+            daylight.EnableKeyword("_EMISSION");
+            EditorUtility.SetDirty(daylight);
+            Mesh sky = Module("RiverExitDaylight",() =>
+            {
+                Vector3[] outline = { new Vector3(-1,0,0),new Vector3(1,0,0),new Vector3(1,0.7f,0),
+                    new Vector3(0.75f,1.1f,0),new Vector3(0,1.35f,0),new Vector3(-0.75f,1.1f,0),new Vector3(-1,0.7f,0) };
+                var vertices = new List<Vector3>();
+                for (int i=0;i<outline.Length;i++)
+                    vertices.AddRange(new[] { new Vector3(0,0.6f,0),outline[(i+1)%outline.Length],outline[i] });
+                return MeshFrom("RiverExitDaylight",vertices);
+            });
+            var skyRenderer = Piece(exit,"DaylightBeyondOpening",sky,daylight,RiverPosition(15,0.65f,-6.25f),
+                new Vector3(5.8f,6.5f,1)).GetComponent<MeshRenderer>();
+            skyRenderer.shadowCastingMode = ShadowCastingMode.Off;
+            skyRenderer.receiveShadows = false;
+            var light = Group("RiverExitLight",exit).gameObject.AddComponent<Light>();
+            light.type=LightType.Spot;
+            light.color=new Color(0.68f,0.84f,1);
+            light.intensity=14;
+            light.range=42;
+            light.spotAngle=72;
+            light.innerSpotAngle=36;
+            light.shadows=LightShadows.Soft;
+            light.transform.position=RiverPosition(15,-2,2);
+            light.transform.rotation=Quaternion.LookRotation(RiverPosition(18,13,-4)-light.transform.position);
         }
 
         private static void SetSettlementLighting(UnityEngine.SceneManagement.Scene scene)

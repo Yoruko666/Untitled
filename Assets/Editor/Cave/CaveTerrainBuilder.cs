@@ -48,8 +48,10 @@ namespace Untitled.Editor
             var floors = CaveMap.ReadCells(map.FloorTilemap);
             var rivers = CaveMap.ReadCells(map.RiverTilemap);
             CaveElevation elevation = map.Elevation;
+            float waterDrop = elevation != null ? elevation.RiverSurfaceDrop : 0.10f * map.CellSize;
+            float bedDrop = elevation != null ? Mathf.Max(elevation.RiverBedDrop, waterDrop + 0.2f) : 0.42f * map.CellSize;
             float wallBase = elevation != null
-                ? floors.Min(cell => { Vector4 h = elevation.Surface(cell).Heights; return Mathf.Min(h.x,h.y,h.z,h.w); }) - map.CellSize * 0.5f
+                ? floors.Min(cell => { Vector4 h = elevation.Surface(cell).Heights; return Mathf.Min(h.x,h.y,h.z,h.w) - (rivers.Contains(cell) ? bedDrop : 0); }) - map.CellSize * 0.5f
                 : -0.5f * map.CellSize;
             var chunks = new Dictionary<Vector2Int, TerrainChunk>();
             TerrainChunk Chunk(Vector2Int cell)
@@ -111,8 +113,9 @@ namespace Untitled.Editor
                 Vector4 heights = elevation != null ? surface.Heights : Vector4.zero;
                 Vector3 a = Point(cell.x, cell.y, heights.x), b = Point(cell.x + 1, cell.y, heights.y);
                 Vector3 c = Point(cell.x + 1, cell.y + 1, heights.z), d = Point(cell.x, cell.y + 1, heights.w);
-                if (elevation == null || !river || surface.Bridge) chunk.Collision.Quad(a, b, c, d, 0);
-                float bed = river ? -0.42f * map.CellSize : 0f;
+                // Authored river cells have no invisible floor at bank height; bridge decks own their collision.
+                if (elevation == null || !river) chunk.Collision.Quad(a, b, c, d, 0);
+                float bed = river ? -bedDrop : 0f;
                 chunk.Ground.Quad(a + Vector3.up * bed, b + Vector3.up * bed,
                     c + Vector3.up * bed, d + Vector3.up * bed, river ? 2 : material);
                 if (elevation != null && !river)
@@ -135,13 +138,15 @@ namespace Untitled.Editor
                         return;
                     }
                     Vector4 other = elevation.Surface(otherCell).Heights;
-                    bool waterEdge = rivers.Contains(otherCell) && !elevation.Surface(otherCell).Bridge;
-                    float lowStart = other[otherStart] - (waterEdge ? 0.42f * map.CellSize : 0);
-                    float lowEnd = other[otherEnd] - (waterEdge ? 0.42f * map.CellSize : 0);
+                    bool waterEdge = rivers.Contains(otherCell);
+                    float lowStart = other[otherStart] - (waterEdge ? bedDrop : 0);
+                    float lowEnd = other[otherEnd] - (waterEdge ? bedDrop : 0);
                     if (!waterEdge && Mathf.Max(start.y - lowStart, end.y - lowEnd) <= 0.2f) return;
                     Vector3 lowerStart = new Vector3(start.x, lowStart, start.z);
                     Vector3 lowerEnd = new Vector3(end.x, lowEnd, end.z);
                     chunk.Cliff.Quad(start, end, lowerEnd, lowerStart, 0, Color.red);
+                    // Bridge mouths retain the bank face below the deck, without a rim blocking the crossing.
+                    if (waterEdge && elevation.Surface(otherCell).Bridge) return;
                     // A visible low rock rim prevents accidental drops into the river or off a terrace.
                     Vector3 size = new Vector3(Mathf.Abs(end.x - start.x) + 0.12f, 0.45f,
                         Mathf.Abs(end.z - start.z) + 0.12f);
@@ -156,7 +161,7 @@ namespace Untitled.Editor
                     rivers.Contains(cell + Vector2Int.right) ? 0 : 1,
                     rivers.Contains(cell + Vector2Int.up) ? 0 : 1,
                     rivers.Contains(cell + Vector2Int.down) ? 0 : 1);
-                Vector3 waterOffset = Vector3.down * (0.10f * map.CellSize);
+                Vector3 waterOffset = Vector3.down * waterDrop;
                 chunk.Water.Quad(a + waterOffset, b + waterOffset, c + waterOffset, d + waterOffset, 0, banks);
                 // Real river banks meet the recessed bed; walkability retains the saved river rules.
                 var edges = new[] { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
@@ -174,10 +179,21 @@ namespace Untitled.Editor
             int yMax = floors.Max(c => c.y) + style.RockMargin;
             var outline = new HashSet<Vector2Int>();
             if (style.NaturalOutline)
+            {
                 foreach (var floor in floors)
                     for (int dy = -style.RockMargin; dy <= style.RockMargin; dy++)
                         for (int dx = -style.RockMargin; dx <= style.RockMargin; dx++)
                             if (dx * dx + dy * dy <= style.RockMargin * style.RockMargin) outline.Add(floor + new Vector2Int(dx, dy));
+                // A river reaching the saved perimeter continues through the cave wall instead of ending in a cap.
+                foreach (var river in rivers)
+                    foreach (var direction in new[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right })
+                    {
+                        if (floors.Contains(river + direction)) continue;
+                        Vector2Int side = new Vector2Int(-direction.y, direction.x);
+                        for (int depth = 1; depth <= style.RockMargin + 1; depth++)
+                            for (int width = -1; width <= 1; width++) outline.Remove(river + direction * depth + side * width);
+                    }
+            }
             for (int y = yMin; y <= yMax; y++)
                 for (int x = xMin; x <= xMax; x++)
                 {
@@ -254,7 +270,7 @@ namespace Untitled.Editor
 
         private static string Hash(CaveMap map, CaveTerrainStyle style)
         {
-            var text = new StringBuilder("hd2d-terrain-v6|");
+            var text = new StringBuilder("hd2d-terrain-v7|");
             text.Append(style.NaturalOutline).Append('|');
             foreach (float value in new[] { map.CellSize, style.RockHeight, style.RockVariation, style.RockMargin, style.Seed })
                 text.Append(value.ToString("R", CultureInfo.InvariantCulture)).Append('|');
@@ -262,6 +278,8 @@ namespace Untitled.Editor
             if (map.Elevation != null)
             {
                 text.Append("elevation-v1|");
+                text.Append(map.Elevation.RiverSurfaceDrop.ToString("R", CultureInfo.InvariantCulture)).Append(',');
+                text.Append(map.Elevation.RiverBedDrop.ToString("R", CultureInfo.InvariantCulture)).Append('|');
                 foreach (var surface in map.Elevation.Surfaces.OrderBy(s => s.Cell.y).ThenBy(s => s.Cell.x))
                 {
                     text.Append(surface.Cell.x).Append(',').Append(surface.Cell.y).Append(':');

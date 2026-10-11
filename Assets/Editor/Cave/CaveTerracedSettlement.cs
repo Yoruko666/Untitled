@@ -53,6 +53,7 @@ namespace Untitled.Editor
             PrepareSettlementModules();
             SettlementRockwork(landform);
             SettlementBridgeBlockout(landform);
+            SettlementRiverExit(landform);
             var player = scene.GetRootGameObjects().SelectMany(g => g.GetComponentsInChildren<PlayerEntity>()).Single();
             var playerSettings = new SerializedObject(player);
             playerSettings.FindProperty("useGravity").boolValue = true;
@@ -78,8 +79,8 @@ namespace Untitled.Editor
             AssetDatabase.SaveAssets();
             EditorSceneManager.SaveScene(scene);
             Undo.CollapseUndoOperations(group);
-            Debug.Log($"Terrain V3 saved: {CaveMap.ReadCells(map.FloorTilemap).Count} cells; "
-                + "wide west bank, cliff-side river, diagonal low crossing, residential terraces and separate elder platform.");
+            Debug.Log($"Terrain V4 saved: {CaveMap.ReadCells(map.FloorTilemap).Count} cells; "
+                + "direct hall ascent, road between homes, extended forked river and recessed water under bridge.");
         }
 
         private static void ReplaceSettlementLayout()
@@ -117,38 +118,49 @@ namespace Untitled.Editor
                         };
                     }
             }
-            void Ribbon(int yMin, int yMax, Func<float, float> center, Func<float, float> height, float halfWidth)
-            {
-                for (int y = yMin; y < yMax; y++)
-                    for (int x = 38; x < 65; x++)
-                        if (Mathf.Abs(x + 0.5f - center(y + 0.5f)) <= halfWidth)
-                            Rectangle(x, y, x + 1, y + 1, (xx, yy) => height(yy));
-            }
             Vector2 P(float x, float y) => new Vector2(x, y);
             // Coordinates are editable grid cells; heights below are already world units.
             Polygon(0, 1, P(4,14), P(10,11), P(20,13), P(24,15), P(30,14), P(32,6),
-                P(38,4), P(48,4), P(53,7), P(57,5), P(62,6), P(65,12), P(64,39),
-                P(62,49), P(55,51), P(46,50), P(43,54), P(37,54), P(33,50), P(23,51),
+                P(38,4), P(48,4), P(53,7), P(57,5), P(62,6), P(65,12), P(63,36),
+                P(63,40), P(61,45), P(55,48), P(47,49), P(43,54), P(37,54), P(33,50), P(23,51),
                 P(13,53), P(6,50), P(3,44), P(2,36), P(4,29), P(2,22));
 
+            Vector2[] riverCourse = { P(15,0), P(16,7), P(18.5f,14), P(19,20), P(17.5f,27),
+                P(21,34), P(22,39), P(20,44), P(16,51), P(12,57), P(9,62) };
             float RiverCenter(float y)
             {
-                Vector2[] bends = { P(11,17), P(14,18.5f), P(22,20.5f), P(30,19.5f),
-                    P(38,21.5f), P(44,20), P(51,16), P(54,17) };
-                for (int i = 1; i < bends.Length; i++)
-                    if (y <= bends[i].x)
-                        return Mathf.Lerp(bends[i - 1].y, bends[i].y,
-                            Mathf.InverseLerp(bends[i - 1].x, bends[i].x, y));
-                return bends[bends.Length - 1].y;
+                for (int i = 1; i < riverCourse.Length; i++)
+                    if (y <= riverCourse[i].y)
+                        return Mathf.Lerp(riverCourse[i - 1].x, riverCourse[i].x,
+                            Mathf.InverseLerp(riverCourse[i - 1].y, riverCourse[i].y, y));
+                return riverCourse[riverCourse.Length - 1].x;
             }
             var rivers = new HashSet<Vector2Int>();
             foreach (Vector2Int cell in surfaces.Keys.ToArray())
             {
                 float center = RiverCenter(cell.y + 0.5f);
                 if (cell.x + 0.5f < center + 2) Flat(cell.x, cell.y, -4, 2);
-                if (cell.y >= 14 && Mathf.Abs(cell.x + 0.5f - center) < 2)
-                    rivers.Add(cell);
             }
+            void RiverStroke(float waterHalfWidth, params Vector2[] course)
+            {
+                for (int i = 1; i < course.Length; i++)
+                {
+                    Vector2 a = course[i - 1], b = course[i], line = b - a;
+                    for (int y = Mathf.FloorToInt(a.y); y < Mathf.CeilToInt(b.y); y++)
+                        for (int x = Mathf.FloorToInt(Mathf.Min(a.x, b.x) - 4); x < Mathf.CeilToInt(Mathf.Max(a.x, b.x) + 4); x++)
+                        {
+                            var cell = new Vector2Int(x, y);
+                            Vector2 p = (Vector2)cell + Vector2.one * 0.5f;
+                            Vector2 nearest = a + line * Mathf.Clamp01(Vector2.Dot(p - a, line) / line.sqrMagnitude);
+                            float distance = Vector2.Distance(p, nearest);
+                            if (distance > 4) continue;
+                            if (!surfaces.ContainsKey(cell)) Flat(x, y, -4, 2);
+                            if (distance < waterHalfWidth) { Flat(x, y, -4, 2); rivers.Add(cell); }
+                        }
+                }
+            }
+            RiverStroke(2, riverCourse);
+            RiverStroke(1.7f, P(18.7f,46.5f), P(22,50), P(28,52), P(32,57), P(33,62));
 
             // Kitchen/feast stays at zero between the river and the recessed hall.
             Polygon(0, 0, P(25,20), P(28,19), P(37,19), P(38,23), P(37,29), P(25,29));
@@ -156,23 +168,24 @@ namespace Untitled.Editor
                 P(49,17), P(35,17), P(32,15));
             Polygon(10.4f, 3, P(55,9), P(57,7), P(62,7), P(64,9), P(64,13),
                 P(62,15), P(55,15));
-            // A rock cleft separates the elder platform; only the four-unit neck crosses it.
+            // The elder remains a separate destination, reached by a branch from the ascent.
             foreach (var cell in surfaces.Keys.Where(c => c.x >= 52 && c.x < 55 && c.y >= 8 && c.y < 17).ToArray())
                 surfaces.Remove(cell);
-            Rectangle(51, 10, 57, 12, (x, y) => 10.4f);
-
-            Polygon(2.4f, 1, P(43,29), P(54,29), P(57,32), P(57,37), P(54,39), P(43,39));
-            Polygon(4.8f, 1, P(44,21), P(54,21), P(56,23), P(56,29), P(42,29), P(42,24));
-            Rectangle(40, 35, 43, 41, (x, y) => (41 - y) * 0.4f);
-            Rectangle(40, 33, 45, 35, (x, y) => 2.4f);
-            Rectangle(39, 25, 42, 33, (x, y) => 2.4f + (33 - y) * 0.3f);
-            Rectangle(39, 23, 45, 25, (x, y) => 4.8f);
-            // The ascent starts from the upper residence, rather than bypassing both homes.
-            Rectangle(54, 27, 58, 29, (x, y) => 4.8f);
-            Ribbon(18, 27, y => y > 23 ? Mathf.Lerp(61, 55.5f, (y - 23) / 4)
-                : Mathf.Lerp(58.5f, 61, (y - 18) / 5), y => 4.8f + (27 - y) * (2.8f / 9), 1.5f);
-            Rectangle(57, 16, 65, 18, (x, y) => 7.6f);
-            Ribbon(12, 16, y => 63, y => 7.6f + (16 - y) * 0.7f, 1);
+            Polygon(2.4f, 1, P(48,32), P(59,32), P(62,35), P(61,40), P(58,42), P(48,42), P(47,38));
+            Polygon(4.8f, 1, P(45,21), P(55,20), P(59,23), P(59,28), P(56,29), P(46,29), P(44,26));
+            // The shared street separates the home groups; the rising U-turn encloses the rear group.
+            Rectangle(42, 33, 45, 41, (x, y) => (41 - y) * 0.6f);
+            Rectangle(42, 29, 47, 33, (x, y) => 4.8f);
+            Rectangle(46, 29, 62, 31, (x, y) => 4.8f);
+            Rectangle(50, 31, 53, 35, (x, y) => 4.8f - (y - 31) * 0.6f);
+            Rectangle(48, 40, 51, 44, (x, y) => (44 - y) * 0.6f);
+            Rectangle(59, 31, 63, 33, (x, y) => 4.8f);
+            Rectangle(60, 23, 63, 31, (x, y) => 4.8f + (31 - y) * 0.35f);
+            Rectangle(59, 21, 64, 23, (x, y) => 7.6f);
+            Rectangle(60, 18, 64, 23, (x, y) => 7.6f);
+            Rectangle(49, 18, 60, 21, (x, y) => 10.4f - (x - 49) * (2.8f / 11));
+            Rectangle(46, 15, 49, 21, (x, y) => 10.4f);
+            Rectangle(61, 12, 64, 18, (x, y) => 7.6f + (18 - y) * (2.8f / 6));
             Rectangle(60, 10, 64, 12, (x, y) => 10.4f);
 
             Rectangle(23, 45, 29, 50, (x, y) => -4);
@@ -209,6 +222,8 @@ namespace Untitled.Editor
             }
             var elevation = map.Elevation != null ? map.Elevation : Undo.AddComponent<CaveElevation>(map.gameObject);
             Undo.RecordObject(elevation, "Author settlement terraces");
+            elevation.RiverSurfaceDrop = 2.2f;
+            elevation.RiverBedDrop = 3.4f;
             elevation.Surfaces = surfaces.Values.OrderBy(s => s.Cell.y).ThenBy(s => s.Cell.x).ToList();
             elevation.Invalidate();
             EditorUtility.SetDirty(elevation);
