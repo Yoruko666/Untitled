@@ -49,11 +49,11 @@ MonoBehaviour:
   assetId: Straw_Bed
   displayName: "\u8349\u94FA\xB7\u516B\u65B9\u5411"
   category: "\u5730\u9762"
-  implementation: "\u5355\u5f20\u53d7\u5149\u50cf\u7d20\u9762\u7247\uff1b\u56fa\u5b9a\u6446\u653e\u671d\u5411\uff0c\u516b\u65b9\u5411\u539f\u56fe\u56fa\u5b9a\u663e\u793a\u6240\u9009\u5e27\uff0c\u9ed8\u8ba4\u6b63\u9762\uff1b\u8f6e\u5ed3\u88c1\u5207\u4e0e\u6df1\u5ea6\u906e\u6321\u3002"
+  implementation: "\u53d7\u5149\u50cf\u7d20\u8349\u94fa\uff1b\u6cbf\u539f\u56fe\u8f6e\u5ed3\u589e\u52a0 0.05 \u5355\u4f4d\u539a\u5ea6\uff0c\u516b\u65b9\u5411\u5404\u81ea\u4f7f\u7528\u5bf9\u5e94\u7f51\u683c\uff1b\u56fa\u5b9a\u6446\u653e\u671d\u5411\u4e0e\u6240\u9009\u65b9\u5411\u5e27\uff0c\u9ed8\u8ba4\u6b63\u9762\u3002"
   referenceImages:
   - {fileID: 2800000, guid: b5d20a8026e746ee84c2e0683dbd451e, type: 3}
   sourceFiles: "Assets/Art/Sprites/Props/Camp/fur_bedroll_8view_sheet.png"
-  defaultSize: {x: 0.95454544, y: 0.75, z: 1.7}
+  defaultSize: {x: 0.95454544, y: 0.75, z: 0.05}
   wallMounted: 0
   wallClearance: 0.025
   visual: {fileID: 8299349284704087173}
@@ -106,6 +106,15 @@ MonoBehaviour:
     h: 0.64705884
     sx: 1
     sy: 1
+  frameMeshes:
+  - {fileID: 4300000, guid: d6499d5cb4b17664d8ef352a5af618c0, type: 2}
+  - {fileID: 4300000, guid: 9ee882cf67db444189676124fbf99aa9, type: 2}
+  - {fileID: 4300000, guid: 48e57525b21e42dc9a4036ee8a4728f4, type: 2}
+  - {fileID: 4300000, guid: 5212a9c8f9ed4e2087b8ece01e0069c7, type: 2}
+  - {fileID: 4300000, guid: a92bb3fa56b74de8a415d1c127b9e68b, type: 2}
+  - {fileID: 4300000, guid: 2d6335de8b664fd1a56b37b4567889f2, type: 2}
+  - {fileID: 4300000, guid: 5a54597b8a104b6fbd031435e2439440, type: 2}
+  - {fileID: 4300000, guid: 3d4a39c7a1434cb485664b05ec397f85, type: 2}
   directionOffset: 0
 --- !u!65 &7903779367044493865
 BoxCollider:
@@ -126,7 +135,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.95454544, y: 0.75, z: 1.7}
+  m_Size: {x: 0.95454544, y: 0.75, z: 0.05}
   m_Center: {x: 0, y: 0.375, z: 0}
 --- !u!1 &7843099858846747452
 GameObject:

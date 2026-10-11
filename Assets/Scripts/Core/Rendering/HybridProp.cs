@@ -27,8 +27,11 @@ namespace Untitled
         [SerializeField, Min(0.001f)] private float wallClearance = 0.025f;
         [SerializeField] private Transform visual;
         [SerializeField] private PixelFrame[] frames;
+        // Optional meshes follow the silhouette of each selected image frame.
+        [SerializeField, HideInInspector] private Mesh[] frameMeshes;
         [FormerlySerializedAs("directionOffset")]
         [SerializeField, Range(0, 7), Tooltip("固定显示的方向帧：0 为正面，1–7 为其他方向；不随摄像机自动切换。")] private int directionFrame;
+        private MeshFilter spriteMeshFilter;
         private MeshRenderer spriteRenderer;
         private MaterialPropertyBlock block;
         private static readonly int frameRectId = Shader.PropertyToID("_FrameRect");
@@ -62,10 +65,16 @@ namespace Untitled
         public void ApplyVisual()
         {
             if (!IsPixel || visual == null) return;
-            // Keep the card aligned with the root; cameras never affect rotation or frame selection.
+            // Keep the visual aligned with the root; cameras never affect rotation or frame selection.
             visual.localRotation = Quaternion.identity;
             CurrentFrame = HasEightDirections ? DirectionFrame : 0;
             PixelFrame frame = frames[CurrentFrame];
+            if (frameMeshes != null && CurrentFrame < frameMeshes.Length && frameMeshes[CurrentFrame] != null)
+            {
+                if (spriteMeshFilter == null) spriteMeshFilter = visual.GetComponent<MeshFilter>();
+                if (spriteMeshFilter != null && spriteMeshFilter.sharedMesh != frameMeshes[CurrentFrame])
+                    spriteMeshFilter.sharedMesh = frameMeshes[CurrentFrame];
+            }
             visual.localScale = new Vector3(frame.ScaleX, frame.ScaleY, 1f);
             visual.localPosition = wallMounted
                 ? Vector3.back * Mathf.Max(0.001f, wallClearance)
