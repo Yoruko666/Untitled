@@ -613,6 +613,16 @@
       "kind": "pixel",
       "prefab": "Assets/Prefabs/Props/Camp/straw_bed_hd2d.prefab",
       "mesh": "Assets/Art/Models/Props/Camp/straw_bed_hd2d.asset",
+      "frameMeshes": [
+        "Assets/Art/Models/Props/Camp/straw_bed_hd2d.asset",
+        "Assets/Art/Models/Props/Camp/straw_bed_hd2d_direction_1.asset",
+        "Assets/Art/Models/Props/Camp/straw_bed_hd2d_direction_2.asset",
+        "Assets/Art/Models/Props/Camp/straw_bed_hd2d_direction_3.asset",
+        "Assets/Art/Models/Props/Camp/straw_bed_hd2d_direction_4.asset",
+        "Assets/Art/Models/Props/Camp/straw_bed_hd2d_direction_5.asset",
+        "Assets/Art/Models/Props/Camp/straw_bed_hd2d_direction_6.asset",
+        "Assets/Art/Models/Props/Camp/straw_bed_hd2d_direction_7.asset"
+      ],
       "material": "Assets/Art/Materials/Props/Camp/straw_bed_hd2d.mat",
       "texture": "Assets/Art/Sprites/Props/Camp/fur_bedroll_8view_sheet.png",
       "references": [
@@ -687,7 +697,7 @@
       "size": [
         0.9545454545454546,
         0.75,
-        1.7
+        0.05
       ]
     },
     {
