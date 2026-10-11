@@ -27,6 +27,7 @@ namespace Untitled
         [SerializeField] private bool wallMounted;
         [SerializeField, Min(0.001f)] private float wallClearance = 0.025f;
         [SerializeField] private Transform visual;
+        [SerializeField, Tooltip("勾选时只随摄像机上下俯仰，左右朝向由根节点决定；取消后恢复左右朝向摄像机。")] private bool verticalOnly = true;
         [SerializeField] private PixelFrame[] frames;
         [FormerlySerializedAs("directionOffset")]
         [SerializeField, Range(0, 7), Tooltip("固定显示的方向帧：0 为正面，1–7 为其他方向；不随摄像机自动切换。")] private int directionFrame;
@@ -44,6 +45,7 @@ namespace Untitled
         public bool WallMounted => wallMounted;
         public float WallClearance => wallClearance;
         public Transform Visual => visual;
+        public bool VerticalOnly => verticalOnly;
         public int DirectionFrame => Mathf.Clamp(directionFrame, 0, 7);
         public PixelFrame[] Frames => frames;
         public int CurrentFrame { get; private set; }
@@ -77,17 +79,31 @@ namespace Untitled
             Vector3 towards = camera != null
                 ? (camera.orthographic ? -camera.transform.forward : camera.transform.position - transform.position)
                 : -transform.forward;
-            towards.y = 0f;
-            if (towards.sqrMagnitude < 0.0001f) return;
-            // Geometry faces -Z. The visual faces the camera while its selected frame stays fixed.
-            visual.rotation = Quaternion.LookRotation(-towards.normalized, Vector3.up);
+            if (verticalOnly)
+            {
+                if (towards.sqrMagnitude < 0.0001f) return;
+                Vector3 towardsInRoot = Quaternion.Inverse(transform.rotation) * towards;
+                float horizontalDistance = new Vector2(towardsInRoot.x, towardsInRoot.z).magnitude;
+                float pitch = Mathf.Atan2(towardsInRoot.y, horizontalDistance) * Mathf.Rad2Deg;
+                // Geometry faces -Z. Preserve root heading and tilt only around local X.
+                visual.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+            }
+            else
+            {
+                towards.y = 0f;
+                if (towards.sqrMagnitude < 0.0001f) return;
+                visual.rotation = Quaternion.LookRotation(-towards.normalized, Vector3.up);
+            }
             CurrentFrame = HasEightDirections ? DirectionFrame : 0;
             PixelFrame frame = frames[CurrentFrame];
             visual.localScale = new Vector3(frame.ScaleX, frame.ScaleY, 1f);
             if (wallMounted)
             {
-                Vector3 rightInRoot = Quaternion.Inverse(transform.rotation) * visual.right;
-                float span = defaultSize.x * visual.localScale.x * 0.5f * Mathf.Abs(rightInRoot.z);
+                Quaternion worldToRoot = Quaternion.Inverse(transform.rotation);
+                Vector3 rightInRoot = worldToRoot * visual.right;
+                Vector3 upInRoot = worldToRoot * visual.up;
+                float span = defaultSize.x * visual.localScale.x * 0.5f * Mathf.Abs(rightInRoot.z)
+                    + defaultSize.y * visual.localScale.y * Mathf.Max(0f, upInRoot.z);
                 visual.localPosition = Vector3.back * (Mathf.Max(0.001f, wallClearance) + span);
             }
             else visual.localPosition = Vector3.zero;
