@@ -124,6 +124,7 @@ public class Collection : EntityBase, IInteractable
 
 ### 7. 洞穴地图
 
+- HD-2D 场景分别保留为 `CaveHD2DLocal.unity`（本地基础地形 V4）和 `CaveHD2D.unity`（远端布局与道具摆放）；两份可独立打开编辑。用途、Editor 菜单作用范围与验收说明见 [洞穴场景说明](docs/cave-hd2d-scene.md)。
 - `CaveMapLayout`（`Assets/Configs/Cave/CaveLayout.asset`）：格子尺寸、原点、地面 / 墙体 / 河水材质、出生点。
 - `CaveMap`：按布局生成地图，提供 `CellToWorld` / `WorldToCell` / `IsWalkable` / `SpawnPosition`。
 - `CaveCoordinates`：像素、格子与本地坐标互转。
@@ -136,7 +137,7 @@ public class Collection : EntityBase, IInteractable
 
 Unity 菜单 **Untitled → Props → 素材浏览器** 可预览、调节大小与放入场景；完整展厅与容器对照场景在 `Assets/Scenes/Props`。详见 [可放置道具说明与清单](docs/placeable_props.md)。
 
-HD-2D 道具由 `HybridProp`（像素帧 + UV 偏移）驱动，通常配合 `SpriteBillboard`（视觉子对象朝向镜头）与 `HybridFireLight`（火光）使用。
+HD-2D 道具由 `HybridProp` 驱动，保持固定摆放朝向；八方向素材通过 `Direction Frame` 选择显示帧，默认 `0`（正面），摄像机移动不会改变朝向或图片帧。照明道具可配合 `HybridFireLight` 提供火光。
 
 ---
 

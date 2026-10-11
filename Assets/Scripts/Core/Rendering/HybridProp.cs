@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 
 namespace Untitled
 {
@@ -17,7 +17,7 @@ namespace Untitled
     [DisallowMultipleComponent, ExecuteAlways]
     public sealed class HybridProp : MonoBehaviour
     {
-        // Preserve serialized field names and prefab values during migration.
+        // Preserve serialized prefab values during migration.
         [SerializeField] private string assetId, displayName, category;
         [SerializeField, TextArea] private string implementation;
         [SerializeField] private Texture2D[] referenceImages;
@@ -27,7 +27,11 @@ namespace Untitled
         [SerializeField, Min(0.001f)] private float wallClearance = 0.025f;
         [SerializeField] private Transform visual;
         [SerializeField] private PixelFrame[] frames;
-        [SerializeField, Range(0, 7)] private int directionOffset;
+        // Optional meshes follow the silhouette of each selected image frame.
+        [SerializeField, HideInInspector] private Mesh[] frameMeshes;
+        [FormerlySerializedAs("directionOffset")]
+        [SerializeField, Range(0, 7), Tooltip("固定显示的方向帧：0 为正面，1–7 为其他方向；不随摄像机自动切换。")] private int directionFrame;
+        private MeshFilter spriteMeshFilter;
         private MeshRenderer spriteRenderer;
         private MaterialPropertyBlock block;
         private static readonly int frameRectId = Shader.PropertyToID("_FrameRect");
@@ -42,6 +46,7 @@ namespace Untitled
         public bool WallMounted => wallMounted;
         public float WallClearance => wallClearance;
         public Transform Visual => visual;
+        public int DirectionFrame => Mathf.Clamp(directionFrame, 0, 7);
         public PixelFrame[] Frames => frames;
         public int CurrentFrame { get; private set; }
         public bool IsPixel => frames != null && frames.Length > 0;
@@ -49,49 +54,31 @@ namespace Untitled
 
         private void OnEnable()
         {
-            RenderPipelineManager.beginCameraRendering += BeginCamera;
-            ApplyCamera(Camera.main);
-        }
-
-        private void OnDisable()
-        {
-            RenderPipelineManager.beginCameraRendering -= BeginCamera;
+            ApplyVisual();
         }
 
         private void LateUpdate()
         {
-            if (Application.isPlaying) ApplyCamera(Camera.main);
+            ApplyVisual();
         }
 
-        private void BeginCamera(ScriptableRenderContext context, Camera camera)
-        {
-            if (camera != null && camera.cameraType != CameraType.Reflection) ApplyCamera(camera);
-        }
-
-        public void ApplyCamera(Camera camera)
+        public void ApplyVisual()
         {
             if (!IsPixel || visual == null) return;
-            Vector3 towards = camera != null
-                ? (camera.orthographic ? -camera.transform.forward : camera.transform.position - transform.position)
-                : -transform.forward;
-            towards.y = 0f;
-            if (towards.sqrMagnitude < 0.0001f) return;
-            // Geometry faces -Z. Only the visual rotates; root rotation selects direction frames.
-            visual.rotation = Quaternion.LookRotation(-towards.normalized, Vector3.up);
-            Vector3 local = Quaternion.Inverse(transform.rotation) * towards.normalized;
-            float angle = Mathf.Atan2(-local.x, -local.z) * Mathf.Rad2Deg;
-            CurrentFrame = HasEightDirections
-                ? ((Mathf.RoundToInt(angle / 45f) + directionOffset) % 8 + 8) % 8
-                : 0;
+            // Keep the visual aligned with the root; cameras never affect rotation or frame selection.
+            visual.localRotation = Quaternion.identity;
+            CurrentFrame = HasEightDirections ? DirectionFrame : 0;
             PixelFrame frame = frames[CurrentFrame];
-            visual.localScale = new Vector3(frame.ScaleX, frame.ScaleY, 1f);
-            if (wallMounted)
+            if (frameMeshes != null && CurrentFrame < frameMeshes.Length && frameMeshes[CurrentFrame] != null)
             {
-                Vector3 rightInRoot = Quaternion.Inverse(transform.rotation) * visual.right;
-                float span = defaultSize.x * visual.localScale.x * 0.5f * Mathf.Abs(rightInRoot.z);
-                visual.localPosition = Vector3.back * (Mathf.Max(0.001f, wallClearance) + span);
+                if (spriteMeshFilter == null) spriteMeshFilter = visual.GetComponent<MeshFilter>();
+                if (spriteMeshFilter != null && spriteMeshFilter.sharedMesh != frameMeshes[CurrentFrame])
+                    spriteMeshFilter.sharedMesh = frameMeshes[CurrentFrame];
             }
-            else visual.localPosition = Vector3.zero;
+            visual.localScale = new Vector3(frame.ScaleX, frame.ScaleY, 1f);
+            visual.localPosition = wallMounted
+                ? Vector3.back * Mathf.Max(0.001f, wallClearance)
+                : Vector3.zero;
             if (spriteRenderer == null) spriteRenderer = visual.GetComponent<MeshRenderer>();
             if (spriteRenderer == null) return;
             if (block == null) block = new MaterialPropertyBlock();

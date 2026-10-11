@@ -168,7 +168,10 @@ namespace Untitled.Editor
                 {
                     HybridProp prop = prefabs[selected];
                     EditorGUILayout.LabelField(prop.DisplayName, EditorStyles.boldLabel);
-                    EditorGUILayout.LabelField(prop.IsPixel ? (prop.HasEightDirections ? "受光像素面片 / 八方向切换" : "受光像素面片 / 沿竖直轴朝向相机") : "原图贴图 / 连续封闭 3D 网格");
+                    EditorGUILayout.LabelField(prop.IsPixel
+                        ? "受光像素面片 / 固定朝向"
+                            + (prop.HasEightDirections ? " / 固定方向帧 " + prop.DirectionFrame : "")
+                        : "原图贴图 / 连续封闭 3D 网格");
                     Rect rect = GUILayoutUtility.GetRect(200f, 300f, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
                     DrawPreview(rect, prop);
                     using (new EditorGUILayout.HorizontalScope())
@@ -255,7 +258,7 @@ namespace Untitled.Editor
             camera.allowHDR = false;
             Quaternion rotation = Quaternion.Euler(pitch, yaw, 0f);
             camera.transform.SetPositionAndRotation(Vector3.up * prop.DefaultSize.y * 0.5f + rotation * Vector3.back * 8f, rotation);
-            previewObject.GetComponent<HybridProp>().ApplyCamera(camera);
+            previewObject.GetComponent<HybridProp>().ApplyVisual();
             preview.lights[0].intensity = 1.1f;
             preview.lights[0].transform.rotation = Quaternion.Euler(45f, -30f, 0f);
             preview.lights[1].intensity = 0.35f;

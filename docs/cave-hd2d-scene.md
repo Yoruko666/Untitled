@@ -1,6 +1,21 @@
-# CaveHD2D 基础地形 V4
+# CaveHD2DLocal 基础地形 V4
 
-打开 `Assets/Scenes/CaveHD2D.unity`，点击 Play，使用原有输入移动。本步先确认基础地形：范围、相对位置、台地轮廓和通路。建筑及道具草稿分组保持隐藏，等地形反馈后继续调整。原 `Cave` 场景保留。
+打开 `Assets/Scenes/CaveHD2DLocal.unity`，点击 Play，使用原有输入移动。本步先确认基础地形：范围、相对位置、台地轮廓和通路。建筑及道具草稿分组保持隐藏，等地形反馈后继续调整。原 `Cave` 场景保留。
+
+## 两份场景的用途
+
+本次 merge 将两侧的场景分别保存，不把它们的布局、对象摆放或光照混合成一份。
+
+| 场景 | 保留内容 | 后续使用 |
+| --- | --- | --- |
+| `Assets/Scenes/CaveHD2DLocal.unity` | 本地基础地形 V4：三级台地、直达大厅的主路、长老支路和延长河道 | 继续本地地形编辑与路线验收；下文描述此场景 |
+| `Assets/Scenes/CaveHD2D.unity` | 远端版本的布局与最新道具摆放 | 查看和继续远端场景编辑 |
+
+本地场景改名时保留原 `.meta` GUID；远端场景使用独立的新 GUID。两份场景仍共享项目中的脚本、Prefab、材质及部分网格资源，修改共享资源可能同时影响两份场景。道具行为采用合并后的 `HybridProp` 实现。
+
+当前 `Build HD2D Scene`、`Replace With Terraced Settlement Layout` 固定打开 `CaveHD2D.unity`，`Apply HD2D Scene Lighting` 也仅接受该场景。本地版本请直接打开 `CaveHD2DLocal.unity` 编辑并保存，不使用这些菜单。`Rebuild Scene Geometry` 则作用于当前打开场景。保存时的地形同步仍按当前场景执行；远端场景的新 GUID 会在需要重建地形时用于生成独立网格。
+
+此次 merge 检查了两份场景与各自输入版本的内容一致性（仅规范换行与行尾空白）、独立 GUID 和冲突清除；未重新执行 Unity 导入、Play Mode 或构建。下文的验证记录属于本地 V4 开发时的检查。
 
 ## 地形与路线
 
@@ -30,9 +45,9 @@
 - `CaveMap/Geometry` 是按 16 格区块保存的地面、岩体、台地立面、水面和碰撞；`Landform` 保存岩体轮廓、基础桥梁和亮洞口。
 - `CaveMap/Architecture` 和 `LevelRoot/PlacedProps` 保存已放置的建筑、道具草稿，当前 inactive，连同其 Collider 一起暂停。地形验收阶段保持隐藏。
 
-普通 `Untitled → Cave → Build HD2D Scene` 和保存场景时的同步只刷新派生地形，保留正式布局、高度和手工摆放。Runtime 读取保存结果。
+保存场景时的同步只刷新当前场景的派生地形，保留正式布局、高度和手工摆放。Runtime 读取保存结果。`Untitled → Cave → Build HD2D Scene` 固定作用于远端版 `CaveHD2D.unity`。
 
-`Untitled → Cave → Replace With Terraced Settlement Layout` 会明确替换为本版初始地形，并隐藏已有建筑和道具，保留当前游戏镜头与场景光照。已有手工地形修改时不要使用它。`Apply HD2D Scene Lighting` 会重设光照，手工调光后无需重复执行。
+`Untitled → Cave → Replace With Terraced Settlement Layout` 会明确替换远端版场景为本版初始地形，并隐藏已有建筑和道具，保留当前游戏镜头与场景光照。已有手工地形修改时不要使用它。`Apply HD2D Scene Lighting` 会重设远端版场景的光照，手工调光后无需重复执行。
 
 此版依据 [HD-2D 场景开发经验](hd2d-scene-development.md) 中的尺度、固定镜头构图、可见地形与通行布局分离、后墙与近侧墙层次处理。镜头保持固定方向，俯角 35°、距离 28、FOV 40°；地形检查阶段关闭全局雾，便于判断轮廓。
 
