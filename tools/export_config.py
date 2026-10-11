@@ -1,6 +1,6 @@
 """Excel 配表导出工具。
 
-把 Assets/Configs/Database/Table 下的 Excel 源表导出为 protobuf 二进制，
+把 Config/Table 下的 Excel 源表导出为 protobuf 二进制，
 运行时通过 Addressables 加载 Assets/Configs/Database/Proto 下的 .bytes。
 
 用法:
@@ -22,7 +22,7 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROTO_DIR = os.path.join(ROOT, "Assets", "Configs", "Database", "Proto")
-TABLE_DIR = os.path.join(ROOT, "Assets", "Configs", "Database", "Table")
+TABLE_DIR = os.path.join(ROOT, "Config", "Table")
 CSHARP_OUT_DIR = os.path.join(ROOT, "Assets", "Scripts", "Data", "Generated")
 STUB_DIR = os.path.join(ROOT, "tools", ".generated")
 
