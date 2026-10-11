@@ -4,6 +4,8 @@ Shader "Untitled/HD2D/Cave Terrain"
     {
         [MainTexture] _BaseMap("Albedo", 2D) = "white" {}
         [MainColor] _BaseColor("Color", Color) = (1,1,1,1)
+        _TextureStrength("Texture Contrast", Range(0,1)) = 1
+        _TileScale("World Texture Scale", Float) = 1
         _Cutoff("Alpha Cutoff", Range(0,1)) = 0.5
         _Smoothness("Smoothness", Range(0,1)) = 0
         _Metallic("Metallic", Range(0,1)) = 0
@@ -35,6 +37,8 @@ Shader "Untitled/HD2D/Cave Terrain"
         // Globals belong to the scene controller, not the shared material asset.
         float4 _CaveRevealTarget;
         float4 _CaveRevealCamera;
+        float _TextureStrength;
+        float _TileScale;
         struct Attributes
         {
             float4 positionOS : POSITION;
@@ -102,7 +106,8 @@ Shader "Untitled/HD2D/Cave Terrain"
             float3 axis = abs(input.normalWS);
             float2 tileUV = axis.y > max(axis.x, axis.z) ? input.positionWS.xz
                 : axis.x > axis.z ? input.positionWS.zy : input.positionWS.xy;
-            InitializeStandardLitSurfaceData(frac(tileUV) * _BaseMap_ST.xy + _BaseMap_ST.zw, surface);
+            InitializeStandardLitSurfaceData(frac(tileUV * _TileScale) * _BaseMap_ST.xy + _BaseMap_ST.zw, surface);
+            surface.albedo = lerp(_BaseColor.rgb, surface.albedo, _TextureStrength);
             InputData lighting = (InputData)0;
             lighting.positionWS = input.positionWS;
             lighting.normalWS = NormalizeNormalPerPixel(input.normalWS);

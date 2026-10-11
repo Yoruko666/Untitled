@@ -48,6 +48,9 @@ namespace Untitled.Editor
             var floors = CaveMap.ReadCells(map.FloorTilemap);
             var rivers = CaveMap.ReadCells(map.RiverTilemap);
             CaveElevation elevation = map.Elevation;
+            float wallBase = elevation != null
+                ? floors.Min(cell => { Vector4 h = elevation.Surface(cell).Heights; return Mathf.Min(h.x,h.y,h.z,h.w); }) - map.CellSize * 0.5f
+                : -0.5f * map.CellSize;
             var chunks = new Dictionary<Vector2Int, TerrainChunk>();
             TerrainChunk Chunk(Vector2Int cell)
             {
@@ -58,13 +61,22 @@ namespace Untitled.Editor
             Vector3 Point(float x, float y, float height)
             {
                 Vector3 origin = map.LayoutGrid.transform.localPosition;
-                return origin + new Vector3(x * map.CellSize, height, -y * map.CellSize);
+                float dx = style.NaturalOutline ? Mathf.Sin(x * 1.87f + y * 2.34f) * 0.14f : 0;
+                float dz = style.NaturalOutline ? Mathf.Sin(x * 2.31f - y * 1.53f) * 0.14f : 0;
+                return origin + new Vector3((x + dx) * map.CellSize, height, -(y + dz) * map.CellSize);
+            }
+            Vector3 BoundaryPoint(Vector3 visible)
+            {
+                Vector3 origin = map.LayoutGrid.transform.localPosition;
+                return new Vector3(origin.x + Mathf.Round((visible.x-origin.x)/map.CellSize)*map.CellSize,
+                    visible.y, origin.z + Mathf.Round((visible.z-origin.z)/map.CellSize)*map.CellSize);
             }
             float Height(float x, float y)
             {
                 // Shared corner heights keep adjoining chunks seamless. No runtime generation.
                 float noise = Mathf.PerlinNoise((x + style.Seed) * 0.16f, (y - style.Seed) * 0.16f);
                 float baseHeight = 0f;
+                float nearestY = y;
                 if (elevation != null)
                 {
                     float nearest = float.PositiveInfinity;
@@ -77,10 +89,12 @@ namespace Untitled.Editor
                             float distance = (new Vector2(cell.x + 0.5f, cell.y + 0.5f) - new Vector2(x, y)).sqrMagnitude;
                             if (distance >= nearest) continue;
                             nearest = distance;
+                            nearestY = cell.y;
                             baseHeight = elevation.Height(cell.x + 0.5f, cell.y + 0.5f);
                         }
                 }
-                return baseHeight + (style.RockHeight + (noise - 0.5f) * 2f * style.RockVariation) * map.CellSize;
+                float wallHeight = style.NaturalOutline && nearestY > 43 ? 0.65f : style.RockHeight;
+                return baseHeight + Mathf.Max(0.5f,wallHeight + (noise - 0.5f) * 2f * style.RockVariation) * map.CellSize;
             }
 
             foreach (Vector2Int cell in floors.OrderBy(c => c.y).ThenBy(c => c.x))
@@ -106,7 +120,15 @@ namespace Untitled.Editor
                 void Edge(Vector2Int offset, Vector3 start, Vector3 end, int otherStart, int otherEnd)
                 {
                     Vector2Int otherCell = cell + offset;
-                    if (!floors.Contains(otherCell)) return; // The outer rock wall supplies the boundary.
+                    if (!floors.Contains(otherCell))
+                    {
+                        // Keep the physical limit on the authored grid while the visible rock contour varies.
+                        Vector3 boundaryStart = BoundaryPoint(start), boundaryEnd = BoundaryPoint(end);
+                        Vector3 boundarySize = new Vector3(Mathf.Abs(boundaryEnd.x-boundaryStart.x)+0.15f,1.5f,
+                            Mathf.Abs(boundaryEnd.z-boundaryStart.z)+0.15f);
+                        chunk.Collision.Box((boundaryStart+boundaryEnd)*0.5f+Vector3.up*0.75f,boundarySize,0);
+                        return;
+                    }
                     Vector4 other = elevation.Surface(otherCell).Heights;
                     bool waterEdge = rivers.Contains(otherCell) && !elevation.Surface(otherCell).Bridge;
                     float lowStart = waterEdge ? start.y - 0.42f * map.CellSize : other[otherStart];
@@ -120,7 +142,8 @@ namespace Untitled.Editor
                         Mathf.Abs(end.z - start.z) + 0.12f);
                     Vector3 center = (start + end) * 0.5f + Vector3.up * 0.225f;
                     chunk.Cliff.Box(center, size, 0, Color.red);
-                    chunk.Collision.Box(center, size, 0);
+                    Vector3 collisionCenter = (BoundaryPoint(start)+BoundaryPoint(end))*0.5f+Vector3.up*0.225f;
+                    chunk.Collision.Box(collisionCenter,size,0);
                 }
                 if (!river) continue;
                 Color banks = new Color(
@@ -144,24 +167,31 @@ namespace Untitled.Editor
             int xMax = floors.Max(c => c.x) + style.RockMargin;
             int yMin = floors.Min(c => c.y) - style.RockMargin;
             int yMax = floors.Max(c => c.y) + style.RockMargin;
+            var outline = new HashSet<Vector2Int>();
+            if (style.NaturalOutline)
+                foreach (var floor in floors)
+                    for (int dy = -style.RockMargin; dy <= style.RockMargin; dy++)
+                        for (int dx = -style.RockMargin; dx <= style.RockMargin; dx++)
+                            if (dx * dx + dy * dy <= style.RockMargin * style.RockMargin) outline.Add(floor + new Vector2Int(dx, dy));
             for (int y = yMin; y <= yMax; y++)
                 for (int x = xMin; x <= xMax; x++)
                 {
                     var cell = new Vector2Int(x, y);
                     if (floors.Contains(cell)) continue;
+                    if (style.NaturalOutline && !outline.Contains(cell)) continue;
                     var rock = Chunk(cell).Rock;
                     Vector3 a = Point(x, y, Height(x, y)), b = Point(x + 1, y, Height(x + 1, y));
                     Vector3 c = Point(x + 1, y + 1, Height(x + 1, y + 1)), d = Point(x, y + 1, Height(x, y + 1));
                     rock.Quad(a, b, c, d, 1, Color.red);
-                    if (floors.Contains(cell + Vector2Int.down) || y == yMin) Wall(a, b, Vector3.forward);
-                    if (floors.Contains(cell + Vector2Int.right) || x == xMax) Wall(b, c, Vector3.right);
-                    if (floors.Contains(cell + Vector2Int.up) || y == yMax) Wall(c, d, Vector3.back);
-                    if (floors.Contains(cell + Vector2Int.left) || x == xMin) Wall(d, a, Vector3.left);
+                    if (floors.Contains(cell + Vector2Int.down) || y == yMin || style.NaturalOutline && !outline.Contains(cell + Vector2Int.down)) Wall(a, b, Vector3.forward);
+                    if (floors.Contains(cell + Vector2Int.right) || x == xMax || style.NaturalOutline && !outline.Contains(cell + Vector2Int.right)) Wall(b, c, Vector3.right);
+                    if (floors.Contains(cell + Vector2Int.up) || y == yMax || style.NaturalOutline && !outline.Contains(cell + Vector2Int.up)) Wall(c, d, Vector3.back);
+                    if (floors.Contains(cell + Vector2Int.left) || x == xMin || style.NaturalOutline && !outline.Contains(cell + Vector2Int.left)) Wall(d, a, Vector3.left);
                     void Wall(Vector3 start, Vector3 end, Vector3 inward)
                     {
                         // A broken, sloping rock profile gives thickness without occupying floor cells.
-                        Vector3 lowA = new Vector3(start.x, elevation != null ? -2.0f : -0.5f * map.CellSize, start.z);
-                        Vector3 lowB = new Vector3(end.x, elevation != null ? -2.0f : -0.5f * map.CellSize, end.z);
+                        Vector3 lowA = new Vector3(start.x, wallBase, start.z);
+                        Vector3 lowB = new Vector3(end.x, wallBase, end.z);
                         Vector3 midA = Vector3.Lerp(lowA, start, 0.45f) - inward * (0.16f * map.CellSize);
                         Vector3 midB = Vector3.Lerp(lowB, end, 0.45f) - inward * (0.16f * map.CellSize);
                         rock.Quad(lowA, lowB, midB, midA, 0, Color.red);
@@ -219,7 +249,8 @@ namespace Untitled.Editor
 
         private static string Hash(CaveMap map, CaveTerrainStyle style)
         {
-            var text = new StringBuilder("hd2d-terrain-v1|");
+            var text = new StringBuilder("hd2d-terrain-v5|");
+            text.Append(style.NaturalOutline).Append('|');
             foreach (float value in new[] { map.CellSize, style.RockHeight, style.RockVariation, style.RockMargin, style.Seed })
                 text.Append(value.ToString("R", CultureInfo.InvariantCulture)).Append('|');
             text.Append(map.LayoutGrid.transform.localPosition).Append('|');

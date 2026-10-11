@@ -15,5 +15,6 @@ namespace Untitled
         [Min(0f)] public float RockVariation = 1.2f;
         [Range(2, 12)] public int RockMargin = 6;
         public int Seed = 731;
+        public bool NaturalOutline;
     }
 }
