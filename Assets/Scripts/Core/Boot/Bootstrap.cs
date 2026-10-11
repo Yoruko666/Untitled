@@ -6,6 +6,7 @@ namespace Untitled
     {
         private void Awake()
         {
+            RegisterManager(new DatabaseManager());
             RegisterManager(new GameManager());
             RegisterManager(new InputManager());
             RegisterManager(new UIManager());

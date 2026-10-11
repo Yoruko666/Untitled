@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package untitled.config;
+
+option csharp_namespace = "Untitled.Config";
+
+// 物品类型。proto3 要求枚举从 0 开始。
+enum ItemType {
+  ITEM_TYPE_NONE = 0;
+  ITEM_TYPE_INGREDIENT = 1;
+}
+
+message Item {
+  int32 id = 1;
+  string name = 2;
+  ItemType type = 3;
+  string description = 4;
+  // 图标资源地址，由 UI 层按需加载，配表只存地址。
+  string icon = 5;
+}
+
+message ItemTable {
+  repeated Item items = 1;
+}

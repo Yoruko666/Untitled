@@ -42,3 +42,6 @@ crashlytics-build.properties
 .DS_Store
 Thumbs.db
 desktop.ini
+
+## 导表工具生成的 protobuf 桩代码 ##
+tools/.generated/
