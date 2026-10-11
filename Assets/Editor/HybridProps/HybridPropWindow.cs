@@ -168,7 +168,11 @@ namespace Untitled.Editor
                 {
                     HybridProp prop = prefabs[selected];
                     EditorGUILayout.LabelField(prop.DisplayName, EditorStyles.boldLabel);
-                    EditorGUILayout.LabelField(prop.IsPixel ? (prop.HasEightDirections ? "受光像素面片 / 八方向切换" : "受光像素面片 / 沿竖直轴朝向相机") : "原图贴图 / 连续封闭 3D 网格");
+                    EditorGUILayout.LabelField(prop.IsPixel
+                        ? (prop.FaceCamera
+                            ? (prop.HasEightDirections ? "受光像素面片 / 八方向切换" : "受光像素面片 / 沿竖直轴朝向相机")
+                            : "受光像素面片 / 固定朝向")
+                        : "原图贴图 / 连续封闭 3D 网格");
                     Rect rect = GUILayoutUtility.GetRect(200f, 300f, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
                     DrawPreview(rect, prop);
                     using (new EditorGUILayout.HorizontalScope())
