@@ -173,7 +173,8 @@ namespace Untitled.Editor
             foreach (var cell in floors.OrderBy(c=>c.y).ThenBy(c=>c.x))
             {
                 // Keep the hall approach, elder branch and river openings clear of visual shoulders.
-                if (rivers.Contains(cell) || cell.x >= 46 && cell.y >= 9 && cell.y <= 23
+                if (rivers.Contains(cell) || cell.x >= 27 && cell.x <= 35 && cell.y <= 25
+                    || cell.x >= 46 && cell.y >= 9 && cell.y <= 23
                     || cell.x >= 10 && cell.x <= 20 && cell.y <= 6) continue;
                 foreach (Vector2Int direction in new[] { Vector2Int.left,Vector2Int.up,Vector2Int.right,Vector2Int.down })
                 {
@@ -190,13 +191,11 @@ namespace Untitled.Editor
                 }
             }
             // Large leaning cliff ribs give the back terrace a continuous, non-tiled silhouette.
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 6; i++)
             {
-                float x = 33.5f+i*1.6f, y = 17.35f+0.15f*Mathf.Sin(i*0.8f);
-                if (x > 45) continue;
+                float x = 35+i*1.7f, y = 18.5f+0.4f*Mathf.Sin(i*0.8f);
                 Piece(group,"ChieftainCliffButtress",boulder,i%3==0?rockLight:rock,
-                    Position(x,y)-Vector3.up*map.Elevation.Height(x,y),
-                    new Vector3(1.0f,4.8f+0.25f*Mathf.Sin(i),0.65f)*map.CellSize);
+                    Position(x,y), new Vector3(0.9f,1.1f+0.2f*Mathf.Sin(i),0.6f)*map.CellSize);
             }
             foreach (Vector2 p in new[] { new Vector2(48,41),new Vector2(58,41),new Vector2(45,28),new Vector2(58,28) })
                 Rock(group,"ResidenceRockSpur",p.x,p.y,-0.25f,0.7f,1.2f,0.8f);
@@ -204,31 +203,36 @@ namespace Untitled.Editor
 
         private static void SettlementBridgeBlockout(Transform landform)
         {
-            var bridge = Group("RiverCrossing",landform);
-            Vector3 a = Position(SettlementBridgeStart.x, SettlementBridgeStart.y);
-            Vector3 b = Position(SettlementBridgeEnd.x, SettlementBridgeEnd.y);
-            var deck = Piece(bridge,"BridgeDeck",cube,wood,(a+b)*0.5f,
-                new Vector3(2*map.CellSize,0.08f*map.CellSize,(b-a).magnitude),true);
-            deck.rotation = Quaternion.LookRotation(b-a,Vector3.up);
-            Vector2 direction = (SettlementBridgeEnd-SettlementBridgeStart).normalized;
-            Vector2 side = new Vector2(-direction.y,direction.x);
-            foreach (float sign in new[] { -1f,1f })
+            Crossing("RiverCrossing", SettlementBridgeStart, SettlementBridgeEnd, 1);
+            Crossing("SupplyCrossing", SupplyBridgeStart, SupplyBridgeEnd, 0.75f);
+            void Crossing(string name, Vector2 first, Vector2 last, float halfWidth)
             {
-                Vector2 start = SettlementBridgeStart+side*sign;
-                Vector2 end = SettlementBridgeEnd+side*sign;
-                Rail(bridge,start.x,start.y,end.x,end.y,0.04f);
-                var barrier = Group("BridgeAirWall", bridge);
-                barrier.position = (a+b)*0.5f + deck.right*sign*map.CellSize + Vector3.up*1.4f;
-                barrier.rotation = deck.rotation;
-                var collider = barrier.gameObject.AddComponent<BoxCollider>();
-                collider.size = new Vector3(0.18f, 3, (b-a).magnitude+0.5f);
-            }
-            foreach (float t in new[] { 0.45f,0.65f })
+                var bridge = Group(name,landform);
+                Vector3 a = Position(first.x, first.y);
+                Vector3 b = Position(last.x, last.y);
+                var deck = Piece(bridge,"BridgeDeck",cube,wood,(a+b)*0.5f,
+                    new Vector3(halfWidth*2*map.CellSize,0.08f*map.CellSize,(b-a).magnitude),true);
+                deck.rotation = Quaternion.LookRotation(b-a,Vector3.up);
+                Vector2 direction = (last-first).normalized;
+                Vector2 side = new Vector2(-direction.y,direction.x);
                 foreach (float sign in new[] { -1f,1f })
                 {
-                    Vector2 p = Vector2.Lerp(SettlementBridgeStart,SettlementBridgeEnd,t)+side*sign*0.8f;
-                    Beam(bridge,"BridgeSupport",RiverPosition(p.x,p.y,-7.2f),RiverPosition(p.x,p.y,-4),0.12f,wood);
+                    Vector2 start = first+side*sign*halfWidth;
+                    Vector2 end = last+side*sign*halfWidth;
+                    Rail(bridge,start.x,start.y,end.x,end.y,0.04f);
+                    var barrier = Group("BridgeAirWall", bridge);
+                    barrier.position = (a+b)*0.5f + deck.right*sign*halfWidth*map.CellSize + Vector3.up*1.4f;
+                    barrier.rotation = deck.rotation;
+                    var collider = barrier.gameObject.AddComponent<BoxCollider>();
+                    collider.size = new Vector3(0.18f, 3, (b-a).magnitude+0.5f);
                 }
+                foreach (float t in new[] { 0.45f,0.65f })
+                    foreach (float sign in new[] { -1f,1f })
+                    {
+                        Vector2 p = Vector2.Lerp(first,last,t)+side*sign*halfWidth*0.8f;
+                        Beam(bridge,"BridgeSupport",RiverPosition(p.x,p.y,-7.2f),RiverPosition(p.x,p.y,-4),0.12f,wood);
+                    }
+            }
         }
 
         private static Vector3 RiverPosition(float x, float y, float height)

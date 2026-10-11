@@ -48,7 +48,7 @@ namespace Untitled.Editor
             var floors = CaveMap.ReadCells(map.FloorTilemap);
             var rivers = CaveMap.ReadCells(map.RiverTilemap);
             CaveElevation elevation = map.Elevation;
-            BoxCollider bridgeDeck = FindBridgeDeck(map);
+            BoxCollider[] bridgeDecks = FindBridgeDecks(map);
             float waterDrop = elevation != null ? elevation.RiverSurfaceDrop : 0.10f * map.CellSize;
             float bedDrop = elevation != null ? Mathf.Max(elevation.RiverBedDrop, waterDrop + 0.2f) : 0.42f * map.CellSize;
             float wallBase = elevation != null
@@ -78,7 +78,7 @@ namespace Untitled.Editor
             {
                 Vector3 a = BoundaryPoint(start), b = BoundaryPoint(end);
                 float openingStart = 1, openingEnd = 1;
-                if (bridgeDeck != null)
+                foreach (BoxCollider bridgeDeck in bridgeDecks)
                 {
                     Vector3 deckTop = bridgeDeck.transform.TransformPoint(bridgeDeck.center + Vector3.up * bridgeDeck.size.y * 0.5f);
                     Vector3 worldA = map.transform.TransformPoint(a), worldB = map.transform.TransformPoint(b);
@@ -322,9 +322,8 @@ namespace Untitled.Editor
 
         private static string Hash(CaveMap map, CaveTerrainStyle style)
         {
-            var text = new StringBuilder("hd2d-terrain-v8|");
-            BoxCollider bridgeDeck = FindBridgeDeck(map);
-            if (bridgeDeck != null)
+            var text = new StringBuilder("hd2d-terrain-v9|");
+            foreach (BoxCollider bridgeDeck in FindBridgeDecks(map))
             {
                 Matrix4x4 matrix = bridgeDeck.transform.localToWorldMatrix;
                 for (int i = 0; i < 16; i++) text.Append(matrix[i].ToString("R", CultureInfo.InvariantCulture)).Append(',');
@@ -364,8 +363,9 @@ namespace Untitled.Editor
             return go.transform;
         }
 
-        private static BoxCollider FindBridgeDeck(CaveMap map)
-            => map.transform.Find("Landform/RiverCrossing/BridgeDeck")?.GetComponent<BoxCollider>();
+        private static BoxCollider[] FindBridgeDecks(CaveMap map)
+            => map.GetComponentsInChildren<BoxCollider>().Where(c => c.name == "BridgeDeck")
+                .OrderBy(c => c.transform.position.x).ToArray();
 
         private static MeshRenderer Render(string name, Transform parent, Mesh mesh, Material[] materials)
         {

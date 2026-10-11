@@ -12,6 +12,8 @@ namespace Untitled.Editor
     {
         private static readonly Vector2 SettlementBridgeStart = new Vector2(14, 41);
         private static readonly Vector2 SettlementBridgeEnd = new Vector2(24.3923f, 47);
+        private static readonly Vector2 SupplyBridgeStart = new Vector2(15, 25);
+        private static readonly Vector2 SupplyBridgeEnd = new Vector2(22, 25);
         private const string SettlementScenePath = "Assets/Scenes/CaveHD2DLocal.unity";
 
         // Explicit replacement only. The ordinary Build operation preserves saved edits.
@@ -54,6 +56,7 @@ namespace Untitled.Editor
             SettlementRockwork(landform);
             SettlementBridgeBlockout(landform);
             SettlementRiverExit(landform);
+            SettlementStealthBlockout(landform);
             CaveTerrainBuilder.Rebuild(map, style);
             var player = scene.GetRootGameObjects().SelectMany(g => g.GetComponentsInChildren<PlayerEntity>()).Single();
             var playerSettings = new SerializedObject(player);
@@ -67,8 +70,9 @@ namespace Untitled.Editor
             controller.stepOffset = 0.18f;
             PrefabUtility.RecordPrefabInstancePropertyModifications(controller);
             var follow = scene.GetRootGameObjects().SelectMany(g => g.GetComponentsInChildren<CameraController>()).Single();
+            ConfigureStealthPresentation(scene, follow, player);
             Quaternion rotation = Quaternion.Euler(follow.ViewAngle, 0, 0);
-            follow.transform.SetPositionAndRotation(player.transform.position + new Vector3(0, 1.8f, 4)
+            follow.transform.SetPositionAndRotation(player.transform.position + new Vector3(0, 1.6f, 2)
                 - rotation * Vector3.forward * follow.Distance, rotation);
             Selection.activeGameObject = null;
             if (SceneView.lastActiveSceneView != null)
@@ -80,8 +84,8 @@ namespace Untitled.Editor
             AssetDatabase.SaveAssets();
             EditorSceneManager.SaveScene(scene);
             Undo.CollapseUndoOperations(group);
-            Debug.Log($"Terrain V5 saved: {CaveMap.ReadCells(map.FloorTilemap).Count} cells; "
-                + "winding hall ascent, eastern elder branch and continuous river barriers.");
+            Debug.Log($"Terrain V6 saved: {CaveMap.ReadCells(map.FloorTilemap).Count} cells; "
+                + "two hall approaches, residential loops, solid stealth cover and 42-degree camera.");
         }
 
         private static void ReplaceSettlementLayout()
@@ -165,15 +169,18 @@ namespace Untitled.Editor
 
             // Kitchen/feast stays at zero between the river and the recessed hall.
             Polygon(0, 0, P(25,20), P(28,19), P(37,19), P(38,23), P(37,29), P(25,29));
-            Polygon(10.4f, 3, P(32,7), P(35,5), P(49,5), P(52,7), P(52,15),
+            Polygon(7.2f, 3, P(32,7), P(35,5), P(49,5), P(52,7), P(52,15),
                 P(49,17), P(35,17), P(32,15));
-            Polygon(10.4f, 3, P(59,9), P(61,7), P(66,7), P(68,9), P(68,13),
+            Polygon(7.2f, 3, P(59,9), P(61,7), P(66,7), P(68,9), P(68,13),
                 P(66,15), P(59,15));
             // The elder remains a separate destination, reached by a branch from the ascent.
             foreach (var cell in surfaces.Keys.Where(c => c.x >= 52 && c.x < 59 && c.y >= 8 && c.y < 17).ToArray())
                 surfaces.Remove(cell);
             Polygon(2.4f, 1, P(48,32), P(59,32), P(62,35), P(61,40), P(58,42), P(48,42), P(47,38));
             Polygon(4.8f, 1, P(45,23), P(49,22), P(55,23), P(59,25), P(59,28), P(56,29), P(46,29), P(44,26));
+            // Recess the hall cliff in two short shelves behind the kitchen buffer.
+            Polygon(2.4f, 1, P(34,18), P(40,18), P(45,19), P(44,21), P(35,20));
+            Polygon(4.8f, 1, P(33,16), P(43,16), P(45,18), P(34,18));
 
             // Smooth road centre lines author shared corner heights into the saved grid.
             // The broad eastern bend wraps the rear homes, then enters the hall from its front edge.
@@ -200,10 +207,14 @@ namespace Untitled.Editor
             Vector3 R(float x, float y, float height) => new Vector3(x, y, height);
             Road(1.6f, R(41,42,0), R(41.5f,39,0.8f), R(42.5f,35,2.8f), R(44,32,4.8f), R(47,31,4.8f));
             Road(1.6f, R(45,31,4.8f), R(50,30.5f,4.8f), R(56,31,4.8f), R(61,30.5f,4.8f),
-                R(64,28,5.8f), R(64,25,6.8f), R(63.5f,23.5f,7.6f), R(62,22.5f,7.6f), R(60,22,7.6f),
-                R(57,20.5f,8.6f), R(53,19,9.5f), R(49,17,10.4f), R(47,15.5f,10.4f));
-            Road(1.1f, R(62.5f,23,7.6f), R(65,22.5f,7.6f), R(68,20,8.4f), R(68,17.5f,9.2f),
-                R(66,15,10.4f), R(64,13,10.4f));
+                R(64,28,5.2f), R(64,25,5.6f), R(63.5f,23.5f,6), R(62,22.5f,6), R(60,22,6),
+                R(57,20.5f,6.4f), R(53,19,6.8f), R(49,17,7.2f), R(47,15.5f,7.2f));
+            Road(1.1f, R(62.5f,23,6), R(65,22.5f,6), R(68,20,6.4f), R(68,17.5f,6.8f),
+                R(66,15,7.2f), R(64,13,7.2f));
+            Road(1.2f, R(28.5f,25,0), R(28.5f,21,0), R(29,18.5f,1.6f), R(29.5f,15.5f,3.6f),
+                R(31,12.5f,5.8f), R(34,11,7.2f), R(36,11,7.2f));
+            Road(1.05f, R(45,30.5f,4.8f), R(44.8f,27,4.8f), R(47,24,4.8f), R(52,24.2f,4.8f),
+                R(57,26,4.8f), R(58.5f,29.5f,4.8f), R(56,31,4.8f));
             (float Distance, float Height, float Width) NearestRoad(Vector2 point)
             {
                 var nearest = (Distance: float.PositiveInfinity, Height: 0f, Width: 0f);
@@ -217,8 +228,8 @@ namespace Untitled.Editor
                 }
                 return nearest;
             }
-            for (int y = 12; y < 45; y++)
-                for (int x = 39; x < 71; x++)
+            for (int y = 9; y < 45; y++)
+                for (int x = 27; x < 71; x++)
                 {
                     var nearest = NearestRoad(P(x + 0.5f, y + 0.5f));
                     if (nearest.Distance > nearest.Width) continue;
@@ -232,17 +243,24 @@ namespace Untitled.Editor
                 }
             Rectangle(50, 31, 53, 35, (x, y) => 4.8f - (y - 31) * 0.6f);
             Rectangle(48, 40, 51, 44, (x, y) => (44 - y) * 0.6f);
+            Rectangle(57, 31, 60, 35, (x, y) => 4.8f - (y - 31) * 0.6f);
+            Rectangle(49, 35, 60, 37, (x, y) => 2.4f);
+            Rectangle(51, 40, 58, 42, (x, y) => 2.4f);
+
+            Rectangle(20, 24, 24, 27, (x, y) => -4);
+            Rectangle(24, 24, 28, 27, (x, y) => -4 + (x - 24));
 
             Rectangle(23, 45, 29, 50, (x, y) => -4);
             Rectangle(29, 46, 35, 50, (x, y) => -4 + (x - 29) * (4f / 6));
             // Widen the landing around the eastern bridge mouth without extending it upriver.
             Polygon(-4, 2, P(21,44), P(25,44), P(25,46), P(23,48), P(21,47));
-            Vector2 bridgeLine = SettlementBridgeEnd - SettlementBridgeStart;
+            foreach (var crossing in new[] { (SettlementBridgeStart, SettlementBridgeEnd, 1.7f), (SupplyBridgeStart, SupplyBridgeEnd, 1.2f) })
             foreach (var cell in rivers.ToArray())
             {
+                Vector2 bridgeLine = crossing.Item2 - crossing.Item1;
                 Vector2 p = (Vector2)cell + Vector2.one * 0.5f;
-                float t = Mathf.Clamp01(Vector2.Dot(p - SettlementBridgeStart, bridgeLine) / bridgeLine.sqrMagnitude);
-                if (Vector2.Distance(p, SettlementBridgeStart + bridgeLine * t) > 1.7f) continue;
+                float t = Mathf.Clamp01(Vector2.Dot(p - crossing.Item1, bridgeLine) / bridgeLine.sqrMagnitude);
+                if (Vector2.Distance(p, crossing.Item1 + bridgeLine * t) > crossing.Item3) continue;
                 var surface = surfaces[cell];
                 surface.Bridge = true;
                 surfaces[cell] = surface;
