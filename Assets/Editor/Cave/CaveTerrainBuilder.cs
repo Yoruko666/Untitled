@@ -76,6 +76,7 @@ namespace Untitled.Editor
                 // Shared corner heights keep adjoining chunks seamless. No runtime generation.
                 float noise = Mathf.PerlinNoise((x + style.Seed) * 0.16f, (y - style.Seed) * 0.16f);
                 float baseHeight = 0f;
+                float rearTerraceHeight = float.NegativeInfinity;
                 float nearestY = y;
                 if (elevation != null)
                 {
@@ -87,12 +88,16 @@ namespace Untitled.Editor
                             Vector2Int cell = around + new Vector2Int(dx, dy);
                             if (!floors.Contains(cell)) continue;
                             float distance = (new Vector2(cell.x + 0.5f, cell.y + 0.5f) - new Vector2(x, y)).sqrMagnitude;
+                            if (distance <= 12.25f)
+                                rearTerraceHeight = Mathf.Max(rearTerraceHeight, elevation.Height(cell.x + 0.5f, cell.y + 0.5f));
                             if (distance >= nearest) continue;
                             nearest = distance;
                             nearestY = cell.y;
                             baseHeight = elevation.Height(cell.x + 0.5f, cell.y + 0.5f);
                         }
                 }
+                // The back rim must rise behind a terrace even when a narrow zero-height strip borders it.
+                if (style.NaturalOutline && y <= 9 && rearTerraceHeight > baseHeight) baseHeight = rearTerraceHeight;
                 float wallHeight = style.NaturalOutline && nearestY > 43 ? 0.65f : style.RockHeight;
                 return baseHeight + Mathf.Max(0.5f,wallHeight + (noise - 0.5f) * 2f * style.RockVariation) * map.CellSize;
             }
@@ -131,8 +136,8 @@ namespace Untitled.Editor
                     }
                     Vector4 other = elevation.Surface(otherCell).Heights;
                     bool waterEdge = rivers.Contains(otherCell) && !elevation.Surface(otherCell).Bridge;
-                    float lowStart = waterEdge ? start.y - 0.42f * map.CellSize : other[otherStart];
-                    float lowEnd = waterEdge ? end.y - 0.42f * map.CellSize : other[otherEnd];
+                    float lowStart = other[otherStart] - (waterEdge ? 0.42f * map.CellSize : 0);
+                    float lowEnd = other[otherEnd] - (waterEdge ? 0.42f * map.CellSize : 0);
                     if (!waterEdge && Mathf.Max(start.y - lowStart, end.y - lowEnd) <= 0.2f) return;
                     Vector3 lowerStart = new Vector3(start.x, lowStart, start.z);
                     Vector3 lowerEnd = new Vector3(end.x, lowEnd, end.z);
@@ -249,7 +254,7 @@ namespace Untitled.Editor
 
         private static string Hash(CaveMap map, CaveTerrainStyle style)
         {
-            var text = new StringBuilder("hd2d-terrain-v5|");
+            var text = new StringBuilder("hd2d-terrain-v6|");
             text.Append(style.NaturalOutline).Append('|');
             foreach (float value in new[] { map.CellSize, style.RockHeight, style.RockVariation, style.RockMargin, style.Seed })
                 text.Append(value.ToString("R", CultureInfo.InvariantCulture)).Append('|');

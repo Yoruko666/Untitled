@@ -171,6 +171,8 @@ namespace Untitled.Editor
             int index = 0;
             foreach (var cell in floors.OrderBy(c=>c.y).ThenBy(c=>c.x))
             {
+                // Leave the narrow elder neck and the upper ascent clear of visual shoulders.
+                if (cell.x >= 50 && cell.y >= 9 && cell.y <= 18) continue;
                 foreach (Vector2Int direction in new[] { Vector2Int.left,Vector2Int.up,Vector2Int.right,Vector2Int.down })
                 {
                     if (floors.Contains(cell+direction)) continue;
@@ -186,23 +188,33 @@ namespace Untitled.Editor
                 }
             }
             // Large leaning cliff ribs give the back terrace a continuous, non-tiled silhouette.
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 11; i++)
             {
-                float x = 25.5f+i*2.1f, y = 19.5f+0.7f*Mathf.Sin(i*0.8f);
+                float x = 33.5f+i*1.6f, y = 17.35f+0.15f*Mathf.Sin(i*0.8f);
                 Piece(group,"ChieftainCliffButtress",boulder,i%3==0?rockLight:rock,
                     Position(x,y)-Vector3.up*map.Elevation.Height(x,y),
-                    new Vector3(1.7f,4.0f+0.35f*Mathf.Sin(i),1.1f)*map.CellSize);
+                    new Vector3(1.0f,4.8f+0.25f*Mathf.Sin(i),0.65f)*map.CellSize);
             }
-            foreach (Vector2 p in new[] { new Vector2(43,29),new Vector2(48,38),new Vector2(53,29),new Vector2(55,38) })
+            foreach (Vector2 p in new[] { new Vector2(43,38),new Vector2(54,38),new Vector2(43,28),new Vector2(54,28) })
                 Rock(group,"ResidenceRockSpur",p.x,p.y,-0.25f,0.7f,1.2f,0.8f);
         }
 
         private static void SettlementBridgeBlockout(Transform landform)
         {
             var bridge = Group("RiverCrossing",landform);
-            Detail(bridge,"BridgeDeck",13.7f,43.5f,0.025f,new Vector3(11,0.05f,2.8f),wood,null,true);
-            Rail(bridge,8.3f,42.1f,19.1f,42.1f,0.03f);
-            Rail(bridge,8.3f,44.9f,19.1f,44.9f,0.03f);
+            Vector3 a = Position(SettlementBridgeStart.x, SettlementBridgeStart.y);
+            Vector3 b = Position(SettlementBridgeEnd.x, SettlementBridgeEnd.y);
+            var deck = Piece(bridge,"BridgeDeck",cube,wood,(a+b)*0.5f,
+                new Vector3(2*map.CellSize,0.08f*map.CellSize,(b-a).magnitude),true);
+            deck.rotation = Quaternion.LookRotation(b-a,Vector3.up);
+            Vector2 direction = (SettlementBridgeEnd-SettlementBridgeStart).normalized;
+            Vector2 side = new Vector2(-direction.y,direction.x);
+            foreach (float sign in new[] { -1f,1f })
+            {
+                Vector2 start = SettlementBridgeStart+side*sign;
+                Vector2 end = SettlementBridgeEnd+side*sign;
+                Rail(bridge,start.x,start.y,end.x,end.y,0.04f);
+            }
         }
 
         private static void SetSettlementLighting(UnityEngine.SceneManagement.Scene scene)
