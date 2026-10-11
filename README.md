@@ -124,7 +124,7 @@ public class Collection : EntityBase, IInteractable
 
 ### 7. 洞穴地图
 
-- HD-2D 场景分别保留为 `CaveHD2DLocal.unity`（本地基础地形 V4）和 `CaveHD2D.unity`（远端布局与道具摆放）；两份可独立打开编辑。用途、Editor 菜单作用范围与验收说明见 [洞穴场景说明](docs/cave-hd2d-scene.md)。
+- HD-2D 场景分别保留为 `CaveHD2DLocal.unity`（本地基础地形 V5）和 `CaveHD2D.unity`（远端布局与道具摆放）；两份可独立打开编辑。用途、Editor 菜单作用范围与验收说明见 [洞穴场景说明](docs/cave-hd2d-scene.md)。
 - `CaveMapLayout`（`Assets/Configs/Cave/CaveLayout.asset`）：格子尺寸、原点、地面 / 墙体 / 河水材质、出生点。
 - `CaveMap`：按布局生成地图，提供 `CellToWorld` / `WorldToCell` / `IsWalkable` / `SpawnPosition`。
 - `CaveCoordinates`：像素、格子与本地坐标互转。
