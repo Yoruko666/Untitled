@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Panel
+  m_Name: Configs
   m_EditorClassIdentifier: 
-  m_GroupName: Panel
+  m_GroupName: Configs
   m_Data:
     m_SerializedData: []
-  m_GUID: 8c0dd9b8d0d58c44a9986b40b618a11b
+  m_GUID: 2e3fb41c013a34044b586b68329547a0
   m_SerializeEntries:
-  - m_GUID: 18242a2a660c21940b357d1d9e04ea2e
-    m_Address: Menu
+  - m_GUID: 6e7f8091a2b3c4d5e6f7081223344556
+    m_Address: ItemTable
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -26,5 +26,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 27b5b1bc85cdfd243b8af86a7f03cd25, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 15083ec6369b3de49888177c4f26a5b2, type: 2}
-    - {fileID: 11400000, guid: 3dd25463f2964b642adb50e5000cd70c, type: 2}
+    - {fileID: 11400000, guid: c3c7cc0836fb36e449370d8bdfb0f79e, type: 2}
+    - {fileID: 11400000, guid: f0be199a4603f9f4296fc4e221c90430, type: 2}
