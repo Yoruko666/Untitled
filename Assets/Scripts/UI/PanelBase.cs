@@ -4,11 +4,18 @@ namespace Untitled
 {
     public abstract class PanelBase : MonoBehaviour
     {
+        [SerializeField] private bool closeOnEsc = true;
+        [SerializeField] private bool pauseWorld = true;
+
         public bool IsOpen { get; private set; }
 
         public object Data { get; private set; }
 
         public string PanelName { get; internal set; }
+
+        public bool CloseOnEsc => closeOnEsc;
+
+        public bool PauseWorld => pauseWorld;
 
         private bool initialized;
 

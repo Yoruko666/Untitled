@@ -9,8 +9,19 @@ namespace Untitled
     {
         private readonly Dictionary<string, PanelBase> panels = new();
         private readonly Dictionary<string, AsyncOperationHandle<GameObject>> handles = new();
+        private readonly List<PanelBase> stack = new();
 
         private Transform root;
+
+        public IReadOnlyList<PanelBase> OpenPanels => stack;
+
+        public PanelBase Top => stack.Count > 0 ? stack[stack.Count - 1] : null;
+
+        public override void Initialize()
+        {
+            base.Initialize();
+            EventCenter.Subscribe(GameEventType.ToggleESC, OnToggleEsc);
+        }
 
         public Transform Root
         {
@@ -48,6 +59,8 @@ namespace Untitled
 
             instance.ExecuteInit();
             instance.ExecuteShow(data);
+            MoveToTop(instance);
+            NotifyPause();
             return instance;
         }
 
@@ -59,20 +72,39 @@ namespace Untitled
         public void Close(string panelName)
         {
             if (string.IsNullOrEmpty(panelName)) return;
-            if (panels.TryGetValue(panelName, out PanelBase instance)) instance.ExecuteHide();
+            if (panels.TryGetValue(panelName, out PanelBase instance)) Close(instance);
         }
 
         public void Close(PanelBase panel)
         {
-            if (panel != null) panel.ExecuteHide();
+            if (panel == null || !panel.IsOpen) return;
+
+            panel.ExecuteHide();
+            if (stack.Remove(panel)) NotifyPause();
+        }
+
+        public bool CloseTop()
+        {
+            if (stack.Count == 0) return false;
+
+            PanelBase panel = stack[stack.Count - 1];
+            stack.RemoveAt(stack.Count - 1);
+            panel.ExecuteHide();
+            NotifyPause();
+            return true;
         }
 
         public void CloseAll()
         {
+            if (stack.Count == 0) return;
+
+            stack.Clear();
             foreach (PanelBase instance in panels.Values)
             {
                 instance.ExecuteHide();
             }
+
+            NotifyPause();
         }
 
         public bool IsOpen(string panelName)
@@ -103,10 +135,16 @@ namespace Untitled
         {
             if (string.IsNullOrEmpty(panelName)) return;
 
+            bool stacked = false;
+
             if (panels.TryGetValue(panelName, out PanelBase instance))
             {
                 panels.Remove(panelName);
-                if (instance != null) UnityEngine.Object.Destroy(instance.gameObject);
+                if (instance != null)
+                {
+                    stacked = stack.Remove(instance);
+                    UnityEngine.Object.Destroy(instance.gameObject);
+                }
             }
 
             if (handles.TryGetValue(panelName, out AsyncOperationHandle<GameObject> handle))
@@ -114,6 +152,8 @@ namespace Untitled
                 handles.Remove(panelName);
                 if (handle.IsValid()) Addressables.ReleaseInstance(handle);
             }
+
+            if (stacked) NotifyPause();
         }
 
         public void UnloadAll()
@@ -123,6 +163,39 @@ namespace Untitled
             {
                 Unload(panelName);
             }
+        }
+
+        private void NotifyPause()
+        {
+            foreach (PanelBase panel in stack)
+            {
+                if (!panel.PauseWorld) continue;
+
+                GameManager.Instance.SetPaused(true);
+                return;
+            }
+
+            GameManager.Instance.SetPaused(false);
+        }
+
+        private void OnToggleEsc()
+        {
+            PanelBase top = Top;
+            if (top == null)
+            {
+                Open(UIPanel.Menu);
+                return;
+            }
+
+            if (!top.CloseOnEsc) return;
+            CloseTop();
+        }
+
+        private void MoveToTop(PanelBase panel)
+        {
+            stack.Remove(panel);
+            stack.Add(panel);
+            panel.transform.SetAsLastSibling();
         }
 
         private PanelBase Create(string panelName)

@@ -19,7 +19,7 @@ namespace Untitled
 
         private void Resume()
         {
-            GameManager.Instance.CloseMenu();
+            UIManager.Instance.Close(UIPanel.Menu);
         }
     }
 }
