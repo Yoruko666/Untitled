@@ -49,3 +49,8 @@
 - `Models/Props/Casino`、`Materials/Props/Casino`、`Textures/Props/Casino` 保存原创石赌桌、编织草席、骨骰、筹码、卡牌、符文轮、轮锁保险箱、金条、钱袋、老板桌椅、兑换柜台与招牌，共 13 件独立道具。
 - 对应 prefab 及整屋模块位于 `Assets/Prefabs/Props/Casino`，展示场景为 `Assets/Scenes/Props/GoblinCasinoDemo.unity`；油灯、火盆、箱桶、哥布林像素角色等引用现有库。
 - 模型和布置都已保存，运行时不生成房间。详见 [赌场 demo 说明](../../docs/goblin-casino-demo.md)。
+
+## 训练场 demo 实体素材
+
+- `Models/Props/Training`、`Materials/Props/Training`、`Textures/Props/Training` 保存原创铁笼、战略桌及手绘地图、兵器架、草靶、地垫、沙袋、战术板、装备维修台和训练场门牌，共 9 件独立道具。
+- 对应 prefab 与整房模块位于 `Assets/Prefabs/Props/Training`，展示场景为 `Assets/Scenes/Props/GoblinTrainingDemo.unity`。假人、灯具、箱桶、旗饰等直接引用项目素材库。详见 [训练场 demo 说明](../../docs/goblin-training-demo.md)。

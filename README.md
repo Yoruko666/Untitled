@@ -172,3 +172,7 @@ HD-2D 道具由 `HybridProp` 驱动，保持固定摆放朝向；八方向素材
 ## 其他
 
 开发约定、目录职责与提交规范见 [AGENTS.md](AGENTS.md)。
+
+## 哥布林地下训练场 demo
+
+训练场独立场景为 `Assets/Scenes/Props/GoblinTrainingDemo.unity`，菜单 `Untitled > Training > Open Scene Demo` 可打开。左侧三座实体铁笼、左上战略办公室、八个现有假人及中央搏斗圈均已保存；专用道具与整房 prefab 位于 `Assets/Prefabs/Props/Training`。本轮未放置 NPC，后续可微调模块以融入新版 `CaveHD2DLocal`。布局、素材位置和预览见 [训练场 demo 说明](docs/goblin-training-demo.md)。
