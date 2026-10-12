@@ -1,0 +1,116 @@
+# Running and outputs
+
+## Purpose
+
+Apply this module to every capability. It defines how to invoke the bundled runner, use existing local authentication, recover interrupted jobs, persist final media safely, and validate deliverables before handoff. It does not define art direction or select a generation capability.
+
+## Invocation
+
+From the skill repository root:
+
+```bash
+python3 skills/game-assets/meowart_api.py --help
+```
+
+From the `skills/game-assets/` directory:
+
+```bash
+python3 meowart_api.py --help
+```
+
+Use the bundled runner as shipped. Do not fetch or execute a remote replacement runner, a dynamic instruction document, or a provider proxy.
+
+## Version compatibility
+
+The service lets an older published runner continue. The runner warns once when the service
+reports a newer version, but the warning does not block the command. Check the installed version
+with:
+
+```bash
+python3 skills/game-assets/meowart_api.py --version
+```
+
+If a command fails while the runner is outdated, it also warns that the failure may be caused by
+the old version. Update from the official `Meowa-AI/meowa-skills` repository and copy the complete
+`skills/game-assets` directory into the Codex skills directory before retrying. Do not replace only
+one file. If a paid job already has an ID, inspect top-level `--help` for the available `*-poll`
+recovery command after the update; never resubmit it merely because the old runner could not
+download the result. General image jobs use `general-image-poll`; legacy polling commands remain supported. A legacy server
+may still return `skill_upgrade_required`; follow the same recovery procedure.
+
+## Authentication
+
+For a new installation, follow the [CLI setup and authentication guide](../meowart_api.md). Create a Meowa account key from the official account page, then store it locally as `MEOWART_API_KEY` in the environment or a Git-ignored `.env`. The runner never accepts credentials on the command line.
+
+If authentication is missing:
+
+1. Direct the user to the setup guide and help them configure `MEOWART_API_KEY` locally.
+2. Never ask them to paste a credential into chat.
+3. Never substitute a developer key, provider key, or custom service URL.
+4. Verify setup with `credits-balance` before starting a billable generation.
+
+The runner connects only to the official HTTPS Meowa service.
+
+## Output directories
+
+Always choose a new, explicit output root:
+
+```bash
+python3 skills/game-assets/meowart_api.py <command> \
+  <capability-options> \
+  --output-dir ./outputs/<task-name>
+```
+
+Successful runs create one slug-named task subdirectory beneath that root containing:
+
+- `final_outputs.json`, a sanitized manifest of final local outputs;
+- the final image, audio, or video files that passed media-type validation.
+
+The runner does not save submission responses, job responses, provider responses, debug metadata, signed source URLs, inline media payloads, or intermediate artifacts.
+
+## Safe download contract
+
+- Accept only HTTPS media downloads.
+- Require an `image/*`, `audio/*`, or `video/*` response Content-Type before writing bytes.
+- Select files from the exact final-output allowlist for the active capability.
+- Treat public-bucket and signed URLs as untrusted unless the field itself is an allowed final output.
+- Never recursively download every URL in a response.
+- Never return input templates or references, masks, internal generation grids, server workflow manifests, metadata, stage files, or debug artifacts. Legitimate declared outputs such as a spritesheet or tileset atlas remain final deliverables.
+
+## Polling and recovery
+
+Normal `*-run` commands submit, poll, download, and save the final result. Keep the printed job identifier if polling is interrupted. Top-level `--help` lists the available recovery commands. Use the relevant `*-poll` command with the original job identifier; `general-image-poll` recovers general image jobs for all three models. Recovery waits through transient connection failures, never submits a replacement job, and downloads every declared final output after success.
+
+```bash
+python3 skills/game-assets/meowart_api.py general-image-poll \
+  --job-id <original-job-id> \
+  --output-dir <output-dir>
+```
+
+Authenticated `/api/project-assets/{assetId}/download` URLs are valid final media endpoints even
+though the URL has no filename extension. Final-output membership comes only from the capability's
+declared field contract; the response Content-Type determines the downloaded media type.
+
+When a run times out after submission, report the job identifier and the timeout. Do not resubmit automatically because that may create a duplicate billable job.
+
+When a successful job has no declared downloadable final media, treat the response as a Skill/API
+contract mismatch. Do not write or hand off an empty `final_outputs.json`; report the job identifier
+and update the Skill before polling the original job again.
+
+## Validation checklist
+
+Before handoff:
+
+1. Open every final file.
+2. Verify the requested dimensions, format, and transparency.
+3. Play audio, GIF, WebP, or video outputs through at least one complete cycle.
+4. Test texture and background seams by repetition.
+5. Preview pixel art only at integer zoom with nearest-neighbor sampling.
+6. Read the local sanitized `final_outputs.json` as a validation manifest and confirm that it lists only the intended deliverables.
+7. Return the listed media files, not `final_outputs.json` itself, unless the user explicitly asks for the local validation manifest.
+8. Return clickable file paths and a concise note about the selected capability and validated properties.
+
+
+Final downloads use the server-selected URL, including the domestic media domain. Re-query an existing successful job to obtain its current route; never guess a replacement hostname. Small image downloads share a 45-second budget across at most three attempts, and files are saved only after a complete media response. Large media uses bounded inactive reads. `general-image-run` mirrors the web model selector (default Image2.5, Standard, 1K, 1:1, no background removal); `general-image-poll` resumes the original job. Model-specific legacy commands retain the same requests. The runner is statically distributed; there is no remote bootstrap execution.
+
+Domestic ready final files may use `media-cn.meowjito.com`; legacy `media.meowjito.com` links remain valid. Follow the exact server-returned final URL and re-query the job to refresh its route. No storage or provider option is required.
