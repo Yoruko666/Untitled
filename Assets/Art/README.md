@@ -43,3 +43,26 @@
 - 原生网格位于 `Models/Props`，材质位于 `Materials/Props`，按同一类别组织。`_3d` 为立体容器，`_hd2d` 为受光像素面片。
 - 复用现有 30 张像素原图与厨房参考图，PNG 的现有 Sprite 导入设置保持不变。JPG 白底仍保留，HD-2D 材质通过 Shader 裁切使用完整轮廓。
 - Unity 菜单 `Untitled/Props/素材浏览器` 可看原图、预览角度、调大小和放入场景；使用说明与逐项索引见 [可放置道具](../../docs/placeable_props.md)。
+
+## 赌场 demo 实体素材
+
+- `Models/Props/Casino`、`Materials/Props/Casino`、`Textures/Props/Casino` 保存原创石赌桌、编织草席、骨骰、筹码、卡牌、符文轮、轮锁保险箱、金条、钱袋、老板桌椅、兑换柜台与招牌，共 13 件独立道具。
+- 对应 prefab 及整屋模块位于 `Assets/Prefabs/Props/Casino`，展示场景为 `Assets/Scenes/Props/GoblinCasinoDemo.unity`；油灯、火盆、箱桶、哥布林像素角色等引用现有库。
+- 模型和布置都已保存，运行时不生成房间。详见 [赌场 demo 说明](../../docs/goblin-casino-demo.md)。
+
+## 训练场 demo 实体素材
+
+- `Models/Props/Training`、`Materials/Props/Training`、`Textures/Props/Training` 保存原创铁笼、战略桌及手绘地图、兵器架、草靶、地垫、沙袋、战术板、装备维修台和训练场门牌，共 9 件独立道具。
+- 对应 prefab 与整房模块位于 `Assets/Prefabs/Props/Training`，展示场景为 `Assets/Scenes/Props/GoblinTrainingDemo.unity`。假人、灯具、箱桶、旗饰等直接引用项目素材库。详见 [训练场 demo 说明](../../docs/goblin-training-demo.md)。
+
+## 长老私房 demo 实体素材
+
+- 原创书架、手稿书桌、兽骨祭祀台、衣柜、床头柜、书卷药瓶、骨质权杖、圆形织毯与冥想软垫共 10 件道具；网格、材质和纹理位于 `Art/{Models,Materials,Textures}/Props/ElderRoom`。
+- 独立道具与整房 prefab 位于 `Assets/Prefabs/Props/ElderRoom`；场景为 `Assets/Scenes/Props/GoblinElderRoomDemo.unity`。木床放大 2.15 倍；保险箱、灯具和储物陈设复用现有库，东北角保留书柜半遮挡的暗道入口。
+- 布局和模型已保存，运行时不重建。详见 [长老私房 demo 说明](../../docs/goblin-elder-room-demo.md)。
+
+## 厨房 demo 实体素材
+
+- 新增转轴炭火烤架、储粮架、粮袋、陶罐、叠碗、厨具挂杆、出餐台、食材木盆、蒜串香草、锅炉石圈和备料推车，共 11 件实体道具；网格、材质与纹理位于 `Art/{Models,Materials,Textures}/Props/Kitchen`。
+- 整房模块为 `Assets/Prefabs/Props/Kitchen/goblin_kitchen_room.prefab`，独立场景为 `Assets/Scenes/Props/GoblinKitchenDemo.unity`；现有砧板桌、大锅、吊肉架、水槽、柴堆、箱桶和灯具直接复用素材库。
+- 布局与模型均已保存，运行时不重建；详见 [厨房 demo 说明](../../docs/goblin-kitchen-demo.md)。
