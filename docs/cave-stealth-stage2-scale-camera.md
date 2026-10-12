@@ -4,6 +4,8 @@
 
 本阶段在[阶段 1 草图](cave-stealth-stage1-plan.md)上加入 64px 角色占位、世界尺度、道路宽度参照、门洞和墙高参照，以及跟随角色的倾斜镜头。以下数值是可调整的初始方案，比例与画面效果仍需人工确认。
 
+本文保留阶段 2 的记录；当前场景已进入[阶段 3 白盒](cave-stealth-stage3-blockout.md)，地面、阻挡与基础移动已接入，出生点调整到撤离集结区。
+
 ![依据场景参数计算的构图示意，非 Unity Editor 截图](images/cave-stealth-stage2-scale-camera.png)
 
 ## 1. 64px 角色与世界尺度
