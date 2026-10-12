@@ -20,7 +20,7 @@ Material:
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
-  m_LockedProperties:
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -49,8 +49,8 @@ Material:
     - _Surface: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.19, g: 0.30, b: 0.35, a: 1}
-    - _Color: {r: 0.19, g: 0.30, b: 0.35, a: 1}
+    - _BaseColor: {r: 0.19, g: 0.3, b: 0.35, a: 1}
+    - _Color: {r: 0.18999997, g: 0.29999998, b: 0.34999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &1464105372908540123
 MonoBehaviour:
@@ -62,6 +62,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   version: 7

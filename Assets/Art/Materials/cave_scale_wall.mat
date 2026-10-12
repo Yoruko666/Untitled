@@ -20,7 +20,7 @@ Material:
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
-  m_LockedProperties:
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -50,7 +50,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.43, g: 0.49, b: 0.55, a: 1}
-    - _Color: {r: 0.43, g: 0.49, b: 0.55, a: 1}
+    - _Color: {r: 0.42999998, g: 0.49, b: 0.54999995, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &1464105372908540123
 MonoBehaviour:
@@ -63,5 +63,5 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: cave_scale_wall
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   version: 7
