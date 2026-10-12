@@ -45,6 +45,22 @@ namespace Untitled.Editor
             public float RiverEnd;
             public float RiverHalfWidth;
             public float[] BridgeZs;
+            public DecorationPoint[] Decorations;
+            public float LowlandHeight;
+            public float HighlandHeight;
+            public float WaterHeight;
+        }
+
+        [Serializable]
+        private sealed class DecorationPoint
+        {
+            public string Prefab;
+            public string Name;
+            public float X;
+            public float Z;
+            public float Height;
+            public float Scale;
+            public float Yaw;
         }
 
         private static LayoutData ReadLayout()
@@ -79,7 +95,7 @@ namespace Untitled.Editor
             // Additive creation preserves the user's unsaved scene in memory.
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive);
             SceneManager.SetActiveScene(scene);
-            var root = new GameObject("CaveTerrain | River -1.2 / Main 0 / Hall +2.4");
+            var root = new GameObject("CaveTerrain | River -2.4 / Main 0 / Hall +4.8");
             root.transform.position = Origin;
             var model = AssetDatabase.LoadAssetAtPath<GameObject>(Models + "/cave_terraced_landform.fbx");
             var terrain = (GameObject)PrefabUtility.InstantiatePrefab(model, scene);
@@ -108,9 +124,9 @@ namespace Untitled.Editor
             landmarks.transform.SetParent(root.transform, false);
             Anchor(landmarks.transform, "Entrance", new Vector3(4, 0, -18));
             Anchor(landmarks.transform, "CentralClearing", new Vector3(4, 0, -1));
-            Anchor(landmarks.transform, "HallTerrace", new Vector3(4, 2.4f, 18));
-            Anchor(landmarks.transform, "ElderTerrace", new Vector3(12, 2.4f, 21));
-            Anchor(landmarks.transform, "Riverbank", new Vector3(-22, -1.2f, 2));
+            Anchor(landmarks.transform, "HallTerrace", new Vector3(-1.5f, 4.8f, 26.5f));
+            Anchor(landmarks.transform, "ElderTerrace", new Vector3(18.3f, 4.8f, 27.2f));
+            Anchor(landmarks.transform, "Riverbank", new Vector3(-24, -2.4f, 2));
             Anchor(landmarks.transform, "ResidentialShelf", new Vector3(19, 1.2f, 7));
 
             Lighting(root.transform);
@@ -124,13 +140,13 @@ namespace Untitled.Editor
             listener.enabled = false;
             UpdateLayoutScene(root.transform);
             RenderSettings.ambientMode = AmbientMode.Trilight;
-            RenderSettings.ambientSkyColor = new Color(0.20f, 0.27f, 0.31f);
-            RenderSettings.ambientEquatorColor = new Color(0.13f, 0.16f, 0.18f);
-            RenderSettings.ambientGroundColor = new Color(0.05f, 0.07f, 0.08f);
+            RenderSettings.ambientSkyColor = new Color(0.22f, 0.30f, 0.34f);
+            RenderSettings.ambientEquatorColor = new Color(0.18f, 0.22f, 0.25f);
+            RenderSettings.ambientGroundColor = new Color(0.06f, 0.09f, 0.10f);
             RenderSettings.fog = true;
             RenderSettings.fogMode = FogMode.ExponentialSquared;
             RenderSettings.fogColor = new Color(0.065f, 0.089f, 0.10f);
-            RenderSettings.fogDensity = 0.006f;
+            RenderSettings.fogDensity = 0.0035f;
             AssetDatabase.SaveAssets();
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene, ScenePath);
@@ -273,7 +289,7 @@ namespace Untitled.Editor
             bloom.intensity.Override(0.12f);
             bloom.scatter.Override(0.55f);
             var color = profile.Add<ColorAdjustments>();
-            color.postExposure.Override(0.75f);
+            color.postExposure.Override(1.15f);
             color.contrast.Override(9);
             color.saturation.Override(-8);
             var vignette = profile.Add<Vignette>();
@@ -293,7 +309,7 @@ namespace Untitled.Editor
             volume.isGlobal = true;
             volume.priority = 30;
             volume.sharedProfile = profile;
-            RenderSettings.fogDensity = 0.006f;
+            RenderSettings.fogDensity = 0.0035f;
         }
 
         private static Camera CameraAt(Transform parent, string name, Vector3 focus, float pitch, float yaw, float distance)
@@ -321,6 +337,8 @@ namespace Untitled.Editor
         {
             var data = ReadLayout();
             var scene = root.gameObject.scene;
+            Undo.RecordObject(root.gameObject, "Label cave elevation levels");
+            root.name = "CaveTerrain | River -2.4 / Main 0 / Hall +4.8";
             var volume = root.GetComponentInChildren<Volume>();
             var profile = AssetDatabase.LoadAssetAtPath<VolumeProfile>(ProfilePath);
             if (profile == null)
@@ -330,6 +348,15 @@ namespace Untitled.Editor
             }
             Undo.RecordObject(volume, "Keep V2 presentation separate");
             volume.sharedProfile = profile;
+            if (!profile.TryGet<ColorAdjustments>(out var colorAdjustments))
+                throw new InvalidOperationException("The cave presentation profile needs ColorAdjustments.");
+            Undo.RecordObject(colorAdjustments, "Read terrain detail in cave lighting");
+            colorAdjustments.postExposure.Override(1.15f);
+            EditorUtility.SetDirty(colorAdjustments);
+            RenderSettings.fogDensity = 0.0035f;
+            RenderSettings.ambientSkyColor = new Color(0.22f,0.30f,0.34f);
+            RenderSettings.ambientEquatorColor = new Color(0.18f,0.22f,0.25f);
+            RenderSettings.ambientGroundColor = new Color(0.06f,0.09f,0.10f);
             var oldAnchors = root.Cast<Transform>().FirstOrDefault(t => t.name.StartsWith("LayoutAnchors"));
             if (oldAnchors != null) Undo.DestroyObjectImmediate(oldAnchors.gameObject);
             var anchors = new GameObject("LayoutAnchors | areas 01-15 and route junctions");
@@ -351,8 +378,15 @@ namespace Untitled.Editor
                 camera.transform.localPosition = focus - rotation * Vector3.forward * distance;
                 camera.transform.localRotation = rotation;
             }
-            Place(cameras.Single(c => c.name.StartsWith("Main Camera")), new Vector3(1, 1, -2.5f), 48, -5, 116);
-            Place(cameras.Single(c => c.name.StartsWith("Detail Camera")), new Vector3(2, 1.3f, 20), 34, -4, 43);
+            Place(cameras.Single(c => c.name.StartsWith("Main Camera")), new Vector3(1, 1, -2.5f), 42, -5, 124);
+            Place(cameras.Single(c => c.name.StartsWith("Detail Camera")), new Vector3(-1, 2, 22), 32, -4, 50);
+            var riverCamera = cameras.FirstOrDefault(c => c.name.StartsWith("River Camera"));
+            if (riverCamera == null)
+            {
+                riverCamera = CameraAt(root, "River Camera | both banks and valley", new Vector3(-14,-1,-6), 38, -12, 34);
+                Undo.RegisterCreatedObjectUndo(riverCamera.gameObject, "Add riverbank review camera");
+            }
+            riverCamera.enabled = false;
             var top = cameras.FirstOrDefault(c => c.name.StartsWith("Top Camera"));
             if (top == null)
             {
@@ -371,14 +405,20 @@ namespace Untitled.Editor
                 Vector3 position = light.transform.localPosition;
                 switch (light.name)
                 {
-                    case "Daylight through river arch": position = new Vector3(-13, 3, 33); break;
-                    case "River reflected fill": position = new Vector3(-22, 2, 0); break;
+                    case "Daylight through river arch": position = new Vector3(-13, 2, 33); break;
+                    case "River reflected fill": position = new Vector3(-22, 0, 0); break;
                     case "Main clearing warm bounce": position = new Vector3(1.5f, 4, -2.9f); break;
-                    case "Upper terrace warm bounce": position = new Vector3(-1.5f, 6, 23.4f); break;
-                    case "East shelf warm bounce": position = new Vector3(15.5f, 6, 25.6f); break;
+                    case "Upper terrace warm bounce": position = new Vector3(-1.5f, 8, 26.5f); break;
+                    case "East shelf warm bounce": position = new Vector3(18.3f, 7, 27.2f); break;
                 }
                 Undo.RecordObject(light.transform, "Follow cave regions with lighting");
                 light.transform.localPosition = position;
+                if (light.type == LightType.Directional)
+                {
+                    Undo.RecordObject(light, "Expose cliff relief in soft side light");
+                    light.transform.localRotation = Quaternion.Euler(48, -42, 0);
+                    light.intensity = 1.05f;
+                }
             }
             void Material(string name, string texture, Color tint, float strength, float scale)
             {
@@ -402,8 +442,36 @@ namespace Untitled.Editor
             if (SceneView.lastActiveSceneView != null)
             {
                 SceneView.lastActiveSceneView.sceneLighting = true;
-                SceneView.lastActiveSceneView.LookAt(root.position + new Vector3(2, 1, 1), Quaternion.Euler(48, -5, 0), 76);
+                SceneView.lastActiveSceneView.LookAt(root.position + new Vector3(2, 1, 1), Quaternion.Euler(42, -5, 0), 76);
             }
+            DressTerrain(root, data);
+        }
+
+        private static void DressTerrain(Transform root, LayoutData data)
+        {
+            var previous = root.Find("Terrain Details | existing pixel cave kit");
+            if (previous != null) Undo.DestroyObjectImmediate(previous.gameObject);
+            var group = new GameObject("Terrain Details | existing pixel cave kit");
+            group.transform.SetParent(root, false);
+            var categories = new Dictionary<string, Transform>();
+            foreach (var point in data.Decorations ?? Array.Empty<DecorationPoint>())
+            {
+                if (!categories.TryGetValue(point.Name, out var category))
+                {
+                    category = new GameObject(point.Name).transform;
+                    category.SetParent(group.transform, false);
+                    categories.Add(point.Name, category);
+                }
+                string path = "Assets/Prefabs/Terrain/CaveDetails/" + point.Prefab + ".prefab";
+                var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+                if (prefab == null) throw new InvalidOperationException("Missing selected cave detail: " + path);
+                var instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, root.gameObject.scene);
+                instance.transform.SetParent(category, false);
+                instance.transform.localPosition = new Vector3(point.X, point.Height, point.Z);
+                instance.transform.localRotation = Quaternion.Euler(0, point.Yaw, 0);
+                instance.transform.localScale = Vector3.one * point.Scale;
+            }
+            Undo.RegisterCreatedObjectUndo(group, "Dress banks and terraces with pixel assets");
         }
 
         private static void AddRiverBarriers(Transform root)
@@ -441,7 +509,7 @@ namespace Untitled.Editor
                     if (ReferenceEquals(course, data.RiverCourse) && data.BridgeZs.Any(b => Mathf.Abs(z-b) < 1.85f)) continue;
                     foreach (float side in new[] {-1f, 1f})
                     {
-                        Vector3 Bank(float value) => new Vector3(Center(course,value) + side * Half(course,value), 0, value);
+                        Vector3 Bank(float value) => new Vector3(Center(course,value) + side * Half(course,value), data.LowlandHeight + 1.2f, value);
                         Barrier("River bank", Bank(z), Bank(Mathf.Min(z+0.7f, course[course.Length-1].Z)));
                     }
                 }
@@ -465,8 +533,13 @@ namespace Untitled.Editor
             foreach (var renderer in terrain.GetComponentsInChildren<MeshRenderer>(true))
                 if (renderer.sharedMaterials.Any(m => m == null || ShaderUtil.ShaderHasError(m.shader)))
                     throw new InvalidOperationException("Missing material or shader error on " + renderer.name);
+            var details = terrain.transform.parent.Find("Terrain Details | existing pixel cave kit");
+            foreach (var renderer in details.GetComponentsInChildren<MeshRenderer>())
+                if (renderer.sharedMaterials.Any(m => m == null || ShaderUtil.ShaderHasError(m.shader)))
+                    throw new InvalidOperationException("Missing pixel detail material on " + renderer.name);
             Debug.Log("Cave plan checks passed: 15 region heights, " + data.RouteSamples.Length
-                + " route samples, three hall approaches, two river bridges and a shared elder neck; material shaders.");
+                + " route samples, " + data.Decorations.Length + " pixel details, -2.4/0/+4.8 elevations, "
+                + "three hall approaches, two river bridges and a shared elder neck; material shaders.");
         }
 
         [MenuItem("Untitled/Cave/Reimport Combined Terrain V2")]
@@ -559,7 +632,8 @@ namespace Untitled.Editor
                         pixels = new Texture2D(width,height,TextureFormat.RGB24,false);
                         pixels.ReadPixels(new Rect(0,0,width,height),0,0);
                         pixels.Apply();
-                        string name = top ? "cave_plan.png" : camera.enabled ? "cave_overview.png" : "cave_detail.png";
+                        string name = top ? "cave_plan.png" : camera.name.StartsWith("River Camera") ? "cave_riverbanks.png"
+                            : camera.enabled ? "cave_overview.png" : "cave_detail.png";
                         File.WriteAllBytes(Path.Combine(folder,name),pixels.EncodeToPNG());
                     }
                     finally

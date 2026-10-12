@@ -38,7 +38,7 @@
     {
       "Id": 6,
       "Name": "Tavern",
-      "X": -6.3,
+      "X": -4.0,
       "Z": -3.3,
       "Height": 0.3
     },
@@ -60,27 +60,27 @@
       "Id": 9,
       "Name": "AltarHall",
       "X": -1.5,
-      "Z": 23.4,
-      "Height": 2.4
+      "Z": 26.5,
+      "Height": 4.8
     },
     {
       "Id": 10,
       "Name": "Elder",
-      "X": 15.5,
-      "Z": 25.6,
-      "Height": 2.4
+      "X": 18.3,
+      "Z": 27.2,
+      "Height": 4.8
     },
     {
       "Id": 11,
       "Name": "Planting",
-      "X": -22.3,
+      "X": -24,
       "Z": 7.8,
-      "Height": -1.2
+      "Height": -2.4
     },
     {
       "Id": 12,
       "Name": "Warehouse",
-      "X": -5.1,
+      "X": -2.7,
       "Z": 10.4,
       "Height": 0.3
     },
@@ -101,11 +101,2365 @@
     {
       "Id": 15,
       "Name": "RiverWorkshop",
-      "X": -22.3,
+      "X": -24,
       "Z": -10,
-      "Height": -1.2
+      "Height": -2.4
     }
   ],
+  "Decorations": [
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -27.697300787561158,
+      "Z": -31,
+      "Height": -2.37,
+      "Scale": 1.5149585129157916,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -28.197300787561158,
+      "Z": -30.4,
+      "Height": -2.36,
+      "Scale": 0.7744887186776411,
+      "Yaw": 155.5940937833904,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -27.697300787561158,
+      "Z": -30.1,
+      "Height": -2.37,
+      "Scale": 1.3959659352407252,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -28.79730078756116,
+      "Z": -31.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -27.031247976970487,
+      "Z": -28,
+      "Height": -2.37,
+      "Scale": 1.5164563847451165,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -27.531247976970487,
+      "Z": -27.4,
+      "Height": -2.36,
+      "Scale": 0.9224815928561311,
+      "Yaw": 320.03600025251444,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -27.031247976970487,
+      "Z": -27.1,
+      "Height": -2.37,
+      "Scale": 1.1180943451049647,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -28.13124797697049,
+      "Z": -28.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -24.455852433706173,
+      "Z": -25,
+      "Height": -2.37,
+      "Scale": 1.3631191043442539,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -24.955852433706173,
+      "Z": -24.4,
+      "Height": -2.36,
+      "Scale": 1.0586647039215376,
+      "Yaw": 266.68085078764256,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -24.455852433706173,
+      "Z": -24.1,
+      "Height": -2.37,
+      "Scale": 1.330449301133459,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -25.555852433706175,
+      "Z": -25.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -21.363721537911424,
+      "Z": -22,
+      "Height": -2.37,
+      "Scale": 1.3698955443745775,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -21.863721537911424,
+      "Z": -21.4,
+      "Height": -2.36,
+      "Scale": 1.0422214524270141,
+      "Yaw": 270.26504574989247,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -21.363721537911424,
+      "Z": -21.1,
+      "Height": -2.37,
+      "Scale": 1.27086526607047,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -22.463721537911425,
+      "Z": -22.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -20.219885745344836,
+      "Z": -19,
+      "Height": -2.37,
+      "Scale": 1.2174661173702468,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -20.719885745344836,
+      "Z": -18.4,
+      "Height": -2.36,
+      "Scale": 0.9440769382100069,
+      "Yaw": 343.90713351422414,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -20.219885745344836,
+      "Z": -18.1,
+      "Height": -2.37,
+      "Scale": 1.2174892532535018,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -21.319885745344838,
+      "Z": -19.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -17.248070850152146,
+      "Z": -16,
+      "Height": -2.37,
+      "Scale": 1.516709365813121,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -17.748070850152146,
+      "Z": -15.4,
+      "Height": -2.36,
+      "Scale": 0.7925152862724654,
+      "Yaw": 22.048036692411625,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -17.248070850152146,
+      "Z": -15.1,
+      "Height": -2.37,
+      "Scale": 1.209899162625082,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -18.348070850152148,
+      "Z": -16.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -17.076663417096203,
+      "Z": -13,
+      "Height": -2.37,
+      "Scale": 1.1903576265062745,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -17.576663417096203,
+      "Z": -12.4,
+      "Height": -2.36,
+      "Scale": 1.084948607378761,
+      "Yaw": 126.1974591893402,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -17.076663417096203,
+      "Z": -12.1,
+      "Height": -2.37,
+      "Scale": 1.3280684933191234,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -18.176663417096204,
+      "Z": -13.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -18.640786500357198,
+      "Z": -7,
+      "Height": -2.37,
+      "Scale": 1.5815433657026623,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -19.140786500357198,
+      "Z": -6.4,
+      "Height": -2.36,
+      "Scale": 0.8855521356655645,
+      "Yaw": 140.20250125404985,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -18.640786500357198,
+      "Z": -6.1,
+      "Height": -2.37,
+      "Scale": 1.5521765222489161,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -19.7407865003572,
+      "Z": -7.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -19.136838916207466,
+      "Z": -4,
+      "Height": -2.37,
+      "Scale": 1.0814616638049264,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -19.636838916207466,
+      "Z": -3.4,
+      "Height": -2.36,
+      "Scale": 0.8721925077826074,
+      "Yaw": 54.505254701787976,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -19.136838916207466,
+      "Z": -3.1,
+      "Height": -2.37,
+      "Scale": 1.5696528196025359,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -20.236838916207468,
+      "Z": -4.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -18.290331199013135,
+      "Z": -1,
+      "Height": -2.37,
+      "Scale": 1.2262168047203508,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -18.790331199013135,
+      "Z": -0.4,
+      "Height": -2.36,
+      "Scale": 0.8817659615758499,
+      "Yaw": 98.38142371977985,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -18.290331199013135,
+      "Z": -0.09999999999999998,
+      "Height": -2.37,
+      "Scale": 1.2186924920103999,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -19.390331199013136,
+      "Z": -1.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -17.591577024663895,
+      "Z": 2,
+      "Height": -2.37,
+      "Scale": 1.071503396269489,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -18.091577024663895,
+      "Z": 2.6,
+      "Height": -2.36,
+      "Scale": 0.9282997709427678,
+      "Yaw": 101.71207306485184,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -17.591577024663895,
+      "Z": 2.9,
+      "Height": -2.37,
+      "Scale": 1.4545503071663324,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -18.691577024663896,
+      "Z": 1.6,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -16.95044588867187,
+      "Z": 5,
+      "Height": -2.37,
+      "Scale": 1.157988175325747,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -17.45044588867187,
+      "Z": 5.6,
+      "Height": -2.36,
+      "Scale": 0.9555883571018264,
+      "Yaw": 245.18388318951764,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -16.95044588867187,
+      "Z": 5.9,
+      "Height": -2.37,
+      "Scale": 1.1301111573309646,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -18.05044588867187,
+      "Z": 4.6,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -17.118387144139696,
+      "Z": 8,
+      "Height": -2.37,
+      "Scale": 1.0493281682229971,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -17.618387144139696,
+      "Z": 8.6,
+      "Height": -2.36,
+      "Scale": 0.99275431413665,
+      "Yaw": 242.1290431016122,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -17.118387144139696,
+      "Z": 8.9,
+      "Height": -2.37,
+      "Scale": 1.556585337462522,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -18.218387144139697,
+      "Z": 7.6,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -17.298905378631268,
+      "Z": 11,
+      "Height": -2.37,
+      "Scale": 1.0531190161871702,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -17.798905378631268,
+      "Z": 11.6,
+      "Height": -2.36,
+      "Scale": 1.0516149509174422,
+      "Yaw": 50.890214765524945,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -17.298905378631268,
+      "Z": 11.9,
+      "Height": -2.37,
+      "Scale": 1.1523180495344905,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -18.39890537863127,
+      "Z": 10.6,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -18.60053136144684,
+      "Z": 17,
+      "Height": -2.37,
+      "Scale": 1.4995615190313236,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -19.10053136144684,
+      "Z": 17.6,
+      "Height": -2.36,
+      "Scale": 0.9886438706900977,
+      "Yaw": 1.4612414520698769,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -18.60053136144684,
+      "Z": 17.9,
+      "Height": -2.37,
+      "Scale": 1.2258126094236952,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -19.700531361446842,
+      "Z": 16.6,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -19.834052491933814,
+      "Z": 20,
+      "Height": -2.37,
+      "Scale": 1.482338731301542,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -20.334052491933814,
+      "Z": 20.6,
+      "Height": -2.36,
+      "Scale": 0.721100008632158,
+      "Yaw": 80.66398157339843,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -19.834052491933814,
+      "Z": 20.9,
+      "Height": -2.37,
+      "Scale": 1.5925346179966924,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -20.934052491933816,
+      "Z": 19.6,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -20.925492598479003,
+      "Z": 23,
+      "Height": -2.37,
+      "Scale": 1.1850337094643224,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -21.425492598479003,
+      "Z": 23.6,
+      "Height": -2.36,
+      "Scale": 1.0019590865684433,
+      "Yaw": 127.80284839409339,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -20.925492598479003,
+      "Z": 23.9,
+      "Height": -2.37,
+      "Scale": 1.4281364535215406,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -22.025492598479005,
+      "Z": 22.6,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -20.59006690296322,
+      "Z": 26,
+      "Height": -2.37,
+      "Scale": 1.493150078343019,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -21.09006690296322,
+      "Z": 26.6,
+      "Height": -2.36,
+      "Scale": 0.8924763087086396,
+      "Yaw": 334.98838651709855,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -20.59006690296322,
+      "Z": 26.9,
+      "Height": -2.37,
+      "Scale": 1.5770829451074737,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -21.69006690296322,
+      "Z": 25.6,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -20.343487855992322,
+      "Z": 29,
+      "Height": -2.37,
+      "Scale": 1.513703572396131,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -20.843487855992322,
+      "Z": 29.6,
+      "Height": -2.36,
+      "Scale": 0.9777262066405761,
+      "Yaw": 121.45548694150371,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -20.343487855992322,
+      "Z": 29.9,
+      "Height": -2.37,
+      "Scale": 1.3844335751338146,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -21.443487855992323,
+      "Z": 28.6,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -5.311552368678736,
+      "Z": -31,
+      "Height": -2.37,
+      "Scale": 1.044442171855851,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -4.811552368678736,
+      "Z": -30.4,
+      "Height": -2.36,
+      "Scale": 0.7539529785011373,
+      "Yaw": 92.71314144223335,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -5.311552368678736,
+      "Z": -30.1,
+      "Height": -2.37,
+      "Scale": 1.3193287515704335,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -5.329953729735854,
+      "Z": -28,
+      "Height": -2.37,
+      "Scale": 1.2473757195342505,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -4.829953729735854,
+      "Z": -27.4,
+      "Height": -2.36,
+      "Scale": 0.8020102464067663,
+      "Yaw": 289.1971735427965,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -5.329953729735854,
+      "Z": -27.1,
+      "Height": -2.37,
+      "Scale": 1.1147056239598805,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -5.655159846292284,
+      "Z": -25,
+      "Height": -2.37,
+      "Scale": 1.5049121549903575,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -5.155159846292284,
+      "Z": -24.4,
+      "Height": -2.36,
+      "Scale": 0.7517419903365377,
+      "Yaw": 177.58866109058908,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -5.655159846292284,
+      "Z": -24.1,
+      "Height": -2.37,
+      "Scale": 1.4323294076422697,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -6.841164138928199,
+      "Z": -22,
+      "Height": -2.37,
+      "Scale": 1.2631277104911953,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -6.341164138928199,
+      "Z": -21.4,
+      "Height": -2.36,
+      "Scale": 0.9518051821964961,
+      "Yaw": 208.3224935072475,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -6.841164138928199,
+      "Z": -21.1,
+      "Height": -2.37,
+      "Scale": 1.5023061417402568,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -6.819754745323873,
+      "Z": -19,
+      "Height": -2.37,
+      "Scale": 1.3943137302279538,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -6.319754745323873,
+      "Z": -18.4,
+      "Height": -2.36,
+      "Scale": 1.0640535404222617,
+      "Yaw": 20.782367126841503,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -6.819754745323873,
+      "Z": -18.1,
+      "Height": -2.37,
+      "Scale": 1.1487789810015412,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -7.686300698510854,
+      "Z": -16,
+      "Height": -2.37,
+      "Scale": 1.1429606069136589,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -7.186300698510854,
+      "Z": -15.4,
+      "Height": -2.36,
+      "Scale": 0.9220879378367148,
+      "Yaw": 41.547520290574504,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -7.686300698510854,
+      "Z": -15.1,
+      "Height": -2.37,
+      "Scale": 1.3142559017563307,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -8.272372463319318,
+      "Z": -13,
+      "Height": -2.37,
+      "Scale": 1.365456904027075,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -7.772372463319318,
+      "Z": -12.4,
+      "Height": -2.36,
+      "Scale": 0.8780444487018926,
+      "Yaw": 166.24134326101233,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -8.272372463319318,
+      "Z": -12.1,
+      "Height": -2.37,
+      "Scale": 1.215770311610538,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -6.0268000000000015,
+      "Z": -13,
+      "Height": 0,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -9.014099095534544,
+      "Z": -7,
+      "Height": -2.37,
+      "Scale": 1.4811286321737036,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -8.514099095534544,
+      "Z": -6.4,
+      "Height": -2.36,
+      "Scale": 0.7785833351726648,
+      "Yaw": 59.562300738325675,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -9.014099095534544,
+      "Z": -6.1,
+      "Height": -2.37,
+      "Scale": 1.3708682672271761,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -7.003586005830906,
+      "Z": -7,
+      "Height": 0,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -9.8057344780151,
+      "Z": -4,
+      "Height": -2.37,
+      "Scale": 1.1620801654415387,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -9.3057344780151,
+      "Z": -3.4,
+      "Height": -2.36,
+      "Scale": 0.8352105329861397,
+      "Yaw": 328.53884121778646,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -9.8057344780151,
+      "Z": -3.1,
+      "Height": -2.37,
+      "Scale": 1.2535556823831073,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -7.55460641399417,
+      "Z": -4,
+      "Height": 0,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -9.474154035788972,
+      "Z": -1,
+      "Height": -2.37,
+      "Scale": 1.2048788743995815,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -8.974154035788972,
+      "Z": -0.4,
+      "Height": -2.36,
+      "Scale": 0.8355770841649176,
+      "Yaw": 128.51273689753413,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -9.474154035788972,
+      "Z": -0.09999999999999998,
+      "Height": -2.37,
+      "Scale": 1.1978976859460664,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -7.2531486880466485,
+      "Z": -1,
+      "Height": 0,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -8.255742896263339,
+      "Z": 2,
+      "Height": -2.37,
+      "Scale": 1.4009490710753196,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -7.755742896263339,
+      "Z": 2.6,
+      "Height": -2.36,
+      "Scale": 1.0361577889351756,
+      "Yaw": 139.99714769150006,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -8.255742896263339,
+      "Z": 2.9,
+      "Height": -2.37,
+      "Scale": 1.4823269097595557,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -6.166851311953353,
+      "Z": 2,
+      "Height": 0,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -8.00502961530986,
+      "Z": 5,
+      "Height": -2.37,
+      "Scale": 1.2069521662155307,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -7.50502961530986,
+      "Z": 5.6,
+      "Height": -2.36,
+      "Scale": 0.8587068652513944,
+      "Yaw": 57.57795582849561,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -8.00502961530986,
+      "Z": 5.9,
+      "Height": -2.37,
+      "Scale": 1.2833492827969148,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -5.787777777777778,
+      "Z": 5,
+      "Height": 0,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -7.342684241107139,
+      "Z": 8,
+      "Height": -2.37,
+      "Scale": 1.3493069490491632,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -6.842684241107139,
+      "Z": 8.6,
+      "Height": -2.36,
+      "Scale": 0.9843205682666097,
+      "Yaw": 292.20725515802354,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -7.342684241107139,
+      "Z": 8.9,
+      "Height": -2.37,
+      "Scale": 1.2855273062688732,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -5.587777777777777,
+      "Z": 8,
+      "Height": 0,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -7.456238015822579,
+      "Z": 11,
+      "Height": -2.37,
+      "Scale": 1.3226626648872872,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -6.956238015822579,
+      "Z": 11.6,
+      "Height": -2.36,
+      "Scale": 1.0205906802399327,
+      "Yaw": 225.2859995803081,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -7.456238015822579,
+      "Z": 11.9,
+      "Height": -2.37,
+      "Scale": 1.1356031023631057,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -5.6285185185185185,
+      "Z": 11,
+      "Height": 0,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -9.319278732920353,
+      "Z": 17,
+      "Height": -2.37,
+      "Scale": 1.5737459160857097,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -8.819278732920353,
+      "Z": 17.6,
+      "Height": -2.36,
+      "Scale": 1.033621641126705,
+      "Yaw": 340.8867149254918,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -9.319278732920353,
+      "Z": 17.9,
+      "Height": -2.37,
+      "Scale": 1.5616939682949198,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -7.248483965014579,
+      "Z": 17,
+      "Height": 0,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -10.628182264829812,
+      "Z": 20,
+      "Height": -2.37,
+      "Scale": 1.3753824388373315,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -10.128182264829812,
+      "Z": 20.6,
+      "Height": -2.36,
+      "Scale": 0.969701665417392,
+      "Yaw": 134.4864125670488,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -10.628182264829812,
+      "Z": 20.9,
+      "Height": -2.37,
+      "Scale": 1.4459856510456537,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -8.626034985422741,
+      "Z": 20,
+      "Height": 0,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -11.977684563767792,
+      "Z": 23,
+      "Height": -2.37,
+      "Scale": 1.4171238339002885,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -11.477684563767792,
+      "Z": 23.6,
+      "Height": -2.36,
+      "Scale": 0.7103043809049138,
+      "Yaw": 176.75946358804742,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -11.977684563767792,
+      "Z": 23.9,
+      "Height": -2.37,
+      "Scale": 1.3593532043169207,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -9.610000000000001,
+      "Z": 23,
+      "Height": 0,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -10.962520761271701,
+      "Z": 26,
+      "Height": -2.37,
+      "Scale": 1.1969433061171006,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -10.462520761271701,
+      "Z": 26.6,
+      "Height": -2.36,
+      "Scale": 0.9397279779010501,
+      "Yaw": 208.162156051651,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -10.962520761271701,
+      "Z": 26.9,
+      "Height": -2.37,
+      "Scale": 1.5013062289827244,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -9.1564,
+      "Z": 26,
+      "Height": 0,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -10.377622363568305,
+      "Z": 29,
+      "Height": -2.37,
+      "Scale": 1.3988712929352645,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -9.877622363568305,
+      "Z": 29.6,
+      "Height": -2.36,
+      "Scale": 1.000309868163044,
+      "Yaw": 206.51163730713776,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -10.377622363568305,
+      "Z": 29.9,
+      "Height": -2.37,
+      "Scale": 1.2718330063948131,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -8.675533709292283,
+      "Z": 29,
+      "Height": 0,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -21.708,
+      "Z": -32,
+      "Height": -2.37,
+      "Scale": 1.1,
+      "Yaw": -5,
+      "Name": "ForkWestInner"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -21.308,
+      "Z": -31.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "ForkWestInner"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -21.06,
+      "Z": -29,
+      "Height": -2.37,
+      "Scale": 1.1,
+      "Yaw": -5,
+      "Name": "ForkWestInner"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -20.66,
+      "Z": -28.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "ForkWestInner"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -18.36,
+      "Z": -26,
+      "Height": -2.37,
+      "Scale": 1.1,
+      "Yaw": -5,
+      "Name": "ForkWestInner"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -17.96,
+      "Z": -25.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "ForkWestInner"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -12.1528,
+      "Z": -32,
+      "Height": -2.37,
+      "Scale": 1.1,
+      "Yaw": -5,
+      "Name": "ForkEastInner"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -12.5528,
+      "Z": -31.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "ForkEastInner"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -11.44,
+      "Z": -29,
+      "Height": -2.37,
+      "Scale": 1.1,
+      "Yaw": -5,
+      "Name": "ForkEastInner"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -11.84,
+      "Z": -28.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "ForkEastInner"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -11.861875,
+      "Z": -26,
+      "Height": -2.37,
+      "Scale": 1.1,
+      "Yaw": -5,
+      "Name": "ForkEastInner"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -12.261875,
+      "Z": -25.4,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "ForkEastInner"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -27.0,
+      "Z": -14.0,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -26.35,
+      "Z": -13.326823212153682,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -25.7,
+      "Z": -13.272562058539455,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -25.05,
+      "Z": -13.887103993552106,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -28.0,
+      "Z": -4.0,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -27.35,
+      "Z": -3.3268232121536827,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -26.7,
+      "Z": -3.272562058539455,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -26.05,
+      "Z": -3.887103993552106,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -27.0,
+      "Z": 3.0,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -26.35,
+      "Z": 3.6731767878463173,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -25.7,
+      "Z": 3.727437941460545,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -25.05,
+      "Z": 3.112896006447894,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -28.0,
+      "Z": 15.0,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -27.35,
+      "Z": 15.673176787846318,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -26.7,
+      "Z": 15.727437941460545,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -26.05,
+      "Z": 15.112896006447894,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -26.0,
+      "Z": 22.0,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -25.35,
+      "Z": 22.673176787846316,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -24.7,
+      "Z": 22.727437941460547,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -24.05,
+      "Z": 22.112896006447894,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -25.0,
+      "Z": 27.0,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -24.35,
+      "Z": 27.673176787846316,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -23.7,
+      "Z": 27.727437941460547,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -23.05,
+      "Z": 27.112896006447894,
+      "Height": -2.37,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 28,
+      "Z": -10,
+      "Height": 0.03,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 29.0,
+      "Z": -10.3,
+      "Height": 0.03,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 27.5,
+      "Z": -9.3,
+      "Height": 0.03,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 28.3,
+      "Z": -9.7,
+      "Height": 0.04,
+      "Scale": 1.1,
+      "Yaw": 88.16767058362277,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 27,
+      "Z": -2,
+      "Height": 0.03,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 28.0,
+      "Z": -2.3,
+      "Height": 0.03,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 26.5,
+      "Z": -1.3,
+      "Height": 0.03,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 27.3,
+      "Z": -1.7,
+      "Height": 0.04,
+      "Scale": 1.1,
+      "Yaw": 289.840967475834,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 28,
+      "Z": 6,
+      "Height": 0.03,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 29.0,
+      "Z": 5.7,
+      "Height": 0.03,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 27.5,
+      "Z": 6.7,
+      "Height": 0.03,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 28.3,
+      "Z": 6.3,
+      "Height": 0.04,
+      "Scale": 1.1,
+      "Yaw": 39.22285103713264,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 26,
+      "Z": 25,
+      "Height": 0.03,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 27.0,
+      "Z": 24.7,
+      "Height": 0.03,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 25.5,
+      "Z": 25.7,
+      "Height": 0.03,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 26.3,
+      "Z": 25.3,
+      "Height": 0.04,
+      "Scale": 1.1,
+      "Yaw": 172.88954120770552,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 7,
+      "Z": -27,
+      "Height": 0.03,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 8.0,
+      "Z": -27.3,
+      "Height": 0.03,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 6.5,
+      "Z": -26.3,
+      "Height": 0.03,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 7.3,
+      "Z": -26.7,
+      "Height": 0.04,
+      "Scale": 1.1,
+      "Yaw": 180.70428414822112,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 10,
+      "Z": -20,
+      "Height": 0.03,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 11.0,
+      "Z": -20.3,
+      "Height": 0.03,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 9.5,
+      "Z": -19.3,
+      "Height": 0.03,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 10.3,
+      "Z": -19.7,
+      "Height": 0.04,
+      "Scale": 1.1,
+      "Yaw": 187.48986791586543,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 10,
+      "Z": -8,
+      "Height": 0.03,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 11.0,
+      "Z": -8.3,
+      "Height": 0.03,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 9.5,
+      "Z": -7.3,
+      "Height": 0.03,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 10.3,
+      "Z": -7.7,
+      "Height": 0.04,
+      "Scale": 1.1,
+      "Yaw": 157.30687830845014,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 18,
+      "Z": 4,
+      "Height": 0.03,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 19.0,
+      "Z": 3.7,
+      "Height": 0.03,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 17.5,
+      "Z": 4.7,
+      "Height": 0.03,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 18.3,
+      "Z": 4.3,
+      "Height": 0.04,
+      "Scale": 1.1,
+      "Yaw": 308.5486900791668,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 13,
+      "Z": 15,
+      "Height": 0.03,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 14.0,
+      "Z": 14.7,
+      "Height": 0.03,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 12.5,
+      "Z": 15.7,
+      "Height": 0.03,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 13.3,
+      "Z": 15.3,
+      "Height": 0.04,
+      "Scale": 1.1,
+      "Yaw": 108.49482413779458,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": -7,
+      "Z": 28,
+      "Height": 4.83,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": -6.0,
+      "Z": 27.7,
+      "Height": 4.83,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": -7.5,
+      "Z": 28.7,
+      "Height": 4.83,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": -6.7,
+      "Z": 28.3,
+      "Height": 4.84,
+      "Scale": 1.1,
+      "Yaw": 89.36869735049413,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 4,
+      "Z": 30,
+      "Height": 4.83,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 5.0,
+      "Z": 29.7,
+      "Height": 4.83,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 3.5,
+      "Z": 30.7,
+      "Height": 4.83,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 4.3,
+      "Z": 30.3,
+      "Height": 4.84,
+      "Scale": 1.1,
+      "Yaw": 168.28298848877267,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 20,
+      "Z": 29,
+      "Height": 4.83,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 21.0,
+      "Z": 28.7,
+      "Height": 4.83,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 19.5,
+      "Z": 29.7,
+      "Height": 4.83,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 20.3,
+      "Z": 29.3,
+      "Height": 4.84,
+      "Scale": 1.1,
+      "Yaw": 91.53558311714607,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 20,
+      "Z": 24.7,
+      "Height": 4.83,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 21.0,
+      "Z": 24.4,
+      "Height": 4.83,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 19.5,
+      "Z": 25.4,
+      "Height": 4.83,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 20.3,
+      "Z": 25.0,
+      "Height": 4.84,
+      "Scale": 1.1,
+      "Yaw": 229.0997876146393,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_iron_ore_01",
+      "X": -29,
+      "Z": 26,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_crystal_rock_01",
+      "X": -28.2,
+      "Z": 26.5,
+      "Height": -2.37,
+      "Scale": 0.9,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_iron_ore_01",
+      "X": -28,
+      "Z": -20,
+      "Height": -2.37,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_crystal_rock_01",
+      "X": -27.2,
+      "Z": -19.5,
+      "Height": -2.37,
+      "Scale": 0.9,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_iron_ore_01",
+      "X": 29,
+      "Z": 18,
+      "Height": 0.03,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_crystal_rock_01",
+      "X": 29.8,
+      "Z": 18.5,
+      "Height": 0.03,
+      "Scale": 0.9,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_iron_ore_01",
+      "X": 28,
+      "Z": -7,
+      "Height": 0.03,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_crystal_rock_01",
+      "X": 28.8,
+      "Z": -6.5,
+      "Height": 0.03,
+      "Scale": 0.9,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_iron_ore_01",
+      "X": -6,
+      "Z": 30,
+      "Height": 4.83,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_crystal_rock_01",
+      "X": -5.2,
+      "Z": 30.5,
+      "Height": 4.83,
+      "Scale": 0.9,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_iron_ore_01",
+      "X": 21,
+      "Z": 29,
+      "Height": 4.83,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_crystal_rock_01",
+      "X": 21.8,
+      "Z": 29.5,
+      "Height": 4.83,
+      "Scale": 0.9,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 12.820710761643948,
+      "Z": 2.656915214168748,
+      "Height": 0.03,
+      "Scale": 0.8517763810174568,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 8.182553138812558,
+      "Z": -21.299882014202183,
+      "Height": 0.03,
+      "Scale": 0.6545192479640053,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 9.0494417357944,
+      "Z": -6.3358923554112465,
+      "Height": 0.03,
+      "Scale": 0.7704191192545128,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 4.133816602966679,
+      "Z": 6.276669423211075,
+      "Height": 0.03,
+      "Scale": 0.7520961921452908,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 11.449657088683953,
+      "Z": 3.866483316560135,
+      "Height": 0.03,
+      "Scale": 0.5667004405088665,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 10.713043483028923,
+      "Z": -7.9467392703794175,
+      "Height": 0.03,
+      "Scale": 0.6165471261632424,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 11.29268883769622,
+      "Z": -5.826388857892056,
+      "Height": 0.03,
+      "Scale": 0.7063993596463697,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": -3.455289992043023,
+      "Z": -14.410374978309934,
+      "Height": 0.03,
+      "Scale": 0.6744884701799483,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 12.70546751505066,
+      "Z": -18.403834252763904,
+      "Height": 0.03,
+      "Scale": 0.8001118086393633,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": -3.663824470441629,
+      "Z": -16.96022152600999,
+      "Height": 0.03,
+      "Scale": 0.8638850287862136,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 18.859823089483285,
+      "Z": -26.954526842099135,
+      "Height": 0.03,
+      "Scale": 0.6522220635482736,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 22.251245774180777,
+      "Z": -27.39525359378556,
+      "Height": 0.03,
+      "Scale": 0.5833862473627323,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 10.100611617546278,
+      "Z": 5.779224432862144,
+      "Height": 0.03,
+      "Scale": 0.6955127891615216,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 22.26500792333554,
+      "Z": -17.6568351239807,
+      "Height": 0.03,
+      "Scale": 0.6875188955567293,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 7.7842828154785195,
+      "Z": -22.278418272651408,
+      "Height": 0.03,
+      "Scale": 0.7864550195176121,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    }
+  ],
+  "LowlandHeight": -2.4,
+  "HighlandHeight": 4.8,
+  "WaterHeight": -2.95,
   "RouteSamples": [
     {
       "X": 0.0,
@@ -176,937 +2530,1207 @@
     {
       "X": -8.0,
       "Z": -38.25,
-      "Height": -0.27,
+      "Height": -0.57,
       "Name": "SouthernDryRim"
     },
     {
       "X": -10.0,
       "Z": -38.5,
-      "Height": -0.57,
+      "Height": -1.17,
       "Name": "SouthernDryRim"
     },
     {
       "X": -12.0,
       "Z": -38.75,
-      "Height": -0.8699999999999999,
+      "Height": -1.7699999999999998,
       "Name": "SouthernDryRim"
     },
     {
       "X": -14.0,
       "Z": -39.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -14.0,
       "Z": -39.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -17.0,
       "Z": -39.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -20.0,
       "Z": -39.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -23.0,
       "Z": -39.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -26.0,
       "Z": -39.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -26.0,
       "Z": -39.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -27.75,
       "Z": -38.5,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -29.5,
       "Z": -38.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -31.25,
       "Z": -37.5,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -33.0,
       "Z": -37.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -33.0,
       "Z": -37.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -33.0,
       "Z": -35.75,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -33.0,
       "Z": -34.5,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -33.0,
       "Z": -33.25,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -33.0,
       "Z": -32.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "SouthernDryRim"
     },
     {
       "X": -33.0,
       "Z": -32.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
       "X": -32.5,
       "Z": -30.75,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
       "X": -32.0,
       "Z": -29.5,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
       "X": -31.5,
       "Z": -28.25,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
       "X": -31.0,
       "Z": -27.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
       "X": -31.0,
       "Z": -27.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
       "X": -30.0,
       "Z": -25.5,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
       "X": -29.0,
       "Z": -24.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
       "X": -28.0,
       "Z": -22.5,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
       "X": -27.0,
       "Z": -21.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
       "X": -27.0,
       "Z": -21.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
-      "X": -26.125,
+      "X": -26.25,
       "Z": -20.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
-      "X": -25.25,
+      "X": -25.5,
       "Z": -19.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
-      "X": -24.375,
+      "X": -24.75,
       "Z": -18.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
-      "X": -23.5,
+      "X": -24.0,
       "Z": -17.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
-      "X": -23.5,
+      "X": -24.0,
       "Z": -17.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
-      "X": -23.2,
+      "X": -24.0,
       "Z": -15.25,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
-      "X": -22.9,
+      "X": -24.0,
       "Z": -13.5,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
-      "X": -22.6,
+      "X": -24.0,
       "Z": -11.75,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": -10.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_SouthSupplyEntrance"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": -10.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": -7.75,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": -5.5,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": -3.25,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": -1.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": -1.0,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": 1.2000000000000002,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": 3.4000000000000004,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": 5.6000000000000005,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": 7.800000000000001,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": 7.8,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": 9.4675,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": 11.135,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": 12.8025,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": 14.47,
-      "Height": -1.17,
+      "Height": -2.37,
       "Name": "B_WestBankSupplyRoute"
     },
     {
-      "X": -17.950000000000003,
+      "X": -17.310000000000002,
       "Z": -10.0,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "EntranceBridge"
     },
     {
-      "X": -16.7875,
+      "X": -16.3075,
       "Z": -10.0,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "EntranceBridge"
     },
     {
-      "X": -15.625000000000002,
+      "X": -15.305000000000001,
       "Z": -10.0,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "EntranceBridge"
     },
     {
-      "X": -14.462500000000002,
+      "X": -14.302500000000002,
       "Z": -10.0,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "EntranceBridge"
     },
     {
       "X": -13.3,
       "Z": -10.0,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "EntranceBridge"
     },
     {
       "X": -13.3,
       "Z": -10.0,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "EntranceBridge"
     },
     {
-      "X": -12.137500000000001,
+      "X": -12.297500000000001,
       "Z": -10.0,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "EntranceBridge"
     },
     {
-      "X": -10.975000000000001,
+      "X": -11.295000000000002,
       "Z": -10.0,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "EntranceBridge"
     },
     {
-      "X": -9.8125,
+      "X": -10.2925,
       "Z": -10.0,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "EntranceBridge"
     },
     {
-      "X": -8.65,
+      "X": -9.290000000000001,
       "Z": -10.0,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "EntranceBridge"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": -10.0,
-      "Height": -1.17,
-      "Name": "EntranceBridgeWestRamp"
+      "Height": -2.37,
+      "Name": "EntranceBridgeWestLanding"
     },
     {
-      "X": -21.212500000000002,
+      "X": -22.3275,
       "Z": -10.0,
-      "Height": -0.8699999999999999,
-      "Name": "EntranceBridgeWestRamp"
+      "Height": -2.37,
+      "Name": "EntranceBridgeWestLanding"
     },
     {
-      "X": -20.125,
+      "X": -20.655,
       "Z": -10.0,
-      "Height": -0.57,
-      "Name": "EntranceBridgeWestRamp"
+      "Height": -2.37,
+      "Name": "EntranceBridgeWestLanding"
     },
     {
-      "X": -19.0375,
+      "X": -18.9825,
       "Z": -10.0,
-      "Height": -0.27,
-      "Name": "EntranceBridgeWestRamp"
+      "Height": -2.37,
+      "Name": "EntranceBridgeWestLanding"
     },
     {
-      "X": -17.950000000000003,
+      "X": -17.310000000000002,
       "Z": -10.0,
-      "Height": 0.030000000000000027,
-      "Name": "EntranceBridgeWestRamp"
+      "Height": -2.37,
+      "Name": "EntranceBridgeWestLanding"
     },
     {
-      "X": -8.65,
+      "X": -8.990000000000002,
+      "Z": -10,
+      "Height": -2.1999999999999997,
+      "Name": "EntranceBridgeEastStair"
+    },
+    {
+      "X": -8.690000000000001,
+      "Z": -10,
+      "Height": -2.0,
+      "Name": "EntranceBridgeEastStair"
+    },
+    {
+      "X": -8.390000000000002,
+      "Z": -10,
+      "Height": -1.7999999999999998,
+      "Name": "EntranceBridgeEastStair"
+    },
+    {
+      "X": -8.090000000000002,
+      "Z": -10,
+      "Height": -1.5999999999999999,
+      "Name": "EntranceBridgeEastStair"
+    },
+    {
+      "X": -7.790000000000002,
+      "Z": -10,
+      "Height": -1.4,
+      "Name": "EntranceBridgeEastStair"
+    },
+    {
+      "X": -7.490000000000002,
+      "Z": -10,
+      "Height": -1.1999999999999997,
+      "Name": "EntranceBridgeEastStair"
+    },
+    {
+      "X": -7.190000000000002,
+      "Z": -10,
+      "Height": -0.9999999999999998,
+      "Name": "EntranceBridgeEastStair"
+    },
+    {
+      "X": -6.890000000000002,
+      "Z": -10,
+      "Height": -0.7999999999999998,
+      "Name": "EntranceBridgeEastStair"
+    },
+    {
+      "X": -6.590000000000002,
+      "Z": -10,
+      "Height": -0.5999999999999999,
+      "Name": "EntranceBridgeEastStair"
+    },
+    {
+      "X": -6.290000000000003,
+      "Z": -10,
+      "Height": -0.3999999999999999,
+      "Name": "EntranceBridgeEastStair"
+    },
+    {
+      "X": -5.990000000000002,
+      "Z": -10,
+      "Height": -0.19999999999999973,
+      "Name": "EntranceBridgeEastStair"
+    },
+    {
+      "X": -5.690000000000002,
+      "Z": -10,
+      "Height": 4.440892098500626e-16,
+      "Name": "EntranceBridgeEastStair"
+    },
+    {
+      "X": -5.57,
       "Z": -10.0,
       "Height": 0.03,
       "Name": "EntranceBridgeEastLanding"
     },
     {
-      "X": -8.4125,
+      "X": -5.4775,
       "Z": -10.0,
       "Height": 0.03,
       "Name": "EntranceBridgeEastLanding"
     },
     {
-      "X": -8.175,
+      "X": -5.385,
       "Z": -10.0,
       "Height": 0.03,
       "Name": "EntranceBridgeEastLanding"
     },
     {
-      "X": -7.9375,
+      "X": -5.2925,
       "Z": -10.0,
       "Height": 0.03,
       "Name": "EntranceBridgeEastLanding"
     },
     {
-      "X": -7.7,
+      "X": -5.2,
       "Z": -10.0,
       "Height": 0.03,
       "Name": "EntranceBridgeEastLanding"
     },
     {
-      "X": -18.190940400000002,
+      "X": -17.5509404,
       "Z": 14.47,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "SupplyBridge"
     },
     {
-      "X": -17.0284404,
+      "X": -16.5484404,
       "Z": 14.47,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "SupplyBridge"
     },
     {
-      "X": -15.865940400000001,
+      "X": -15.545940400000001,
       "Z": 14.47,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "SupplyBridge"
     },
     {
-      "X": -14.703440400000002,
+      "X": -14.543440400000001,
       "Z": 14.47,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "SupplyBridge"
     },
     {
       "X": -13.5409404,
       "Z": 14.47,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "SupplyBridge"
     },
     {
       "X": -13.5409404,
       "Z": 14.47,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "SupplyBridge"
     },
     {
-      "X": -12.3784404,
+      "X": -12.5384404,
       "Z": 14.47,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "SupplyBridge"
     },
     {
-      "X": -11.215940400000001,
+      "X": -11.535940400000001,
       "Z": 14.47,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "SupplyBridge"
     },
     {
-      "X": -10.0534404,
+      "X": -10.5334404,
       "Z": 14.47,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "SupplyBridge"
     },
     {
-      "X": -8.8909404,
+      "X": -9.5309404,
       "Z": 14.47,
-      "Height": 0.03,
+      "Height": -2.37,
       "Name": "SupplyBridge"
     },
     {
-      "X": -22.3,
+      "X": -24.0,
       "Z": 14.47,
-      "Height": -1.17,
-      "Name": "SupplyBridgeWestRamp"
+      "Height": -2.37,
+      "Name": "SupplyBridgeWestLanding"
     },
     {
-      "X": -21.272735100000002,
+      "X": -22.3877351,
       "Z": 14.47,
-      "Height": -0.8699999999999999,
-      "Name": "SupplyBridgeWestRamp"
+      "Height": -2.37,
+      "Name": "SupplyBridgeWestLanding"
     },
     {
-      "X": -20.2454702,
+      "X": -20.7754702,
       "Z": 14.47,
-      "Height": -0.57,
-      "Name": "SupplyBridgeWestRamp"
+      "Height": -2.37,
+      "Name": "SupplyBridgeWestLanding"
     },
     {
-      "X": -19.2182053,
+      "X": -19.1632053,
       "Z": 14.47,
-      "Height": -0.27,
-      "Name": "SupplyBridgeWestRamp"
+      "Height": -2.37,
+      "Name": "SupplyBridgeWestLanding"
     },
     {
-      "X": -18.190940400000002,
+      "X": -17.5509404,
       "Z": 14.47,
-      "Height": 0.030000000000000027,
-      "Name": "SupplyBridgeWestRamp"
+      "Height": -2.37,
+      "Name": "SupplyBridgeWestLanding"
     },
     {
-      "X": -8.8909404,
+      "X": -9.230940400000001,
+      "Z": 14.47,
+      "Height": -2.1999999999999997,
+      "Name": "SupplyBridgeEastStair"
+    },
+    {
+      "X": -8.9309404,
+      "Z": 14.47,
+      "Height": -2.0,
+      "Name": "SupplyBridgeEastStair"
+    },
+    {
+      "X": -8.630940400000002,
+      "Z": 14.47,
+      "Height": -1.7999999999999998,
+      "Name": "SupplyBridgeEastStair"
+    },
+    {
+      "X": -8.330940400000001,
+      "Z": 14.47,
+      "Height": -1.5999999999999999,
+      "Name": "SupplyBridgeEastStair"
+    },
+    {
+      "X": -8.030940400000002,
+      "Z": 14.47,
+      "Height": -1.4,
+      "Name": "SupplyBridgeEastStair"
+    },
+    {
+      "X": -7.7309404000000015,
+      "Z": 14.47,
+      "Height": -1.1999999999999997,
+      "Name": "SupplyBridgeEastStair"
+    },
+    {
+      "X": -7.430940400000002,
+      "Z": 14.47,
+      "Height": -0.9999999999999998,
+      "Name": "SupplyBridgeEastStair"
+    },
+    {
+      "X": -7.130940400000002,
+      "Z": 14.47,
+      "Height": -0.7999999999999998,
+      "Name": "SupplyBridgeEastStair"
+    },
+    {
+      "X": -6.830940400000001,
+      "Z": 14.47,
+      "Height": -0.5999999999999999,
+      "Name": "SupplyBridgeEastStair"
+    },
+    {
+      "X": -6.530940400000002,
+      "Z": 14.47,
+      "Height": -0.3999999999999999,
+      "Name": "SupplyBridgeEastStair"
+    },
+    {
+      "X": -6.2309404000000015,
+      "Z": 14.47,
+      "Height": -0.19999999999999973,
+      "Name": "SupplyBridgeEastStair"
+    },
+    {
+      "X": -5.930940400000002,
+      "Z": 14.47,
+      "Height": 4.440892098500626e-16,
+      "Name": "SupplyBridgeEastStair"
+    },
+    {
+      "X": -5.8109404,
       "Z": 14.47,
       "Height": 0.03,
       "Name": "SupplyBridgeEastLanding"
     },
     {
-      "X": -8.5932053,
+      "X": -5.6582053,
       "Z": 14.47,
       "Height": 0.03,
       "Name": "SupplyBridgeEastLanding"
     },
     {
-      "X": -8.2954702,
+      "X": -5.5054701999999995,
       "Z": 14.47,
       "Height": 0.03,
       "Name": "SupplyBridgeEastLanding"
     },
     {
-      "X": -7.9977351,
+      "X": -5.3527351,
       "Z": 14.47,
       "Height": 0.03,
       "Name": "SupplyBridgeEastLanding"
     },
     {
-      "X": -7.7,
+      "X": -5.2,
       "Z": 14.47,
       "Height": 0.03,
       "Name": "SupplyBridgeEastLanding"
     },
     {
-      "X": -7.7,
+      "X": -5.2,
       "Z": 14.47,
       "Height": 0.03,
       "Name": "B_WestHallAscent"
     },
     {
-      "X": -8.125,
-      "Z": 15.352500000000001,
-      "Height": 0.235,
+      "X": -5.2,
+      "Z": 15.0525,
+      "Height": 0.03,
       "Name": "B_WestHallAscent"
     },
     {
-      "X": -8.55,
-      "Z": 16.235,
-      "Height": 0.43999999999999995,
+      "X": -5.2,
+      "Z": 15.635000000000002,
+      "Height": 0.03,
       "Name": "B_WestHallAscent"
     },
     {
-      "X": -8.975,
-      "Z": 17.1175,
-      "Height": 0.645,
+      "X": -5.2,
+      "Z": 16.2175,
+      "Height": 0.03,
       "Name": "B_WestHallAscent"
     },
     {
-      "X": -9.4,
-      "Z": 18.0,
-      "Height": 0.85,
+      "X": -5.2,
+      "Z": 16.8,
+      "Height": 0.03,
       "Name": "B_WestHallAscent"
     },
     {
-      "X": -9.4,
-      "Z": 18.0,
-      "Height": 0.85,
+      "X": -5.2,
+      "Z": 16.8,
+      "Height": 0.03,
       "Name": "B_WestHallAscent"
     },
     {
-      "X": -9.4,
-      "Z": 19.35,
-      "Height": 1.245,
+      "X": -6.3500000000000005,
+      "Z": 17.425,
+      "Height": 0.37249999999999994,
       "Name": "B_WestHallAscent"
     },
     {
-      "X": -9.4,
-      "Z": 20.7,
-      "Height": 1.6400000000000001,
+      "X": -7.5,
+      "Z": 18.05,
+      "Height": 0.715,
       "Name": "B_WestHallAscent"
     },
     {
-      "X": -9.4,
-      "Z": 22.049999999999997,
-      "Height": 2.035,
+      "X": -8.65,
+      "Z": 18.675,
+      "Height": 1.0574999999999999,
       "Name": "B_WestHallAscent"
     },
     {
-      "X": -9.4,
-      "Z": 23.4,
-      "Height": 2.43,
+      "X": -9.8,
+      "Z": 19.3,
+      "Height": 1.4,
       "Name": "B_WestHallAscent"
     },
     {
-      "X": -9.4,
-      "Z": 23.4,
-      "Height": 2.43,
+      "X": -9.8,
+      "Z": 19.3,
+      "Height": 1.4,
       "Name": "B_WestHallAscent"
     },
     {
-      "X": -8.725,
-      "Z": 23.4,
-      "Height": 2.43,
+      "X": -10.125,
+      "Z": 20.925,
+      "Height": 2.2575,
       "Name": "B_WestHallAscent"
     },
     {
-      "X": -8.05,
-      "Z": 23.4,
-      "Height": 2.43,
+      "X": -10.45,
+      "Z": 22.55,
+      "Height": 3.115,
       "Name": "B_WestHallAscent"
     },
     {
-      "X": -7.375,
-      "Z": 23.4,
-      "Height": 2.43,
+      "X": -10.775,
+      "Z": 24.175,
+      "Height": 3.9725,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -11.1,
+      "Z": 25.8,
+      "Height": 4.83,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -11.1,
+      "Z": 25.8,
+      "Height": 4.83,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -10.0,
+      "Z": 25.85,
+      "Height": 4.83,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -8.9,
+      "Z": 25.9,
+      "Height": 4.83,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -7.8,
+      "Z": 25.95,
+      "Height": 4.83,
       "Name": "B_WestHallAscent"
     },
     {
       "X": -6.7,
-      "Z": 23.4,
-      "Height": 2.43,
+      "Z": 26.0,
+      "Height": 4.83,
       "Name": "B_WestHallAscent"
     },
     {
       "X": -1.5,
-      "Z": 17.28,
-      "Height": 0.15,
+      "Z": 14.879999999999999,
+      "Height": 0.2,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 17.53,
-      "Height": 0.3,
+      "Z": 15.169999999999998,
+      "Height": 0.4,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 17.78,
-      "Height": 0.44999999999999996,
+      "Z": 15.459999999999999,
+      "Height": 0.6000000000000001,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 18.03,
-      "Height": 0.6,
+      "Z": 15.749999999999998,
+      "Height": 0.8,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 18.28,
-      "Height": 0.75,
+      "Z": 16.04,
+      "Height": 1.0,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 18.53,
-      "Height": 0.8999999999999999,
+      "Z": 16.33,
+      "Height": 1.2000000000000002,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 18.78,
-      "Height": 1.05,
+      "Z": 16.619999999999997,
+      "Height": 1.4000000000000001,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 19.03,
-      "Height": 1.2,
+      "Z": 16.91,
+      "Height": 1.6,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 19.28,
-      "Height": 1.3499999999999999,
+      "Z": 17.2,
+      "Height": 1.8,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 19.53,
-      "Height": 1.5,
+      "Z": 17.49,
+      "Height": 2.0,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 19.78,
-      "Height": 1.65,
+      "Z": 17.779999999999998,
+      "Height": 2.2,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 20.03,
-      "Height": 1.7999999999999998,
+      "Z": 18.07,
+      "Height": 2.4000000000000004,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 20.28,
-      "Height": 1.95,
+      "Z": 18.36,
+      "Height": 2.6,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 20.53,
-      "Height": 2.1,
+      "Z": 18.65,
+      "Height": 2.8000000000000003,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 20.78,
-      "Height": 2.25,
+      "Z": 18.939999999999998,
+      "Height": 3.0,
       "Name": "A_CentralHallStair"
     },
     {
       "X": -1.5,
-      "Z": 21.03,
-      "Height": 2.4,
+      "Z": 19.229999999999997,
+      "Height": 3.2,
       "Name": "A_CentralHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 17.28,
-      "Height": 0.15,
+      "X": -1.5,
+      "Z": 19.52,
+      "Height": 3.4000000000000004,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 19.81,
+      "Height": 3.6,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 20.099999999999998,
+      "Height": 3.8000000000000003,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 20.39,
+      "Height": 4.0,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 20.68,
+      "Height": 4.2,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 20.97,
+      "Height": 4.4,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 21.259999999999998,
+      "Height": 4.6000000000000005,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 21.549999999999997,
+      "Height": 4.800000000000001,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": 5.5,
+      "Z": 14.879999999999999,
+      "Height": 0.2,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 17.53,
-      "Height": 0.3,
+      "X": 5.5,
+      "Z": 15.169999999999998,
+      "Height": 0.4,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 17.78,
-      "Height": 0.44999999999999996,
+      "X": 5.5,
+      "Z": 15.459999999999999,
+      "Height": 0.6000000000000001,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 18.03,
-      "Height": 0.6,
+      "X": 5.5,
+      "Z": 15.749999999999998,
+      "Height": 0.8,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 18.28,
-      "Height": 0.75,
+      "X": 5.5,
+      "Z": 16.04,
+      "Height": 1.0,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 18.53,
-      "Height": 0.8999999999999999,
+      "X": 5.5,
+      "Z": 16.33,
+      "Height": 1.2000000000000002,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 18.78,
-      "Height": 1.05,
+      "X": 5.5,
+      "Z": 16.619999999999997,
+      "Height": 1.4000000000000001,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 19.03,
-      "Height": 1.2,
+      "X": 5.5,
+      "Z": 16.91,
+      "Height": 1.6,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 19.28,
-      "Height": 1.3499999999999999,
+      "X": 5.5,
+      "Z": 17.2,
+      "Height": 1.8,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 19.53,
-      "Height": 1.5,
+      "X": 5.5,
+      "Z": 17.49,
+      "Height": 2.0,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 19.78,
-      "Height": 1.65,
+      "X": 5.5,
+      "Z": 17.779999999999998,
+      "Height": 2.2,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 20.03,
-      "Height": 1.7999999999999998,
+      "X": 5.5,
+      "Z": 18.07,
+      "Height": 2.4000000000000004,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 20.28,
-      "Height": 1.95,
+      "X": 5.5,
+      "Z": 18.36,
+      "Height": 2.6,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 20.53,
-      "Height": 2.1,
+      "X": 5.5,
+      "Z": 18.65,
+      "Height": 2.8000000000000003,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 20.78,
-      "Height": 2.25,
+      "X": 5.5,
+      "Z": 18.939999999999998,
+      "Height": 3.0,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.0,
-      "Z": 21.03,
-      "Height": 2.4,
+      "X": 5.5,
+      "Z": 19.229999999999997,
+      "Height": 3.2,
       "Name": "C_EastHallStair"
     },
     {
-      "X": 3.8,
-      "Z": 24.0,
-      "Height": 2.43,
+      "X": 5.5,
+      "Z": 19.52,
+      "Height": 3.4000000000000004,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 5.5,
+      "Z": 19.81,
+      "Height": 3.6,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 5.5,
+      "Z": 20.099999999999998,
+      "Height": 3.8000000000000003,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 5.5,
+      "Z": 20.39,
+      "Height": 4.0,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 5.5,
+      "Z": 20.68,
+      "Height": 4.2,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 5.5,
+      "Z": 20.97,
+      "Height": 4.4,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 5.5,
+      "Z": 21.259999999999998,
+      "Height": 4.6000000000000005,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 5.5,
+      "Z": 21.549999999999997,
+      "Height": 4.800000000000001,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 6.8,
+      "Z": 26.0,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 4.6,
-      "Z": 24.0,
-      "Height": 2.43,
+      "X": 7.725,
+      "Z": 26.0,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 5.4,
-      "Z": 24.0,
-      "Height": 2.43,
+      "X": 8.65,
+      "Z": 26.0,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 6.2,
-      "Z": 24.0,
-      "Height": 2.43,
+      "X": 9.575,
+      "Z": 26.0,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 7.0,
-      "Z": 24.0,
-      "Height": 2.43,
+      "X": 10.5,
+      "Z": 26.0,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 7.0,
-      "Z": 24.0,
-      "Height": 2.43,
+      "X": 10.5,
+      "Z": 26.0,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 7.95,
-      "Z": 24.0,
-      "Height": 2.43,
+      "X": 11.55,
+      "Z": 26.0,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 8.9,
-      "Z": 24.0,
-      "Height": 2.43,
+      "X": 12.6,
+      "Z": 26.0,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 9.850000000000001,
-      "Z": 24.0,
-      "Height": 2.43,
+      "X": 13.649999999999999,
+      "Z": 26.0,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 10.8,
-      "Z": 24.0,
-      "Height": 2.43,
+      "X": 14.7,
+      "Z": 26.0,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 10.8,
-      "Z": 24.0,
-      "Height": 2.43,
+      "X": 14.7,
+      "Z": 26.0,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 11.475000000000001,
-      "Z": 24.4,
-      "Height": 2.43,
+      "X": 15.274999999999999,
+      "Z": 26.3,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 12.15,
-      "Z": 24.8,
-      "Height": 2.43,
+      "X": 15.85,
+      "Z": 26.6,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 12.825,
-      "Z": 25.200000000000003,
-      "Height": 2.43,
+      "X": 16.425,
+      "Z": 26.9,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
-      "X": 13.5,
-      "Z": 25.6,
-      "Height": 2.43,
+      "X": 17.0,
+      "Z": 27.2,
+      "Height": 4.83,
       "Name": "D_SharedHallToElderNeck"
     },
     {
@@ -1290,61 +3914,61 @@
       "Name": "05_KitchenPreparationAccessRamp"
     },
     {
-      "X": -1.1,
+      "X": 0.6999999999999997,
       "Z": -3.3,
       "Height": 0.03,
       "Name": "06_TavernAccessRamp"
     },
     {
-      "X": -1.55,
+      "X": 0.24999999999999978,
       "Z": -3.3,
       "Height": 0.10499999999999998,
       "Name": "06_TavernAccessRamp"
     },
     {
-      "X": -2.0,
+      "X": -0.20000000000000018,
       "Z": -3.3,
       "Height": 0.17999999999999997,
       "Name": "06_TavernAccessRamp"
     },
     {
-      "X": -2.45,
+      "X": -0.6500000000000001,
       "Z": -3.3,
       "Height": 0.25499999999999995,
       "Name": "06_TavernAccessRamp"
     },
     {
-      "X": -2.9,
+      "X": -1.1,
       "Z": -3.3,
       "Height": 0.32999999999999996,
       "Name": "06_TavernAccessRamp"
     },
     {
-      "X": -2.9,
+      "X": -1.1,
       "Z": -3.3,
       "Height": 0.32999999999999996,
       "Name": "06_TavernAccessRamp"
     },
     {
-      "X": -3.125,
+      "X": -1.3250000000000002,
       "Z": -3.3,
       "Height": 0.32999999999999996,
       "Name": "06_TavernAccessRamp"
     },
     {
-      "X": -3.3499999999999996,
+      "X": -1.55,
       "Z": -3.3,
       "Height": 0.32999999999999996,
       "Name": "06_TavernAccessRamp"
     },
     {
-      "X": -3.5749999999999997,
+      "X": -1.775,
       "Z": -3.3,
       "Height": 0.32999999999999996,
       "Name": "06_TavernAccessRamp"
     },
     {
-      "X": -3.8,
+      "X": -2.0,
       "Z": -3.3,
       "Height": 0.32999999999999996,
       "Name": "06_TavernAccessRamp"
@@ -1507,25 +4131,25 @@
     },
     {
       "X": 0.0,
-      "Z": 14.149999999999999,
+      "Z": 13.924999999999999,
       "Height": 0.255,
       "Name": "A_FeastNorthRamp"
     },
     {
       "X": 0.0,
-      "Z": 14.6,
+      "Z": 14.149999999999999,
       "Height": 0.18,
       "Name": "A_FeastNorthRamp"
     },
     {
       "X": 0.0,
-      "Z": 15.05,
+      "Z": 14.375,
       "Height": 0.10499999999999998,
       "Name": "A_FeastNorthRamp"
     },
     {
       "X": 0.0,
-      "Z": 15.5,
+      "Z": 14.6,
       "Height": 0.02999999999999997,
       "Name": "A_FeastNorthRamp"
     },
@@ -1536,25 +4160,25 @@
       "Name": "12_WarehouseFeastSaddle"
     },
     {
-      "X": -1.475,
+      "X": -1.2750000000000001,
       "Z": 10.4,
       "Height": 0.33,
       "Name": "12_WarehouseFeastSaddle"
     },
     {
-      "X": -2.1500000000000004,
+      "X": -1.75,
       "Z": 10.4,
       "Height": 0.33,
       "Name": "12_WarehouseFeastSaddle"
     },
     {
-      "X": -2.825,
+      "X": -2.225,
       "Z": 10.4,
       "Height": 0.33,
       "Name": "12_WarehouseFeastSaddle"
     },
     {
-      "X": -3.5,
+      "X": -2.7,
       "Z": 10.4,
       "Height": 0.33,
       "Name": "12_WarehouseFeastSaddle"
@@ -1564,461 +4188,461 @@
     {
       "X": -12.4,
       "Z": -15,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.4936,
       "Z": -14,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.716800000000001,
       "Z": -13,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.9832,
       "Z": -12,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.2064,
       "Z": -11,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.3,
       "Z": -10,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.355393586005832,
       "Z": -9,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.498250728862974,
       "Z": -8,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.693586005830905,
       "Z": -7,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.906413994169096,
       "Z": -6,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -14.101749271137027,
       "Z": -5,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -14.24460641399417,
       "Z": -4,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -14.3,
       "Z": -3,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -14.200291545189504,
       "Z": -2,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.943148688046648,
       "Z": -1,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.591545189504373,
       "Z": 0,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.208454810495628,
       "Z": 1,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.856851311953353,
       "Z": 2,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.599708454810497,
       "Z": 3,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.5,
       "Z": 4,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.477777777777778,
       "Z": 5,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.422222222222222,
       "Z": 6,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.35,
       "Z": 7,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.277777777777777,
       "Z": 8,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.222222222222221,
       "Z": 9,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.2,
       "Z": 10,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.318518518518518,
       "Z": 11,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -12.614814814814814,
       "Z": 12,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.0,
       "Z": 13,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.385185185185186,
       "Z": 14,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.681481481481482,
       "Z": 15,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.8,
       "Z": 16,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.938483965014578,
       "Z": 17,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -14.295626822157436,
       "Z": 18,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -14.78396501457726,
       "Z": 19,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -15.316034985422741,
       "Z": 20,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -15.804373177842567,
       "Z": 21,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -16.161516034985425,
       "Z": 22,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -16.3,
       "Z": 23,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -16.2272,
       "Z": 24,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -16.0536,
       "Z": 25,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -15.8464,
       "Z": 26,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -15.6728,
       "Z": 27,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -15.6,
       "Z": 28,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -15.365533709292283,
       "Z": 29,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -14.794228522074887,
       "Z": 30,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -14.084224965706447,
       "Z": 31,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.433663567545597,
       "Z": 32,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.040684854950973,
       "Z": 33,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     },
     {
       "X": -13.0,
       "Z": 33.4,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     }
   ],
   "WestFork": [
     {
       "X": -25,
       "Z": -34,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -24.896,
       "Z": -33,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -24.648,
       "Z": -32,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -24.352,
       "Z": -31,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -24.104,
       "Z": -30,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -24.0,
       "Z": -29,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -23.5,
       "Z": -28,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -22.4,
       "Z": -27,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -21.3,
       "Z": -26,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -20.8,
       "Z": -25,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -20.3736,
       "Z": -24,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -19.3568,
       "Z": -23,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -18.1432,
       "Z": -22,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -17.1264,
       "Z": -21,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -16.7,
       "Z": -20,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -16.2528,
       "Z": -19,
-      "HalfWidth": 2.86
+      "HalfWidth": 2.574
     },
     {
       "X": -15.186399999999999,
       "Z": -18,
-      "HalfWidth": 3.12
+      "HalfWidth": 2.808
     },
     {
       "X": -13.9136,
       "Z": -17,
-      "HalfWidth": 3.38
+      "HalfWidth": 3.042
     },
     {
       "X": -12.8472,
       "Z": -16,
-      "HalfWidth": 3.6399999999999997
+      "HalfWidth": 3.276
     },
     {
       "X": -12.4,
       "Z": -15,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     }
   ],
   "EastFork": [
     {
       "X": -9.6,
       "Z": -34,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -9.4856,
       "Z": -33,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -9.2128,
       "Z": -32,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -8.8872,
       "Z": -31,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -8.6144,
       "Z": -30,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -8.5,
       "Z": -29,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -8.578125,
       "Z": -28,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -8.75,
       "Z": -27,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -8.921875,
       "Z": -26,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -9.0,
       "Z": -25,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -9.1768,
       "Z": -24,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -9.5984,
       "Z": -23,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -10.1016,
       "Z": -22,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -10.5232,
       "Z": -21,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -10.7,
       "Z": -20,
-      "HalfWidth": 2.6
+      "HalfWidth": 2.34
     },
     {
       "X": -10.8768,
       "Z": -19,
-      "HalfWidth": 2.86
+      "HalfWidth": 2.574
     },
     {
       "X": -11.298399999999999,
       "Z": -18,
-      "HalfWidth": 3.12
+      "HalfWidth": 2.808
     },
     {
       "X": -11.8016,
       "Z": -17,
-      "HalfWidth": 3.38
+      "HalfWidth": 3.042
     },
     {
       "X": -12.2232,
       "Z": -16,
-      "HalfWidth": 3.6399999999999997
+      "HalfWidth": 3.276
     },
     {
       "X": -12.4,
       "Z": -15,
-      "HalfWidth": 3.9
+      "HalfWidth": 3.51
     }
   ],
   "RiverStart": -15,
   "RiverEnd": 33.4,
-  "RiverHalfWidth": 3.9,
+  "RiverHalfWidth": 3.51,
   "BridgeZs": [
     -10,
     14.47
@@ -2032,9 +4656,9 @@
     },
     {
       "Name": "O2_SupplyBridgeObservation",
-      "X": -22.3,
+      "X": -24,
       "Z": 14.47,
-      "Height": -1.2
+      "Height": -2.4
     },
     {
       "Name": "O3_PerimeterObservation",
@@ -2044,15 +4668,15 @@
     },
     {
       "Name": "SharedEnd_HallToElder",
-      "X": 7,
-      "Z": 24,
-      "Height": 2.4
+      "X": 10.5,
+      "Z": 26,
+      "Height": 4.8
     },
     {
       "Name": "PrivateStoreInsideElder",
-      "X": 18,
-      "Z": 27.7,
-      "Height": 2.4
+      "X": 20,
+      "Z": 28.3,
+      "Height": 4.8
     }
   ]
 }

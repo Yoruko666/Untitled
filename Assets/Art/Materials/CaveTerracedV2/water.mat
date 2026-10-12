@@ -25,7 +25,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _CellSize: 7.8
+    - _CellSize: 7.02
     - _FlowSpeed: 0.35
     - _PixelsPerUnit: 32
     - _Smoothness: 0.78
