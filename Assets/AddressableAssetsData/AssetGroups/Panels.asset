@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 8c0dd9b8d0d58c44a9986b40b618a11b
   m_SerializeEntries:
   - m_GUID: 18242a2a660c21940b357d1d9e04ea2e
-    m_Address: Menu
+    m_Address: UI_Menu
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
