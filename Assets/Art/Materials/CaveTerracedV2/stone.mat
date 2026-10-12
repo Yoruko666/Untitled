@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: stone
-  m_Shader: {fileID: 4800000, guid: 22a9d83739ad4467b272050a05665a5e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 10cd778a7da899e4ca282b435c510775, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -55,13 +55,15 @@ Material:
     - _Cutoff: 0.5
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _PaletteSteps: 24
+    - _PixelDensity: 12
     - _ReceiveShadows: 1
-    - _Smoothness: 0.04
+    - _Smoothness: 0.02
     - _Surface: 0
-    - _TextureStrength: 0.75
-    - _TileScale: 0.25
+    - _TextureStrength: 0.78
+    - _TileScale: 0.17
     m_Colors:
-    - _BaseColor: {r: 0.74, g: 0.73, b: 0.66, a: 1}
+    - _BaseColor: {r: 0.65, g: 0.65, b: 0.58, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

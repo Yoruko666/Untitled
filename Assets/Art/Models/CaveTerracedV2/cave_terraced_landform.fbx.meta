@@ -39,6 +39,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: wet
     second: {fileID: 2100000, guid: a9672b4d2672bb44fb901849d27c466e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood
+    second: {fileID: 2100000, guid: 4a7952195b681604a8a0f1fe842f0aa2, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

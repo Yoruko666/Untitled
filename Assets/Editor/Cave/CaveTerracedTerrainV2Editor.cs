@@ -32,11 +32,14 @@ namespace Untitled.Editor
             public float Z;
             public float Height;
             public float HalfWidth;
+            public float Width;
+            public float Depth;
         }
 
         [Serializable]
         private sealed class LayoutData
         {
+            public float PlanScale = 1;
             public LayoutPoint[] Zones;
             public LayoutPoint[] RouteSamples;
             public LayoutPoint[] RouteAnchors;
@@ -111,6 +114,7 @@ namespace Untitled.Editor
                 renderer.shadowCastingMode = renderer.name == "RiverSurface" || IsRouteOverlay(renderer.name)
                     ? ShadowCastingMode.Off : ShadowCastingMode.On;
                 renderer.receiveShadows = true;
+                if (renderer.name == "RiverSurface") renderer.gameObject.layer = 4;
                 var filter = renderer.GetComponent<MeshFilter>();
                 bool smallDetail = renderer.name.StartsWith("WaterlineStone") || renderer.name.StartsWith("DampMoss")
                     || renderer.name.Contains("EdgeStone") || renderer.name.StartsWith("LooseFloorStone")
@@ -148,7 +152,7 @@ namespace Untitled.Editor
             RenderSettings.fog = true;
             RenderSettings.fogMode = FogMode.ExponentialSquared;
             RenderSettings.fogColor = new Color(0.065f, 0.089f, 0.10f);
-            RenderSettings.fogDensity = 0.0035f;
+            RenderSettings.fogDensity = 0.0018f;
             AssetDatabase.SaveAssets();
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene, ScenePath);
@@ -184,6 +188,7 @@ namespace Untitled.Editor
             Terrain("stone", textureRoot + "cave_stone_paving.png", new Color(0.74f,0.73f,0.66f), 0.75f, 0.25f);
             Terrain("moss", textureRoot + "cave_moss_soil.png", new Color(0.62f,0.71f,0.57f), 0.80f, 0.18f);
             Terrain("path", textureRoot + "cave_earth_dry.png", new Color(0.86f,0.77f,0.65f), 0.90f, 0.21f);
+            Terrain("wood", "Assets/Art/Textures/Props/Tavern/tavern_oak_grain.png", new Color(0.50f,0.32f,0.16f), 0.65f, 0.6f);
             var water = new Material(Shader.Find("Untitled/HD2D/Cave Water")) { name = "water" };
             water.SetColor("_DeepColor", new Color(0.025f,0.15f,0.18f));
             water.SetColor("_ShallowColor", new Color(0.10f,0.38f,0.39f));
@@ -311,7 +316,7 @@ namespace Untitled.Editor
             volume.isGlobal = true;
             volume.priority = 30;
             volume.sharedProfile = profile;
-            RenderSettings.fogDensity = 0.0035f;
+            RenderSettings.fogDensity = 0.0018f;
         }
 
         private static Camera CameraAt(Transform parent, string name, Vector3 focus, float pitch, float yaw, float distance)
@@ -324,7 +329,7 @@ namespace Untitled.Editor
             var camera = go.AddComponent<Camera>();
             camera.fieldOfView = 36;
             camera.nearClipPlane = 0.15f;
-            camera.farClipPlane = 200;
+            camera.farClipPlane = 500;
             camera.backgroundColor = new Color(0.027f, 0.041f, 0.047f);
             camera.clearFlags = CameraClearFlags.SolidColor;
             camera.allowHDR = true;
@@ -353,12 +358,12 @@ namespace Untitled.Editor
             if (!profile.TryGet<ColorAdjustments>(out var colorAdjustments))
                 throw new InvalidOperationException("The cave presentation profile needs ColorAdjustments.");
             Undo.RecordObject(colorAdjustments, "Read terrain detail in cave lighting");
-            colorAdjustments.postExposure.Override(1.15f);
+            colorAdjustments.postExposure.Override(1.65f);
             EditorUtility.SetDirty(colorAdjustments);
-            RenderSettings.fogDensity = 0.0035f;
-            RenderSettings.ambientSkyColor = new Color(0.22f,0.30f,0.34f);
-            RenderSettings.ambientEquatorColor = new Color(0.18f,0.22f,0.25f);
-            RenderSettings.ambientGroundColor = new Color(0.06f,0.09f,0.10f);
+            RenderSettings.fogDensity = 0.0018f;
+            RenderSettings.ambientSkyColor = new Color(0.30f,0.38f,0.40f);
+            RenderSettings.ambientEquatorColor = new Color(0.25f,0.29f,0.29f);
+            RenderSettings.ambientGroundColor = new Color(0.13f,0.16f,0.14f);
             var oldAnchors = root.Cast<Transform>().FirstOrDefault(t => t.name.StartsWith("LayoutAnchors"));
             if (oldAnchors != null) Undo.DestroyObjectImmediate(oldAnchors.gameObject);
             var anchors = new GameObject("LayoutAnchors | areas 01-15 and route junctions");
@@ -377,7 +382,10 @@ namespace Untitled.Editor
             {
                 Undo.RecordObject(camera.transform, "Frame revised cave layout");
                 Quaternion rotation = Quaternion.Euler(pitch, yaw, 0);
-                camera.transform.localPosition = focus - rotation * Vector3.forward * distance;
+                focus.x *= data.PlanScale;
+                focus.z *= data.PlanScale;
+                camera.farClipPlane = 500;
+                camera.transform.localPosition = focus - rotation * Vector3.forward * (distance * data.PlanScale);
                 camera.transform.localRotation = rotation;
             }
             Place(cameras.Single(c => c.name.StartsWith("Main Camera")), new Vector3(1, 1, -2.5f), 42, -5, 124);
@@ -385,9 +393,10 @@ namespace Untitled.Editor
             var riverCamera = cameras.FirstOrDefault(c => c.name.StartsWith("River Camera"));
             if (riverCamera == null)
             {
-                riverCamera = CameraAt(root, "River Camera | both banks and valley", new Vector3(-14,-1,-6), 38, -12, 34);
+                riverCamera = CameraAt(root, "River Camera | both banks and valley", new Vector3(-28,-1,-12), 38, -12, 40);
                 Undo.RegisterCreatedObjectUndo(riverCamera.gameObject, "Add riverbank review camera");
             }
+            Place(riverCamera, new Vector3(-13.5f,-1,-8), 38, -12, 23);
             riverCamera.enabled = false;
             var top = cameras.FirstOrDefault(c => c.name.StartsWith("Top Camera"));
             if (top == null)
@@ -399,7 +408,7 @@ namespace Untitled.Editor
             Place(top, new Vector3(-1,0,-2), 90, 0, 75);
             top.enabled = false;
             top.orthographic = true;
-            top.orthographicSize = 54;
+            top.orthographicSize = 54 * data.PlanScale;
             top.GetUniversalAdditionalCameraData().renderPostProcessing = false;
 
             foreach (var light in root.GetComponentsInChildren<Light>())
@@ -414,39 +423,110 @@ namespace Untitled.Editor
                     case "East shelf warm bounce": position = new Vector3(18.3f, 7, 27.2f); break;
                 }
                 Undo.RecordObject(light.transform, "Follow cave regions with lighting");
+                position.x *= data.PlanScale;
+                position.z *= data.PlanScale;
                 light.transform.localPosition = position;
+                if (light.type == LightType.Point)
+                {
+                    light.range = light.name.Contains("clearing") ? 42 : 35;
+                    if (light.name.Contains("river") || light.name.Contains("River")) light.intensity = 12;
+                }
                 if (light.type == LightType.Directional)
                 {
                     Undo.RecordObject(light, "Expose cliff relief in soft side light");
                     light.transform.localRotation = Quaternion.Euler(48, -42, 0);
-                    light.intensity = 1.05f;
+                    light.intensity = 1.20f;
+                    light.color = new Color(0.80f,0.84f,0.80f);
                 }
             }
-            void Material(string name, string texture, Color tint, float strength, float scale)
-            {
-                var material = AssetDatabase.LoadAssetAtPath<Material>(Materials + "/" + name + ".mat");
-                Undo.RecordObject(material, "Use existing pixel terrain textures");
-                material.SetTexture("_BaseMap", AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Art/Textures/TerrainBasic/" + texture));
-                material.SetColor("_BaseColor", tint);
-                material.SetFloat("_TextureStrength", strength);
-                material.SetFloat("_TileScale", scale);
-                EditorUtility.SetDirty(material);
-            }
-            Material("rock", "cave_rock_face.png", new Color(0.65f,0.69f,0.72f), 0.90f, 0.13f);
-            Material("earth", "cave_earth_dry.png", new Color(0.82f,0.74f,0.61f), 0.90f, 0.21f);
-            Material("wet", "cave_river_gravel.png", new Color(0.63f,0.70f,0.62f), 0.80f, 0.22f);
-            Material("stone", "cave_stone_paving.png", new Color(0.74f,0.73f,0.66f), 0.75f, 0.25f);
-            Material("moss", "cave_moss_soil.png", new Color(0.62f,0.71f,0.57f), 0.80f, 0.18f);
+            ApplyPixelMaterials();
             var water = AssetDatabase.LoadAssetAtPath<Material>(Materials + "/water.mat");
-            Undo.RecordObject(water, "Follow river width");
+            Undo.RecordObject(water, "Use continuous reflective river water");
+            water.shader = Shader.Find("Untitled/HD2D/Terraced River Water");
             water.SetFloat("_CellSize", data.RiverHalfWidth * 2);
+            water.SetFloat("_FlowSpeed", 0.48f);
+            water.SetFloat("_Smoothness", 0.91f);
+            water.SetColor("_DeepColor", new Color(0.035f,0.16f,0.18f));
+            water.SetColor("_ShallowColor", new Color(0.13f,0.32f,0.29f));
+            water.SetColor("_FoamColor", new Color(0.35f,0.49f,0.43f));
             EditorUtility.SetDirty(water);
+            var player = root.GetComponentInChildren<PlayerEntity>(true);
+            if (player != null)
+            {
+                Undo.RecordObject(player.transform, "Move player to expanded entrance");
+                var entrance = data.Zones.Single(p => p.Id == 2);
+                player.transform.localPosition = new Vector3(entrance.X, entrance.Height + 0.06f, entrance.Z);
+                var controller = player.GetComponent<CharacterController>();
+                Undo.RecordObject(controller, "Match existing stone stair risers");
+                controller.stepOffset = 0.28f;
+            }
+            AddRiverReflections(root);
             if (SceneView.lastActiveSceneView != null)
             {
                 SceneView.lastActiveSceneView.sceneLighting = true;
-                SceneView.lastActiveSceneView.LookAt(root.position + new Vector3(2, 1, 1), Quaternion.Euler(42, -5, 0), 76);
+                SceneView.lastActiveSceneView.LookAt(root.position + new Vector3(4, 1, 2), Quaternion.Euler(42, -5, 0), 152);
             }
             DressTerrain(root, data);
+        }
+
+        private static void ApplyPixelMaterials()
+        {
+            const string cave = "Assets/Art/Sprites/Terrain/Cave/";
+            void Apply(string name, string source, Color tint, float scale, float strength, Vector4 crop)
+            {
+                var material = AssetDatabase.LoadAssetAtPath<Material>(Materials + "/" + name + ".mat");
+                Undo.RecordObject(material, "Apply native cave palette and consistent world pixels");
+                material.shader = Shader.Find("Untitled/HD2D/Terraced Pixel Terrain");
+                material.SetTexture("_BaseMap", AssetDatabase.LoadAssetAtPath<Texture2D>(source));
+                material.SetTextureOffset("_BaseMap", new Vector2(crop.x,crop.y));
+                material.SetTextureScale("_BaseMap", new Vector2(crop.z,crop.w));
+                material.SetColor("_BaseColor",tint);
+                material.SetFloat("_TileScale",scale);
+                material.SetFloat("_TextureStrength",strength);
+                material.SetFloat("_PixelDensity",12);
+                material.SetFloat("_PaletteSteps",24);
+                material.SetFloat("_Smoothness",0.02f);
+                EditorUtility.SetDirty(material);
+            }
+            // Reuse opaque interiors of the original sprite sheets; no atlas transparent borders.
+            var earthCrop = new Vector4(104f/178, 100f/178, 20f/178, 20f/178);
+            var full = new Vector4(0,0,1,1);
+            Apply("earth",cave+"cave_floor_brown_tileset.png",new Color(0.88f,0.77f,0.62f),0.50f,0.70f,earthCrop);
+            Apply("path",cave+"cave_floor_brown_tileset.png",new Color(0.96f,0.83f,0.65f),0.50f,0.66f,earthCrop);
+            Apply("wet",cave+"cave_floor_brown_tileset.png",new Color(0.53f,0.61f,0.54f),0.50f,0.70f,earthCrop);
+            Apply("moss",cave+"cave_floor_brown_tileset.png",new Color(0.44f,0.59f,0.37f),0.50f,0.70f,earthCrop);
+            Apply("rock","Assets/Art/Textures/TerrainBasic/cave_rock_face.png",new Color(0.62f,0.66f,0.66f),0.13f,0.86f,full);
+            Apply("stone","Assets/Art/Textures/TerrainBasic/cave_stone_paving.png",new Color(0.65f,0.65f,0.58f),0.17f,0.78f,full);
+            Apply("wood","Assets/Art/Textures/Props/Tavern/tavern_oak_grain.png",new Color(0.50f,0.32f,0.16f),0.6f,0.65f,full);
+        }
+
+        private static void AddRiverReflections(Transform root)
+        {
+            var old = root.Find("River Reflections");
+            if (old != null) Undo.DestroyObjectImmediate(old.gameObject);
+            var group = new GameObject("River Reflections");
+            group.transform.SetParent(root,false);
+            foreach (float z in new[] {-39f,17f,56f})
+            {
+                var go = new GameObject("Cavern environment reflection " + z);
+                go.transform.SetParent(group.transform,false);
+                go.transform.localPosition = new Vector3(-28,-1,z);
+                var probe = go.AddComponent<ReflectionProbe>();
+                probe.mode = ReflectionProbeMode.Realtime;
+                probe.refreshMode = ReflectionProbeRefreshMode.OnAwake;
+                probe.timeSlicingMode = ReflectionProbeTimeSlicingMode.AllFacesAtOnce;
+                probe.resolution = 128;
+                probe.cullingMask = ~(1 << 4);
+                probe.size = new Vector3(60,22,65);
+                probe.boxProjection = true;
+                probe.blendDistance = 12;
+                probe.intensity = 0.65f;
+                probe.clearFlags = ReflectionProbeClearFlags.SolidColor;
+                probe.backgroundColor = new Color(0.055f,0.08f,0.09f);
+                probe.nearClipPlane = 0.2f;
+                probe.farClipPlane = 130;
+            }
+            Undo.RegisterCreatedObjectUndo(group, "Capture cavern reflections for the river");
         }
 
         private static void DressTerrain(Transform root, LayoutData data)
@@ -497,7 +577,7 @@ namespace Untitled.Editor
 
             var tableNames = new[] {"BubbleTable", "DialogTable", "DialogOptionTable"};
             foreach (string tableName in tableNames)
-                if (!File.Exists("Assets/Configs/Database/Proto/" + tableName + ".bytes"))
+                if (!File.Exists("Assets/Configs/Database/" + tableName + ".bytes"))
                     throw new InvalidOperationException("Missing generated table " + tableName + ".bytes.");
 
             int undoGroup = Undo.GetCurrentGroup();
@@ -511,7 +591,8 @@ namespace Untitled.Editor
                 Undo.RegisterCreatedObjectUndo(playerObject, "Add cave player");
                 playerObject.name = "GoblinPlayer";
                 playerObject.transform.SetParent(root, false);
-                playerObject.transform.localPosition = new Vector3(0f, 0f, -22.6f);
+                var entrance = ReadLayout().Zones.Single(point => point.Id == 2);
+                playerObject.transform.localPosition = new Vector3(entrance.X, entrance.Height + 0.06f, entrance.Z);
                 player = playerObject.GetComponent<PlayerEntity>();
                 if (player == null)
                 {
@@ -549,7 +630,7 @@ namespace Untitled.Editor
 
             foreach (string tableName in tableNames)
             {
-                string assetPath = "Assets/Configs/Database/Proto/" + tableName + ".bytes";
+                string assetPath = "Assets/Configs/Database/" + tableName + ".bytes";
                 string guid = AssetDatabase.AssetPathToGUID(assetPath);
                 var entry = settings.CreateOrMoveEntry(guid, configGroup, false, false);
                 entry.address = tableName;
@@ -595,7 +676,7 @@ namespace Untitled.Editor
             {
                 for (float z = course[0].Z; z < course[course.Length-1].Z; z += 0.7f)
                 {
-                    if (ReferenceEquals(course, data.RiverCourse) && data.BridgeZs.Any(b => Mathf.Abs(z-b) < 1.85f)) continue;
+                    if (ReferenceEquals(course, data.RiverCourse) && data.BridgeZs.Any(b => Mathf.Abs(z-b) < 1.82f)) continue;
                     foreach (float side in new[] {-1f, 1f})
                     {
                         Vector3 Bank(float value) => new Vector3(Center(course,value) + side * Half(course,value), data.LowlandHeight + 1.2f, value);
@@ -603,7 +684,7 @@ namespace Untitled.Editor
                     }
                 }
             }
-            Barrier("Southern cutaway safety", new Vector3(-43,0,-41.5f), new Vector3(43,0,-41.5f));
+            Barrier("Southern cutaway safety", new Vector3(-86,0,-83), new Vector3(86,0,-83));
         }
 
         private static void CheckHeights(GameObject terrain)
@@ -611,14 +692,19 @@ namespace Untitled.Editor
             var data = ReadLayout();
             var origin = terrain.transform.parent.position;
             Physics.SyncTransforms();
+            var failures = new List<string>();
             foreach (var point in data.Zones.Concat(data.RouteSamples))
             {
                 Vector3 expected = origin + new Vector3(point.X, point.Height, point.Z);
-                if (!Physics.Raycast(expected + Vector3.up * 16, Vector3.down, out var hit, 24)
-                    || !hit.transform.IsChildOf(terrain.transform) || Mathf.Abs(hit.point.y-expected.y)>0.11f)
-                    throw new InvalidOperationException("Cave layout collision mismatch at " + point.Name + " " + expected
+                // Check the landform, excluding the player standing at the entrance.
+                var hits = Physics.RaycastAll(expected + Vector3.up * 16, Vector3.down, 24)
+                    .Where(item => item.transform.IsChildOf(terrain.transform)).OrderBy(item => item.distance).ToArray();
+                var hit = hits.FirstOrDefault();
+                if (hits.Length == 0 || Mathf.Abs(hit.point.y-expected.y)>0.11f)
+                    failures.Add("Cave layout collision mismatch at " + point.Name + " " + expected
                         + "; hit " + (hit.collider == null ? "none" : hit.transform.name + " " + hit.point));
             }
+            if (failures.Count > 0) throw new InvalidOperationException(string.Join("\n",failures));
             foreach (var renderer in terrain.GetComponentsInChildren<MeshRenderer>(true))
                 if (renderer.sharedMaterials.Any(m => m == null || ShaderUtil.ShaderHasError(m.shader)))
                     throw new InvalidOperationException("Missing material or shader error on " + renderer.name);
@@ -646,6 +732,12 @@ namespace Untitled.Editor
                 .Select(g => AssetDatabase.LoadAssetAtPath<Material>(AssetDatabase.GUIDToAssetPath(g)))
                 .ToDictionary(m => m.name);
             if (map.Count == 0) map = CreateMaterials();
+            if (!map.ContainsKey("wood"))
+            {
+                var wood = new Material(map["earth"]) { name = "wood" };
+                AssetDatabase.CreateAsset(wood, Materials + "/wood.mat");
+                map.Add("wood", wood);
+            }
             if (!map.ContainsKey("path"))
             {
                 var path = new Material(map["earth"]) { name = "path" };
@@ -671,6 +763,7 @@ namespace Untitled.Editor
                 renderer.sharedMaterials = renderer.sharedMaterials.Select(m => map[m.name]).ToArray();
                 renderer.shadowCastingMode = renderer.name == "RiverSurface" || IsRouteOverlay(renderer.name)
                     ? ShadowCastingMode.Off : ShadowCastingMode.On;
+                if (renderer.name == "RiverSurface") renderer.gameObject.layer = 4;
                 bool small = renderer.name.StartsWith("WaterlineStone") || renderer.name.StartsWith("DampMoss")
                     || renderer.name.Contains("EdgeStone") || renderer.name.StartsWith("LooseFloorStone")
                     || IsRouteOverlay(renderer.name);

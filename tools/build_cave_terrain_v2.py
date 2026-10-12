@@ -16,6 +16,7 @@ OUT = ROOT / "Assets/Art/Models/CaveTerracedV2"
 SOURCE = ROOT / "tools/art/cave_terraced_terrain_v2.blend"
 OUT.mkdir(parents=True, exist_ok=True)
 SOURCE.parent.mkdir(parents=True, exist_ok=True)
+PLAN_SCALE = 2.0  # Double XZ extents; heights and final river width remain independent.
 rng = random.Random(731)
 bpy.ops.object.select_all(action="SELECT")
 bpy.ops.object.delete(use_global=False)
@@ -28,6 +29,7 @@ for name, color in {
     "stone": (0.46, 0.43, 0.36, 1),
     "moss": (0.22, 0.31, 0.24, 1),
     "path": (0.56, 0.47, 0.34, 1),
+    "wood": (0.32, 0.21, 0.12, 1),
 }.items():
     mat = bpy.data.materials.new(name)
     mat.diffuse_color = color
@@ -133,12 +135,13 @@ import json
 
 river_course=[(-12.4,-15),(-13.3,-10),(-14.3,-3),(-12.5,4),(-12.2,10),
               (-13.8,16),(-16.3,23),(-15.6,28),(-13,33.4)]
-west_fork=[(-25,-34),(-24,-29),(-20.8,-25),(-16.7,-20),(-12.4,-15)]
-east_fork=[(-9.6,-34),(-8.5,-29),(-9,-25),(-10.7,-20),(-12.4,-15)]
-river_half=3.9*0.9  # Retain the V2 course, reduce all channel widths to 90 percent.
+west_fork=[(-27,-34),(-25,-29),(-21.8,-25),(-16.7,-20),(-12.4,-15)]
+east_fork=[(-7.6,-34),(-7.4,-29),(-8.4,-25),(-10.7,-20),(-12.4,-15)]
+river_half=3.9*0.9/PLAN_SCALE
+fork_width=2.34/PLAN_SCALE
 low=-2.4
 high=4.8
-water_height=low-0.55
+water_height=low-0.65
 
 
 def center(course,z):
@@ -154,7 +157,7 @@ def river_center(z):
 
 
 def fork_half(z):
-    return 2.34+(river_half-2.34)*max(0,min(1,(z+20)/5))
+    return fork_width+(river_half-fork_width)*max(0,min(1,(z+20)/5))
 
 
 def shore(side,z):
@@ -181,9 +184,8 @@ west_outline += [(shore(-1,z)-2.6,z) for z in range(-33,30)]
 west_outline += [(-21,33),(-25,31),
                 (-30,27),(-30.5,20),(-30,12),(-31,5),(-31,-4),(-31,-14),(-34,-24),(-36,-31)]
 platform("RiverbankLowland_Minus2p4m",west_outline,low,-6,"wet",land)
-upper_outline = [(-9.2,21.6),(-3.25,21.6),(-3.25,21.65),(0.25,21.65),(0.25,21.6),
-                 (4.15,21.6),(4.15,21.65),(6.85,21.65),(6.85,21.6),(8.5,22.2),
-                 (9,27.8),(5.5,32),(-1,33),(-7.8,30.5),(-9.6,26)]
+upper_outline = [(-9.2,25.0),(-5.8,24.8),(-1,25.1),(3.8,24.9),(7.8,25.5),
+                 (9,28.0),(5.5,32),(-1,33),(-7.8,30.5),(-9.6,27)]
 platform("09_AltarHallTerrace_Plus4p8m",upper_outline,high,-0.2,"earth",land)
 elder_outline = [(14,24),(17,23.5),(21,24),(23,26),
                  (22,30),(18.5,31.3),(14.5,29.5)]
@@ -200,7 +202,7 @@ zones = [
     (6,"Tavern",-4.0,-3.3,0.30,2.8,2.5,"earth"),
     (7,"Casino",11.8,-0.7,0.30,3.6,2.5,"stone"),
     (8,"Feast",2.3,10.4,0.30,4.5,3.1,"earth"),
-    (9,"AltarHall",-1.5,26.5,high,7.7,5.4,"earth"),
+    (9,"AltarHall",-1.5,28.5,high,7.2,3.2,"earth"),
     (10,"Elder",18.3,27.2,high,3.6,3.0,"earth"),
     (11,"Planting",-24,7.8,low,3.3,4.0,"moss"),
     (12,"Warehouse",-2.7,10.4,0.30,2.1,3.2,"stone"),
@@ -251,11 +253,11 @@ def contour(course,start,end,side,width):
 # One concave water mesh gives a continuous Y confluence without overlapping water surfaces.
 outline=contour(river_course,33.4,-15,-1,lambda z:river_half)
 outline+=contour(west_fork,-15,-34,-1,fork_half)[1:]
-outline += [(west_fork[0][0]+2.34*math.cos(a),-34+2.34*math.sin(a),(1+math.cos(a))/2)
+outline += [(west_fork[0][0]+fork_width*math.cos(a),-34+fork_width*math.sin(a),(1+math.cos(a))/2)
             for a in [-math.pi+math.pi*i/12 for i in range(1,12)]]
 outline+=contour(west_fork,-34,-20.8,1,fork_half)
 outline+=contour(east_fork,-20.8,-34,-1,fork_half)
-outline += [(east_fork[0][0]+2.34*math.cos(a),-34+2.34*math.sin(a),(1+math.cos(a))/2)
+outline += [(east_fork[0][0]+fork_width*math.cos(a),-34+fork_width*math.sin(a),(1+math.cos(a))/2)
             for a in [-math.pi+math.pi*i/12 for i in range(1,12)]]
 outline+=contour(east_fork,-34,-15,1,fork_half)
 outline+=contour(river_course,-15,33.4,1,lambda z:river_half)[1:]
@@ -268,6 +270,7 @@ vectors=[Vector(v) for v in verts]
 lookup={tuple(v):i for i,v in enumerate(vectors)}
 faces=[tuple(v if isinstance(v,int) else lookup[tuple(v)] for v in tri) for tri in tessellate_polygon([vectors])]
 water=mesh("RiverSurface",verts,faces,["water"],parent=river)
+mesh("Riverbed_VisibleThroughWater",[(x,z,water_height-1.7) for x,z,_ in verts],faces,["wet"],parent=river)
 colors=water.data.color_attributes.new(name="Banks",type="BYTE_COLOR",domain="CORNER")
 for poly in water.data.polygons:
     for loop in poly.loop_indices:
@@ -335,25 +338,42 @@ path("B_SouthSupplyEntrance",[(-33,-32,low+0.03),(-31,-27,low+0.03),(-27,-21,low
 path("B_WestBankSupplyRoute",[(-24,-10,low+0.03),
                              (-24,-1,low+0.03),(-24,7.8,low+0.03),(-24,14.47,low+0.03)],3.0,"wet",check=True)
 
+def timber(name,x,z,h,sx,sz,sh):
+    outline=[(x-sx/2,z-sz/2),(x+sx/2,z-sz/2),(x+sx/2,z+sz/2),(x-sx/2,z+sz/2)]
+    obj=platform(name,outline,h+sh/2,h-sh/2,"wood",connections)
+    for polygon in obj.data.polygons:
+        polygon.material_index=0
+    return obj
+
 for name,z in [("EntranceBridge",-10),("SupplyBridge",14.47)]:
     x=river_center(z)
     half=river_half+0.5
-    path(name,[(x-half,z,low+0.03),(x,z,low+0.03),(x+half,z,low+0.03)],2.8,"stone",check=True)
-    path(name+"WestLanding",[(-24,z,low+0.03),(x-half,z,low+0.03)],2.8,"wet",check=True)
-    # Walkable stone stairs expose the full central cliff at each crossing.
+    # Continuous hidden deck collider lies flush under separate wooden planks.
+    deck=path(name+"TimberDeck",[(x-half,z,low+0.03),(x,z,low+0.03),(x+half,z,low+0.03)],1.85,"wood",check=True)
+    for polygon in deck.data.polygons: polygon.material_index=0
+    for vertex in deck.data.vertices: vertex.co.z -= 0.10
+    count=math.ceil(half*2/0.19)
+    for j in range(count):
+        px=x-half+(j+.5)*half*2/count
+        timber(name+"_Plank_%02d"%j,px,z,low-.03,half*2/count-.025,1.85,0.12)
+    for side in (-1,1):
+        timber(name+"_LongBeam_%d"%side,x,z+side*.68,low-.2,half*2+.3,.14,.28)
+        for j,offset in enumerate((-half,-half*.42,half*.42,half)):
+            bottom=water_height-2.0
+            top=low+1.05
+            timber(name+"_SubmergedPile_%d_%d"%(side,j),x+offset,z+side*.89,
+                   (top+bottom)/2,.14,.14,top-bottom)
+        timber(name+"_Handrail_%d"%side,x,z+side*.89,low+.85,half*2+.15,.09,.12)
+    path(name+"WestLanding",[(-24,z,low+0.03),(x-half,z,low+0.03)],1.85,"wet",check=True)
     for i in range(12):
         sx=x+half+0.12+i*0.30
         h=low+(i+1)*0.2
-        platform(name+"EastStair_%02d"%(i+1),[(sx,z-1.4),(sx+0.36,z-1.4),
-                 (sx+0.36,z+1.4),(sx,z+1.4)],h,low-0.1,"stone",connections)
-        route_samples.append(dict(X=sx+0.18,Z=z,Height=h,Name=name+"EastStair"))
-    path(name+"EastLanding",[(x+half+3.72,z,0.03),(-5.2,z,0.03)],2.8,"earth",check=True)
-    for edge in (-1,1):
-        for j in range(11):
-            instance(modules[j%3],name+"_EdgeStone_%d_%d"%(j,edge),
-                     (x-half+j*half*2/10,z+edge*1.47,low-0.08),(0.39,0.3,0.30),j*37,connections)
-path("B_WestHallAscent",[(-5.2,14.47,0.03),(-5.2,16.8,0.03),(-9.8,19.3,1.4),
-                         (-11.1,25.8,high+0.03),(-6.7,26,high+0.03)],2.0,check=True)
+        platform(name+"EastStair_%02d"%(i+1),[(sx,z-.925),(sx+.36,z-.925),
+                 (sx+.36,z+.925),(sx,z+.925)],h,low-.1,"stone",connections)
+        route_samples.append(dict(X=sx+.18,Z=z,Height=h,Name=name+"EastStair"))
+    path(name+"EastLanding",[(x+half+3.72,z,.03),(-5.2,z,.03)],1.85,"earth",check=True)
+path("B_WestHallAscent",[(-5.2,14.47,0.03),(-6.8,16.5,0.03),(-10.2,18.8,1.4),(-11.4,22,2.5),
+                         (-11.1,24.8,3.5),(-10.2,26,high+0.03),(-9.2,27,high+0.03),(-6.7,27,high+0.03)],2.0,check=True)
 
 # A stays in the center; C follows the far eastern boundary before turning to the hall.
 path("A_CentralPublicApproach",[(0,-30,0.035),(0,-22.6,0.035),(0,-18.47,0.035),
@@ -365,14 +385,35 @@ path("C_EasternPerimeterRoute",[(0,-30,0.035),(26.1,-30,0.035),(26.1,-22.6,0.035
                                (26.0,10.8,0.035),(26.0,19.0,0.035),(14.0,19.0,0.035),
                                (10.5,17.5,0.035),(8.5,14.7,0.035),(5.5,14.7,0.035)],3.0)
 
-for name,x,width in [("A_CentralHallStair",-1.5,3.4),("C_EastHallStair",5.5,2.6)]:
-    for i in range(24):
-        z=14.7+i*0.29
-        h=(i+1)*0.2
-        platform(name+"_%02d"%(i+1),[(x-width/2,z),(x+width/2,z),
-                                     (x+width/2,z+0.34),(x-width/2,z+0.34)],
-                 h,-0.03,"stone",connections)
-        route_samples.append(dict(X=x,Z=z+0.18,Height=h,Name=name))
+# The ascent winds across two inhabited foothill benches before the ceremonial plateau.
+platform("HallFoothill_LowerLanding_1p2",[(-5.5,17.8),(-3.6,17.7),(-1.8,17.4),(.2,17.65),(1.9,17.45),(3.7,17.8),(5.7,17.8),(6.8,18.7),
+         (4.5,19.7),(2,19.5),(-.5,19.8),(-3.5,19.5),(-5.8,18.8)],1.2,-0.15,"earth",land)
+platform("HallFoothill_MiddleLanding_2p4",[(-5.0,21.5),(-3.7,21.2),(-1,21.4),(1.5,21.1),(3.8,21.35),(6.2,21.5),(8.8,22.2),
+         (8.5,24.4),(6.1,24.6),(3.2,24.5),(.8,24.7),(-2.4,24.4),(-5.7,24.0)],2.4,-0.15,"earth",land)
+ascent=[(-1.5,14.6,0.03),(-2.8,15.2,0.03),(-4.2,16.5,0.55),
+        (-4.8,18,1.23),(-3,18.5,1.23),(3,18.5,1.23),(6,18.5,1.23),(8,19.4,1.65),
+        (9.5,21.1,2.43),(8.0,22.5,2.43),(3,22.5,2.43),(-1,22.5,2.43),
+        (-3.0,23.5,3.1),(-6.5,24.7,4.83),(-6.5,27,4.83)]
+path("A_WindingHallProcession",ascent,2.1,"earth",check=True)
+# Broken, earth-covered ramp shoulders soften the ascent's retaining edges.
+for side in (-1,1):
+    shoulder_verts=[]
+    for i,(x,z,h) in enumerate(ascent):
+        before=Vector(ascent[max(0,i-1)][:2]); after=Vector(ascent[min(len(ascent)-1,i+1)][:2])
+        normal=Vector((-(after-before).y,(after-before).x)).normalized()*side
+        inner=1.07; outer=inner+1.0+0.2*math.sin(i*1.7)
+        shoulder_verts += [(x+normal.x*inner,z+normal.y*inner,h-.025),
+                           (x+normal.x*outer,z+normal.y*outer,max(-.06,h-1.0))]
+    shoulder_faces=[(2*i,2*i+1,2*i+3,2*i+2) for i in range(len(ascent)-1)]
+    if side<0: shoulder_faces=[tuple(reversed(f)) for f in shoulder_faces]
+    mesh("HallAscentWeatheredShoulder_%d"%side,shoulder_verts,shoulder_faces,["earth"],parent=land)
+east_ascent=[(17,19,0.03),(14,16.2,0.03),(11.8,16.5,0.3),
+             (9,16.7,0.85),(7,17,1.23),(5,18.5,1.23)]
+path("C_LivingQuarterToHallFoothill",east_ascent,2.2,"earth",check=True)
+# A dedicated second path from the east food-hall door to the hearth plaza.
+feast_hearth=[(5.4,9.4,0.33),(6.5,8.1,0.33),(7.4,6.7,0.03),
+             (6.8,4.6,0.03),(5.3,2.3,0.03),(3.8,0.1,0.03),(1.5,-2.9,0.03)]
+path("FeastToHearthGardenWalk",feast_hearth,1.6,"path",check=True)
 path("D_SharedHallToElderNeck",[(6.8,26,high+0.03),(10.5,26,high+0.03),
                                (14.7,26,high+0.03),(17,27.2,high+0.03)],2.6,check=True)
 
@@ -398,6 +439,9 @@ for number in (3,4,5,6,7,8,12):
 
 # Gray links in the plan are preserved as open corridors, not additional river crossings.
 clear_routes=[
+    ("HallProcession",ascent,2.1),
+    ("LivingQuarterAscent",east_ascent,2.2),
+    ("FoodHallHearthWalk",feast_hearth,1.6),
     ("A_Central",[(0,-30,0),(0,-22.6,0),(0,-18.47,0),(1.5,-2.9,0),
                    (2.3,4.5,0),(0,5.8,0),(0,8.2,0.3),(0,12,0.3),(-1.5,14.7,0)],3.5),
     ("C_East",[(0,-30,0),(26.1,-30,0),(26.1,-22.6,0),(26.1,-12.6,0),
@@ -481,6 +525,22 @@ for outline,h in [(upper_outline,0.1),(elder_outline,0.1)]:
             size=rng.uniform(0.8,1.3)
             instance(modules[i%3],"HighCliffFoot_%03d"%len(dressing.children),
                      (x,z,h),(size,size*0.8,size*1.1),rng.uniform(0,360),dressing)
+# Talus and exposed strata turn cut platforms into a weathered hillside.
+for i,(x,z,h,w,d,height) in enumerate([
+    (-7.0,24.5,.1,1.0,.65,2.7),(-5.8,24.6,.2,.7,.55,3.4),
+    (.2,24.7,.1,.8,.55,3.1),(2.1,24.6,.1,1.1,.65,3.4),(5.2,25.0,.1,1.0,.7,3.3),
+    (-.6,16.9,-.1,.7,.45,1.0),(1.9,17.1,-.1,.85,.45,1.1),
+    (-4.8,20.9,.0,.7,.6,1.8),(.2,20.8,.1,.75,.4,1.8),(3.7,21.0,.0,.8,.5,1.9)]):
+    instance(modules[i%3],"FoothillWeatheredCrag_%02d"%i,(x,z,h),(w,d,height),i*29,dressing)
+# Smaller wall buttresses break up the silhouette of the large structural masses.
+for i,(a,b) in enumerate(zip(perimeter,perimeter[1:])):
+    if i==9: continue
+    x,z=(a[0]+b[0])*.5,(a[1]+b[1])*.5
+    inset=1.8
+    length=math.hypot(x,z)
+    instance(modules[(i+2)%3],"WallInnerButtress_%02d"%i,
+             (x-x/length*inset,z-z/length*inset,-1.6),
+             (rng.uniform(1.1,1.7),rng.uniform(1.3,2.0),rng.uniform(3.2,5.8)),i*19,walls)
 for i in range(155):
     z=rng.uniform(-33,32)
     if any(abs(z-b)<2.0 for b in bridge_zs):
@@ -582,6 +642,27 @@ metadata=dict(Zones=[dict(Id=n,Name=name,X=x,Z=z,Height=h) for n,name,x,z,h,*_ i
                   ("O1_EntranceObservation",0,-18.47,0),("O2_SupplyBridgeObservation",-24,14.47,low),
                   ("O3_PerimeterObservation",24,2.6,0),("SharedEnd_HallToElder",10.5,26,high),
                   ("PrivateStoreInsideElder",20,28.3,high)]])
+for field in ("Zones", "Decorations", "RouteSamples", "RouteAnchors", "RiverCourse", "WestFork", "EastFork"):
+    for point in metadata[field]:
+        point["X"] *= PLAN_SCALE
+        point["Z"] *= PLAN_SCALE
+        if "HalfWidth" in point:
+            point["HalfWidth"] *= PLAN_SCALE
+for field in ("RiverStart", "RiverEnd", "RiverHalfWidth"):
+    metadata[field] *= PLAN_SCALE
+metadata["BridgeZs"] = [z*PLAN_SCALE for z in bridge_zs]
+metadata["PlanScale"] = PLAN_SCALE
+metadata["Zones"] = [dict(item, Width=zones[i][5]*2*PLAN_SCALE, Depth=zones[i][6]*2*PLAN_SCALE)
+                     for i,item in enumerate(metadata["Zones"])]
+# Bake plan expansion into individual meshes and transforms, retaining editable unit-scale roots.
+for obj in terrain.children_recursive:
+    if obj.type == "MESH":
+        obj.data=obj.data.copy()
+        for v in obj.data.vertices:
+            v.co.x *= PLAN_SCALE
+            v.co.y *= PLAN_SCALE
+    obj.location.x *= PLAN_SCALE
+    obj.location.y *= PLAN_SCALE
 (OUT/"cave_terraced_layout.json").write_text(json.dumps(metadata,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 
 
