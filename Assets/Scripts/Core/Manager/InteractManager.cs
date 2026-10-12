@@ -5,10 +5,10 @@ namespace Untitled
 {
     public class InteractManager : ManagerBase<InteractManager>
     {
-        private readonly List<IInteractable> candidates = new();
+        private readonly List<InteractableBase> candidates = new();
         private int index;
 
-        public IInteractable Current
+        public InteractableBase Current
         {
             get
             {
@@ -24,13 +24,13 @@ namespace Untitled
             EventCenter.Subscribe<int>(GameEventType.ScrollSelect, OnScrollSelect);
         }
 
-        public void Enter(IInteractable interactable)
+        public void Enter(InteractableBase interactable)
         {
             if (interactable == null || candidates.Contains(interactable)) return;
             candidates.Add(interactable);
         }
 
-        public void Exit(IInteractable interactable)
+        public void Exit(InteractableBase interactable)
         {
             if (interactable == null || !candidates.Remove(interactable)) return;
 

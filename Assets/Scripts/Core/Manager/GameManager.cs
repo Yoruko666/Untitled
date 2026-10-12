@@ -12,39 +12,13 @@ namespace Untitled
         {
             base.Initialize();
             GameData = new GameData();
-            EventCenter.Subscribe(GameEventType.ToggleESC, OnToggleMenu);
         }
 
-        public void OpenMenu()
+        public void SetPaused(bool paused)
         {
-            Pause();
-            if (UIManager.Instance.Open(UIPanel.Menu) == null) Resume();
-        }
-
-        public void CloseMenu()
-        {
-            UIManager.Instance.Close(UIPanel.Menu);
-            Resume();
-        }
-
-        public void Pause()
-        {
-            if (IsPaused) return;
-            IsPaused = true;
-            Time.timeScale = 0f;
-        }
-
-        public void Resume()
-        {
-            if (!IsPaused) return;
-            IsPaused = false;
-            Time.timeScale = 1f;
-        }
-
-        private void OnToggleMenu()
-        {
-            if (UIManager.Instance.IsOpen(UIPanel.Menu)) CloseMenu();
-            else OpenMenu();
+            if (IsPaused == paused) return;
+            IsPaused = paused;
+            Time.timeScale = paused ? 0f : 1f;
         }
     }
 }
