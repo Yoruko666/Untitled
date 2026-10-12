@@ -1,6 +1,6 @@
 # HD-2D 基础地形素材
 
-参考 Props 中木箱、石槽和帐篷的硬边像素、土褐／灰色配色，结合洞穴聚落、河岸、台地与木桥需求生成。此套为首版可试用素材；尚未放入场景或完成 Unity Editor 验收。
+九张表面贴图已参考 Props 的柴堆与 CaveBasics 的地表／岩石素材重绘为粗颗粒像素风。最终 PNG 为实际 64 × 64、每张最多 8 色；材质引用与资源 GUID 保持原样。尚未完成本轮 Unity Editor 验收。
 
 ## 资源
 
@@ -25,7 +25,7 @@
 
 ## 导入与使用
 
-- 九张表面贴图和岩石／石笋图集实际为 1254 × 1254，四张补充图集为 1536 × 1024；保留生成原图，未二次缩放。生成图具有像素外观，但不等同于原 Props 的原生低分辨率像素网格。
+- 九张表面贴图实际为 64 × 64，经 nearest-neighbor 缩小与 8 色收敛，不使用 dithering。岩石／石笋图集仍为 1254 × 1254，四张补充图集仍为 1536 × 1024，本轮未修改图集。
 - 表面贴图：Default、sRGB、Point、Repeat、关闭 mipmaps、无压缩、关闭 NPOT 缩放。用于具有 UV 的 3D 地面与墙体；场景碰撞、高度和厚度仍由原有几何负责。
 - 透明图集：RGBA、Sprite Single、Point、Clamp、无压缩、关闭 mipmaps、PPU 150、底部中心 pivot，沿用 Props 导入习惯。尚未切割，也未制作 Prefab。切分前将 Sprite Mode 改为 Multiple，再在 Sprite Editor 中按六个完整轮廓手工切分并 Apply；顶部一排为三种岩石，底部一排为单石笋、石笋群与苔藓巨石。
 - 图集经过放大，切分后的 PPU 150 仅是初始设置；放入场景时按角色比例调整，不能从 PNG 尺寸推定实际世界尺寸。岩石 Sprite 适合侧边细节；大型围岩与遮挡继续使用 3D 网格。
@@ -46,4 +46,4 @@
 2. 调整 Tiling 为 2 × 2 或 4 × 4，从实际镜头检查接缝、重复感和与现有 Props 的比例。
 3. 切分图集，放一块岩石和一组石笋在现有角色旁，检查透明边缘、遮挡与受光。
 
-生成方式为内置 imagegen；完整提示词见 [生成记录](../../../../docs/terrain-basics-generation-prompts.md)。已检查 PNG 可读取、透明通道、导入设置和材质引用；未运行 Editor、Play Mode 或构建。
+生成方式为内置 imagegen；本轮表面贴图完整提示词见 [64px 重绘记录](../../../../docs/cave-textures-64px-prompts.md)，图集原提示词见 [初版生成记录](../../../../docs/terrain-basics-generation-prompts.md)。已检查本轮 PNG 尺寸、色数、不透明性及 `.meta` 未变；未运行 Editor、Play Mode 或构建。

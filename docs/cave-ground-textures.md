@@ -1,5 +1,7 @@
 # 洞穴地面纹理候选
 
+当前三张 `Assets/Art/Textures/CaveHD2D/` 贴图已重绘并替换为实际 64 × 64、每张最多 8 色的不透明 PNG。文件名、GUID 和材质绑定沿用原资源；未进行本轮 Unity Editor 验收。完整提示词见 [64px 重绘记录](cave-textures-64px-prompts.md)。以下为初版生成记录。
+
 两张素材由 GPT 内置 imagegen 技能生成，以用户素材包中的 `06_image-06.png`（64×64 细颗粒泥土）为风格参考。
 
 | 素材 | 用途 | 实际尺寸 |

@@ -1,0 +1,81 @@
+# 洞穴表面贴图 64px 重绘
+
+生成方式：内置 imagegen。参考图只用于粗颗粒像素风与配色，原参考素材未修改。
+
+参考：`Assets/Art/Sprites/Terrain/CaveBasics/cave_ground_patches_sheet.png`、`cave_rocks_stalagmites_sheet.png`，以及 `Assets/Art/Sprites/Props/Kitchen/firewood_pile.png`。
+
+12 张最终 PNG 均为实际 64 × 64、完全不透明、每张最多 8 色。生成工具输出较大的图片，交付前用 nearest-neighbor 缩小并收敛为 8 色，不使用 dithering。64px 是交付尺寸，不能据此声称生成工具原生支持此尺寸。保留原文件名和 `.meta`，不修改材质与场景。生成要求中的色数与无缝性是目标；最终色数和尺寸已检查，Unity 中的接缝、受光与像素密度尚需人工确认。
+
+以下为实际提交的完整提示词。
+
+## TerrainBasic/cave_earth_dry
+
+```text
+Use case: style-transfer. Asset type: one square repeatable opaque albedo texture for Unity HD-2D environment, full bleed, no borders, no text, no grid overlay. Reference image 1 is cave ground patches, reference image 2 rock sprites, reference image 3 a tiny firewood sprite: use only their coarse pixel-art style and muted earthy palette, NOT their object layout or transparent backdrop. Redraw a new material tile, don't reproduce a sprite sheet. Strict intentionally simple retro pixel art, as if hand-painted on a 64x64 pixel canvas enlarged with nearest neighbor. Clearly visible large square pixel steps, clean solid-color pixel clusters, restrained palette of 8-12 colors, 2-3 shade levels per material. Low detail, no anti-aliasing, no blur, no smooth gradients, no photorealism, no tiny noisy dithering. Flat even albedo lighting, no vignette, no baked directional cast shadows, no central composition. All four edges should match for seamless repeating across a large surface; features may cross edges. Subject: Compacted dry cave earth. Muted warm taupe-brown, broad quiet soil clusters, just 8-12 small embedded gray stones, a few short broken cracks. Ground must remain visually quiet.
+```
+
+## TerrainBasic/cave_earth_wet
+
+```text
+Use case: style-transfer. Asset type: one square repeatable opaque albedo texture for Unity HD-2D environment, full bleed, no borders, no text, no grid overlay. Reference image 1 is cave ground patches, reference image 2 rock sprites, reference image 3 a tiny firewood sprite: use only their coarse pixel-art style and muted earthy palette, NOT their object layout or transparent backdrop. Redraw a new material tile, don't reproduce a sprite sheet. Strict intentionally simple retro pixel art, as if hand-painted on a 64x64 pixel canvas enlarged with nearest neighbor. Clearly visible large square pixel steps, clean solid-color pixel clusters, restrained palette of 8-12 colors, 2-3 shade levels per material. Low detail, no anti-aliasing, no blur, no smooth gradients, no photorealism, no tiny noisy dithering. Flat even albedo lighting, no vignette, no baked directional cast shadows, no central composition. All four edges should match for seamless repeating across a large surface; features may cross edges. Subject: Damp dark cave mud. Deep desaturated brown soil, broad irregular darker damp patches, sparse tiny slate stones, only a few restrained flat highlights; no puddles or glossy realism.
+```
+
+## TerrainBasic/cave_farm_soil
+
+```text
+Use case: style-transfer. Asset type: one square repeatable opaque albedo texture for Unity HD-2D environment, full bleed, no borders, no text, no grid overlay. Reference image 1 is cave ground patches, reference image 2 rock sprites, reference image 3 a tiny firewood sprite: use only their coarse pixel-art style and muted earthy palette, NOT their object layout or transparent backdrop. Redraw a new material tile, don't reproduce a sprite sheet. Strict intentionally simple retro pixel art, as if hand-painted on a 64x64 pixel canvas enlarged with nearest neighbor. Clearly visible large square pixel steps, clean solid-color pixel clusters, restrained palette of 8-12 colors, 2-3 shade levels per material. Low detail, no anti-aliasing, no blur, no smooth gradients, no photorealism, no tiny noisy dithering. Flat even albedo lighting, no vignette, no baked directional cast shadows, no central composition. All four edges should match for seamless repeating across a large surface; features may cross edges. Subject: Cultivated cave farm soil. Warm dark umber, 5 broad parallel horizontal furrows separated by chunky turned-soil clods. Simple rhythm, no sprouts, no plants.
+```
+
+## TerrainBasic/cave_moss_soil
+
+```text
+Use case: style-transfer. Asset type: one square repeatable opaque albedo texture for Unity HD-2D environment, full bleed, no borders, no text, no grid overlay. Reference image 1 is cave ground patches, reference image 2 rock sprites, reference image 3 a tiny firewood sprite: use only their coarse pixel-art style and muted earthy palette, NOT their object layout or transparent backdrop. Redraw a new material tile, don't reproduce a sprite sheet. Strict intentionally simple retro pixel art, as if hand-painted on a 64x64 pixel canvas enlarged with nearest neighbor. Clearly visible large square pixel steps, clean solid-color pixel clusters, restrained palette of 8-12 colors, 2-3 shade levels per material. Low detail, no anti-aliasing, no blur, no smooth gradients, no photorealism, no tiny noisy dithering. Flat even albedo lighting, no vignette, no baked directional cast shadows, no central composition. All four edges should match for seamless repeating across a large surface; features may cross edges. Subject: Cave moss soil. Dark taupe earth with broad irregular connected muted olive moss islands covering about half the tile, sparse gray stones. Moss as flat chunky green clusters, no individual leaves.
+```
+
+## TerrainBasic/cave_river_gravel
+
+```text
+Use case: style-transfer. Asset type: one square repeatable opaque albedo texture for Unity HD-2D environment, full bleed, no borders, no text, no grid overlay. Reference image 1 is cave ground patches, reference image 2 rock sprites, reference image 3 a tiny firewood sprite: use only their coarse pixel-art style and muted earthy palette, NOT their object layout or transparent backdrop. Redraw a new material tile, don't reproduce a sprite sheet. Strict intentionally simple retro pixel art, as if hand-painted on a 64x64 pixel canvas enlarged with nearest neighbor. Clearly visible large square pixel steps, clean solid-color pixel clusters, restrained palette of 8-12 colors, 2-3 shade levels per material. Low detail, no anti-aliasing, no blur, no smooth gradients, no photorealism, no tiny noisy dithering. Flat even albedo lighting, no vignette, no baked directional cast shadows, no central composition. All four edges should match for seamless repeating across a large surface; features may cross edges. Subject: Cave river gravel. Muted gray and taupe irregular rounded pebbles of medium size covering ground with dark brown dirt gaps. Approximately 35 distinct pebbles, each only 2-3 color facets, no dense noise.
+```
+
+## TerrainBasic/cave_rock_face
+
+```text
+Use case: style-transfer. Asset type: one square repeatable opaque albedo texture for Unity HD-2D environment, full bleed, no borders, no text, no grid overlay. Reference image 1 is cave ground patches, reference image 2 rock sprites, reference image 3 a tiny firewood sprite: use only their coarse pixel-art style and muted earthy palette, NOT their object layout or transparent backdrop. Redraw a new material tile, don't reproduce a sprite sheet. Strict intentionally simple retro pixel art, as if hand-painted on a 64x64 pixel canvas enlarged with nearest neighbor. Clearly visible large square pixel steps, clean solid-color pixel clusters, restrained palette of 8-12 colors, 2-3 shade levels per material. Low detail, no anti-aliasing, no blur, no smooth gradients, no photorealism, no tiny noisy dithering. Flat even albedo lighting, no vignette, no baked directional cast shadows, no central composition. All four edges should match for seamless repeating across a large surface; features may cross edges. Subject: Cave rock wall surface. Charcoal slate-gray with muted warm taupe facets, about 14 large irregular angular interlocking rock plates separated by thin dark cracks. Surface texture viewed straight on; no projecting stone towers, no perspective.
+```
+
+## TerrainBasic/cave_stone_paving
+
+```text
+Use case: style-transfer. Asset type: one square repeatable opaque albedo texture for Unity HD-2D environment, full bleed, no borders, no text, no grid overlay. Reference image 1 is cave ground patches, reference image 2 rock sprites, reference image 3 a tiny firewood sprite: use only their coarse pixel-art style and muted earthy palette, NOT their object layout or transparent backdrop. Redraw a new material tile, don't reproduce a sprite sheet. Strict intentionally simple retro pixel art, as if hand-painted on a 64x64 pixel canvas enlarged with nearest neighbor. Clearly visible large square pixel steps, clean solid-color pixel clusters, restrained palette of 8-12 colors, 2-3 shade levels per material. Low detail, no anti-aliasing, no blur, no smooth gradients, no photorealism, no tiny noisy dithering. Flat even albedo lighting, no vignette, no baked directional cast shadows, no central composition. All four edges should match for seamless repeating across a large surface; features may cross edges. Subject: Cave settlement stone paving viewed top down. Approximately 18 chunky irregular flat gray stone slabs, narrow dark taupe joints, 2-3 flat shades per slab. Subtle warm edge accents. No dense speckles.
+```
+
+## TerrainBasic/cave_water_calm
+
+```text
+Use case: style-transfer. Asset type: one square repeatable opaque albedo texture for Unity HD-2D environment, full bleed, no borders, no text, no grid overlay. Reference image 1 is cave ground patches, reference image 2 rock sprites, reference image 3 a tiny firewood sprite: use only their coarse pixel-art style and muted earthy palette, NOT their object layout or transparent backdrop. Redraw a new material tile, don't reproduce a sprite sheet. Strict intentionally simple retro pixel art, as if hand-painted on a 64x64 pixel canvas enlarged with nearest neighbor. Clearly visible large square pixel steps, clean solid-color pixel clusters, restrained palette of 8-12 colors, 2-3 shade levels per material. Low detail, no anti-aliasing, no blur, no smooth gradients, no photorealism, no tiny noisy dithering. Flat even albedo lighting, no vignette, no baked directional cast shadows, no central composition. All four edges should match for seamless repeating across a large surface; features may cross edges. Subject: Calm underground river surface viewed top down. Desaturated dark teal-blue, broad flat quiet water regions, sparse short stepped horizontal ripple lines in muted lighter teal, about 12 ripples. No foam, no realistic caustics, no dense wave network.
+```
+
+## TerrainBasic/cave_wood_planks
+
+```text
+Use case: style-transfer. Asset type: one square repeatable opaque albedo texture for Unity HD-2D environment, full bleed, no borders, no text, no grid overlay. Reference image 1 is cave ground patches, reference image 2 rock sprites, reference image 3 a tiny firewood sprite: use only their coarse pixel-art style and muted earthy palette, NOT their object layout or transparent backdrop. Redraw a new material tile, don't reproduce a sprite sheet. Strict intentionally simple retro pixel art, as if hand-painted on a 64x64 pixel canvas enlarged with nearest neighbor. Clearly visible large square pixel steps, clean solid-color pixel clusters, restrained palette of 8-12 colors, 2-3 shade levels per material. Low detail, no anti-aliasing, no blur, no smooth gradients, no photorealism, no tiny noisy dithering. Flat even albedo lighting, no vignette, no baked directional cast shadows, no central composition. All four edges should match for seamless repeating across a large surface; features may cross edges. Subject: Rustic wooden bridge plank surface viewed directly from above. 6 vertical broad brown wooden planks with staggered joints, thin dark seams, sparse simple stepped grain strokes, two small knots. Muted warm brown like reference firewood, no dense woodgrain.
+```
+
+## CaveHD2D/cave_ground_path_candidate
+
+```text
+Use case: style-transfer. Asset type: one square repeatable opaque albedo texture for Unity HD-2D environment, full bleed, no borders, no text, no grid overlay. Reference image 1 is cave ground patches, reference image 2 rock sprites, reference image 3 a tiny firewood sprite: use only their coarse pixel-art style and muted earthy palette, NOT their object layout or transparent backdrop. Redraw a new material tile, don't reproduce a sprite sheet. Strict intentionally simple retro pixel art, as if hand-painted on a 64x64 pixel canvas enlarged with nearest neighbor. Clearly visible large square pixel steps, clean solid-color pixel clusters, restrained palette of 8-12 colors, 2-3 shade levels per material. Low detail, no anti-aliasing, no blur, no smooth gradients, no photorealism, no tiny noisy dithering. Flat even albedo lighting, no vignette, no baked directional cast shadows, no central composition. All four edges should match for seamless repeating across a large surface; features may cross edges. Subject: Quiet worn cave walking-path surface, uniform material filling frame (not a path shape). Muted light warm earth brown, broad compacted soil patches, very sparse grit and 6 tiny stones; lighter and simpler than regular dry earth. No road borders.
+```
+
+## CaveHD2D/cave_ground_wet_candidate
+
+```text
+Use case: style-transfer. Asset type: one square repeatable opaque albedo texture for Unity HD-2D environment, full bleed, no borders, no text, no grid overlay. Reference image 1 is cave ground patches, reference image 2 rock sprites, reference image 3 a tiny firewood sprite: use only their coarse pixel-art style and muted earthy palette, NOT their object layout or transparent backdrop. Redraw a new material tile, don't reproduce a sprite sheet. Strict intentionally simple retro pixel art, as if hand-painted on a 64x64 pixel canvas enlarged with nearest neighbor. Clearly visible large square pixel steps, clean solid-color pixel clusters, restrained palette of 8-12 colors, 2-3 shade levels per material. Low detail, no anti-aliasing, no blur, no smooth gradients, no photorealism, no tiny noisy dithering. Flat even albedo lighting, no vignette, no baked directional cast shadows, no central composition. All four edges should match for seamless repeating across a large surface; features may cross edges. Subject: Quiet moist cave-floor surface, uniform material filling frame. Muted dark earthy taupe brown, a few broad damp areas, sparse muted olive moss flecks and 5 tiny gray stones. No puddles, no dense detail. USER CORRECTION: much simpler and coarser. Only 6 flat colors total, no delicate shading or outlines, no tiny detail. The final delivery is literally 64x64 pixels; make shapes readable at that resolution.
+```
+
+## CaveHD2D/cave_cliff_rock_candidate
+
+```text
+Use case: style-transfer. Asset type: one square repeatable opaque albedo texture for Unity HD-2D environment, full bleed, no borders, no text, no grid overlay. Reference image 1 is cave ground patches, reference image 2 rock sprites, reference image 3 a tiny firewood sprite: use only their coarse pixel-art style and muted earthy palette, NOT their object layout or transparent backdrop. Redraw a new material tile, don't reproduce a sprite sheet. Strict intentionally simple retro pixel art, as if hand-painted on a 64x64 pixel canvas enlarged with nearest neighbor. Clearly visible large square pixel steps, clean solid-color pixel clusters, restrained palette of 8-12 colors, 2-3 shade levels per material. Low detail, no anti-aliasing, no blur, no smooth gradients, no photorealism, no tiny noisy dithering. Flat even albedo lighting, no vignette, no baked directional cast shadows, no central composition. All four edges should match for seamless repeating across a large surface; features may cross edges. Subject: Cave cliff rock surface viewed straight on, uniform material filling frame. About 10 large angular warm taupe gray interlocking plates, subtle stepped facets and narrow charcoal cracks. Larger quieter shapes and slightly warmer than slate cave rock wall; no towers or perspective. USER CORRECTION: much simpler and coarser. Only 6 flat colors total, no delicate shading or outlines, no tiny detail. The final delivery is literally 64x64 pixels; make shapes readable at that resolution.
+```
