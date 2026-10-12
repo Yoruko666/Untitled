@@ -60,3 +60,9 @@
 - 原创书架、手稿书桌、兽骨祭祀台、衣柜、床头柜、书卷药瓶、骨质权杖、圆形织毯与冥想软垫共 10 件道具；网格、材质和纹理位于 `Art/{Models,Materials,Textures}/Props/ElderRoom`。
 - 独立道具与整房 prefab 位于 `Assets/Prefabs/Props/ElderRoom`；场景为 `Assets/Scenes/Props/GoblinElderRoomDemo.unity`。木床放大 2.15 倍；保险箱、灯具和储物陈设复用现有库，东北角保留书柜半遮挡的暗道入口。
 - 布局和模型已保存，运行时不重建。详见 [长老私房 demo 说明](../../docs/goblin-elder-room-demo.md)。
+
+## 厨房 demo 实体素材
+
+- 新增转轴炭火烤架、储粮架、粮袋、陶罐、叠碗、厨具挂杆、出餐台、食材木盆、蒜串香草、锅炉石圈和备料推车，共 11 件实体道具；网格、材质与纹理位于 `Art/{Models,Materials,Textures}/Props/Kitchen`。
+- 整房模块为 `Assets/Prefabs/Props/Kitchen/goblin_kitchen_room.prefab`，独立场景为 `Assets/Scenes/Props/GoblinKitchenDemo.unity`；现有砧板桌、大锅、吊肉架、水槽、柴堆、箱桶和灯具直接复用素材库。
+- 布局与模型均已保存，运行时不重建；详见 [厨房 demo 说明](../../docs/goblin-kitchen-demo.md)。
