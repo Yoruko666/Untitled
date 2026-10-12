@@ -73,7 +73,58 @@ namespace Untitled
 
             GUILayout.Label(DescribePlayerSpeed(debug), labelStyle);
 
-            GUI.DragWindow();
+            GUILayout.Space(12f);
+            DrawCameraControls(debug);
+
+            GUI.DragWindow(new Rect(0f, 0f, windowRect.width, 28f));
+        }
+
+        private void DrawCameraControls(DebugManager debug)
+        {
+            GUILayout.Label("摄像头调节（仅本次运行生效）", valueStyle);
+            Camera sceneCamera = debug.SceneCamera;
+            if (sceneCamera == null)
+            {
+                GUILayout.Label("未找到 MainCamera，请关闭并重新打开面板", labelStyle);
+                return;
+            }
+
+            CameraController controller = debug.CameraController;
+            if (controller != null)
+            {
+                controller.SetViewAngle(DrawSlider("俯仰角", controller.ViewAngle, 0f, 89f));
+                controller.SetYawAngle(DrawSlider("水平旋转", controller.YawAngle, -180f, 180f));
+                controller.SetDistance(DrawSlider("跟随距离", controller.Distance, 0.1f, 100f));
+                Vector3 offset = controller.FocusOffset;
+                offset.x = DrawSlider("焦点 X 偏移", offset.x, -30f, 30f);
+                offset.y = DrawSlider("焦点 Y 高度", offset.y, -30f, 30f);
+                offset.z = DrawSlider("焦点 Z 偏移", offset.z, -30f, 30f);
+                controller.SetFocusOffset(offset);
+                if (controller.Target == null)
+                    GUILayout.Label("没有跟随目标，角度和位置调节暂不生效", labelStyle);
+            }
+            else
+            {
+                GUILayout.Label("主摄像头未挂 CameraController，仅可调节缩放", labelStyle);
+            }
+
+            if (sceneCamera.orthographic)
+                sceneCamera.orthographicSize = DrawSlider("正交范围（越小越近）", sceneCamera.orthographicSize, 0.1f, 50f);
+            else
+                sceneCamera.fieldOfView = DrawSlider("视野 FOV（越小越近）", sceneCamera.fieldOfView, 10f, 120f);
+
+            if (GUILayout.Button("恢复原始镜头")) debug.ResetCamera();
+        }
+
+        private float DrawSlider(string label, float value, float min, float max)
+        {
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(label, labelStyle);
+            GUILayout.FlexibleSpace();
+            GUILayout.Label(value.ToString("0.00"), valueStyle);
+            GUILayout.EndHorizontal();
+            // 场景原值超出常用范围时也保留，避免仅打开面板就改变镜头。
+            return GUILayout.HorizontalSlider(value, Mathf.Min(min, value), Mathf.Max(max, value));
         }
 
         private static string DescribePlayerSpeed(DebugManager debug)

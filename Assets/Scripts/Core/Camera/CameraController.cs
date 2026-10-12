@@ -6,6 +6,7 @@ namespace Untitled
     {
         [SerializeField] private Transform target;
         [SerializeField] private float viewAngle = 45f;
+        [SerializeField] private float yawAngle;
         [SerializeField] private float distance = 7.07f;
         [SerializeField] private float damping = 8f;
         [SerializeField] private Vector3 focusOffset;
@@ -16,12 +17,15 @@ namespace Untitled
 
         public float Distance => distance;
 
+        public float YawAngle => yawAngle;
+
+        public Vector3 FocusOffset => focusOffset;
+
         private Vector3 Offset
         {
             get
             {
-                float pitch = viewAngle * Mathf.Deg2Rad;
-                return focusOffset + new Vector3(0f, Mathf.Sin(pitch), -Mathf.Cos(pitch)) * distance;
+                return focusOffset + Quaternion.Euler(viewAngle, yawAngle, 0f) * Vector3.back * distance;
             }
         }
 
@@ -44,7 +48,7 @@ namespace Untitled
 
             Vector3 desiredPosition = target.position + Offset;
             float t = 1f - Mathf.Exp(-damping * Time.deltaTime);
-            transform.SetPositionAndRotation(Vector3.Lerp(transform.position, desiredPosition, t), Quaternion.Euler(viewAngle, 0f, 0f));
+            transform.SetPositionAndRotation(Vector3.Lerp(transform.position, desiredPosition, t), Quaternion.Euler(viewAngle, yawAngle, 0f));
         }
 
         /// <summary>设置跟随目标。</summary>
@@ -63,6 +67,18 @@ namespace Untitled
         public void SetDistance(float value)
         {
             distance = Mathf.Max(0.1f, value);
+        }
+
+        /// <summary>设置绕跟随焦点的水平旋转角。</summary>
+        public void SetYawAngle(float angle)
+        {
+            yawAngle = angle;
+        }
+
+        /// <summary>设置焦点相对跟随目标的世界坐标偏移。</summary>
+        public void SetFocusOffset(Vector3 offset)
+        {
+            focusOffset = offset;
         }
 
         private Transform FindTarget()
