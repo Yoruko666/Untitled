@@ -54,3 +54,9 @@
 
 - `Models/Props/Training`、`Materials/Props/Training`、`Textures/Props/Training` 保存原创铁笼、战略桌及手绘地图、兵器架、草靶、地垫、沙袋、战术板、装备维修台和训练场门牌，共 9 件独立道具。
 - 对应 prefab 与整房模块位于 `Assets/Prefabs/Props/Training`，展示场景为 `Assets/Scenes/Props/GoblinTrainingDemo.unity`。假人、灯具、箱桶、旗饰等直接引用项目素材库。详见 [训练场 demo 说明](../../docs/goblin-training-demo.md)。
+
+## 长老私房 demo 实体素材
+
+- 原创书架、手稿书桌、兽骨祭祀台、衣柜、床头柜、书卷药瓶、骨质权杖、圆形织毯与冥想软垫共 10 件道具；网格、材质和纹理位于 `Art/{Models,Materials,Textures}/Props/ElderRoom`。
+- 独立道具与整房 prefab 位于 `Assets/Prefabs/Props/ElderRoom`；场景为 `Assets/Scenes/Props/GoblinElderRoomDemo.unity`。木床放大 2.15 倍；保险箱、灯具和储物陈设复用现有库，东北角保留书柜半遮挡的暗道入口。
+- 布局和模型已保存，运行时不重建。详见 [长老私房 demo 说明](../../docs/goblin-elder-room-demo.md)。
