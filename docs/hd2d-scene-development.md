@@ -58,6 +58,10 @@ Unreal Fest 讲稿可以优先看以下页码。右栏是本项目的应用建�
 
 当前 `Cave.unity` 保存的参数为 Pitch `29.293°`、FOV `34°`、跟随距离 `20.5`、Focus Offset `(0, 1.4, 0)`。这是本项目当前起点，**不是八方旅人公开的标准参数**。调整地图时先沿用它，避免镜头与地形同时大幅变化。
 
+本地整图改造使用 `CaveHD2DLocal.unity`，与上述旧 `Cave.unity` 分开。当前本地镜头为 Cinemachine `2.10.7`：Pitch 约 `12.09°`、FOV `34°`、Camera Distance `24.6`、Tracked Object Offset `(0, 1.6, 0)`、Screen X/Y `0.5/0.6`。角色根节点缩放为 `0.9`。旧 `CameraController` 已禁用，其 `30° / 32` 字段不代表当前镜头；不要将其距离与 Focus Offset 直接套入 Framing Transposer。三段低俯角地图修订见 [整图改造方案](cave-map-redesign-plan.md)，尚未重新进行画面、试玩或通行检查；保留的三张 Edit Mode 图片属于上一轮 `30° / 32` 镜头。
+
+本地制作采用分段显露目标：入口以火塘暖色占位提供方向，供给桥沿横向连接接近厨房烟囱，上坡通过大厅宽前场与私库小屋轮廓区分目标。低俯角下，优先退让前景岩肩、错开掩体和建筑、把部分屋顶收至后半部；角色附近的遮挡裁切不能替代前方路线的可读性。建筑入口柱框放在门洞净开口外侧。是否达到连续显露的构图意图，需要按当前镜头人工查看。
+
 ## 4. 格子布局与自然地形分开处理
 
 **本项目建议：**Grid / Tilemap 保存地板、河道等布局，派生 Mesh 保存立体显示。成员绘制并保存的布局始终是正式来源；外部数据只通过显式导入进入编辑流程。[Unity 2022.3：Tilemap](https://docs.unity3d.com/2022.3/Documentation/Manual/class-Tilemap.html)
@@ -198,6 +202,7 @@ Point 过滤与 DOF 同时存在并不矛盾：前者决定贴图怎么采样，
 | --- | --- |
 | `Assets/Scenes/Develop.unity` | 小房间开发测试 |
 | `Assets/Scenes/Cave.unity` | 洞穴地图与当前透视镜头 |
+| `Assets/Scenes/CaveHD2DLocal.unity` | 本地河谷台地聚落、整图功能占位、多路线空间与 Cinemachine 固定方向镜头 |
 | `Assets/Scripts/Levels/Cave/CaveMap.cs` | 场景 Tilemap 引用、坐标查询与出生点 |
 | `Assets/Editor/Cave/CaveMapBuilder.cs` | 分块地面、墙体、水面与 Collider 的派生生成 |
 | `Assets/Editor/Cave/CaveMapSceneSaving.cs` | 保存、进入 Play Mode 前同步派生几何 |

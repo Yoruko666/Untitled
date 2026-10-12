@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -73,7 +74,107 @@ namespace Untitled
 
             GUILayout.Label(DescribePlayerSpeed(debug), labelStyle);
 
-            GUI.DragWindow();
+            GUILayout.Space(12f);
+            DrawCameraControls(debug);
+
+            GUI.DragWindow(new Rect(0f, 0f, windowRect.width, 28f));
+        }
+
+        private void DrawCameraControls(DebugManager debug)
+        {
+            GUILayout.Label("摄像头调节（仅本次运行生效）", valueStyle);
+            Camera sceneCamera = debug.SceneCamera;
+            if (sceneCamera == null)
+            {
+                GUILayout.Label("未找到 MainCamera，请关闭并重新打开面板", labelStyle);
+                return;
+            }
+
+            if (debug.IsCinemachineControlled)
+            {
+                DrawCinemachineControls(debug);
+                return;
+            }
+
+            CameraController controller = debug.CameraController;
+            if (controller != null && controller.isActiveAndEnabled)
+            {
+                controller.SetViewAngle(DrawSlider("俯仰角", controller.ViewAngle, 0f, 89f));
+                controller.SetYawAngle(DrawSlider("水平旋转", controller.YawAngle, -180f, 180f));
+                controller.SetDistance(DrawSlider("跟随距离", controller.Distance, 0.1f, 100f));
+                Vector3 offset = controller.FocusOffset;
+                offset.x = DrawSlider("焦点 X 偏移", offset.x, -30f, 30f);
+                offset.y = DrawSlider("焦点 Y 高度", offset.y, -30f, 30f);
+                offset.z = DrawSlider("焦点 Z 偏移", offset.z, -30f, 30f);
+                controller.SetFocusOffset(offset);
+                if (controller.Target == null)
+                    GUILayout.Label("没有跟随目标，角度和位置调节暂不生效", labelStyle);
+            }
+            else
+            {
+                GUILayout.Label("CameraController 未启用，仅可调节缩放", labelStyle);
+            }
+
+            if (sceneCamera.orthographic)
+                sceneCamera.orthographicSize = DrawSlider("正交范围（越小越近）", sceneCamera.orthographicSize, 0.1f, 50f);
+            else
+                sceneCamera.fieldOfView = DrawSlider("视野 FOV（越小越近）", sceneCamera.fieldOfView, 10f, 120f);
+
+            if (GUILayout.Button("恢复原始镜头")) debug.ResetCamera();
+        }
+
+        private void DrawCinemachineControls(DebugManager debug)
+        {
+            CinemachineVirtualCamera virtualCamera = debug.VirtualCamera;
+            if (virtualCamera == null)
+            {
+                GUILayout.Label("当前虚拟镜头暂不支持，请重新打开面板", labelStyle);
+                return;
+            }
+
+            GUILayout.Label("控制镜头：" + virtualCamera.name, labelStyle);
+            CinemachineFramingTransposer framing = debug.FramingTransposer;
+            if (framing != null && virtualCamera.LookAt == null)
+            {
+                Vector3 angles = virtualCamera.transform.eulerAngles;
+                float pitch = Mathf.DeltaAngle(0f, angles.x);
+                float yaw = Mathf.DeltaAngle(0f, angles.y);
+                float newPitch = DrawSlider("俯仰角", pitch, 0f, 89f);
+                float newYaw = DrawSlider("水平旋转", yaw, -180f, 180f);
+                if (newPitch != pitch || newYaw != yaw)
+                    virtualCamera.transform.rotation = Quaternion.Euler(newPitch, newYaw, angles.z);
+
+                framing.m_CameraDistance = DrawSlider("跟随距离", framing.m_CameraDistance, 0.1f, 100f);
+                Vector3 offset = framing.m_TrackedObjectOffset;
+                offset.x = DrawSlider("焦点 X 偏移", offset.x, -30f, 30f);
+                offset.y = DrawSlider("焦点 Y 高度", offset.y, -30f, 30f);
+                offset.z = DrawSlider("焦点 Z 偏移", offset.z, -30f, 30f);
+                framing.m_TrackedObjectOffset = offset;
+            }
+            else
+            {
+                GUILayout.Label("此虚拟镜头仅支持缩放调节", labelStyle);
+            }
+
+            LensSettings lens = virtualCamera.m_Lens;
+            if (debug.SceneCamera.orthographic)
+                lens.OrthographicSize = DrawSlider("正交范围（越小越近）", lens.OrthographicSize, 0.1f, 50f);
+            else
+                lens.FieldOfView = DrawSlider("视野 FOV（越小越近）", lens.FieldOfView, 10f, 120f);
+            virtualCamera.m_Lens = lens;
+
+            if (GUILayout.Button("恢复原始镜头")) debug.ResetCamera();
+        }
+
+        private float DrawSlider(string label, float value, float min, float max)
+        {
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(label, labelStyle);
+            GUILayout.FlexibleSpace();
+            GUILayout.Label(value.ToString("0.00"), valueStyle);
+            GUILayout.EndHorizontal();
+            // 场景原值超出常用范围时也保留，避免仅打开面板就改变镜头。
+            return GUILayout.HorizontalSlider(value, Mathf.Min(min, value), Mathf.Max(max, value));
         }
 
         private static string DescribePlayerSpeed(DebugManager debug)
