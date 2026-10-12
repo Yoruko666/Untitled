@@ -46,3 +46,19 @@ Blender 源文件：`tools/art/cave_terraced_terrain_v2.blend`；明确重建入
 本次已通过 Unity 编译、材质检查、15 个区域与 379 个路面采样高度检查；场景 CharacterController 已在三条上山路线、食堂步道、两座桥和两组桥头石阶上完成双向行走检查。角色 Step Offset 为 0.28 m，匹配 0.2 m 石阶。
 
 试玩建议：从南入口向西过木桥看河谷；经食堂旁弯路到火塘；再走北侧折返坡道到祭祀大厅。
+
+## 概念图空间调整
+
+- 入口两侧加入高低错落的岩体，形成收窄的前景；朝火塘的中央通道保持开阔。
+- 火塘用地外缘增加断续碎石铺边；北侧大厅岩壁增加细长岩柱，突出前后高差。
+- 新增 `BridgeheadToKitchenPromenade`：入口木桥东侧平台通往厨房既有入口坡道，和主路交汇。
+- 河岸主层崖面增加竖向岩层与垂根，桥头可以看清低岸、石阶和生活区之间的层次。
+- Scene 保存两台关闭状态的 `Concept A Camera` / `Concept B Camera`，用于入口与桥头构图审阅。玩家跟随相机继续负责试玩。
+
+此轮仍为地形与空间调整，15 处建筑用地保持原尺寸与位置；概念图中的帐篷、厨房、祭坛建筑尚未摆放。
+
+本轮通过 Unity 编译、404 个路面高度采样，以及包含新步道在内的 9 段路线 CharacterController 双向行走检查。
+
+![桥头与生活区高差](images/cave_concept_bridge.png)
+
+![入口望向中央聚集区](images/cave_concept_entrance.png)
