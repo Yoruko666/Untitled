@@ -12,44 +12,63 @@ namespace Untitled
         {
             // Texture pixels: x, y, width, height, measured from the bottom left.
             public Vector4 Region;
+            // Flight frames use a pivot below the image to keep their feet above the ground.
             public Vector2 Pivot;
         }
 
+        [Serializable]
+        private struct DirectionAnimation
+        {
+            public Material Material;
+            [Min(1f)] public float PixelsPerUnit;
+            // Frames follow the gait cycle; the final frame is the standing pose.
+            public Frame[] Frames;
+        }
+
+        private enum Facing
+        {
+            Right,
+            Left,
+            Front,
+            Back
+        }
+
         [SerializeField] private CharacterController movementSource;
+        [Tooltip("Side frames per second; front/back clips share the same full-cycle duration.")]
         [SerializeField, Range(1f, 30f)] private float framesPerSecond = 10f;
-        [SerializeField, Min(1f)] private float pixelsPerUnit = 460f;
         [SerializeField, Min(0.01f)] private float movementThreshold = 0.1f;
-        [Tooltip("Run frames in playback order; the final frame is the standing pose.")]
-        [SerializeField] private Frame[] frames;
+        [SerializeField] private DirectionAnimation sideAnimation;
+        [SerializeField] private DirectionAnimation frontAnimation;
+        [SerializeField] private DirectionAnimation backAnimation;
 
         private readonly Vector3[] vertices = new Vector3[4];
         private readonly Vector2[] uvs = new Vector2[4];
         private MeshFilter meshFilter;
+        private MeshRenderer meshRenderer;
         private Mesh originalMesh;
+        private Material originalMaterial;
         private Mesh animationMesh;
-        private Vector2 textureSize;
-        private float cycleTime;
+        private float cyclePhase;
         private int displayedFrame = -1;
-        private bool facingLeft;
-        private bool displayedFacingLeft;
+        private Facing facing;
+        private Facing displayedFacing;
         private bool wasRunning;
 
         private void Awake()
         {
             meshFilter = GetComponent<MeshFilter>();
-            Material material = GetComponent<MeshRenderer>().sharedMaterial;
-            Texture texture = material != null ? material.GetTexture("_BaseMap") : null;
+            meshRenderer = GetComponent<MeshRenderer>();
+            originalMaterial = meshRenderer.sharedMaterial;
             originalMesh = meshFilter.sharedMesh;
             if (movementSource == null || originalMesh == null || originalMesh.vertexCount != 4
-                || texture == null || frames == null || frames.Length < 2)
+                || !IsValid(sideAnimation) || !IsValid(frontAnimation) || !IsValid(backAnimation))
             {
                 Debug.LogError("PlayerRunAnimation needs a movement source, a four-vertex mesh, "
-                    + "a URP base texture, run frames and a final idle frame.", this);
+                    + "and side/front/back animations with URP materials, run frames and idle frames.", this);
                 enabled = false;
                 return;
             }
 
-            textureSize = new Vector2(texture.width, texture.height);
             animationMesh = Instantiate(originalMesh);
             animationMesh.name = "Player Run Animation (Instance)";
             animationMesh.MarkDynamic();
@@ -60,45 +79,84 @@ namespace Untitled
             if (animationMesh == null) return;
 
             meshFilter.sharedMesh = animationMesh;
-            cycleTime = 0f;
+            cyclePhase = 0f;
             wasRunning = false;
             displayedFrame = -1;
-            ShowFrame(frames.Length - 1);
+            ShowFrame(GetAnimation().Frames.Length - 1);
         }
 
         private void LateUpdate()
         {
+            if (Time.deltaTime <= 0f) return;
+
             Vector3 velocity = movementSource.velocity;
             velocity.y = 0f;
             float threshold = Mathf.Max(0.01f, movementThreshold);
             bool running = movementSource.enabled && velocity.sqrMagnitude > threshold * threshold;
             if (!running)
             {
-                cycleTime = 0f;
+                cyclePhase = 0f;
                 wasRunning = false;
-                ShowFrame(frames.Length - 1);
+                ShowFrame(GetAnimation().Frames.Length - 1);
                 return;
             }
 
-            // Billboard updates first, so right/left is relative to the visible camera.
-            float sidewaysSpeed = Vector3.Dot(velocity, transform.right);
-            if (Mathf.Abs(sidewaysSpeed) > threshold) facingLeft = sidewaysSpeed < 0f;
+            // Billboard updates first. Its horizontal forward points away from the camera.
+            Vector3 viewForward = transform.forward;
+            viewForward.y = 0f;
+            facing = SelectFacing(new Vector2(Vector3.Dot(velocity, transform.right),
+                Vector3.Dot(velocity, viewForward.normalized)), facing);
 
-            int runFrameCount = frames.Length - 1;
+            int runFrameCount = GetAnimation().Frames.Length - 1;
             float rate = Mathf.Max(1f, framesPerSecond);
-            cycleTime = wasRunning
-                ? Mathf.Repeat(cycleTime + Time.deltaTime, runFrameCount / rate)
+            float cycleDuration = (sideAnimation.Frames.Length - 1) / rate;
+            // Normalized phase keeps the gait cycle continuous across clips with different frame counts.
+            cyclePhase = wasRunning
+                ? Mathf.Repeat(cyclePhase + Time.deltaTime / cycleDuration, 1f)
                 : 0f;
             wasRunning = true;
-            ShowFrame(Mathf.Min(Mathf.FloorToInt(cycleTime * rate), runFrameCount - 1));
+            ShowFrame(Mathf.Min(Mathf.FloorToInt(cyclePhase * runFrameCount), runFrameCount - 1));
+        }
+
+        private static Facing SelectFacing(Vector2 direction, Facing current)
+        {
+            if (direction.sqrMagnitude < 0.0001f) return current;
+
+            float sideways = Mathf.Abs(direction.x);
+            float forward = Mathf.Abs(direction.y);
+            bool wasSideways = current == Facing.Right || current == Facing.Left;
+            // Keep the current axis near diagonals so small collision jitter does not flicker clips.
+            bool useSideways = wasSideways ? sideways * 1.15f >= forward : sideways > forward * 1.15f;
+            if (useSideways) return direction.x < 0f ? Facing.Left : Facing.Right;
+            return direction.y < 0f ? Facing.Front : Facing.Back;
+        }
+
+        private DirectionAnimation GetAnimation()
+        {
+            switch (facing)
+            {
+                case Facing.Front: return frontAnimation;
+                case Facing.Back: return backAnimation;
+                default: return sideAnimation;
+            }
+        }
+
+        private static bool IsValid(DirectionAnimation animation)
+        {
+            return animation.Material != null && animation.Material.GetTexture("_BaseMap") != null
+                && animation.PixelsPerUnit > 0f && animation.Frames != null && animation.Frames.Length >= 2;
         }
 
         private void ShowFrame(int index)
         {
-            if (displayedFrame == index && displayedFacingLeft == facingLeft) return;
+            if (displayedFrame == index && displayedFacing == facing) return;
 
-            Frame frame = frames[index];
-            float unit = Mathf.Max(1f, pixelsPerUnit);
+            DirectionAnimation animation = GetAnimation();
+            Frame frame = animation.Frames[index];
+            Texture texture = animation.Material.GetTexture("_BaseMap");
+            Vector2 textureSize = new Vector2(texture.width, texture.height);
+            if (displayedFrame < 0 || displayedFacing != facing) meshRenderer.sharedMaterial = animation.Material;
+            float unit = animation.PixelsPerUnit;
             float left = -frame.Pivot.x / unit;
             float right = (frame.Region.z - frame.Pivot.x) / unit;
             float bottom = -frame.Pivot.y / unit;
@@ -107,7 +165,7 @@ namespace Untitled
             float uRight = (frame.Region.x + frame.Region.z) / textureSize.x;
             float vBottom = frame.Region.y / textureSize.y;
             float vTop = (frame.Region.y + frame.Region.w) / textureSize.y;
-            if (facingLeft)
+            if (facing == Facing.Left)
             {
                 (left, right) = (-right, -left);
                 (uLeft, uRight) = (uRight, uLeft);
@@ -125,12 +183,14 @@ namespace Untitled
             animationMesh.uv = uvs;
             animationMesh.RecalculateBounds();
             displayedFrame = index;
-            displayedFacingLeft = facingLeft;
+            displayedFacing = facing;
         }
 
         private void OnDisable()
         {
-            if (meshFilter != null && animationMesh != null) meshFilter.sharedMesh = originalMesh;
+            if (animationMesh == null) return;
+            meshFilter.sharedMesh = originalMesh;
+            meshRenderer.sharedMaterial = originalMaterial;
         }
 
         private void OnDestroy()
