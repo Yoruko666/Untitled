@@ -115,11 +115,15 @@ Shader "Untitled/HD2D/Terraced Pixel Terrain"
             float2 pixelUV = (floor(tileUV * _PixelDensity) + 0.5) / _PixelDensity;
             InitializeStandardLitSurfaceData(frac(pixelUV * _TileScale) * _BaseMap_ST.xy + _BaseMap_ST.zw, surface);
             surface.albedo = floor(surface.albedo * _PaletteSteps + 0.5) / _PaletteSteps;
-            half3 meanColor = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap,
-                _BaseMap_ST.zw + _BaseMap_ST.xy * 0.5).rgb * _BaseColor.rgb;
+            half3 meanColor = (
+                SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, _BaseMap_ST.zw + _BaseMap_ST.xy * float2(.2,.2)).rgb +
+                SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, _BaseMap_ST.zw + _BaseMap_ST.xy * float2(.7,.2)).rgb +
+                SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, _BaseMap_ST.zw + _BaseMap_ST.xy * float2(.2,.7)).rgb +
+                SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, _BaseMap_ST.zw + _BaseMap_ST.xy * float2(.7,.7)).rgb
+                ) * .25 * _BaseColor.rgb;
             float distant = smoothstep(28,100,distance(input.positionWS,_WorldSpaceCameraPos));
             surface.albedo = lerp(surface.albedo,meanColor,distant*0.65);
-            surface.albedo = lerp(_BaseColor.rgb, surface.albedo, _TextureStrength);
+            surface.albedo = lerp(meanColor, surface.albedo, _TextureStrength);
             InputData lighting = (InputData)0;
             lighting.positionWS = input.positionWS;
             lighting.normalWS = NormalizeNormalPerPixel(input.normalWS);

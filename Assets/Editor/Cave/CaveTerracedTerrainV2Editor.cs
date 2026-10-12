@@ -22,6 +22,10 @@ namespace Untitled.Editor
         private const string Prefabs = "Assets/Prefabs/Terrain/CaveTerracedV2";
         private const string ProfilePath = "Assets/Settings/CaveTerracedV2Presentation.asset";
         private static readonly Vector3 Origin = new Vector3(0, 0, 200);
+        private const float PlayPitch = 30;
+        private const float PlayYaw = -8;
+        private const float PlayDistance = 20;
+        private static readonly Vector3 PlayFocusOffset = new Vector3(0,1.1f,2);
 
         [Serializable]
         private sealed class LayoutPoint
@@ -52,6 +56,7 @@ namespace Untitled.Editor
             public float[] BridgeZs;
             public DecorationPoint[] Decorations;
             public float LowlandHeight;
+            public float MainlandHeight;
             public float HighlandHeight;
             public float WaterHeight;
         }
@@ -100,7 +105,7 @@ namespace Untitled.Editor
             // Additive creation preserves the user's unsaved scene in memory.
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive);
             SceneManager.SetActiveScene(scene);
-            var root = new GameObject("CaveTerrain | River -2.4 / Main 0 / Hall +4.8");
+            var root = new GameObject("CaveTerrain");
             root.transform.position = Origin;
             var model = AssetDatabase.LoadAssetAtPath<GameObject>(Models + "/cave_terraced_landform.fbx");
             var terrain = (GameObject)PrefabUtility.InstantiatePrefab(model, scene);
@@ -345,7 +350,7 @@ namespace Untitled.Editor
             var data = ReadLayout();
             var scene = root.gameObject.scene;
             Undo.RecordObject(root.gameObject, "Label cave elevation levels");
-            root.name = "CaveTerrain | River -2.4 / Main 0 / Hall +4.8";
+            root.name = $"CaveTerrain | River {data.LowlandHeight} / Main {data.MainlandHeight} / Hall {data.HighlandHeight}";
             var volume = root.GetComponentInChildren<Volume>();
             var profile = AssetDatabase.LoadAssetAtPath<VolumeProfile>(ProfilePath);
             if (profile == null)
@@ -389,7 +394,7 @@ namespace Untitled.Editor
                 camera.transform.localRotation = rotation;
             }
             Place(cameras.Single(c => c.name.StartsWith("Main Camera")), new Vector3(1, 1, -2.5f), 42, -5, 124);
-            Place(cameras.Single(c => c.name.StartsWith("Detail Camera")), new Vector3(-1, 2, 22), 32, -4, 50);
+            Place(cameras.Single(c => c.name.StartsWith("Detail Camera")), new Vector3(-1, 6, 22), 32, -4, 50);
             var riverCamera = cameras.FirstOrDefault(c => c.name.StartsWith("River Camera"));
             if (riverCamera == null)
             {
@@ -410,8 +415,8 @@ namespace Untitled.Editor
                 Place(view, focus, pitch, yaw, distance);
                 view.enabled = false;
             }
-            ConceptView("Concept A Camera | entrance toward hearth", new Vector3(1, 1.2f, -7), 16, 0, 23);
-            ConceptView("Concept B Camera | bridge toward kitchen", new Vector3(-10, -1, -10), 20, 60, 11);
+            ConceptView("Concept A Camera | entrance toward hearth", new Vector3(1, data.MainlandHeight + 1.2f, -7), 16, 0, 23);
+            ConceptView("Concept B Camera | bridge toward kitchen", new Vector3(-8, 1, -12), 24, 54, 16);
             var top = cameras.FirstOrDefault(c => c.name.StartsWith("Top Camera"));
             if (top == null)
             {
@@ -432,9 +437,9 @@ namespace Untitled.Editor
                 {
                     case "Daylight through river arch": position = new Vector3(-13, 2, 33); break;
                     case "River reflected fill": position = new Vector3(-22, 0, 0); break;
-                    case "Main clearing warm bounce": position = new Vector3(1.5f, 4, -2.9f); break;
-                    case "Upper terrace warm bounce": position = new Vector3(-1.5f, 8, 26.5f); break;
-                    case "East shelf warm bounce": position = new Vector3(18.3f, 7, 27.2f); break;
+                    case "Main clearing warm bounce": position = new Vector3(1.5f, data.MainlandHeight + 4, -2.9f); break;
+                    case "Upper terrace warm bounce": position = new Vector3(-1.5f, data.HighlandHeight + 3.2f, 26.5f); break;
+                    case "East shelf warm bounce": position = new Vector3(18.3f, data.HighlandHeight + 2.2f, 27.2f); break;
                 }
                 Undo.RecordObject(light.transform, "Follow cave regions with lighting");
                 position.x *= data.PlanScale;
@@ -481,37 +486,158 @@ namespace Untitled.Editor
                 SceneView.lastActiveSceneView.LookAt(root.position + new Vector3(4, 1, 2), Quaternion.Euler(42, -5, 0), 152);
             }
             DressTerrain(root, data);
+            ApplyHd2dPresentation(root, profile, data);
+        }
+
+        private static void ApplyHd2dPresentation(Transform root, VolumeProfile profile, LayoutData data)
+        {
+            foreach (var component in profile.components) Undo.RecordObject(component, "Tune cave HD-2D presentation");
+            profile.TryGet<ColorAdjustments>(out var grading);
+            grading.postExposure.Override(2.05f);
+            grading.contrast.Override(8);
+            grading.saturation.Override(-3);
+            profile.TryGet<Bloom>(out var bloom);
+            bloom.threshold.Override(.9f);
+            bloom.intensity.Override(.22f);
+            bloom.scatter.Override(.6f);
+            profile.TryGet<Vignette>(out var vignette);
+            vignette.intensity.Override(.16f);
+            vignette.smoothness.Override(.55f);
+            profile.TryGet<DepthOfField>(out var depth);
+            depth.gaussianStart.Override(24);
+            depth.gaussianEnd.Override(48);
+            depth.gaussianMaxRadius.Override(1.05f);
+            foreach (var component in profile.components) EditorUtility.SetDirty(component);
+            RenderSettings.ambientSkyColor = new Color(.30f,.40f,.52f);
+            RenderSettings.ambientEquatorColor = new Color(.25f,.30f,.36f);
+            RenderSettings.ambientGroundColor = new Color(.15f,.15f,.14f);
+            RenderSettings.fogColor = new Color(.09f,.14f,.19f);
+            RenderSettings.fogDensity = .0022f;
+            foreach (var light in root.GetComponentsInChildren<Light>())
+            {
+                Undo.RecordObject(light, "Balance cool cave fill and warm gathering areas");
+                if (light.type == LightType.Directional)
+                {
+                    light.color = new Color(.66f,.77f,.9f);
+                    light.intensity = 1.15f;
+                    light.shadowStrength = .70f;
+                }
+                else if (light.name == "Main clearing warm bounce") light.intensity = 34;
+                else if (light.name == "Upper terrace warm bounce") light.intensity = 30;
+                else if (light.name == "Daylight through river arch")
+                {
+                    light.color = new Color(.32f,.70f,1);
+                    light.intensity = 45;
+                    light.range = 45;
+                }
+            }
+            var main = root.GetComponentsInChildren<Camera>().Single(c => c.name.StartsWith("Main Camera"));
+            Undo.RecordObject(main, "Set exploration field of view");
+            main.fieldOfView = 38;
+            var follow = main.GetComponent<CameraController>();
+            if (follow != null)
+            {
+                Undo.RecordObject(follow, "Frame pixel character against layered terrain");
+                follow.SetViewAngle(PlayPitch);
+                follow.SetYawAngle(PlayYaw);
+                follow.SetDistance(PlayDistance);
+                follow.SetFocusOffset(PlayFocusOffset);
+            }
+            // Review camera uses the same pose as the playable follow camera.
+            var player = root.GetComponentInChildren<PlayerEntity>();
+            var review = root.GetComponentsInChildren<Camera>().FirstOrDefault(c => c.name.StartsWith("Player Review"));
+            if (player != null)
+            {
+                if (review == null)
+                {
+                    review = CameraAt(root, "Player Review Camera | playable framing", Vector3.zero, PlayPitch,PlayYaw,PlayDistance);
+                    Undo.RegisterCreatedObjectUndo(review.gameObject, "Add playable framing review");
+                }
+                Undo.RecordObject(review.transform, "Match playable camera pose");
+                var rotation = Quaternion.Euler(PlayPitch,PlayYaw,0);
+                review.transform.position = player.transform.position + PlayFocusOffset - rotation * Vector3.forward * PlayDistance;
+                review.transform.rotation = rotation;
+                review.fieldOfView = main.fieldOfView;
+                review.enabled = false;
+            }
+            var old = root.Find("Wayfinding | warm pixel braziers");
+            if (old != null) Undo.DestroyObjectImmediate(old.gameObject);
+            var group = new GameObject("Wayfinding | warm pixel braziers");
+            group.transform.SetParent(root,false);
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Props/Lighting/timber_brazier_hd2d.prefab");
+            if (prefab == null) throw new InvalidOperationException("Pixel brazier prefab is missing.");
+            Physics.SyncTransforms();
+            var terrain = root.Find("EditableLandform");
+            var positions = new[] {new Vector2(10,-43),new Vector2(-2,-30),new Vector2(9,-13),
+                new Vector2(10,2),new Vector2(14,13),new Vector2(-9,31),new Vector2(13,39),
+                new Vector2(12,47),new Vector2(0,49),new Vector2(15,58),new Vector2(45.5f,52),
+                new Vector2(-38,-18),new Vector2(-22,-14),new Vector2(-36,31)};
+            foreach (var position in positions)
+            {
+                var start = root.position + new Vector3(position.x,30,position.y);
+                var hits = Physics.RaycastAll(start,Vector3.down,40)
+                    .Where(hit => hit.transform.IsChildOf(terrain)).OrderBy(hit => hit.distance).ToArray();
+                if (hits.Length == 0) continue;
+                var go = (GameObject)PrefabUtility.InstantiatePrefab(prefab,root.gameObject.scene);
+                go.transform.SetParent(group.transform,false);
+                go.transform.position = hits[0].point + Vector3.up * .02f;
+                go.transform.localRotation = Quaternion.Euler(0,-8,0);
+                // Wayfinding lamps stay clear of navigation collision and building reservations.
+                foreach (var collider in go.GetComponentsInChildren<Collider>()) collider.enabled = false;
+                foreach (var fire in go.GetComponentsInChildren<HybridFireLight>())
+                {
+                    var settings = new SerializedObject(fire);
+                    settings.FindProperty("baseIntensity").floatValue = 4;
+                    settings.FindProperty("baseRange").floatValue = 10;
+                    settings.ApplyModifiedProperties();
+                }
+                foreach (var lamp in go.GetComponentsInChildren<Light>())
+                {
+                    lamp.intensity = 4;
+                    lamp.range = 10;
+                    lamp.color = new Color(1,.57f,.24f);
+                }
+            }
+            Undo.RegisterCreatedObjectUndo(group,"Place pixel route lamps");
+            foreach (var material in new[] {"earth","path","wet","moss","rock","stone","wood"})
+            {
+                var surface = AssetDatabase.LoadAssetAtPath<Material>(Materials + "/" + material + ".mat");
+                surface.SetFloat("_TextureStrength", material == "earth" ? .55f : material == "path" ? .48f : .8f);
+                EditorUtility.SetDirty(surface);
+            }
         }
 
         private static void ApplyPixelMaterials()
         {
-            const string cave = "Assets/Art/Sprites/Terrain/Cave/";
+            const string cave = "Assets/Art/Textures/TerrainBasic/";
             void Apply(string name, string source, Color tint, float scale, float strength, Vector4 crop)
             {
                 var material = AssetDatabase.LoadAssetAtPath<Material>(Materials + "/" + name + ".mat");
                 Undo.RecordObject(material, "Apply native cave palette and consistent world pixels");
                 material.shader = Shader.Find("Untitled/HD2D/Terraced Pixel Terrain");
-                material.SetTexture("_BaseMap", AssetDatabase.LoadAssetAtPath<Texture2D>(source));
+                var texture = AssetDatabase.LoadAssetAtPath<Texture2D>(source);
+                if (texture == null || texture.width != 64 || texture.height != 64 || texture.filterMode != FilterMode.Point)
+                    throw new InvalidOperationException("Cave surface requires a point-filtered 64 x 64 tile: " + source);
+                material.SetTexture("_BaseMap", texture);
                 material.SetTextureOffset("_BaseMap", new Vector2(crop.x,crop.y));
                 material.SetTextureScale("_BaseMap", new Vector2(crop.z,crop.w));
                 material.SetColor("_BaseColor",tint);
                 material.SetFloat("_TileScale",scale);
                 material.SetFloat("_TextureStrength",strength);
-                material.SetFloat("_PixelDensity",12);
-                material.SetFloat("_PaletteSteps",24);
+                material.SetFloat("_PixelDensity",16);
+                material.SetFloat("_PaletteSteps",256);
                 material.SetFloat("_Smoothness",0.02f);
                 EditorUtility.SetDirty(material);
             }
-            // Reuse opaque interiors of the original sprite sheets; no atlas transparent borders.
-            var earthCrop = new Vector4(104f/178, 100f/178, 20f/178, 20f/178);
+            // All surfaces use actual 64px tiles: one four-metre repeat, 16 source pixels/metre.
             var full = new Vector4(0,0,1,1);
-            Apply("earth",cave+"cave_floor_brown_tileset.png",new Color(0.88f,0.77f,0.62f),0.50f,0.70f,earthCrop);
-            Apply("path",cave+"cave_floor_brown_tileset.png",new Color(0.96f,0.83f,0.65f),0.50f,0.66f,earthCrop);
-            Apply("wet",cave+"cave_floor_brown_tileset.png",new Color(0.53f,0.61f,0.54f),0.50f,0.70f,earthCrop);
-            Apply("moss",cave+"cave_floor_brown_tileset.png",new Color(0.44f,0.59f,0.37f),0.50f,0.70f,earthCrop);
-            Apply("rock","Assets/Art/Textures/TerrainBasic/cave_rock_face.png",new Color(0.62f,0.66f,0.66f),0.13f,0.86f,full);
-            Apply("stone","Assets/Art/Textures/TerrainBasic/cave_stone_paving.png",new Color(0.65f,0.65f,0.58f),0.17f,0.78f,full);
-            Apply("wood","Assets/Art/Textures/Props/Tavern/tavern_oak_grain.png",new Color(0.50f,0.32f,0.16f),0.6f,0.65f,full);
+            Apply("earth",cave+"cave_earth_dry.png",new Color(.9f,.86f,.8f),.25f,1,full);
+            Apply("path","Assets/Art/Textures/CaveHD2D/cave_ground_path_candidate.png",new Color(.91f,.86f,.78f),.25f,1,full);
+            Apply("wet",cave+"cave_river_gravel.png",new Color(.70f,.77f,.75f),.25f,1,full);
+            Apply("moss",cave+"cave_moss_soil.png",new Color(.8f,.86f,.78f),.25f,1,full);
+            Apply("rock",cave+"cave_rock_face.png",new Color(.8f,.84f,.85f),.25f,1,full);
+            Apply("stone",cave+"cave_stone_paving.png",new Color(.86f,.85f,.8f),.25f,1,full);
+            Apply("wood",cave+"cave_wood_planks.png",new Color(.87f,.8f,.7f),.25f,1,full);
         }
 
         private static void AddRiverReflections(Transform root)
@@ -632,11 +758,11 @@ namespace Untitled.Editor
             Undo.RecordObject(follow, "Follow the cave player in Play Mode");
             var followData = new SerializedObject(follow);
             followData.FindProperty("target").objectReferenceValue = player.transform;
-            followData.FindProperty("viewAngle").floatValue = 42f;
-            followData.FindProperty("yawAngle").floatValue = -5f;
-            followData.FindProperty("distance").floatValue = 14f;
+            followData.FindProperty("viewAngle").floatValue = PlayPitch;
+            followData.FindProperty("yawAngle").floatValue = PlayYaw;
+            followData.FindProperty("distance").floatValue = PlayDistance;
             followData.FindProperty("damping").floatValue = 8f;
-            followData.FindProperty("focusOffset").vector3Value = new Vector3(0f, 1.0f, 0f);
+            followData.FindProperty("focusOffset").vector3Value = PlayFocusOffset;
             followData.ApplyModifiedProperties();
 
             if (root.GetComponent<Bootstrap>() == null)
@@ -727,7 +853,8 @@ namespace Untitled.Editor
                 if (renderer.sharedMaterials.Any(m => m == null || ShaderUtil.ShaderHasError(m.shader)))
                     throw new InvalidOperationException("Missing pixel detail material on " + renderer.name);
             Debug.Log("Cave plan checks passed: 15 region heights, " + data.RouteSamples.Length
-                + " route samples, " + data.Decorations.Length + " pixel details, -2.4/0/+4.8 elevations, "
+                + " route samples, " + data.Decorations.Length + " pixel details, "
+                + data.LowlandHeight + "/" + data.MainlandHeight + "/" + data.HighlandHeight + " elevations, "
                 + "three hall approaches, two river bridges and a shared elder neck; material shaders.");
         }
 
@@ -808,6 +935,8 @@ namespace Untitled.Editor
             try
             {
                 var cameras = scene.GetRootGameObjects().SelectMany(g => g.GetComponentsInChildren<Camera>()).ToArray();
+                var presentation = scene.GetRootGameObjects().SelectMany(g => g.GetComponentsInChildren<Volume>()).First().sharedProfile;
+                presentation.TryGet<DepthOfField>(out var depthOfField);
                 // Refresh the main batch preview after SRP has drawn the detail and plan views.
                 foreach (var camera in cameras.Concat(cameras.Where(c => c.enabled)))
                 {
@@ -817,10 +946,13 @@ namespace Untitled.Editor
                     var target = RenderTexture.GetTemporary(width,height,24,RenderTextureFormat.ARGB32);
                     var previous = RenderTexture.active;
                     bool previousFog = RenderSettings.fog;
+                    bool previousDepth = depthOfField.active;
                     Texture2D pixels = null;
                     try
                     {
                         if (top) RenderSettings.fog = false;
+                        // A close-range play profile must not blur the distant map-review cameras.
+                        depthOfField.active = previousDepth && camera.name.StartsWith("Player Review");
                         camera.aspect = width / (float)height;
                         var request = new UniversalRenderPipeline.SingleCameraRequest { destination = target };
                         RenderPipeline.SubmitRenderRequest(camera, request);
@@ -828,7 +960,8 @@ namespace Untitled.Editor
                         pixels = new Texture2D(width,height,TextureFormat.RGB24,false);
                         pixels.ReadPixels(new Rect(0,0,width,height),0,0);
                         pixels.Apply();
-                        string name = camera.name.StartsWith("Concept A") ? "cave_concept_entrance.png"
+                        string name = camera.name.StartsWith("Player Review") ? "cave_player.png"
+                            : camera.name.StartsWith("Concept A") ? "cave_concept_entrance.png"
                             : camera.name.StartsWith("Concept B") ? "cave_concept_bridge.png"
                             : top ? "cave_plan.png" : camera.name.StartsWith("River Camera") ? "cave_riverbanks.png"
                             : camera.enabled ? "cave_overview.png" : "cave_detail.png";
@@ -838,6 +971,7 @@ namespace Untitled.Editor
                     {
                         RenderTexture.active = previous;
                         RenderSettings.fog = previousFog;
+                        depthOfField.active = previousDepth;
                         camera.ResetAspect();
                         if (pixels != null) UnityEngine.Object.DestroyImmediate(pixels);
                         RenderTexture.ReleaseTemporary(target);

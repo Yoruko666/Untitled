@@ -17,6 +17,8 @@ SOURCE = ROOT / "tools/art/cave_terraced_terrain_v2.blend"
 OUT.mkdir(parents=True, exist_ok=True)
 SOURCE.parent.mkdir(parents=True, exist_ok=True)
 PLAN_SCALE = 2.0  # Double XZ extents; heights and final river width remain independent.
+MAIN_ELEVATION = 2.4
+HALL_ELEVATION = 9.6
 rng = random.Random(731)
 bpy.ops.object.select_all(action="SELECT")
 bpy.ops.object.delete(use_global=False)
@@ -170,9 +172,39 @@ terrain = group("CaveTerracedTerrain")
 land = group("01_Landform_NorthGoal_SouthEntrance")
 land.parent = terrain
 bridge_zs=[-10,14.47]
+bridge_approaches=[
+    [(river_center(-10)+river_half+.5,-10,low+.03),
+     (river_center(-10)+river_half+1.8,-10,low+.03),(-9.7,-11,low+.03),
+     (-9.8,-13,-1.9),(-8.4,-15,-1.1),(-6.1,-16.5,-.35),
+     (-3.8,-16.5,.03),(-3,-14.4,.03),(-5.2,-12,.03)],
+    [(river_center(14.47)+river_half+.5,14.47,low+.03),
+     (river_center(14.47)+river_half+1.8,14.47,low+.03),(-9.9,13.3,low+.03),
+     (-10.4,10.5,-1.9),(-9.3,7.5,-1.1),(-7.8,5.6,-.35),
+     (-5.3,5.4,.03),(-3.8,6,.03)]
+]
+def rounded_course(points):
+    # Corner cutting keeps the endpoints and produces a gently changing grade.
+    for _ in range(2):
+        rounded=[points[0]]
+        for a,b in zip(points,points[1:]):
+            rounded += [tuple(.75*x+.25*y for x,y in zip(a,b)),
+                        tuple(.25*x+.75*y for x,y in zip(a,b))]
+        rounded.append(points[-1])
+        points=rounded
+    return points
+
+bridge_approaches=[rounded_course(points) for points in bridge_approaches]
 def main_margin(z):
-    # Carve pockets so the main floor never hides the low river stairs.
-    return 3.2+1.2*max(0,max(1-abs(z-b)/2.2 for b in bridge_zs))
+    # Carve the actual winding ramps out of the upper ground, including their shoulders.
+    edge=shore(1,z)+3.2
+    for points in bridge_approaches:
+        for a,b in zip(points,points[1:]):
+            if min(a[2],b[2])>=0: continue
+            if min(a[1],b[1])-1.5<=z<=max(a[1],b[1])+1.5:
+                t=max(0,min(1,(z-a[1])/(b[1]-a[1]))) if abs(b[1]-a[1])>.001 else 0
+                ramp_x=a[0]+(b[0]-a[0])*t if abs(b[1]-a[1])>.001 else max(a[0],b[0])
+                edge=max(edge,ramp_x+1.5)
+    return edge-shore(1,z)
 main_outline = [(shore(1,z)+main_margin(z),z) for z in range(-34,30)]
 main_outline += [(-6,31),(2,32),(8,31),(15,33),(23,32),(28,29),
                  (31,24),(32,17),(30.2,10),(33,4),(30.5,-3),
@@ -239,7 +271,7 @@ river_start,river_end = -15,33.4
 
 
 east_bank=[(shore(1,z)-0.02,z) for z in range(-34,34)]
-east_bank += [(shore(1,z)+3.3,z) for z in reversed(range(-34,34))]
+east_bank += [(shore(1,z)+main_margin(z)+.1,z) for z in reversed(range(-34,34))]
 platform("EastBankGravelBench_Minus2p4m",east_bank,low,-5.8,"wet",river)
 west_bank=[(shore(-1,z)-2.7,z) for z in range(-34,34)]
 west_bank += [(shore(-1,z)+0.02,z) for z in reversed(range(-34,34))]
@@ -345,7 +377,7 @@ def timber(name,x,z,h,sx,sz,sh):
         polygon.material_index=0
     return obj
 
-for name,z in [("EntranceBridge",-10),("SupplyBridge",14.47)]:
+for bridge_index,(name,z) in enumerate([("EntranceBridge",-10),("SupplyBridge",14.47)]):
     x=river_center(z)
     half=river_half+0.5
     # Continuous hidden deck collider lies flush under separate wooden planks.
@@ -365,15 +397,24 @@ for name,z in [("EntranceBridge",-10),("SupplyBridge",14.47)]:
                    (top+bottom)/2,.14,.14,top-bottom)
         timber(name+"_Handrail_%d"%side,x,z+side*.89,low+.85,half*2+.15,.09,.12)
     path(name+"WestLanding",[(-24,z,low+0.03),(x-half,z,low+0.03)],1.85,"wet",check=True)
-    for i in range(12):
-        sx=x+half+0.12+i*0.30
-        h=low+(i+1)*0.2
-        platform(name+"EastStair_%02d"%(i+1),[(sx,z-.925),(sx+.36,z-.925),
-                 (sx+.36,z+.925),(sx,z+.925)],h,low-.1,"stone",connections)
-        route_samples.append(dict(X=sx+.18,Z=z,Height=h,Name=name+"EastStair"))
-    path(name+"EastLanding",[(x+half+3.72,z,.03),(-5.2,z,.03)],1.85,"earth",check=True)
+    approach=bridge_approaches[bridge_index]
+    path(name+"WindingBankRamp",approach,1.85,"path",check=True)
+    # Sloping earth shoulders dissolve the ramp into gravel instead of a squared stair block.
+    for side in (-1,1):
+        vertices=[]
+        for i,(px,pz,h) in enumerate(approach):
+            a=Vector(approach[max(0,i-1)][:2]); b=Vector(approach[min(len(approach)-1,i+1)][:2])
+            n=Vector((-(b-a).y,(b-a).x)).normalized()*side
+            vertices += [(px+n.x*.95,pz+n.y*.95,h-.015),
+                         (px+n.x*1.8,pz+n.y*1.8,low-.04)]
+        faces=[(2*i,2*i+1,2*i+3,2*i+2) for i in range(len(approach)-1)]
+        if side>0: faces=[tuple(reversed(f)) for f in faces]
+        mesh(name+"ErodedRampShoulder_%d"%side,vertices,faces,["wet"],parent=river)
+    if bridge_index==1:
+        path("SupplyBridgeUpperPromenade",[(-3.8,6,.03),(-3.8,6.7,.1),
+             (-3.8,7.15,.33),(-3.8,7.5,.33),(-2.7,9,.33)],1.6,"path",check=True)
 path("B_WestHallAscent",[(-5.2,14.47,0.03),(-6.8,16.5,0.03),(-10.2,18.8,1.4),(-11.4,22,2.5),
-                         (-11.1,24.8,3.5),(-10.2,26,high+0.03),(-9.2,27,high+0.03),(-6.7,27,high+0.03)],2.0,check=True)
+                         (-11.1,24.8,4.05),(-10.2,26,high+0.03),(-9.2,27,high+0.03),(-6.7,27,high+0.03)],2.0,check=True)
 
 # A stays in the center; C follows the far eastern boundary before turning to the hall.
 path("A_CentralPublicApproach",[(0,-30,0.035),(0,-22.6,0.035),(0,-18.47,0.035),
@@ -405,7 +446,7 @@ for side in (-1,1):
         shoulder_verts += [(x+normal.x*inner,z+normal.y*inner,h-.025),
                            (x+normal.x*outer,z+normal.y*outer,max(-.06,h-1.0))]
     shoulder_faces=[(2*i,2*i+1,2*i+3,2*i+2) for i in range(len(ascent)-1)]
-    if side<0: shoulder_faces=[tuple(reversed(f)) for f in shoulder_faces]
+    if side>0: shoulder_faces=[tuple(reversed(f)) for f in shoulder_faces]
     mesh("HallAscentWeatheredShoulder_%d"%side,shoulder_verts,shoulder_faces,["earth"],parent=land)
 east_ascent=[(17,19,0.03),(14,16.2,0.03),(11.8,16.5,0.3),
              (9,16.7,0.85),(7,17,1.23),(5,18.5,1.23)]
@@ -414,7 +455,7 @@ path("C_LivingQuarterToHallFoothill",east_ascent,2.2,"earth",check=True)
 feast_hearth=[(5.4,9.4,0.33),(6.5,8.1,0.33),(7.4,6.7,0.03),
              (6.8,4.6,0.03),(5.3,2.3,0.03),(3.8,0.1,0.03),(1.5,-2.9,0.03)]
 path("FeastToHearthGardenWalk",feast_hearth,1.6,"path",check=True)
-bridge_kitchen=[(-5.2,-10,.03),(-2.5,-9.2,.03),(3,-8.8,.03),
+bridge_kitchen=[(-5.2,-12,.03),(-2.5,-9.2,.03),(3,-8.8,.03),
                 (8.5,-9.4,.03),(11.3,-10.2,.03),(11.6,-12.6,.03)]
 path("BridgeheadToKitchenPromenade",bridge_kitchen,1.8,"path",check=True)
 path("D_SharedHallToElderNeck",[(6.8,26,high+0.03),(10.5,26,high+0.03),
@@ -442,6 +483,9 @@ for number in (3,4,5,6,7,8,12):
 
 # Gray links in the plan are preserved as open corridors, not additional river crossings.
 clear_routes=[
+    ("EntranceBankRamp",bridge_approaches[0],1.85),
+    ("SupplyBankRamp",bridge_approaches[1],1.85),
+    ("SupplyPromenade",[(-3.8,6,.03),(-3.8,7.15,.33),(-2.7,9,.33)],1.6),
     ("BridgeKitchen",bridge_kitchen,1.8),
     ("HallProcession",ascent,2.1),
     ("LivingQuarterAscent",east_ascent,2.2),
@@ -499,7 +543,7 @@ cover_positions=[(-9.2,-1.1,0,1.8,2.6),(-7.8,12.4,0.3,1.7,2.8),(14.4,1.2,0.3,1.9
                  (9.3,6.5,0,1.8,3.0),(14.0,15.3,0,2.0,2.8),
                  (-7.7,6.4,0,1.0,2.0)]
 for i,(x,z,h,w,d) in enumerate(cover_positions):
-    if on_corridor(x,z,0.2):
+    if on_corridor(x,z,max(w,d)+.5):
         continue
     instance(modules[i%3],"InteriorRockSpur_%02d"%i,(x,z,h-0.1),
              (w,d,rng.uniform(1.7,2.4)),rng.uniform(-20,20),walls)
@@ -580,6 +624,8 @@ for i,(x,z,h) in enumerate([(-28,25,low),(-28,-19,low),(-28,1,low),
 # dry rubble stays at walls, and district centers are left available for buildings.
 decorations=[]
 def detail(prefab,x,z,h,scale=1.0,yaw=-5,group_name="Riverbank"):
+    if on_corridor(x,z,.35):
+        return
     decorations.append(dict(Prefab="cave_"+prefab+"_01",X=x,Z=z,Height=h,
                             Scale=scale,Yaw=yaw,Name=group_name))
 
@@ -640,6 +686,8 @@ composition.parent=terrain
 for i,(x,z,w,d,h) in enumerate([
     (-6.6,-19.0,1.35,2.3,3.8),(8.8,-20.5,1.2,1.9,3.1),
     (-6.0,-17.2,.8,1.2,2.2),(9.0,-18.3,.7,.9,1.7)]):
+    if on_corridor(x,z,max(w,d)):
+        continue
     instance(modules[i%3],"EntranceFramingButtress_%02d"%i,
              (x,z,-.15),(w,d,h),i*37,composition)
 
@@ -666,8 +714,18 @@ for i,(x,z) in enumerate(((-.2,25.15),(2.3,25.05),(5.8,25.3),(7.6,26.5))):
              (x,z,2.35),(.52,.42,2.55),i*17,composition)
 
 # Metadata is exported with the mesh, avoiding a second layout in the Unity importer.
+def height_map(value):
+    # Authored levels -2.4 / 0 / 4.8 become -2.4 / 2.4 / 9.6.
+    # Keep the water, bed and lowland unchanged; interpolate every connecting surface.
+    if value <= low:
+        return value
+    if value < 0:
+        return low+(value-low)*(MAIN_ELEVATION-low)/(-low)
+    return MAIN_ELEVATION+value*(HALL_ELEVATION-MAIN_ELEVATION)/high
+
 metadata=dict(Zones=[dict(Id=n,Name=name,X=x,Z=z,Height=h) for n,name,x,z,h,*_ in zones],
-              Decorations=decorations,LowlandHeight=low,HighlandHeight=high,WaterHeight=water_height,
+              Decorations=decorations,LowlandHeight=low,MainlandHeight=MAIN_ELEVATION,
+              HighlandHeight=HALL_ELEVATION,WaterHeight=water_height,
               RouteSamples=route_samples,
               RiverCourse=[dict(X=river_center(z),Z=z,HalfWidth=river_half) for z in list(range(-15,34))+[33.4]],
               WestFork=[dict(X=center(west_fork,z),Z=z,HalfWidth=fork_half(z)) for z in range(-34,-14)],
@@ -682,6 +740,8 @@ for field in ("Zones", "Decorations", "RouteSamples", "RouteAnchors", "RiverCour
     for point in metadata[field]:
         point["X"] *= PLAN_SCALE
         point["Z"] *= PLAN_SCALE
+        if "Height" in point:
+            point["Height"] = height_map(point["Height"])
         if "HalfWidth" in point:
             point["HalfWidth"] *= PLAN_SCALE
 for field in ("RiverStart", "RiverEnd", "RiverHalfWidth"):
@@ -692,9 +752,20 @@ metadata["Zones"] = [dict(item, Width=zones[i][5]*2*PLAN_SCALE, Depth=zones[i][6
                      for i,item in enumerate(metadata["Zones"])]
 # Bake plan expansion into individual meshes and transforms, retaining editable unit-scale roots.
 for obj in terrain.children_recursive:
+    obj.name = obj.name.replace("MainSettlementGround_0m", "MainSettlementGround_Plus2p4m")
+    obj.name = obj.name.replace("Plus4p8m", "Plus9p6m")
+    obj.name = obj.name.replace("LowerLanding_1p2", "LowerLanding_4p2")
+    obj.name = obj.name.replace("MiddleLanding_2p4", "MiddleLanding_6p0")
     if obj.type == "MESH":
         obj.data=obj.data.copy()
+        old_z=obj.location.z
+        # Bridge carpentry keeps its real dimensions, independent of terrace elevation.
+        remap_height=not ("Bridge_" in obj.name or "TimberDeck" in obj.name)
+        if remap_height:
+            obj.location.z=height_map(old_z)
         for v in obj.data.vertices:
+            if remap_height:
+                v.co.z=(height_map(old_z+v.co.z*obj.scale.z)-obj.location.z)/obj.scale.z
             v.co.x *= PLAN_SCALE
             v.co.y *= PLAN_SCALE
     obj.location.x *= PLAN_SCALE
