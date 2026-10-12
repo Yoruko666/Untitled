@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.AddressableAssets;
 using UnityEditor.SceneManagement;
+using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -474,6 +476,93 @@ namespace Untitled.Editor
             Undo.RegisterCreatedObjectUndo(group, "Dress banks and terraces with pixel assets");
         }
 
+        [MenuItem("Untitled/Cave/Add Player Preview To Combined Terrain V2")]
+        public static void AddPlayerPreview()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode)
+                throw new InvalidOperationException("Exit Play Mode before adding the cave player.");
+            var scene = SceneManager.GetActiveScene();
+            if (scene.path != ScenePath)
+                throw new InvalidOperationException("Open CaveTerracedTerrainV2 before adding the player.");
+
+            var rootObject = scene.GetRootGameObjects()
+                .Single(go => go.name.StartsWith("CaveTerrain | River"));
+            var root = rootObject.transform;
+            var camera = root.GetComponentsInChildren<Camera>(true)
+                .Single(item => item.name.StartsWith("Main Camera | terrain overview"));
+            var settings = AddressableAssetSettingsDefaultObject.Settings;
+            var configGroup = settings == null ? null : settings.FindGroup("Configs");
+            if (configGroup == null)
+                throw new InvalidOperationException("The Addressables Configs group is missing.");
+
+            var tableNames = new[] {"BubbleTable", "DialogTable", "DialogOptionTable"};
+            foreach (string tableName in tableNames)
+                if (!File.Exists("Assets/Configs/Database/Proto/" + tableName + ".bytes"))
+                    throw new InvalidOperationException("Missing generated table " + tableName + ".bytes.");
+
+            int undoGroup = Undo.GetCurrentGroup();
+            Undo.SetCurrentGroupName("Add playable cave preview");
+            var player = root.GetComponentInChildren<PlayerEntity>(true);
+            if (player == null)
+            {
+                var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/FirstRoom/GoblinPlayer.prefab");
+                if (prefab == null) throw new InvalidOperationException("GoblinPlayer prefab is missing.");
+                var playerObject = (GameObject)PrefabUtility.InstantiatePrefab(prefab, scene);
+                Undo.RegisterCreatedObjectUndo(playerObject, "Add cave player");
+                playerObject.name = "GoblinPlayer";
+                playerObject.transform.SetParent(root, false);
+                playerObject.transform.localPosition = new Vector3(0f, 0f, -22.6f);
+                player = playerObject.GetComponent<PlayerEntity>();
+                if (player == null)
+                {
+                    player = Undo.AddComponent<PlayerEntity>(playerObject);
+                    var playerData = new SerializedObject(player);
+                    playerData.FindProperty("Speed").floatValue = 7.625f;
+                    playerData.FindProperty("useGravity").boolValue = true;
+                    playerData.ApplyModifiedProperties();
+                }
+            }
+
+            var billboard = player.GetComponentInChildren<SpriteBillboard>(true);
+            if (billboard != null)
+            {
+                Undo.RecordObject(billboard, "Face the cave play camera");
+                var billboardData = new SerializedObject(billboard);
+                billboardData.FindProperty("targetCamera").objectReferenceValue = camera;
+                billboardData.ApplyModifiedProperties();
+            }
+
+            var follow = camera.GetComponent<CameraController>();
+            if (follow == null) follow = Undo.AddComponent<CameraController>(camera.gameObject);
+            Undo.RecordObject(follow, "Follow the cave player in Play Mode");
+            var followData = new SerializedObject(follow);
+            followData.FindProperty("target").objectReferenceValue = player.transform;
+            followData.FindProperty("viewAngle").floatValue = 42f;
+            followData.FindProperty("yawAngle").floatValue = -5f;
+            followData.FindProperty("distance").floatValue = 14f;
+            followData.FindProperty("damping").floatValue = 8f;
+            followData.FindProperty("focusOffset").vector3Value = new Vector3(0f, 1.0f, 0f);
+            followData.ApplyModifiedProperties();
+
+            if (root.GetComponent<Bootstrap>() == null)
+                Undo.AddComponent<Bootstrap>(rootObject);
+
+            foreach (string tableName in tableNames)
+            {
+                string assetPath = "Assets/Configs/Database/Proto/" + tableName + ".bytes";
+                string guid = AssetDatabase.AssetPathToGUID(assetPath);
+                var entry = settings.CreateOrMoveEntry(guid, configGroup, false, false);
+                entry.address = tableName;
+            }
+            EditorUtility.SetDirty(settings);
+            AssetDatabase.SaveAssets();
+            EditorSceneManager.MarkSceneDirty(scene);
+            EditorSceneManager.SaveScene(scene);
+            Undo.CollapseUndoOperations(undoGroup);
+            Selection.activeGameObject = player.gameObject;
+            Debug.Log("Cave player added at the southern entrance. Press Play to move with WASD or arrow keys.");
+        }
+
         private static void AddRiverBarriers(Transform root)
         {
             var data = ReadLayout();
@@ -660,6 +749,14 @@ namespace Untitled.Editor
             }
             ReimportLandform();
             ExportPreview();
+        }
+
+        public static void BatchAddPlayerPreview()
+        {
+            if (!File.Exists(ScenePath))
+                throw new InvalidOperationException("The saved CaveTerracedTerrainV2 scene is required.");
+            EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
+            AddPlayerPreview();
         }
 
     }
