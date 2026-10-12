@@ -50,27 +50,34 @@ Prefab 不带 PlayerEntity、输入、移动或动画。本阶段只复用已有
 
 ## 3. 倾斜镜头
 
-主镜头为 `HD2D Camera`，使用已有 `CameraController`，Inspector 中明确引用占位角色的根节点。
+相机采用原 `CaveHD2DLocal` 场景的 Cinemachine 2.10.7 方案：`HD2D Camera` 上使用 Cinemachine Brain，由 `CaveExplorationCamera` 跟随占位角色根节点。Body 为 Framing Transposer，Aim 为 Do Nothing。将原方案约 `12.09°` 的俯角改为 **15°**，其余跟随与构图参数沿用原方案。
 
 | 参数 | 值 |
 | --- | --- |
 | Projection | Perspective |
-| Pitch / `viewAngle` | 30° |
-| Yaw / `yawAngle` | 0° |
-| 垂直 FOV | 35° |
-| 到焦点的距离 | 22 |
-| `focusOffset` | `(0,0.9,0)` |
-| Damping | 8 |
-| Near / Far | 0.1 / 250 |
+| Virtual Camera Pitch | 15° |
+| Yaw | 0° |
+| 垂直 FOV | 34° |
+| Framing Transposer Camera Distance | 24.6，沿相机前向轴计算 |
+| Follow | `PixelPerson64Placeholder` 根节点 |
+| Tracked Object Offset | `(0,1.6,0)` |
+| Screen X / Y | `0.5 / 0.6` |
+| X / Y / Z Damping | `0.25 / 0.25 / 0.25` |
+| Dead Zone Width / Height / Depth | `0.05 / 0.05 / 0` |
+| Soft Zone Width / Height | `0.8 / 0.8` |
+| Brain Update / Blend Update | Late Update |
+| Near / Far | 0.1 / 200 |
 | 后处理、相机 MSAA | 关闭 |
 | 默认角色位置 | `(0,0.03,-25.5)` |
-| 默认相机位置 | 约 `(0,11.93,-44.55)` |
+| 默认相机位置 | 约 `(0,9.45,-48.87)`，按站定构图计算并保存 |
 
-`CameraController.LateUpdate()` 根据角色位置、focusOffset、倾角与距离更新相机；`SpriteBillboard.LateUpdate()` 只让 Visual 跟随相机 yaw。根节点不因 Billboard 倾斜，后续碰撞体可保持竖直。
+Framing Transposer 根据 Follow、Tracked Object Offset、Camera Distance、Screen X/Y 与跟随区域调整相机位置；Do Nothing 保持 Virtual Camera 的 15° 朝向；Brain 把 Virtual Camera 的状态应用到实际相机。`SpriteBillboard.LateUpdate()` 只让 Visual 跟随相机 yaw。根节点不因 Billboard 倾斜，后续碰撞体可保持竖直。
+
+原方案的 `Center On Activate`、`Target Movement Only`、Priority 等设置也一并沿用。旧 `CameraController` 已从本场景的主相机移除，避免两个组件同时驱动相机。Framing Transposer 只改变位置、不负责旋转，并可用于透视相机与 3D 环境。[Cinemachine 2.10 Framing Transposer 文档](https://docs.unity3d.com/Packages/com.unity.cinemachine@2.10/manual/CinemachineBodyFramingTransposer.html)
 
 Perspective 保留近大远小，FOV 控制观察角度。这组参数先平衡地面可见面积、人物厚度和前方目标占屏关系。[Unity 2022.3 Camera 文档](https://docs.unity3d.com/2022.3/Documentation/Manual/class-Camera.html)
 
-按场景投影计算，默认位置的 2 单位人物在 1440×810 画面中约高 102 屏幕像素；在同宽高比的 1920×1080 画面中约高 135 像素。结果仅用于初步判断，实际清晰度还受 Unity 渲染和 Game View 显示缩放影响，未进行运行时测量。
+按站定构图的投影计算，默认位置的 2 单位人物在 1440×810 画面中约高 101 屏幕像素；在同宽高比的 1920×1080 画面中约高 135 像素。Screen Y `0.6` 对应 Cinemachine 从屏幕顶部起算的目标构图位置；本次计算参照本地 Package 中 `ScreenToOrtho` 的坐标换算。结果仅用于初步判断，运行时位置还受 Dead Zone、Soft Zone 和 Damping 影响，未进行运行时测量。
 
 `09_ViewpointAnchors` 保存四个检查位置和对应的 CameraPose：入口 `(0,0.03,-25.5)`、供给桥前 `(-30,0.03,19)`、军营外缘 `(35,0.03,3)`、大厅正面 `(-2,0.03,26.5)`。运行时可把角色根节点移到这些位置，检查同一组镜头参数在不同区域的构图。
 
