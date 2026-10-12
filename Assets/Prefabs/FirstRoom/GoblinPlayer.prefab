@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75fda899e88cf3c41982318d29ca02a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   Speed: 7.625
   useGravity: 1
 --- !u!143 &4606039558726191949
@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 2905804910513394201}
   - component: {fileID: 3507925804863766209}
   - component: {fileID: 4234856885714963197}
+  - component: {fileID: 5283109644721938001}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -115,7 +116,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252274169156666147}
-  m_Mesh: {fileID: 4300000, guid: 448ddd630bf37254383cff81a1503b46, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b5981683ed0842ef85281705a63d174c, type: 2}
 --- !u!23 &3507925804863766209
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 21d9d16640b4ef54a976991cab76f6bf, type: 2}
+  - {fileID: 2100000, guid: ed26f3b1f9a643a898eee9d9a1c7dca8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -168,7 +169,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d4b2f8a1c3e5d7b9f0a2c4e6b8d1f3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   targetCamera: {fileID: 0}
   keepUpright: 0
+--- !u!114 &5283109644721938001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252274169156666147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f7e6aa434f4991a12aa15fef18076a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  movementSource: {fileID: 4606039558726191949}
+  framesPerSecond: 10
+  pixelsPerUnit: 460
+  movementThreshold: 0.1
+  frames:
+  - Region: {x: 74, y: 827, z: 272, w: 378}
+    Pivot: {x: 151.0, y: 4}
+  - Region: {x: 505, y: 825, z: 237, w: 374}
+    Pivot: {x: 119.0, y: 4}
+  - Region: {x: 908, y: 825, z: 263, w: 379}
+    Pivot: {x: 134.0, y: 4}
+  - Region: {x: 56, y: 441, z: 317, w: 365}
+    Pivot: {x: 176.5, y: 4}
+  - Region: {x: 477, y: 433, z: 273, w: 372}
+    Pivot: {x: 144.5, y: 4}
+  - Region: {x: 879, y: 447, z: 318, w: 358}
+    Pivot: {x: 179.0, y: 4}
+  - Region: {x: 104, y: 40, z: 247, w: 363}
+    Pivot: {x: 124.5, y: 4}
+  - Region: {x: 468, y: 40, z: 309, w: 366}
+    Pivot: {x: 160.5, y: 4}
+  - Region: {x: 951, y: 40, z: 174, w: 374}
+    Pivot: {x: 72.5, y: 4}
