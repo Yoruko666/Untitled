@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package untitled.config;
+
+option csharp_namespace = "Untitled.Config";
+
+message Bubble {
+  int32 id = 1;
+  string speaker = 2;
+  string text = 3;
+}
+
+message BubbleTable {
+  repeated Bubble bubbles = 1;
+}

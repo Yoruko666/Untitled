@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package untitled.config;
+
+option csharp_namespace = "Untitled.Config";
+
+// 对话节点。nextId 为 0 表示对话结束；有选项时忽略 nextId。
+message Dialog {
+  int32 id = 1;
+  string speaker = 2;
+  string text = 3;
+  int32 nextId = 4;
+}
+
+// 对话选项。dialogId 指向所属节点，同一节点的选项按源表行顺序排列。
+message DialogOption {
+  int32 id = 1;
+  int32 dialogId = 2;
+  string text = 3;
+  int32 nextId = 4;
+}
+
+message DialogTable {
+  repeated Dialog dialogs = 1;
+}
+
+message DialogOptionTable {
+  repeated DialogOption dialogOptions = 1;
+}
