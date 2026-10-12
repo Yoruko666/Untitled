@@ -1,7 +1,9 @@
 """Excel 配表导出工具。
 
 把 Config/Table 下的 Excel 源表导出为 protobuf 二进制，
-运行时通过 Addressables 加载 Assets/Configs/Database/Proto 下的 .bytes。
+运行时通过 Addressables 加载 Assets/Configs/Database 下的 .bytes。
+结构定义在 Config/Proto，本工具会先调用 protoc 刷新
+Assets/Scripts/Data/Generated 下的 C# 代码，再导出数据。
 
 用法:
     python tools/export_config.py            # 导出所有表
@@ -12,8 +14,6 @@
     第 2 行   类型说明，仅供策划阅读
     第 3 行   中文注释
     第 4 行起 数据，第一列为主键
-
-同时会调用 protoc 刷新 Assets/Scripts/Data/Generated 下的 C# 代码。
 """
 
 import importlib
@@ -22,8 +22,9 @@ import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROTO_DIR = os.path.join(ROOT, "Assets", "Configs", "Database", "Proto")
+PROTO_DIR = os.path.join(ROOT, "Config", "Proto")
 TABLE_DIR = os.path.join(ROOT, "Config", "Table")
+BYTES_DIR = os.path.join(ROOT, "Assets", "Configs", "Database")
 CSHARP_OUT_DIR = os.path.join(ROOT, "Assets", "Scripts", "Data", "Generated")
 STUB_DIR = os.path.join(ROOT, "tools", ".generated")
 
@@ -224,7 +225,7 @@ def export(name, definition, stubs):
         getattr(stubs, definition["row"]),
     )
 
-    output_path = os.path.join(PROTO_DIR, definition["output"])
+    output_path = os.path.join(BYTES_DIR, definition["output"])
     with open(output_path, "wb") as handle:
         handle.write(table.SerializeToString())
 

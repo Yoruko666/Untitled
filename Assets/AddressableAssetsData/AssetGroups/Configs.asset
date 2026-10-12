@@ -17,8 +17,23 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 2e3fb41c013a34044b586b68329547a0
   m_SerializeEntries:
+  - m_GUID: 3aedc3532d4a0e74882e10bee1ec6c11
+    m_Address: DialogOptionTable
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c027615b15a94c48ac96ce58eb0a7e0
+    m_Address: BubbleTable
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6e7f8091a2b3c4d5e6f7081223344556
     m_Address: ItemTable
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f29f87af6a67a264cbf585c86cdead35
+    m_Address: DialogTable
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
