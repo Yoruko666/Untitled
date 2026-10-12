@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 namespace Untitled
@@ -22,6 +23,10 @@ namespace Untitled
         private Vector3 originalFocusOffset;
         private float originalOrthographicSize;
         private float originalFieldOfView;
+        private Quaternion originalVirtualRotation;
+        private LensSettings originalVirtualLens;
+        private float originalVirtualDistance;
+        private Vector3 originalVirtualOffset;
 
         /// <summary>调试面板是否打开。</summary>
         public bool IsPanelOpen { get; private set; }
@@ -39,6 +44,12 @@ namespace Untitled
         public Camera SceneCamera => sceneCamera;
 
         public CameraController CameraController { get; private set; }
+
+        public CinemachineVirtualCamera VirtualCamera { get; private set; }
+
+        public CinemachineFramingTransposer FramingTransposer { get; private set; }
+
+        public bool IsCinemachineControlled { get; private set; }
 
         public override void Initialize()
         {
@@ -82,14 +93,33 @@ namespace Untitled
         private void RefreshCamera()
         {
             Camera currentCamera = Camera.main;
-            if (currentCamera == sceneCamera) return;
+            CinemachineBrain brain = currentCamera != null ? currentCamera.GetComponent<CinemachineBrain>() : null;
+            bool usesCinemachine = brain != null && brain.isActiveAndEnabled;
+            CinemachineVirtualCamera currentVirtualCamera = usesCinemachine
+                ? brain.ActiveVirtualCamera as CinemachineVirtualCamera : null;
+            if (currentCamera == sceneCamera && currentVirtualCamera == VirtualCamera
+                && usesCinemachine == IsCinemachineControlled) return;
 
             sceneCamera = currentCamera;
+            IsCinemachineControlled = usesCinemachine;
+            VirtualCamera = currentVirtualCamera;
+            FramingTransposer = VirtualCamera != null
+                ? VirtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>() : null;
             CameraController = sceneCamera != null ? sceneCamera.GetComponent<CameraController>() : null;
             if (sceneCamera == null) return;
 
             originalOrthographicSize = sceneCamera.orthographicSize;
             originalFieldOfView = sceneCamera.fieldOfView;
+            if (VirtualCamera != null)
+            {
+                originalVirtualRotation = VirtualCamera.transform.rotation;
+                originalVirtualLens = VirtualCamera.m_Lens;
+                if (FramingTransposer != null)
+                {
+                    originalVirtualDistance = FramingTransposer.m_CameraDistance;
+                    originalVirtualOffset = FramingTransposer.m_TrackedObjectOffset;
+                }
+            }
             if (CameraController == null) return;
 
             originalViewAngle = CameraController.ViewAngle;
@@ -102,6 +132,19 @@ namespace Untitled
         public void ResetCamera()
         {
             if (sceneCamera == null) return;
+
+            if (IsCinemachineControlled)
+            {
+                if (VirtualCamera == null) return;
+                VirtualCamera.transform.rotation = originalVirtualRotation;
+                VirtualCamera.m_Lens = originalVirtualLens;
+                if (FramingTransposer != null)
+                {
+                    FramingTransposer.m_CameraDistance = originalVirtualDistance;
+                    FramingTransposer.m_TrackedObjectOffset = originalVirtualOffset;
+                }
+                return;
+            }
 
             sceneCamera.orthographicSize = originalOrthographicSize;
             sceneCamera.fieldOfView = originalFieldOfView;
