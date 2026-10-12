@@ -1,0 +1,2058 @@
+{
+  "Zones": [
+    {
+      "Id": 1,
+      "Name": "Evacuation",
+      "X": 0,
+      "Z": -30,
+      "Height": 0
+    },
+    {
+      "Id": 2,
+      "Name": "EntranceForecourt",
+      "X": 0,
+      "Z": -22.6,
+      "Height": 0
+    },
+    {
+      "Id": 3,
+      "Name": "MilitaryTraining",
+      "X": 19.2,
+      "Z": 10.8,
+      "Height": 0.45
+    },
+    {
+      "Id": 4,
+      "Name": "Residence",
+      "X": 5.9,
+      "Z": -15.5,
+      "Height": 0.3
+    },
+    {
+      "Id": 5,
+      "Name": "KitchenPreparation",
+      "X": 17.7,
+      "Z": -12.6,
+      "Height": 0.3
+    },
+    {
+      "Id": 6,
+      "Name": "Tavern",
+      "X": -6.3,
+      "Z": -3.3,
+      "Height": 0.3
+    },
+    {
+      "Id": 7,
+      "Name": "Casino",
+      "X": 11.8,
+      "Z": -0.7,
+      "Height": 0.3
+    },
+    {
+      "Id": 8,
+      "Name": "Feast",
+      "X": 2.3,
+      "Z": 10.4,
+      "Height": 0.3
+    },
+    {
+      "Id": 9,
+      "Name": "AltarHall",
+      "X": -1.5,
+      "Z": 23.4,
+      "Height": 2.4
+    },
+    {
+      "Id": 10,
+      "Name": "Elder",
+      "X": 15.5,
+      "Z": 25.6,
+      "Height": 2.4
+    },
+    {
+      "Id": 11,
+      "Name": "Planting",
+      "X": -22.3,
+      "Z": 7.8,
+      "Height": -1.2
+    },
+    {
+      "Id": 12,
+      "Name": "Warehouse",
+      "X": -5.1,
+      "Z": 10.4,
+      "Height": 0.3
+    },
+    {
+      "Id": 13,
+      "Name": "UnloadingCourt",
+      "X": 19.2,
+      "Z": -22.6,
+      "Height": 0
+    },
+    {
+      "Id": 14,
+      "Name": "PublicHearth",
+      "X": 1.5,
+      "Z": -2.9,
+      "Height": 0
+    },
+    {
+      "Id": 15,
+      "Name": "RiverWorkshop",
+      "X": -22.3,
+      "Z": -10,
+      "Height": -1.2
+    }
+  ],
+  "RouteSamples": [
+    {
+      "X": 0.0,
+      "Z": -31.0,
+      "Height": 0.03,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": 0.0,
+      "Z": -32.25,
+      "Height": 0.03,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": 0.0,
+      "Z": -33.5,
+      "Height": 0.03,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": 0.0,
+      "Z": -34.75,
+      "Height": 0.03,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": 0.0,
+      "Z": -36.0,
+      "Height": 0.03,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": 0.0,
+      "Z": -36.0,
+      "Height": 0.03,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -1.5,
+      "Z": -36.5,
+      "Height": 0.03,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -3.0,
+      "Z": -37.0,
+      "Height": 0.03,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -4.5,
+      "Z": -37.5,
+      "Height": 0.03,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -6.0,
+      "Z": -38.0,
+      "Height": 0.03,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -6.0,
+      "Z": -38.0,
+      "Height": 0.03,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -8.0,
+      "Z": -38.25,
+      "Height": -0.27,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -10.0,
+      "Z": -38.5,
+      "Height": -0.57,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -12.0,
+      "Z": -38.75,
+      "Height": -0.8699999999999999,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -14.0,
+      "Z": -39.0,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -14.0,
+      "Z": -39.0,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -17.0,
+      "Z": -39.0,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -20.0,
+      "Z": -39.0,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -23.0,
+      "Z": -39.0,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -26.0,
+      "Z": -39.0,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -26.0,
+      "Z": -39.0,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -27.75,
+      "Z": -38.5,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -29.5,
+      "Z": -38.0,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -31.25,
+      "Z": -37.5,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -33.0,
+      "Z": -37.0,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -33.0,
+      "Z": -37.0,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -33.0,
+      "Z": -35.75,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -33.0,
+      "Z": -34.5,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -33.0,
+      "Z": -33.25,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -33.0,
+      "Z": -32.0,
+      "Height": -1.17,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -33.0,
+      "Z": -32.0,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -32.5,
+      "Z": -30.75,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -32.0,
+      "Z": -29.5,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -31.5,
+      "Z": -28.25,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -31.0,
+      "Z": -27.0,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -31.0,
+      "Z": -27.0,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -30.0,
+      "Z": -25.5,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -29.0,
+      "Z": -24.0,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -28.0,
+      "Z": -22.5,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -27.0,
+      "Z": -21.0,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -27.0,
+      "Z": -21.0,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -26.125,
+      "Z": -20.0,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -25.25,
+      "Z": -19.0,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -24.375,
+      "Z": -18.0,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -23.5,
+      "Z": -17.0,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -23.5,
+      "Z": -17.0,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -23.2,
+      "Z": -15.25,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -22.9,
+      "Z": -13.5,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -22.6,
+      "Z": -11.75,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -22.3,
+      "Z": -10.0,
+      "Height": -1.17,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -22.3,
+      "Z": -10.0,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": -7.75,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": -5.5,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": -3.25,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": -1.0,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": -1.0,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": 1.2000000000000002,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": 3.4000000000000004,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": 5.6000000000000005,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": 7.800000000000001,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": 7.8,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": 9.4675,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": 11.135,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": 12.8025,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -22.3,
+      "Z": 14.47,
+      "Height": -1.17,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -17.950000000000003,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridge"
+    },
+    {
+      "X": -16.7875,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridge"
+    },
+    {
+      "X": -15.625000000000002,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridge"
+    },
+    {
+      "X": -14.462500000000002,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridge"
+    },
+    {
+      "X": -13.3,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridge"
+    },
+    {
+      "X": -13.3,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridge"
+    },
+    {
+      "X": -12.137500000000001,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridge"
+    },
+    {
+      "X": -10.975000000000001,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridge"
+    },
+    {
+      "X": -9.8125,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridge"
+    },
+    {
+      "X": -8.65,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridge"
+    },
+    {
+      "X": -22.3,
+      "Z": -10.0,
+      "Height": -1.17,
+      "Name": "EntranceBridgeWestRamp"
+    },
+    {
+      "X": -21.212500000000002,
+      "Z": -10.0,
+      "Height": -0.8699999999999999,
+      "Name": "EntranceBridgeWestRamp"
+    },
+    {
+      "X": -20.125,
+      "Z": -10.0,
+      "Height": -0.57,
+      "Name": "EntranceBridgeWestRamp"
+    },
+    {
+      "X": -19.0375,
+      "Z": -10.0,
+      "Height": -0.27,
+      "Name": "EntranceBridgeWestRamp"
+    },
+    {
+      "X": -17.950000000000003,
+      "Z": -10.0,
+      "Height": 0.030000000000000027,
+      "Name": "EntranceBridgeWestRamp"
+    },
+    {
+      "X": -8.65,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridgeEastLanding"
+    },
+    {
+      "X": -8.4125,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridgeEastLanding"
+    },
+    {
+      "X": -8.175,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridgeEastLanding"
+    },
+    {
+      "X": -7.9375,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridgeEastLanding"
+    },
+    {
+      "X": -7.7,
+      "Z": -10.0,
+      "Height": 0.03,
+      "Name": "EntranceBridgeEastLanding"
+    },
+    {
+      "X": -18.190940400000002,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridge"
+    },
+    {
+      "X": -17.0284404,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridge"
+    },
+    {
+      "X": -15.865940400000001,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridge"
+    },
+    {
+      "X": -14.703440400000002,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridge"
+    },
+    {
+      "X": -13.5409404,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridge"
+    },
+    {
+      "X": -13.5409404,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridge"
+    },
+    {
+      "X": -12.3784404,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridge"
+    },
+    {
+      "X": -11.215940400000001,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridge"
+    },
+    {
+      "X": -10.0534404,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridge"
+    },
+    {
+      "X": -8.8909404,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridge"
+    },
+    {
+      "X": -22.3,
+      "Z": 14.47,
+      "Height": -1.17,
+      "Name": "SupplyBridgeWestRamp"
+    },
+    {
+      "X": -21.272735100000002,
+      "Z": 14.47,
+      "Height": -0.8699999999999999,
+      "Name": "SupplyBridgeWestRamp"
+    },
+    {
+      "X": -20.2454702,
+      "Z": 14.47,
+      "Height": -0.57,
+      "Name": "SupplyBridgeWestRamp"
+    },
+    {
+      "X": -19.2182053,
+      "Z": 14.47,
+      "Height": -0.27,
+      "Name": "SupplyBridgeWestRamp"
+    },
+    {
+      "X": -18.190940400000002,
+      "Z": 14.47,
+      "Height": 0.030000000000000027,
+      "Name": "SupplyBridgeWestRamp"
+    },
+    {
+      "X": -8.8909404,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridgeEastLanding"
+    },
+    {
+      "X": -8.5932053,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridgeEastLanding"
+    },
+    {
+      "X": -8.2954702,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridgeEastLanding"
+    },
+    {
+      "X": -7.9977351,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridgeEastLanding"
+    },
+    {
+      "X": -7.7,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "SupplyBridgeEastLanding"
+    },
+    {
+      "X": -7.7,
+      "Z": 14.47,
+      "Height": 0.03,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -8.125,
+      "Z": 15.352500000000001,
+      "Height": 0.235,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -8.55,
+      "Z": 16.235,
+      "Height": 0.43999999999999995,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -8.975,
+      "Z": 17.1175,
+      "Height": 0.645,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -9.4,
+      "Z": 18.0,
+      "Height": 0.85,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -9.4,
+      "Z": 18.0,
+      "Height": 0.85,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -9.4,
+      "Z": 19.35,
+      "Height": 1.245,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -9.4,
+      "Z": 20.7,
+      "Height": 1.6400000000000001,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -9.4,
+      "Z": 22.049999999999997,
+      "Height": 2.035,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -9.4,
+      "Z": 23.4,
+      "Height": 2.43,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -9.4,
+      "Z": 23.4,
+      "Height": 2.43,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -8.725,
+      "Z": 23.4,
+      "Height": 2.43,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -8.05,
+      "Z": 23.4,
+      "Height": 2.43,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -7.375,
+      "Z": 23.4,
+      "Height": 2.43,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -6.7,
+      "Z": 23.4,
+      "Height": 2.43,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -1.5,
+      "Z": 17.28,
+      "Height": 0.15,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 17.53,
+      "Height": 0.3,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 17.78,
+      "Height": 0.44999999999999996,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 18.03,
+      "Height": 0.6,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 18.28,
+      "Height": 0.75,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 18.53,
+      "Height": 0.8999999999999999,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 18.78,
+      "Height": 1.05,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 19.03,
+      "Height": 1.2,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 19.28,
+      "Height": 1.3499999999999999,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 19.53,
+      "Height": 1.5,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 19.78,
+      "Height": 1.65,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 20.03,
+      "Height": 1.7999999999999998,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 20.28,
+      "Height": 1.95,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 20.53,
+      "Height": 2.1,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 20.78,
+      "Height": 2.25,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": -1.5,
+      "Z": 21.03,
+      "Height": 2.4,
+      "Name": "A_CentralHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 17.28,
+      "Height": 0.15,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 17.53,
+      "Height": 0.3,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 17.78,
+      "Height": 0.44999999999999996,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 18.03,
+      "Height": 0.6,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 18.28,
+      "Height": 0.75,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 18.53,
+      "Height": 0.8999999999999999,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 18.78,
+      "Height": 1.05,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 19.03,
+      "Height": 1.2,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 19.28,
+      "Height": 1.3499999999999999,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 19.53,
+      "Height": 1.5,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 19.78,
+      "Height": 1.65,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 20.03,
+      "Height": 1.7999999999999998,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 20.28,
+      "Height": 1.95,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 20.53,
+      "Height": 2.1,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 20.78,
+      "Height": 2.25,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.0,
+      "Z": 21.03,
+      "Height": 2.4,
+      "Name": "C_EastHallStair"
+    },
+    {
+      "X": 3.8,
+      "Z": 24.0,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 4.6,
+      "Z": 24.0,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 5.4,
+      "Z": 24.0,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 6.2,
+      "Z": 24.0,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 7.0,
+      "Z": 24.0,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 7.0,
+      "Z": 24.0,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 7.95,
+      "Z": 24.0,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 8.9,
+      "Z": 24.0,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 9.850000000000001,
+      "Z": 24.0,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 10.8,
+      "Z": 24.0,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 10.8,
+      "Z": 24.0,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 11.475000000000001,
+      "Z": 24.4,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 12.15,
+      "Z": 24.8,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 12.825,
+      "Z": 25.200000000000003,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 13.5,
+      "Z": 25.6,
+      "Height": 2.43,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 25.5,
+      "Z": 10.8,
+      "Height": 0.03,
+      "Name": "03_MilitaryTrainingAccessRamp"
+    },
+    {
+      "X": 25.05,
+      "Z": 10.8,
+      "Height": 0.1425,
+      "Name": "03_MilitaryTrainingAccessRamp"
+    },
+    {
+      "X": 24.6,
+      "Z": 10.8,
+      "Height": 0.255,
+      "Name": "03_MilitaryTrainingAccessRamp"
+    },
+    {
+      "X": 24.150000000000002,
+      "Z": 10.8,
+      "Height": 0.36749999999999994,
+      "Name": "03_MilitaryTrainingAccessRamp"
+    },
+    {
+      "X": 23.700000000000003,
+      "Z": 10.8,
+      "Height": 0.48,
+      "Name": "03_MilitaryTrainingAccessRamp"
+    },
+    {
+      "X": 23.700000000000003,
+      "Z": 10.8,
+      "Height": 0.48,
+      "Name": "03_MilitaryTrainingAccessRamp"
+    },
+    {
+      "X": 23.475,
+      "Z": 10.8,
+      "Height": 0.48,
+      "Name": "03_MilitaryTrainingAccessRamp"
+    },
+    {
+      "X": 23.25,
+      "Z": 10.8,
+      "Height": 0.48,
+      "Name": "03_MilitaryTrainingAccessRamp"
+    },
+    {
+      "X": 23.025000000000002,
+      "Z": 10.8,
+      "Height": 0.48,
+      "Name": "03_MilitaryTrainingAccessRamp"
+    },
+    {
+      "X": 22.8,
+      "Z": 10.8,
+      "Height": 0.48,
+      "Name": "03_MilitaryTrainingAccessRamp"
+    },
+    {
+      "X": 0.20000000000000062,
+      "Z": -15.5,
+      "Height": 0.03,
+      "Name": "04_ResidenceAccessRamp"
+    },
+    {
+      "X": 0.6500000000000006,
+      "Z": -15.5,
+      "Height": 0.10499999999999998,
+      "Name": "04_ResidenceAccessRamp"
+    },
+    {
+      "X": 1.1000000000000005,
+      "Z": -15.5,
+      "Height": 0.17999999999999997,
+      "Name": "04_ResidenceAccessRamp"
+    },
+    {
+      "X": 1.5500000000000005,
+      "Z": -15.5,
+      "Height": 0.25499999999999995,
+      "Name": "04_ResidenceAccessRamp"
+    },
+    {
+      "X": 2.0000000000000004,
+      "Z": -15.5,
+      "Height": 0.32999999999999996,
+      "Name": "04_ResidenceAccessRamp"
+    },
+    {
+      "X": 2.0000000000000004,
+      "Z": -15.5,
+      "Height": 0.32999999999999996,
+      "Name": "04_ResidenceAccessRamp"
+    },
+    {
+      "X": 2.2250000000000005,
+      "Z": -15.5,
+      "Height": 0.32999999999999996,
+      "Name": "04_ResidenceAccessRamp"
+    },
+    {
+      "X": 2.45,
+      "Z": -15.5,
+      "Height": 0.32999999999999996,
+      "Name": "04_ResidenceAccessRamp"
+    },
+    {
+      "X": 2.6750000000000003,
+      "Z": -15.5,
+      "Height": 0.32999999999999996,
+      "Name": "04_ResidenceAccessRamp"
+    },
+    {
+      "X": 2.9000000000000004,
+      "Z": -15.5,
+      "Height": 0.32999999999999996,
+      "Name": "04_ResidenceAccessRamp"
+    },
+    {
+      "X": 11.6,
+      "Z": -12.6,
+      "Height": 0.03,
+      "Name": "05_KitchenPreparationAccessRamp"
+    },
+    {
+      "X": 12.05,
+      "Z": -12.6,
+      "Height": 0.10499999999999998,
+      "Name": "05_KitchenPreparationAccessRamp"
+    },
+    {
+      "X": 12.5,
+      "Z": -12.6,
+      "Height": 0.17999999999999997,
+      "Name": "05_KitchenPreparationAccessRamp"
+    },
+    {
+      "X": 12.95,
+      "Z": -12.6,
+      "Height": 0.25499999999999995,
+      "Name": "05_KitchenPreparationAccessRamp"
+    },
+    {
+      "X": 13.4,
+      "Z": -12.6,
+      "Height": 0.32999999999999996,
+      "Name": "05_KitchenPreparationAccessRamp"
+    },
+    {
+      "X": 13.4,
+      "Z": -12.6,
+      "Height": 0.32999999999999996,
+      "Name": "05_KitchenPreparationAccessRamp"
+    },
+    {
+      "X": 13.625,
+      "Z": -12.6,
+      "Height": 0.32999999999999996,
+      "Name": "05_KitchenPreparationAccessRamp"
+    },
+    {
+      "X": 13.850000000000001,
+      "Z": -12.6,
+      "Height": 0.32999999999999996,
+      "Name": "05_KitchenPreparationAccessRamp"
+    },
+    {
+      "X": 14.075000000000001,
+      "Z": -12.6,
+      "Height": 0.32999999999999996,
+      "Name": "05_KitchenPreparationAccessRamp"
+    },
+    {
+      "X": 14.3,
+      "Z": -12.6,
+      "Height": 0.32999999999999996,
+      "Name": "05_KitchenPreparationAccessRamp"
+    },
+    {
+      "X": -1.1,
+      "Z": -3.3,
+      "Height": 0.03,
+      "Name": "06_TavernAccessRamp"
+    },
+    {
+      "X": -1.55,
+      "Z": -3.3,
+      "Height": 0.10499999999999998,
+      "Name": "06_TavernAccessRamp"
+    },
+    {
+      "X": -2.0,
+      "Z": -3.3,
+      "Height": 0.17999999999999997,
+      "Name": "06_TavernAccessRamp"
+    },
+    {
+      "X": -2.45,
+      "Z": -3.3,
+      "Height": 0.25499999999999995,
+      "Name": "06_TavernAccessRamp"
+    },
+    {
+      "X": -2.9,
+      "Z": -3.3,
+      "Height": 0.32999999999999996,
+      "Name": "06_TavernAccessRamp"
+    },
+    {
+      "X": -2.9,
+      "Z": -3.3,
+      "Height": 0.32999999999999996,
+      "Name": "06_TavernAccessRamp"
+    },
+    {
+      "X": -3.125,
+      "Z": -3.3,
+      "Height": 0.32999999999999996,
+      "Name": "06_TavernAccessRamp"
+    },
+    {
+      "X": -3.3499999999999996,
+      "Z": -3.3,
+      "Height": 0.32999999999999996,
+      "Name": "06_TavernAccessRamp"
+    },
+    {
+      "X": -3.5749999999999997,
+      "Z": -3.3,
+      "Height": 0.32999999999999996,
+      "Name": "06_TavernAccessRamp"
+    },
+    {
+      "X": -3.8,
+      "Z": -3.3,
+      "Height": 0.32999999999999996,
+      "Name": "06_TavernAccessRamp"
+    },
+    {
+      "X": 6.300000000000001,
+      "Z": -0.7,
+      "Height": 0.03,
+      "Name": "07_CasinoAccessRamp"
+    },
+    {
+      "X": 6.750000000000001,
+      "Z": -0.7,
+      "Height": 0.10499999999999998,
+      "Name": "07_CasinoAccessRamp"
+    },
+    {
+      "X": 7.200000000000001,
+      "Z": -0.7,
+      "Height": 0.17999999999999997,
+      "Name": "07_CasinoAccessRamp"
+    },
+    {
+      "X": 7.650000000000001,
+      "Z": -0.7,
+      "Height": 0.25499999999999995,
+      "Name": "07_CasinoAccessRamp"
+    },
+    {
+      "X": 8.100000000000001,
+      "Z": -0.7,
+      "Height": 0.32999999999999996,
+      "Name": "07_CasinoAccessRamp"
+    },
+    {
+      "X": 8.100000000000001,
+      "Z": -0.7,
+      "Height": 0.32999999999999996,
+      "Name": "07_CasinoAccessRamp"
+    },
+    {
+      "X": 8.325000000000001,
+      "Z": -0.7,
+      "Height": 0.32999999999999996,
+      "Name": "07_CasinoAccessRamp"
+    },
+    {
+      "X": 8.55,
+      "Z": -0.7,
+      "Height": 0.32999999999999996,
+      "Name": "07_CasinoAccessRamp"
+    },
+    {
+      "X": 8.775000000000002,
+      "Z": -0.7,
+      "Height": 0.32999999999999996,
+      "Name": "07_CasinoAccessRamp"
+    },
+    {
+      "X": 9.000000000000002,
+      "Z": -0.7,
+      "Height": 0.32999999999999996,
+      "Name": "07_CasinoAccessRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 5.5,
+      "Height": 0.03,
+      "Name": "A_FeastSouthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 5.9625,
+      "Height": 0.10500000000000001,
+      "Name": "A_FeastSouthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 6.425,
+      "Height": 0.18000000000000002,
+      "Name": "A_FeastSouthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 6.887499999999999,
+      "Height": 0.255,
+      "Name": "A_FeastSouthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 7.35,
+      "Height": 0.33000000000000007,
+      "Name": "A_FeastSouthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 7.35,
+      "Height": 0.33,
+      "Name": "A_FeastSouthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 7.5625,
+      "Height": 0.33,
+      "Name": "A_FeastSouthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 7.7749999999999995,
+      "Height": 0.33,
+      "Name": "A_FeastSouthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 7.987499999999999,
+      "Height": 0.33,
+      "Name": "A_FeastSouthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 8.2,
+      "Height": 0.33,
+      "Name": "A_FeastSouthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 12.0,
+      "Height": 0.33,
+      "Name": "A_FeastNorthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 12.425,
+      "Height": 0.33,
+      "Name": "A_FeastNorthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 12.85,
+      "Height": 0.33,
+      "Name": "A_FeastNorthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 13.274999999999999,
+      "Height": 0.33,
+      "Name": "A_FeastNorthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 13.7,
+      "Height": 0.33,
+      "Name": "A_FeastNorthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 13.7,
+      "Height": 0.33,
+      "Name": "A_FeastNorthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 14.149999999999999,
+      "Height": 0.255,
+      "Name": "A_FeastNorthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 14.6,
+      "Height": 0.18,
+      "Name": "A_FeastNorthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 15.05,
+      "Height": 0.10499999999999998,
+      "Name": "A_FeastNorthRamp"
+    },
+    {
+      "X": 0.0,
+      "Z": 15.5,
+      "Height": 0.02999999999999997,
+      "Name": "A_FeastNorthRamp"
+    },
+    {
+      "X": -0.8,
+      "Z": 10.4,
+      "Height": 0.33,
+      "Name": "12_WarehouseFeastSaddle"
+    },
+    {
+      "X": -1.475,
+      "Z": 10.4,
+      "Height": 0.33,
+      "Name": "12_WarehouseFeastSaddle"
+    },
+    {
+      "X": -2.1500000000000004,
+      "Z": 10.4,
+      "Height": 0.33,
+      "Name": "12_WarehouseFeastSaddle"
+    },
+    {
+      "X": -2.825,
+      "Z": 10.4,
+      "Height": 0.33,
+      "Name": "12_WarehouseFeastSaddle"
+    },
+    {
+      "X": -3.5,
+      "Z": 10.4,
+      "Height": 0.33,
+      "Name": "12_WarehouseFeastSaddle"
+    }
+  ],
+  "RiverCourse": [
+    {
+      "X": -12.4,
+      "Z": -15,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.4936,
+      "Z": -14,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.716800000000001,
+      "Z": -13,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.9832,
+      "Z": -12,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.2064,
+      "Z": -11,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.3,
+      "Z": -10,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.355393586005832,
+      "Z": -9,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.498250728862974,
+      "Z": -8,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.693586005830905,
+      "Z": -7,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.906413994169096,
+      "Z": -6,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -14.101749271137027,
+      "Z": -5,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -14.24460641399417,
+      "Z": -4,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -14.3,
+      "Z": -3,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -14.200291545189504,
+      "Z": -2,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.943148688046648,
+      "Z": -1,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.591545189504373,
+      "Z": 0,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.208454810495628,
+      "Z": 1,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.856851311953353,
+      "Z": 2,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.599708454810497,
+      "Z": 3,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.5,
+      "Z": 4,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.477777777777778,
+      "Z": 5,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.422222222222222,
+      "Z": 6,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.35,
+      "Z": 7,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.277777777777777,
+      "Z": 8,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.222222222222221,
+      "Z": 9,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.2,
+      "Z": 10,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.318518518518518,
+      "Z": 11,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -12.614814814814814,
+      "Z": 12,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.0,
+      "Z": 13,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.385185185185186,
+      "Z": 14,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.681481481481482,
+      "Z": 15,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.8,
+      "Z": 16,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.938483965014578,
+      "Z": 17,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -14.295626822157436,
+      "Z": 18,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -14.78396501457726,
+      "Z": 19,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -15.316034985422741,
+      "Z": 20,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -15.804373177842567,
+      "Z": 21,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -16.161516034985425,
+      "Z": 22,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -16.3,
+      "Z": 23,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -16.2272,
+      "Z": 24,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -16.0536,
+      "Z": 25,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -15.8464,
+      "Z": 26,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -15.6728,
+      "Z": 27,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -15.6,
+      "Z": 28,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -15.365533709292283,
+      "Z": 29,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -14.794228522074887,
+      "Z": 30,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -14.084224965706447,
+      "Z": 31,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.433663567545597,
+      "Z": 32,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.040684854950973,
+      "Z": 33,
+      "HalfWidth": 3.9
+    },
+    {
+      "X": -13.0,
+      "Z": 33.4,
+      "HalfWidth": 3.9
+    }
+  ],
+  "WestFork": [
+    {
+      "X": -25,
+      "Z": -34,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -24.896,
+      "Z": -33,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -24.648,
+      "Z": -32,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -24.352,
+      "Z": -31,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -24.104,
+      "Z": -30,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -24.0,
+      "Z": -29,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -23.5,
+      "Z": -28,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -22.4,
+      "Z": -27,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -21.3,
+      "Z": -26,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -20.8,
+      "Z": -25,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -20.3736,
+      "Z": -24,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -19.3568,
+      "Z": -23,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -18.1432,
+      "Z": -22,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -17.1264,
+      "Z": -21,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -16.7,
+      "Z": -20,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -16.2528,
+      "Z": -19,
+      "HalfWidth": 2.86
+    },
+    {
+      "X": -15.186399999999999,
+      "Z": -18,
+      "HalfWidth": 3.12
+    },
+    {
+      "X": -13.9136,
+      "Z": -17,
+      "HalfWidth": 3.38
+    },
+    {
+      "X": -12.8472,
+      "Z": -16,
+      "HalfWidth": 3.6399999999999997
+    },
+    {
+      "X": -12.4,
+      "Z": -15,
+      "HalfWidth": 3.9
+    }
+  ],
+  "EastFork": [
+    {
+      "X": -9.6,
+      "Z": -34,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -9.4856,
+      "Z": -33,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -9.2128,
+      "Z": -32,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -8.8872,
+      "Z": -31,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -8.6144,
+      "Z": -30,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -8.5,
+      "Z": -29,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -8.578125,
+      "Z": -28,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -8.75,
+      "Z": -27,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -8.921875,
+      "Z": -26,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -9.0,
+      "Z": -25,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -9.1768,
+      "Z": -24,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -9.5984,
+      "Z": -23,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -10.1016,
+      "Z": -22,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -10.5232,
+      "Z": -21,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -10.7,
+      "Z": -20,
+      "HalfWidth": 2.6
+    },
+    {
+      "X": -10.8768,
+      "Z": -19,
+      "HalfWidth": 2.86
+    },
+    {
+      "X": -11.298399999999999,
+      "Z": -18,
+      "HalfWidth": 3.12
+    },
+    {
+      "X": -11.8016,
+      "Z": -17,
+      "HalfWidth": 3.38
+    },
+    {
+      "X": -12.2232,
+      "Z": -16,
+      "HalfWidth": 3.6399999999999997
+    },
+    {
+      "X": -12.4,
+      "Z": -15,
+      "HalfWidth": 3.9
+    }
+  ],
+  "RiverStart": -15,
+  "RiverEnd": 33.4,
+  "RiverHalfWidth": 3.9,
+  "BridgeZs": [
+    -10,
+    14.47
+  ],
+  "RouteAnchors": [
+    {
+      "Name": "O1_EntranceObservation",
+      "X": 0,
+      "Z": -18.47,
+      "Height": 0
+    },
+    {
+      "Name": "O2_SupplyBridgeObservation",
+      "X": -22.3,
+      "Z": 14.47,
+      "Height": -1.2
+    },
+    {
+      "Name": "O3_PerimeterObservation",
+      "X": 24,
+      "Z": 2.6,
+      "Height": 0
+    },
+    {
+      "Name": "SharedEnd_HallToElder",
+      "X": 7,
+      "Z": 24,
+      "Height": 2.4
+    },
+    {
+      "Name": "PrivateStoreInsideElder",
+      "X": 18,
+      "Z": 27.7,
+      "Height": 2.4
+    }
+  ]
+}
