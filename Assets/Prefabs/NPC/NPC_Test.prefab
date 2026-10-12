@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1273378051099726005}
-  - component: {fileID: 7526684181908792940}
   - component: {fileID: 7622561543807918946}
+  - component: {fileID: 7082423908603111925}
   m_Layer: 0
-  m_Name: Player
+  m_Name: NPC_Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,19 +34,6 @@ Transform:
   - {fileID: 360937606665609062}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7526684181908792940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2589964726711778830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75fda899e88cf3c41982318d29ca02a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 10
 --- !u!143 &7622561543807918946
 CharacterController:
   m_ObjectHideFlags: 0
@@ -66,13 +53,31 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.8
-  m_Radius: 0.3
+  m_Height: 1.2
+  m_Radius: 0.6
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 0.6, z: 0}
+--- !u!114 &7082423908603111925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589964726711778830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3f9d2b5c8e41a6b3d7f0c9e6a48263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 2959643547533742721, guid: 2add61032f2fb7147951b8ca1bae2dde, type: 3}
+  bubbleIds: 1127000012270000
+  heightOffset: 1.5
+  showTime: 3
+  interval: 4
+  targetCamera: {fileID: 0}
 --- !u!1 &4665458803534188205
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +105,7 @@ Transform:
   m_GameObject: {fileID: 4665458803534188205}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -171,3 +176,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCamera: {fileID: 0}
+  keepUpright: 0
