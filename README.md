@@ -29,7 +29,7 @@ Untitled/
 │  ├─ Art/                            Audio / Materials / Models / Sprites / Textures
 │  ├─ Configs/
 │  │  ├─ Cave/CaveLayout.asset        洞穴布局配置（CaveMapLayout）
-│  │  └─ Database/Proto/              *.proto 与导出产物 <Table>.bytes（配表二进制）
+│  │  └─ Database/                    <Table>.bytes 配表二进制（Addressables Configs 组）
 │  ├─ Editor/
 │  │  ├─ Cave/                        CaveMapBuilder / CaveMapEditor / CavePresentationEditor
 │  │  └─ HybridProps/                 HybridPropWindow（道具素材浏览器）
@@ -53,7 +53,9 @@ Untitled/
 │  │  └─ UI/                          UIManager / PanelBase / UIPanel / MenuPanel
 │  ├─ Settings/                       URP 配置
 │  └─ Shaders/                        CaveWater、hd2d_pixel_prop
-├─ Config/Table/                      配表 Excel 源表（唯一权威来源）
+├─ Config/
+│  ├─ Table/                          配表 Excel 源表（唯一权威来源）
+│  └─ Proto/                          *.proto 结构定义
 ├─ docs/                              道具清单等文档
 ├─ tools/
 │  ├─ export_cave_layout.gd           洞穴布局导出脚本（离线）
@@ -144,8 +146,8 @@ public class Collection : EntityBase, IInteractable
 配表链路为 **Excel 源表 → protobuf 二进制 → Addressables 加载 → `DatabaseManager` 内存表**，不使用 SQLite 等数据库引擎。
 
 - 源表：`Config/Table/*.xlsx`。每个 sheet 第 1 行为字段名（须与 proto 一致）、第 2 行类型说明、第 3 行中文注释，第 4 行起为数据，第一列为主键。
-- proto 定义：`Assets/Configs/Database/Proto/*.proto`，`csharp_namespace` 为 `Untitled.Config`。
-- 导出：`python tools/export_config.py [表名]`（离线，需 `protoc` 与 `openpyxl`）。脚本刷新 `Assets/Scripts/Data/Generated` 的 C# 代码，并写出 `Assets/Configs/Database/Proto/<Table>.bytes`。
+- proto 定义：`Config/Proto/*.proto`，`csharp_namespace` 为 `Untitled.Config`。
+- 导出：`python tools/export_config.py [表名]`（离线，需 `protoc` 与 `openpyxl`）。脚本先用 protoc 刷新 `Assets/Scripts/Data/Generated` 的 C# 代码，再写出 `Assets/Configs/Database/<Table>.bytes`。
 - 运行时：`DatabaseManager` 由 `Bootstrap` 注册，从 Addressables `Configs` 组读取地址与 `.bytes` 文件同名的资产，`Load` 时按主键建索引：
 
 ```csharp
