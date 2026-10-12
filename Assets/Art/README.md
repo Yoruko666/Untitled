@@ -43,3 +43,9 @@
 - 原生网格位于 `Models/Props`，材质位于 `Materials/Props`，按同一类别组织。`_3d` 为立体容器，`_hd2d` 为受光像素面片。
 - 复用现有 30 张像素原图与厨房参考图，PNG 的现有 Sprite 导入设置保持不变。JPG 白底仍保留，HD-2D 材质通过 Shader 裁切使用完整轮廓。
 - Unity 菜单 `Untitled/Props/素材浏览器` 可看原图、预览角度、调大小和放入场景；使用说明与逐项索引见 [可放置道具](../../docs/placeable_props.md)。
+
+## 赌场 demo 实体素材
+
+- `Models/Props/Casino`、`Materials/Props/Casino`、`Textures/Props/Casino` 保存原创石赌桌、编织草席、骨骰、筹码、卡牌、符文轮、轮锁保险箱、金条、钱袋、老板桌椅、兑换柜台与招牌，共 13 件独立道具。
+- 对应 prefab 及整屋模块位于 `Assets/Prefabs/Props/Casino`，展示场景为 `Assets/Scenes/Props/GoblinCasinoDemo.unity`；油灯、火盆、箱桶、哥布林像素角色等引用现有库。
+- 模型和布置都已保存，运行时不生成房间。详见 [赌场 demo 说明](../../docs/goblin-casino-demo.md)。
