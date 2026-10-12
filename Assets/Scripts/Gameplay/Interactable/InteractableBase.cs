@@ -1,21 +1,19 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Untitled
 {
-    public class Collection : EntityBase, IInteractable
+    public abstract class InteractableBase : MonoBehaviour
     {
-        public int ItemId;
-        public int Num;
-        public float Range = 2f;
+        [SerializeField] protected float range = 2f;
 
         private bool inRange;
 
-        protected override void Start()
+        private void Start()
         {
             SphereCollider rangeCollider = GetComponent<SphereCollider>();
             if (rangeCollider == null) rangeCollider = gameObject.AddComponent<SphereCollider>();
             rangeCollider.isTrigger = true;
-            rangeCollider.radius = Range;
+            rangeCollider.radius = range;
         }
 
         private void OnDestroy()
@@ -39,11 +37,6 @@ namespace Untitled
             InteractManager.Instance.Exit(this);
         }
 
-        public void Interact()
-        {
-            GameManager.Instance.GameData.PackageData.AddItem(ItemId, Num);
-            EventCenter.Invoke(GameEventType.CollectItem, ItemId, Num);
-            Destroy(gameObject);
-        }
+        public abstract void Interact();
     }
 }
