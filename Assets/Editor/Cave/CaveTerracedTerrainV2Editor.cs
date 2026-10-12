@@ -398,6 +398,20 @@ namespace Untitled.Editor
             }
             Place(riverCamera, new Vector3(-13.5f,-1,-8), 38, -12, 23);
             riverCamera.enabled = false;
+            // Saved review views for the two concept-image compositions.
+            void ConceptView(string name, Vector3 focus, float pitch, float yaw, float distance)
+            {
+                var view = cameras.FirstOrDefault(c => c.name == name);
+                if (view == null)
+                {
+                    view = CameraAt(root, name, Vector3.zero, pitch, yaw, distance);
+                    Undo.RegisterCreatedObjectUndo(view.gameObject, "Add concept review camera");
+                }
+                Place(view, focus, pitch, yaw, distance);
+                view.enabled = false;
+            }
+            ConceptView("Concept A Camera | entrance toward hearth", new Vector3(1, 1.2f, -7), 16, 0, 23);
+            ConceptView("Concept B Camera | bridge toward kitchen", new Vector3(-10, -1, -10), 20, 60, 11);
             var top = cameras.FirstOrDefault(c => c.name.StartsWith("Top Camera"));
             if (top == null)
             {
@@ -814,7 +828,9 @@ namespace Untitled.Editor
                         pixels = new Texture2D(width,height,TextureFormat.RGB24,false);
                         pixels.ReadPixels(new Rect(0,0,width,height),0,0);
                         pixels.Apply();
-                        string name = top ? "cave_plan.png" : camera.name.StartsWith("River Camera") ? "cave_riverbanks.png"
+                        string name = camera.name.StartsWith("Concept A") ? "cave_concept_entrance.png"
+                            : camera.name.StartsWith("Concept B") ? "cave_concept_bridge.png"
+                            : top ? "cave_plan.png" : camera.name.StartsWith("River Camera") ? "cave_riverbanks.png"
                             : camera.enabled ? "cave_overview.png" : "cave_detail.png";
                         File.WriteAllBytes(Path.Combine(folder,name),pixels.EncodeToPNG());
                     }

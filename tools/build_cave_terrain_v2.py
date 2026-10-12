@@ -414,6 +414,9 @@ path("C_LivingQuarterToHallFoothill",east_ascent,2.2,"earth",check=True)
 feast_hearth=[(5.4,9.4,0.33),(6.5,8.1,0.33),(7.4,6.7,0.03),
              (6.8,4.6,0.03),(5.3,2.3,0.03),(3.8,0.1,0.03),(1.5,-2.9,0.03)]
 path("FeastToHearthGardenWalk",feast_hearth,1.6,"path",check=True)
+bridge_kitchen=[(-5.2,-10,.03),(-2.5,-9.2,.03),(3,-8.8,.03),
+                (8.5,-9.4,.03),(11.3,-10.2,.03),(11.6,-12.6,.03)]
+path("BridgeheadToKitchenPromenade",bridge_kitchen,1.8,"path",check=True)
 path("D_SharedHallToElderNeck",[(6.8,26,high+0.03),(10.5,26,high+0.03),
                                (14.7,26,high+0.03),(17,27.2,high+0.03)],2.6,check=True)
 
@@ -439,6 +442,7 @@ for number in (3,4,5,6,7,8,12):
 
 # Gray links in the plan are preserved as open corridors, not additional river crossings.
 clear_routes=[
+    ("BridgeKitchen",bridge_kitchen,1.8),
     ("HallProcession",ascent,2.1),
     ("LivingQuarterAscent",east_ascent,2.2),
     ("FoodHallHearthWalk",feast_hearth,1.6),
@@ -628,6 +632,38 @@ foreground.parent=terrain
 for i,(x,z) in enumerate([(-39,-36),(-21,-36),(-15,-35),(-5,-34.5),(10,-35),(31,-32)]):
     instance(modules[i%3],"ForegroundRock_%02d"%i,(x,z,-3.7),
              (2.4,2.0,4.1),rng.uniform(-20,20),foreground)
+
+# Concept composition: a framed entrance, an open hearth court, and layered river cliffs.
+# Keep these masses outside building footprints and every authored walking corridor.
+composition=group("09_ConceptSightlines_EntranceHearth_BridgeKitchen")
+composition.parent=terrain
+for i,(x,z,w,d,h) in enumerate([
+    (-6.6,-19.0,1.35,2.3,3.8),(8.8,-20.5,1.2,1.9,3.1),
+    (-6.0,-17.2,.8,1.2,2.2),(9.0,-18.3,.7,.9,1.7)]):
+    instance(modules[i%3],"EntranceFramingButtress_%02d"%i,
+             (x,z,-.15),(w,d,h),i*37,composition)
+
+# Broken paving outlines the gathering place while leaving its central reserve clear.
+for i in range(22):
+    angle=2*math.pi*i/22
+    x=1.5+math.cos(angle)*3.65
+    z=-2.9+math.sin(angle)*3.1
+    if on_corridor(x,z,.35):
+        continue
+    instance(modules[i%3],"HearthCourtEdgeStone_%02d"%i,
+             (x,z,-.055),(.44,.31,.14),i*41,composition)
+
+# Slender exposed strata, rather than a solid wall, accent the existing 2.4m river cut.
+for i,z in enumerate((-7,-4,0,3,7,10,18,21,25)):
+    x=shore(1,z)+main_margin(z)+.24
+    instance(modules[i%3],"RiverOverlookStratum_%02d"%i,
+             (x,z,low-.18),(.48,.72,2.5),i*23,composition)
+    detail("roots_hanging",x-.18,z,.06,.68,group_name="BridgeVistaCliffRoots")
+
+# Vertical, narrow cliff ribs retain the hall skyline without flattening its approach.
+for i,(x,z) in enumerate(((-.2,25.15),(2.3,25.05),(5.8,25.3),(7.6,26.5))):
+    instance(modules[i%3],"HallBackdropRockRib_%02d"%i,
+             (x,z,2.35),(.52,.42,2.55),i*17,composition)
 
 # Metadata is exported with the mesh, avoiding a second layout in the Unity importer.
 metadata=dict(Zones=[dict(Id=n,Name=name,X=x,Z=z,Height=h) for n,name,x,z,h,*_ in zones],

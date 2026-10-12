@@ -1993,42 +1993,6 @@
     },
     {
       "Prefab": "cave_fractured_rock_01",
-      "X": 20.0,
-      "Z": -16.0,
-      "Height": 0.03,
-      "Scale": 1.25,
-      "Yaw": -5,
-      "Name": "DryRubbleCorners"
-    },
-    {
-      "Prefab": "cave_dry_grass_01",
-      "X": 22.0,
-      "Z": -16.6,
-      "Height": 0.03,
-      "Scale": 1.15,
-      "Yaw": -5,
-      "Name": "DryRubbleCorners"
-    },
-    {
-      "Prefab": "cave_slate_rubble_01",
-      "X": 19.0,
-      "Z": -14.6,
-      "Height": 0.03,
-      "Scale": 1.35,
-      "Yaw": -5,
-      "Name": "DryRubbleCorners"
-    },
-    {
-      "Prefab": "cave_dry_dirt_patch_01",
-      "X": 20.6,
-      "Z": -15.4,
-      "Height": 0.04,
-      "Scale": 1.1,
-      "Yaw": 303.21008639338197,
-      "Name": "GroundVariation"
-    },
-    {
-      "Prefab": "cave_fractured_rock_01",
       "X": 36.0,
       "Z": 8.0,
       "Height": 0.03,
@@ -2060,7 +2024,7 @@
       "Z": 8.6,
       "Height": 0.04,
       "Scale": 1.1,
-      "Yaw": 18.62628092020218,
+      "Yaw": 303.21008639338197,
       "Name": "GroundVariation"
     },
     {
@@ -2096,7 +2060,7 @@
       "Z": 60.6,
       "Height": 4.84,
       "Scale": 1.1,
-      "Yaw": 193.9989775941367,
+      "Yaw": 18.62628092020218,
       "Name": "GroundVariation"
     },
     {
@@ -2132,7 +2096,7 @@
       "Z": 58.6,
       "Height": 4.84,
       "Scale": 1.1,
-      "Yaw": 84.25901631719499,
+      "Yaw": 193.9989775941367,
       "Name": "GroundVariation"
     },
     {
@@ -2168,7 +2132,7 @@
       "Z": 50.0,
       "Height": 4.84,
       "Scale": 1.1,
-      "Yaw": 257.2578603147736,
+      "Yaw": 84.25901631719499,
       "Name": "GroundVariation"
     },
     {
@@ -2278,15 +2242,6 @@
       "Scale": 0.9,
       "Yaw": -5,
       "Name": "MineralSeams"
-    },
-    {
-      "Prefab": "cave_small_rocks_01",
-      "X": -7.327648940883258,
-      "Z": -33.92044305201998,
-      "Height": 0.03,
-      "Scale": 0.8638850287862136,
-      "Yaw": -5,
-      "Name": "OpenTerracePebbles"
     },
     {
       "Prefab": "cave_small_rocks_01",
@@ -2416,19 +2371,19 @@
     },
     {
       "Prefab": "cave_small_rocks_01",
-      "X": 22.68776997716029,
-      "Z": -20.311823896347285,
+      "X": 8.98160615978577,
+      "Z": -20.947045885598726,
       "Height": 0.03,
-      "Scale": 0.6458639057407262,
+      "Scale": 0.5938024294109433,
       "Yaw": -5,
       "Name": "OpenTerracePebbles"
     },
     {
       "Prefab": "cave_small_rocks_01",
-      "X": 18.503453110888767,
-      "Z": -45.73771653800758,
+      "X": 38.09601663601191,
+      "Z": -52.643223590378014,
       "Height": 0.03,
-      "Scale": 0.8102194487516802,
+      "Scale": 0.893491780614321,
       "Yaw": -5,
       "Name": "OpenTerracePebbles"
     },
@@ -2440,6 +2395,87 @@
       "Scale": 0.7624053963773242,
       "Yaw": -5,
       "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -17.357172011661813,
+      "Z": -14.0,
+      "Height": 0.06,
+      "Scale": 0.68,
+      "Yaw": -5,
+      "Name": "BridgeVistaCliffRoots"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -18.459212827988342,
+      "Z": -8.0,
+      "Height": 0.06,
+      "Scale": 0.68,
+      "Yaw": -5,
+      "Name": "BridgeVistaCliffRoots"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -17.15309037900875,
+      "Z": 0.0,
+      "Height": 0.06,
+      "Scale": 0.68,
+      "Yaw": -5,
+      "Name": "BridgeVistaCliffRoots"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -15.169416909620994,
+      "Z": 6.0,
+      "Height": 0.06,
+      "Scale": 0.68,
+      "Yaw": -5,
+      "Name": "BridgeVistaCliffRoots"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -14.669999999999996,
+      "Z": 14.0,
+      "Height": 0.06,
+      "Scale": 0.68,
+      "Yaw": -5,
+      "Name": "BridgeVistaCliffRoots"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -14.37,
+      "Z": 20.0,
+      "Height": 0.06,
+      "Scale": 0.68,
+      "Yaw": -5,
+      "Name": "BridgeVistaCliffRoots"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -18.56125364431487,
+      "Z": 36.0,
+      "Height": 0.06,
+      "Scale": 0.68,
+      "Yaw": -5,
+      "Name": "BridgeVistaCliffRoots"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -21.578746355685137,
+      "Z": 42.0,
+      "Height": 0.06,
+      "Scale": 0.68,
+      "Yaw": -5,
+      "Name": "BridgeVistaCliffRoots"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -22.0772,
+      "Z": 50.0,
+      "Height": 0.06,
+      "Scale": 0.68,
+      "Yaw": -5,
+      "Name": "BridgeVistaCliffRoots"
     }
   ],
   "LowlandHeight": -2.4,
@@ -4179,6 +4215,156 @@
       "Z": -5.8,
       "Height": 0.03,
       "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": -10.4,
+      "Z": -20.0,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": -9.05,
+      "Z": -19.6,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": -7.7,
+      "Z": -19.2,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": -6.35,
+      "Z": -18.799999999999997,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": -5.0,
+      "Z": -18.4,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": -5.0,
+      "Z": -18.4,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": -2.25,
+      "Z": -18.2,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 0.5,
+      "Z": -18.0,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 3.25,
+      "Z": -17.8,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 6.0,
+      "Z": -17.6,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 6.0,
+      "Z": -17.6,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 8.75,
+      "Z": -17.900000000000002,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 11.5,
+      "Z": -18.200000000000003,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 14.25,
+      "Z": -18.5,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 17.0,
+      "Z": -18.8,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 17.0,
+      "Z": -18.8,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 18.4,
+      "Z": -19.2,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 19.8,
+      "Z": -19.6,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 21.200000000000003,
+      "Z": -20.0,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 22.6,
+      "Z": -20.4,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 22.6,
+      "Z": -20.4,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 22.75,
+      "Z": -21.599999999999998,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 22.9,
+      "Z": -22.799999999999997,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 23.05,
+      "Z": -24.0,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 23.2,
+      "Z": -25.2,
+      "Height": 0.03,
+      "Name": "BridgeheadToKitchenPromenade"
     },
     {
       "X": 13.6,
