@@ -2,6 +2,8 @@
 
 日期：2026-10-12。场景：`Assets/Scenes/CaveStealthPlan.unity`。承接[阶段 2 尺寸与镜头](cave-stealth-stage2-scale-camera.md)。
 
+本文保留之前的平面白盒记录。阶段 3 当前交付为 [WhiteBox 台地地形白盒](whitebox-terraced-terrain.md)，采用有高差的地形、实体坡道和真实 Player，场景为 `Assets/Scenes/WhiteBox.unity`。
+
 本阶段把草图变成保存于 Scene 的可编辑地面、墙体、门洞和掩体，并为 64px 占位角色接入基础移动与重力。目的在于试玩三条接近路线、换路连接及私库终段，检验空间尺寸和碰撞。守卫、视野、蹲伏、警报、任务交互与遮挡淡出尚未实现。
 
 ![按场景几何绘制的白盒俯视示意，非 Unity Editor 截图](images/cave-stealth-stage3-blockout.png)
