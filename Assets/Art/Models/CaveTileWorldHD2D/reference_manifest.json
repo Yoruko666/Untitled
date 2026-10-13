@@ -1,0 +1,92 @@
+[
+  {
+    "Name": "ref_boulder_00",
+    "Source": "八方旅人1/石头1/ObjMD_Rock_A_04/ObjMD_Rock_A_04.FBX",
+    "MetreFactor": 0.025
+  },
+  {
+    "Name": "ref_boulder_01",
+    "Source": "八方旅人1/石头1/ObjMD_Rock_A_04/ObjMD_Rock_A_04.FBX",
+    "MetreFactor": 0.025
+  },
+  {
+    "Name": "ref_boulder_02",
+    "Source": "八方旅人1/石头1/ObjMD_Rock_A_04/ObjMD_Rock_A_04.FBX",
+    "MetreFactor": 0.025
+  },
+  {
+    "Name": "ref_boulder_03",
+    "Source": "八方旅人1/石头1/ObjMD_Rock_A_04/ObjMD_Rock_A_04.FBX",
+    "MetreFactor": 0.025
+  },
+  {
+    "Name": "ref_boulder_04",
+    "Source": "八方旅人1/石头1/ObjMD_Rock_A_04/ObjMD_Rock_A_04.FBX",
+    "MetreFactor": 0.025
+  },
+  {
+    "Name": "ref_boulder_05",
+    "Source": "八方旅人1/石头1/ObjMD_Rock_A_04/ObjMD_Rock_A_04.FBX",
+    "MetreFactor": 0.025
+  },
+  {
+    "Name": "ref_boulder_06",
+    "Source": "八方旅人1/石头1/ObjMD_Rock_A_04/ObjMD_Rock_A_04.FBX",
+    "MetreFactor": 0.025
+  },
+  {
+    "Name": "ref_boulder_07",
+    "Source": "八方旅人1/石头1/ObjMD_Rock_A_04/ObjMD_Rock_A_04.FBX",
+    "MetreFactor": 0.025
+  },
+  {
+    "Name": "ref_boulder_08",
+    "Source": "八方旅人1/石头1/ObjMD_Rock_A_04/ObjMD_Rock_A_04.FBX",
+    "MetreFactor": 0.025
+  },
+  {
+    "Name": "ref_boulder_09",
+    "Source": "八方旅人1/石头1/ObjMD_Rock_A_04/ObjMD_Rock_A_04.FBX",
+    "MetreFactor": 0.025
+  },
+  {
+    "Name": "ref_boulder_10",
+    "Source": "八方旅人1/石头1/ObjMD_Rock_A_04/ObjMD_Rock_A_04.FBX",
+    "MetreFactor": 0.025
+  },
+  {
+    "Name": "ref_stalagmite_00",
+    "Source": "八方旅人1/石头1/ObjMD_Stone_D_Cave_02/ObjMD_Stone_D_Cave_02.FBX",
+    "MetreFactor": 0.065
+  },
+  {
+    "Name": "ref_stalagmite_01",
+    "Source": "八方旅人1/石头1/ObjMD_Stone_D_Cave_02/ObjMD_Stone_D_Cave_02.FBX",
+    "MetreFactor": 0.065
+  },
+  {
+    "Name": "ref_stalagmite_02",
+    "Source": "八方旅人1/石头1/ObjMD_Stone_D_Cave_02/ObjMD_Stone_D_Cave_02.FBX",
+    "MetreFactor": 0.065
+  },
+  {
+    "Name": "ref_stalagmite_03",
+    "Source": "八方旅人1/石头1/ObjMD_Stone_D_Cave_02/ObjMD_Stone_D_Cave_02.FBX",
+    "MetreFactor": 0.065
+  },
+  {
+    "Name": "ref_stalagmite_04",
+    "Source": "八方旅人1/石头1/ObjMD_Stone_D_Cave_02/ObjMD_Stone_D_Cave_02.FBX",
+    "MetreFactor": 0.065
+  },
+  {
+    "Name": "ref_stalagmite_05",
+    "Source": "八方旅人1/石头1/ObjMD_Stone_D_Cave_02/ObjMD_Stone_D_Cave_02.FBX",
+    "MetreFactor": 0.065
+  },
+  {
+    "Name": "ref_moss_rock_00",
+    "Source": "八方旅人2/山石_八方旅人2/EnvFldMD_FoliageStone_A_MA/EnvFldMD_FoliageStone_A_MA.FBX",
+    "MetreFactor": 3.6
+  }
+]
