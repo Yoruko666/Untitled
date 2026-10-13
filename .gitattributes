@@ -2,3 +2,7 @@
 *.bytes binary
 *.xlsx binary
 *.dll binary
+*.FBX binary
+*.fbx binary
+*.png binary
+*.tga binary
