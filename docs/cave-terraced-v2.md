@@ -21,7 +21,7 @@
 
 冷蓝环境光负责河谷和岩壁，暖色火光强调生活区与上山方向。入口、桥头和台地边缘放置已有像素火盆，独立保存在 `Wayfinding | warm pixel braziers`，装饰碰撞关闭。土壤和步道降低纹理对比，角色周围保留明晰轮廓。
 
-玩家跟随镜头使用 30° 俯角、-8° 偏航、20 m 距离、38° FOV，并向前预留 2 m 视野。近处保持清晰，24–48 m 的远处使用轻微 Gaussian 景深；ACES、少量 Bloom 和暗角统一明暗。参数由 Editor 的 `PlayPitch` / `PlayYaw` / `PlayDistance` 与 `PlayFocusOffset` 同时配置真实跟随相机和玩家视角预览相机，避免只调观察相机。
+玩家跟随镜头按调试截图保存默认值：18.10° 俯角、-5° 偏航、25.72 m 距离、36.98° FOV，焦点偏移为 (0, 1.74, 0)。近处保持清晰，24–48 m 的远处使用轻微 Gaussian 景深；ACES、少量 Bloom 和暗角统一明暗。参数由 Editor 的 `PlayPitch` / `PlayYaw` / `PlayDistance` / `PlayFieldOfView` 与 `PlayFocusOffset` 同时配置真实跟随相机和玩家视角预览相机，避免只调观察相机。Scene 内的 CameraController 直接引用正常脚本资产，保存的默认值下次进入 Play 时生效。
 
 全景审阅图临时关闭近距离景深，导出后恢复；运行时使用保存的画面配置。`cave_player.png` 为 Unity 按玩家镜头参数渲染的预览，不代表手动 Play Mode 试玩录像。
 
@@ -75,7 +75,7 @@ Blender 源文件：`tools/art/cave_terraced_terrain_v2.blend`；明确重建入
 - 地表材质统一为 64×64 / Point / 16 px/m；地形、建筑预留区、路线、装饰、灯光与观察镜头分组保存，可在 Editor 中编辑。
 - Blender 脚本中的 `MAIN_ELEVATION` / `HALL_ELEVATION` 为本轮标高配置；修改后明确重建并检查通行，运行时不生成地形。
 
-以下为当前版本的 Unity 实际预览。
+以下为上一轮画面调试的 Unity 实际预览；最新默认镜头以本页正文参数为准。
 
 ![玩家镜头预览](images/cave_player.png)
 
