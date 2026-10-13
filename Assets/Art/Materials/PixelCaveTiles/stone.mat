@@ -55,15 +55,15 @@ Material:
     - _Cutoff: 0.5
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _PaletteSteps: 32
+    - _PaletteSteps: 256
     - _PixelDensity: 16
     - _ReceiveShadows: 1
     - _Smoothness: 0.025
     - _Surface: 0
-    - _TextureStrength: 1
+    - _TextureStrength: 0.8
     - _TileScale: 0.25
     m_Colors:
-    - _BaseColor: {r: 1.1, g: 1.12, b: 1.16, a: 1}
+    - _BaseColor: {r: 0.86, g: 0.85, b: 0.8, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

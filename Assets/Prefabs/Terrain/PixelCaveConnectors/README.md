@@ -1,6 +1,6 @@
 # 哥布林洞穴连接 tile
 
-针对 `CaveTerracedTerrainV2` 的河岸、桥头和高差连接补充模块。纹理沿用 PixelCaveTiles 的哥布林洞穴配色，新增木板、河岸碎石和踩实土路三张实际 64×64、16 色纹理，Point、Repeat、无 mipmap、无压缩。预览场景：`Assets/Scenes/PixelCaveConnectorPreview.unity`。
+针对 `CaveTerracedTerrainV2` 的河岸、桥头和高差连接补充模块。纹理配色参考这张地图当前的地形贴图：暖深褐泥土、灰褐岩石、暗黄橄榄苔藓和褐色湿地碎石。PixelCaveTiles 的七张纹理均为实际 64×64、16 色，Point、Repeat、无 mipmap、无压缩；材质 tint 和纹理强度与地图对应表面对齐。预览场景：`Assets/Scenes/PixelCaveConnectorPreview.unity`。
 
 | Prefab | 尺寸（X × Z） | 用途 |
 | --- | --- | --- |
