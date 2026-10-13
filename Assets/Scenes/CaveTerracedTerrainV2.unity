@@ -22878,7 +22878,7 @@ Camera:
     height: 1
   near clip plane: 0.15
   far clip plane: 500
-  field of view: 38
+  field of view: 36.98
   orthographic: 0
   orthographic size: 5
   m_Depth: 20
@@ -22905,15 +22905,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 965428643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1655057350}
+  m_Script: {fileID: 11500000, guid: ca9b8695ecd670a4dac251363bb75d37, type: 3}
   m_Name:
   m_EditorClassIdentifier:
   target: {fileID: 1717739026}
-  viewAngle: 42
+  viewAngle: 18.1
   yawAngle: -5
-  distance: 14
+  distance: 25.72
   damping: 8
-  focusOffset: {x: 0, y: 1, z: 0}
+  focusOffset: {x: 0, y: 1.74, z: 0}
 --- !u!1 &973743135
 GameObject:
   m_ObjectHideFlags: 0
@@ -39474,21 +39474,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.18, y: 3, z: 0.8312442}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!115 &1655057350
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name:
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: CameraController
-  m_Namespace: Untitled
-  m_AssemblyName: Assembly-CSharp
 --- !u!1 &1655777970
 GameObject:
   m_ObjectHideFlags: 0
@@ -47275,7 +47260,7 @@ Camera:
     height: 1
   near clip plane: 0.15
   far clip plane: 500
-  field of view: 38
+  field of view: 36.98
   orthographic: 0
   orthographic size: 5
   m_Depth: 0

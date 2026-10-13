@@ -22,10 +22,11 @@ namespace Untitled.Editor
         private const string Prefabs = "Assets/Prefabs/Terrain/CaveTerracedV2";
         private const string ProfilePath = "Assets/Settings/CaveTerracedV2Presentation.asset";
         private static readonly Vector3 Origin = new Vector3(0, 0, 200);
-        private const float PlayPitch = 30;
-        private const float PlayYaw = -8;
-        private const float PlayDistance = 20;
-        private static readonly Vector3 PlayFocusOffset = new Vector3(0,1.1f,2);
+        private const float PlayPitch = 18.10f;
+        private const float PlayYaw = -5;
+        private const float PlayDistance = 25.72f;
+        private const float PlayFieldOfView = 36.98f;
+        private static readonly Vector3 PlayFocusOffset = new Vector3(0,1.74f,0);
 
         [Serializable]
         private sealed class LayoutPoint
@@ -533,15 +534,12 @@ namespace Untitled.Editor
             }
             var main = root.GetComponentsInChildren<Camera>().Single(c => c.name.StartsWith("Main Camera"));
             Undo.RecordObject(main, "Set exploration field of view");
-            main.fieldOfView = 38;
+            main.fieldOfView = PlayFieldOfView;
             var follow = main.GetComponent<CameraController>();
             if (follow != null)
             {
                 Undo.RecordObject(follow, "Frame pixel character against layered terrain");
-                follow.SetViewAngle(PlayPitch);
-                follow.SetYawAngle(PlayYaw);
-                follow.SetDistance(PlayDistance);
-                follow.SetFocusOffset(PlayFocusOffset);
+                SetFollowDefaults(follow);
             }
             // Review camera uses the same pose as the playable follow camera.
             var player = root.GetComponentInChildren<PlayerEntity>();
@@ -605,6 +603,16 @@ namespace Untitled.Editor
                 surface.SetFloat("_TextureStrength", material == "earth" ? .55f : material == "path" ? .48f : .8f);
                 EditorUtility.SetDirty(surface);
             }
+        }
+
+        private static void SetFollowDefaults(CameraController follow)
+        {
+            var settings = new SerializedObject(follow);
+            settings.FindProperty("viewAngle").floatValue = PlayPitch;
+            settings.FindProperty("yawAngle").floatValue = PlayYaw;
+            settings.FindProperty("distance").floatValue = PlayDistance;
+            settings.FindProperty("focusOffset").vector3Value = PlayFocusOffset;
+            settings.ApplyModifiedProperties();
         }
 
         private static void ApplyPixelMaterials()
@@ -757,6 +765,7 @@ namespace Untitled.Editor
             if (follow == null) follow = Undo.AddComponent<CameraController>(camera.gameObject);
             Undo.RecordObject(follow, "Follow the cave player in Play Mode");
             var followData = new SerializedObject(follow);
+            camera.fieldOfView = PlayFieldOfView;
             followData.FindProperty("target").objectReferenceValue = player.transform;
             followData.FindProperty("viewAngle").floatValue = PlayPitch;
             followData.FindProperty("yawAngle").floatValue = PlayYaw;
