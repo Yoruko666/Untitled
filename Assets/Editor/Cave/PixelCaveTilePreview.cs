@@ -87,7 +87,7 @@ namespace Untitled.EditorTools
             bool create = material == null;
             if (create) material = new Material(Shader.Find("Untitled/HD2D/Terraced Pixel Terrain")) { name = name };
             var image = AssetDatabase.LoadAssetAtPath<Texture2D>(
-                "Assets/Art/Textures/CaveTileWorldHD2D/hd2d_" + texture + "_64.png");
+                "Assets/Art/Textures/PixelCaveTiles/goblin_cave_" + texture + "_64.png");
             if (image == null) throw new InvalidOperationException("Missing pixel texture: " + texture);
             material.SetTexture("_BaseMap", image);
             material.SetColor("_BaseColor", tint);
