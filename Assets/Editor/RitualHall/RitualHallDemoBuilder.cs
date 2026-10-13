@@ -42,6 +42,7 @@ namespace Untitled.Editor
             AssetDatabase.Refresh();
             PrepareMaterials();
             PrepareFurniture();
+            PrepareSupplementalPixelProps();
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             Transform room = Group("GoblinRitualHall_Module_26x26", null);
             BuildShell(room);

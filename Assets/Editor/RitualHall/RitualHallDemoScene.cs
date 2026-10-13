@@ -52,7 +52,7 @@ namespace Untitled.Editor
             Transform architecture=Group("02_RuneColumnsAndBackBanners",room);
             foreach(float x in new[] {-10.72f,10.72f})foreach(float z in new[] {-8.35f,-.20f,8.0f})
                 Place(architecture,"rune_carved_ritual_column_3d",V(x,.045f,z),x<0?20:-20);
-            foreach(float x in new[] {-8.2f,8.2f})Place(architecture,"ancestor_sigil_hide_banner_3d",V(x,.22f,12.37f));
+            foreach(float x in new[] {-8.2f,8.2f})Reuse(architecture,"TotemsBones/rune_banner_hd2d",V(x,1.47f,12.51f),1.45f);
             Solid("ritual_south_entry_threshold",shell,V(0,.085f,-12.90f),V(3.35f,.16f,.84f),Finish.StoneLight);
             Solid("ritual_west_entry_threshold",shell,V(-12.90f,.085f,-8.40f),V(.84f,.16f,2.60f),Finish.StoneLight);
         }
@@ -68,24 +68,25 @@ namespace Untitled.Editor
                 Solid("ritual_altar_step_"+i,sanctuary,V(0,height*.5f,z),V(2.72f,height,.40f),Finish.StoneLight);
             }
             Place(sanctuary,"carved_bone_sacrificial_altar_3d",V(0,.78f,8.05f));
-            Place(sanctuary,"horned_ancestor_goblin_idol_3d",V(0,.78f,10.53f));
+            Reuse(sanctuary,"TotemsBones/beast_totem_hd2d",V(0,1.0f,12.50f),1.85f);
             Reuse(sanctuary,"ElderRoom/elder_bone_sceptre_3d",V(-2.0f,.79f,10.02f),.9f,16);
             Place(sanctuary,"brass_incense_and_ash_bowl_3d",V(-2.0f,.79f,6.87f));
             Fire(sanctuary,"AltarCandleWarmth",V(0,2.42f,7.6f),1.9f,6.0f,new Color(1,.54f,.20f));
             Fire(sanctuary,"JadeRelicMutedGlow",V(0,3.22f,10.1f),.60f,4.0f,new Color(.28f,.64f,.42f));
             Transform offerings=Group("04_UShapedOfferings_EnclosingAltar",room);
-            string[] gifts={"mushroom_and_roots_offering_3d","skull_and_candles_offering_3d","jade_and_coins_offering_3d"};
+            string[] gifts={"Kitchen/produce_pixel_hd2d","TotemsBones/beast_totem_hd2d","RitualHall/tribute_treasure_hoard_hd2d"};
+            float[] giftSizes={.80f,.34f,.90f};
             int n=0;
             foreach(float x in new[] {-5.54f,5.54f})foreach(float z in new[] {5.10f,7.54f,9.98f})
             {
                 float yaw=x<0?90:-90;
                 Place(offerings,"carved_offering_table_module_3d",V(x,.045f,z),yaw);
-                Place(offerings,gifts[n++%3],V(x,1.188f,z),yaw);
+                int gift=n++%3; Reuse(offerings,gifts[gift],V(x,1.188f,z),giftSizes[gift]);
             }
             foreach(float x in new[] {-4.28f,-1.98f,1.98f,4.28f})
             {
                 Place(offerings,"carved_offering_table_module_3d",V(x,.045f,3.0f));
-                Place(offerings,gifts[n++%3],V(x,1.188f,3.0f));
+                int gift=n++%3; Reuse(offerings,gifts[gift],V(x,1.188f,3.0f),giftSizes[gift]);
             }
             // Low stone curb links individual tables into the U from the reference.
             Solid("ritual_u_left_plinth",offerings,V(-5.54f,.055f,7.54f),V(1.60f,.10f,7.60f),Finish.StoneDark);
@@ -119,7 +120,7 @@ namespace Untitled.Editor
             foreach(float z in new[] {6.47f,8.29f})Solid("ritual_secret_corridor_wall_"+(z<7?"south":"north"),passage,V(9.44f,-1.44f,z),V(9.08f,2.10f,.18f),Finish.StoneDark);
             Solid("ritual_secret_demo_end",passage,V(14.04f,-1.44f,7.38f),V(.18f,2.10f,1.96f),Finish.StoneDark);
             Group("FutureConnection_ToElderRoom_UnderfloorEast",passage).localPosition=V(13.85f,-2.33f,7.38f);
-            Lamp(passage,"Tavern/oil_lantern_3d",V(4.0f,-1.45f,7.55f),.75f,3.8f,.64f);
+            Lamp(passage,"RitualHall/iron_oil_lantern_hd2d",V(4.0f,-1.45f,7.55f),.75f,3.8f,.64f);
             Fire(passage,"DimUnderfloorAmber",V(6.1f,-1.20f,7.38f),.52f,3.2f,new Color(.91f,.45f,.16f));
             var scuffs=new Geometry();
             foreach(float x in new[] {2.83f,4.57f})scuffs.Box(V(x,.07f,4.48f),V(.025f,.012f,.69f),Finish.Ash,Q,.002f);
@@ -152,9 +153,9 @@ namespace Untitled.Editor
             int index=0;
             foreach(float x in new[] {-6.85f,6.85f})foreach(float z in new[] {-9.40f,-4.80f,-.20f,4.40f,9.0f})
             {
-                Transform torch=Place(torches,"bone_bound_procession_torch_3d",V(x,.045f,z));
+                Transform torch=Reuse(torches,"Lighting/bone_fire_stand_hd2d",V(x,.045f,z),1.30f);
                 torch.name=(x<0?"West":"East")+"ProcessionTorch_"+(index++%5+1);
-                Fire(torch,"WarmTorchFlicker",V(0,2.17f,0),2.45f,6.1f,new Color(1,.50f,.14f));
+                SetPixelLamp(torch,2.45f,6.1f); torch.GetComponent<BoxCollider>().size=V(.64f,2,.50f);
                 var ash=new Geometry(); ash.Lathe(V(x,.060f,z),new[] {V(.69f,0,0),V(.69f,.008f,0)},Finish.Ash,20);
                 MeshObject("ritual_torch_ash_patch_"+index,ash,torches);
             }
@@ -167,37 +168,37 @@ namespace Untitled.Editor
             {
                 Place(sides,"rope_laced_ceremonial_drum_3d",V(x,.045f,-4.15f),x<0?16:-16);
                 Place(sides,"rope_laced_ceremonial_drum_3d",V(x,.045f,-5.74f),x<0?-10:10,.70f);
-                Place(sides,"hanging_ancestor_bone_chimes_3d",V(x,.045f,3.82f),x<0?35:-35);
-                for(int i=0;i<3;i++)Place(sides,"elder_grey_woven_kneeling_mat_3d",V(x,.045f,-1.20f+i*1.72f),x<0?12:-12,.69f);
+                Reuse(sides,"TotemsBones/ring_training_rack_hd2d",V(x,.045f,3.82f),1.45f);
+                for(int i=0;i<3;i++)WitnessStrawMat(sides,V(x,.045f,-1.20f+i*1.72f));
                 Reuse(sides,"TotemsBones/bone_pile_hd2d",V(x,.06f,5.97f),1.1f);
             }
             Transform stores=Group("09_OfferingsStorageAndRitualTools",room);
             foreach(float side in new[] {-1f,1f})
             {
                 float x=side*8.47f;
-                Reuse(stores,"Tavern/supply_crate_3d",V(x,.045f,10.02f),.84f,side*13);
-                Reuse(stores,"Tavern/supply_crate_3d",V(x+.48f*side,.045f,11.31f),.76f,-side*8);
-                Reuse(stores,"Tavern/supply_crate_3d",V(x,.88f,10.14f),.65f,side*7);
+                Reuse(stores,"RitualHall/supplies_crate_hd2d",V(x,.045f,10.02f),.84f,side*13);
+                Reuse(stores,"RitualHall/supplies_crate_hd2d",V(x+.48f*side,.045f,11.31f),.76f,-side*8);
+                Reuse(stores,"RitualHall/supplies_crate_hd2d",V(x,.88f,10.14f),.65f,side*7);
                 Reuse(stores,"Kitchen/open_grain_sack_3d",V(side*9.70f,.045f,10.10f),.90f,side*20);
-                Reuse(stores,"Kitchen/roots_and_mushrooms_tub_3d",V(side*8.18f,.045f,8.30f),.80f);
+                Reuse(stores,"Kitchen/produce_pixel_hd2d",V(side*8.18f,.045f,8.30f),1.25f);
                 Reuse(stores,"Kitchen/lidded_spice_crock_3d",V(side*9.33f,.045f,8.61f),1.1f);
-                Lamp(stores,"Tavern/oil_lantern_3d",V(x+.50f*side,1.63f,11.31f),1.25f,4.2f,.80f);
+                Lamp(stores,"RitualHall/iron_oil_lantern_hd2d",V(x+.50f*side,1.63f,11.31f),1.25f,4.2f,.80f);
             }
             Reuse(stores,"ElderRoom/carved_bedside_chest_3d",V(-8.8f,.045f,-10.88f),.86f,12);
             Reuse(stores,"ElderRoom/herbal_tincture_bottles_3d",V(-8.7f,1.12f,-10.88f),.75f);
             Reuse(stores,"ElderRoom/books_scrolls_and_ink_3d",V(-10.4f,.05f,-11.4f),.70f,10);
-            Reuse(stores,"Tavern/ale_barrel_3d",V(9.38f,.045f,-10.7f),.78f);
+            Reuse(stores,"RitualHall/offering_barrel_hd2d",V(9.38f,.045f,-10.7f),.78f);
             Reuse(stores,"Kitchen/firewood_bundle_hd2d",V(8.06f,.055f,-11.7f),1.15f);
-            Lamp(stores,"Tavern/oil_lantern_3d",V(-8.88f,1.10f,-10.70f),1.15f,4.8f,.76f);
-            Lamp(stores,"Tavern/oil_lantern_3d",V(9.35f,1.13f,-10.68f),1.15f,4.8f,.76f);
+            Lamp(stores,"RitualHall/iron_oil_lantern_hd2d",V(-8.88f,1.10f,-10.70f),1.15f,4.8f,.76f);
+            Lamp(stores,"RitualHall/iron_oil_lantern_hd2d",V(9.35f,1.13f,-10.68f),1.15f,4.8f,.76f);
             Transform entry=Group("10_CaveEntrancesAndRitualThreshold",room);
             foreach(float x in new[] {-2.25f,2.25f})
             {
                 Place(entry,"rune_carved_ritual_column_3d",V(x,.045f,-12.48f),0,.62f);
-                Place(entry,"skull_and_candles_offering_3d",V(x,2.75f,-12.48f),0,.55f);
+                Reuse(entry,"TotemsBones/beast_totem_hd2d",V(x,2.75f,-12.48f),.30f);
             }
-            Lamp(entry,"Tavern/wall_brazier_3d",V(-12.43f,2.10f,-5.88f),1.40f,5.0f,.93f,90);
-            Lamp(entry,"Tavern/wall_brazier_3d",V(-12.43f,1.42f,-10.03f),1.40f,5.0f,.85f,90);
+            Lamp(entry,"Lighting/wall_torch_stone_hd2d",V(-12.43f,2.10f,-5.88f),1.40f,5.0f,.93f,-90);
+            Lamp(entry,"Lighting/wall_torch_stone_hd2d",V(-12.43f,1.42f,-10.03f),1.40f,5.0f,.85f,-90);
         }
 
         private static void BuildWear(Transform room)

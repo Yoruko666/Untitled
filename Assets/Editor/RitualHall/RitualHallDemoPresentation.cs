@@ -54,9 +54,10 @@ namespace Untitled.Editor
             if(room.GetComponentsInChildren<MeshFilter>().Any(f=>f.sharedMesh==null))throw new InvalidOperationException("Missing saved ritual mesh.");
             if(room.GetComponentsInChildren<MeshRenderer>().Any(r=>r.sharedMaterials.Any(m=>m==null)))throw new InvalidOperationException("Missing saved ritual material.");
             if(room.GetComponentsInChildren<Camera>().Length!=0||room.GetComponentsInChildren<Volume>().Length!=0)throw new InvalidOperationException("Presentation must stay outside the reusable room.");
-            int torches=room.GetComponentsInChildren<MeshFilter>().Count(f=>f.sharedMesh.name=="bone_bound_procession_torch_3d");
+            int torches=room.GetComponentsInChildren<HybridProp>().Count(p=>p.AssetId=="Bone_Fire_Stand");
+            int banners=room.GetComponentsInChildren<HybridProp>().Count(p=>p.AssetId=="Rune_Banner");
             int offerings=room.GetComponentsInChildren<MeshFilter>().Count(f=>f.sharedMesh.name=="carved_offering_table_module_3d");
-            if(torches!=10||offerings!=10)throw new InvalidOperationException("Reference layout requires ten torches and ten U-shaped offering modules.");
+            if(torches!=10||banners!=2||offerings!=10)throw new InvalidOperationException("Reference layout requires ten torches and ten U-shaped offering modules.");
             Physics.SyncTransforms();
             if(!Physics.Raycast(V(3.7f,2,6.4f),Vector3.down,out RaycastHit hit,6)||hit.point.y>-.75f||!hit.collider.name.StartsWith("ritual_secret_descending_tread_"))throw new InvalidOperationException("Secret stairwell must be a real open floor hole.");
             Debug.Log($"RITUAL_RELOAD_OK: {torches} torches, {offerings} offering modules, {room.GetComponentsInChildren<Light>().Length} practical lights; saved meshes/materials; open stairwell hit Y={hit.point.y:F2}.");
