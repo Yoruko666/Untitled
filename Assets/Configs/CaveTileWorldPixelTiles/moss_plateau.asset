@@ -1,0 +1,396 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4266a1de7520464db226ba74040127b, type: 3}
+  m_Name: moss_plateau
+  m_EditorClassIdentifier:
+  useParallel: 0
+  width: 10
+  height: 9
+  cellSizeOld: 0
+  cellSize: 4
+  lastCellSize: 4
+  mergePreviewTextures: 0
+  clusterCellSize: 4
+  useGlobalRandomSeed: 1
+  globalRandomSeed: 137
+  currentRandomSeed: 137
+  layerChanged: 0
+  showGizmos: 0
+  showPaintGrid: 0
+  gizmoLayer: {fileID: 0}
+  paintLayer: {fileID: 0}
+  brushSize: 0
+  selectedPaintLayerGuid:
+  tileMapLayers: []
+  blueprintLayerFolders:
+  - folderName: Root
+    guid: 75d76987-3303-43e2-afeb-e9032c194ecc
+    foldoutState: 0
+    assignedBlueprintLayers: []
+    blueprintLayers:
+    - {fileID: 2675938512677968564}
+  buildLayerFolders:
+  - folderName: Root
+    guid: fadd6187-d74e-447a-a5b8-fbe5e06a5aa1
+    foldoutState: 0
+    buildLayers:
+    - {fileID: 6932501998105251927}
+  selectedTileMapLayerGuid:
+  random:
+    state: 37040289
+  mergeTiles: 1
+  shadowCastingMode: 1
+  objectLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  colliderType: 1
+  tileColliderHeight: 0
+  tileColliderExtrusionHeight: 0
+  invertCollisionWalls: 0
+--- !u!114 &2675938512677968564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6d10c4aac2a4440a141c607b715097, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  random:
+    state: 37040289
+  guid: bf5ae28d-5787-4f5e-894c-feeef4e1c8ba
+  layerName: Moss plateau
+  icon: {fileID: 0}
+  isEnabled: 1
+  layerColor: {r: 1, g: 1, b: 1, a: 1}
+  previewTexture: {fileID: 0}
+  randomSeedOverride: 0
+  customRandomSeed: 0
+  customSeed: 0
+  defaultLayerHeight: 3.2
+  lockFromPaint: 0
+  foldoutState: 0
+  tileMapModifiers: []
+  showDebugGrid: 0
+  configuration: {fileID: 11400000}
+  serializedPaintPositions:
+  - {x: 0, y: 4}
+  - {x: 1, y: 4}
+  - {x: 0, y: 5}
+  - {x: 1, y: 5}
+  - {x: 0, y: 6}
+  serializedWorldPositions:
+  - {x: 0, y: 4}
+  - {x: 1, y: 4}
+  - {x: 0, y: 5}
+  - {x: 1, y: 5}
+  - {x: 0, y: 6}
+--- !u!114 &6932501998105251927
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf349aeb98a48044286534ac213409e1, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  asset: {fileID: 11400000}
+  random:
+    state: 37040289
+  isEnabled: 1
+  layerName: Moss plateau
+  guid: c958a36a-f8a0-4ce7-bd6b-966a43b2b6d3
+  assignedBlueprintLayerGuid: bf5ae28d-5787-4f5e-894c-feeef4e1c8ba
+  currentBlueprintLayer: {fileID: 2675938512677968564}
+  foldoutState: 0
+  useMultiLayers: 0
+  masks: []
+  hierarchyLayerID: c958a36a-f8a0-4ce7-bd6b-966a43b2b6d3
+  lastHierarchyLayerID:
+  isExecuting: 0
+  configuration: {fileID: 11400000}
+  useDualGrid: 1
+  meshGenerationOverride: 1
+  mergeTiles: 1
+  shadowCastingMode: 1
+  objectLayer:
+    serializedVersion: 2
+    m_Bits: 31
+  colliderType: 1
+  tileColliderHeight: 0
+  tileColliderExtrusionHeight: 0
+  invertCollisionWalls: 0
+  placeOnTop: 0
+  useLowest: 0
+  topOffset: 0
+  placeOnTopExcludedLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  tilePresetsTop:
+  - preset: {fileID: 11400000, guid: 615a642f0336450496c2b762af835ec5, type: 2}
+    tileHeight: 0
+    weight: 1
+  tilePresetsMiddle: []
+  tilePresetsBottom: []
+  scaleTileToCellSize: 0
+  layerYOffset: 0
+  scaleOffset: {x: 1, y: 1, z: 1}
+  tileLayers:
+  - name:
+    heightOffset: 0
+    ignoreFillTiles: 0
+    layerOverrides: []
+  serializedWorldPositions:
+  - {x: 1, y: 4}
+  - {x: 0, y: 5}
+  - {x: 1, y: 5}
+  - {x: 0, y: 6}
+  - {x: 0, y: 4}
+  serializedTiles:
+  - isAssigned: 1
+    tilePosition: {x: -0.5, y: 3.5}
+    worldMapPosition: {x: 0, y: 4}
+    yRotation: 90
+    yRotationOffset: 0
+    configuration: 2
+    tileType: 1
+    location:
+      north: 0
+      west: 0
+      east: 0
+      south: 0
+      northWest: 0
+      northEast: 0
+      southWest: 0
+      southEast: 0
+    contributingCells:
+    - {x: -1, y: 3}
+    - {x: -0, y: 3}
+    - {x: -1, y: 4}
+    - {x: -0, y: 4}
+  - isAssigned: 1
+    tilePosition: {x: -0.5, y: 4.5}
+    worldMapPosition: {x: 0, y: 4}
+    yRotation: 90
+    yRotationOffset: 0
+    configuration: 10
+    tileType: 4
+    location:
+      north: 0
+      west: 0
+      east: 0
+      south: 0
+      northWest: 0
+      northEast: 0
+      southWest: 0
+      southEast: 0
+    contributingCells:
+    - {x: -1, y: 4}
+    - {x: -0, y: 4}
+    - {x: -1, y: 5}
+    - {x: -0, y: 5}
+  - isAssigned: 1
+    tilePosition: {x: -0.5, y: 5.5}
+    worldMapPosition: {x: 0, y: 5}
+    yRotation: 90
+    yRotationOffset: 0
+    configuration: 10
+    tileType: 4
+    location:
+      north: 0
+      west: 0
+      east: 0
+      south: 0
+      northWest: 0
+      northEast: 0
+      southWest: 0
+      southEast: 0
+    contributingCells:
+    - {x: -1, y: 5}
+    - {x: -0, y: 5}
+    - {x: -1, y: 6}
+    - {x: -0, y: 6}
+  - isAssigned: 1
+    tilePosition: {x: -0.5, y: 6.5}
+    worldMapPosition: {x: 0, y: 6}
+    yRotation: 180
+    yRotationOffset: 0
+    configuration: 8
+    tileType: 1
+    location:
+      north: 0
+      west: 0
+      east: 0
+      south: 0
+      northWest: 0
+      northEast: 0
+      southWest: 0
+      southEast: 0
+    contributingCells:
+    - {x: -1, y: 6}
+    - {x: -0, y: 6}
+    - {x: -1, y: 7}
+    - {x: -0, y: 7}
+  - isAssigned: 1
+    tilePosition: {x: 0.5, y: 3.5}
+    worldMapPosition: {x: 0, y: 4}
+    yRotation: 0
+    yRotationOffset: 0
+    configuration: 3
+    tileType: 4
+    location:
+      north: 0
+      west: 0
+      east: 0
+      south: 0
+      northWest: 0
+      northEast: 0
+      southWest: 0
+      southEast: 0
+    contributingCells:
+    - {x: 0, y: 3}
+    - {x: 1, y: 3}
+    - {x: 0, y: 4}
+    - {x: 1, y: 4}
+  - isAssigned: 1
+    tilePosition: {x: 1.5, y: 3.5}
+    worldMapPosition: {x: 1, y: 4}
+    yRotation: 0
+    yRotationOffset: 0
+    configuration: 1
+    tileType: 1
+    location:
+      north: 0
+      west: 0
+      east: 0
+      south: 0
+      northWest: 0
+      northEast: 0
+      southWest: 0
+      southEast: 0
+    contributingCells:
+    - {x: 1, y: 3}
+    - {x: 2, y: 3}
+    - {x: 1, y: 4}
+    - {x: 2, y: 4}
+  - isAssigned: 1
+    tilePosition: {x: 0.5, y: 4.5}
+    worldMapPosition: {x: 0, y: 4}
+    yRotation: 0
+    yRotationOffset: 0
+    configuration: 15
+    tileType: 5
+    location:
+      north: 0
+      west: 0
+      east: 0
+      south: 0
+      northWest: 0
+      northEast: 0
+      southWest: 0
+      southEast: 0
+    contributingCells:
+    - {x: 0, y: 4}
+    - {x: 1, y: 4}
+    - {x: 0, y: 5}
+    - {x: 1, y: 5}
+  - isAssigned: 1
+    tilePosition: {x: 1.5, y: 4.5}
+    worldMapPosition: {x: 1, y: 4}
+    yRotation: 270
+    yRotationOffset: 0
+    configuration: 5
+    tileType: 4
+    location:
+      north: 0
+      west: 0
+      east: 0
+      south: 0
+      northWest: 0
+      northEast: 0
+      southWest: 0
+      southEast: 0
+    contributingCells:
+    - {x: 1, y: 4}
+    - {x: 2, y: 4}
+    - {x: 1, y: 5}
+    - {x: 2, y: 5}
+  - isAssigned: 1
+    tilePosition: {x: 0.5, y: 5.5}
+    worldMapPosition: {x: 0, y: 5}
+    yRotation: 270
+    yRotationOffset: 0
+    configuration: 13
+    tileType: 2
+    location:
+      north: 0
+      west: 0
+      east: 0
+      south: 0
+      northWest: 0
+      northEast: 0
+      southWest: 0
+      southEast: 0
+    contributingCells:
+    - {x: 0, y: 5}
+    - {x: 1, y: 5}
+    - {x: 0, y: 6}
+    - {x: 1, y: 6}
+  - isAssigned: 1
+    tilePosition: {x: 1.5, y: 5.5}
+    worldMapPosition: {x: 1, y: 5}
+    yRotation: 270
+    yRotationOffset: 0
+    configuration: 4
+    tileType: 1
+    location:
+      north: 0
+      west: 0
+      east: 0
+      south: 0
+      northWest: 0
+      northEast: 0
+      southWest: 0
+      southEast: 0
+    contributingCells:
+    - {x: 1, y: 5}
+    - {x: 2, y: 5}
+    - {x: 1, y: 6}
+    - {x: 2, y: 6}
+  - isAssigned: 1
+    tilePosition: {x: 0.5, y: 6.5}
+    worldMapPosition: {x: 0, y: 6}
+    yRotation: 270
+    yRotationOffset: 0
+    configuration: 4
+    tileType: 1
+    location:
+      north: 0
+      west: 0
+      east: 0
+      south: 0
+      northWest: 0
+      northEast: 0
+      southWest: 0
+      southEast: 0
+    contributingCells:
+    - {x: 0, y: 6}
+    - {x: 1, y: 6}
+    - {x: 0, y: 7}
+    - {x: 1, y: 7}
+  allPositions: []
