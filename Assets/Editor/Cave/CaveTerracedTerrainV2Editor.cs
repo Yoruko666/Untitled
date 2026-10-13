@@ -51,6 +51,7 @@ namespace Untitled.Editor
             public LayoutPoint[] RiverCourse;
             public LayoutPoint[] WestFork;
             public LayoutPoint[] EastFork;
+            public LayoutPoint[] SouthBoundary;
             public float RiverStart;
             public float RiverEnd;
             public float RiverHalfWidth;
@@ -438,9 +439,10 @@ namespace Untitled.Editor
                 {
                     case "Daylight through river arch": position = new Vector3(-13, 2, 33); break;
                     case "River reflected fill": position = new Vector3(-22, 0, 0); break;
-                    case "Main clearing warm bounce": position = new Vector3(1.5f, data.MainlandHeight + 4, -2.9f); break;
+                    case "Main clearing warm bounce": position = new Vector3(19, data.MainlandHeight + 4, -4); break;
                     case "Upper terrace warm bounce": position = new Vector3(-1.5f, data.HighlandHeight + 3.2f, 26.5f); break;
-                    case "East shelf warm bounce": position = new Vector3(18.3f, data.HighlandHeight + 2.2f, 27.2f); break;
+                    case "East shelf warm bounce": position = new Vector3(19, data.HighlandHeight + 2.2f, 31); break;
+                    default: continue;
                 }
                 Undo.RecordObject(light.transform, "Follow cave regions with lighting");
                 position.x *= data.PlanScale;
@@ -566,9 +568,9 @@ namespace Untitled.Editor
             if (prefab == null) throw new InvalidOperationException("Pixel brazier prefab is missing.");
             Physics.SyncTransforms();
             var terrain = root.Find("EditableLandform");
-            var positions = new[] {new Vector2(10,-43),new Vector2(-2,-30),new Vector2(9,-13),
-                new Vector2(10,2),new Vector2(14,13),new Vector2(-9,31),new Vector2(13,39),
-                new Vector2(12,47),new Vector2(0,49),new Vector2(15,58),new Vector2(45.5f,52),
+            var positions = new[] {new Vector2(10,-43),new Vector2(-2,-30),new Vector2(30,-30),
+                new Vector2(38,1),new Vector2(38,19),new Vector2(-9,31),new Vector2(13,39),
+                new Vector2(12,47),new Vector2(0,49),new Vector2(15,58),new Vector2(50,58),
                 new Vector2(-38,-18),new Vector2(-22,-14),new Vector2(-36,31)};
             foreach (var position in positions)
             {
@@ -825,7 +827,7 @@ namespace Untitled.Editor
             {
                 for (float z = course[0].Z; z < course[course.Length-1].Z; z += 0.7f)
                 {
-                    if (ReferenceEquals(course, data.RiverCourse) && data.BridgeZs.Any(b => Mathf.Abs(z-b) < 1.82f)) continue;
+                    if (ReferenceEquals(course, data.RiverCourse) && data.BridgeZs.Any(b => Mathf.Abs(z-b) < 2.55f)) continue;
                     foreach (float side in new[] {-1f, 1f})
                     {
                         Vector3 Bank(float value) => new Vector3(Center(course,value) + side * Half(course,value), data.LowlandHeight + 1.2f, value);
@@ -833,7 +835,20 @@ namespace Untitled.Editor
                     }
                 }
             }
-            Barrier("Southern cutaway safety", new Vector3(-86,0,-83), new Vector3(86,0,-83));
+            Barrier("Southern lowland cutaway safety", new Vector3(-86,0,-83), new Vector3(4,0,-83));
+            var lowlandBarrier = group.GetComponentsInChildren<BoxCollider>().Last();
+            lowlandBarrier.size = new Vector3(lowlandBarrier.size.x, 12, lowlandBarrier.size.z);
+            Barrier("Southern entrance safety", new Vector3(-4,data.MainlandHeight+1.3f,-79),
+                new Vector3(4,data.MainlandHeight+1.3f,-79));
+            // The extended living terrace needs a boundary at its actual edge and elevation.
+            var boundary = data.SouthBoundary ?? Array.Empty<LayoutPoint>();
+            for (int i = 1; i < boundary.Length; i++)
+            {
+                var a = new Vector3(boundary[i-1].X, data.MainlandHeight+1.3f, boundary[i-1].Z);
+                var b = new Vector3(boundary[i].X, data.MainlandHeight+1.3f, boundary[i].Z);
+                Vector3 inset = Vector3.Cross(Vector3.up, b-a).normalized * .35f;
+                Barrier("Southern terrace safety", a+inset, b+inset);
+            }
         }
 
         private static void CheckHeights(GameObject terrain)
@@ -969,7 +984,8 @@ namespace Untitled.Editor
                         pixels = new Texture2D(width,height,TextureFormat.RGB24,false);
                         pixels.ReadPixels(new Rect(0,0,width,height),0,0);
                         pixels.Apply();
-                        string name = camera.name.StartsWith("Player Review") ? "cave_player.png"
+                        string name = camera.name.StartsWith("Building Review") ? "cave_building_" + camera.name.Replace("Building Review ", "") + ".png"
+                            : camera.name.StartsWith("Player Review") ? "cave_player.png"
                             : camera.name.StartsWith("Concept A") ? "cave_concept_entrance.png"
                             : camera.name.StartsWith("Concept B") ? "cave_concept_bridge.png"
                             : top ? "cave_plan.png" : camera.name.StartsWith("River Camera") ? "cave_riverbanks.png"

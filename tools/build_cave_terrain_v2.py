@@ -139,8 +139,8 @@ river_course=[(-12.4,-15),(-13.3,-10),(-14.3,-3),(-12.5,4),(-12.2,10),
               (-13.8,16),(-16.3,23),(-15.6,28),(-13,33.4)]
 west_fork=[(-27,-34),(-25,-29),(-21.8,-25),(-16.7,-20),(-12.4,-15)]
 east_fork=[(-7.6,-34),(-7.4,-29),(-8.4,-25),(-10.7,-20),(-12.4,-15)]
-river_half=3.9*0.9/PLAN_SCALE
-fork_width=2.34/PLAN_SCALE
+river_half=4.2/PLAN_SCALE
+fork_width=2.8/PLAN_SCALE
 low=-2.4
 high=4.8
 water_height=low-0.65
@@ -178,8 +178,8 @@ bridge_approaches=[
      (-9.8,-13,-1.9),(-8.4,-15,-1.1),(-6.1,-16.5,-.35),
      (-3.8,-16.5,.03),(-3,-14.4,.03),(-5.2,-12,.03)],
     [(river_center(14.47)+river_half+.5,14.47,low+.03),
-     (river_center(14.47)+river_half+1.8,14.47,low+.03),(-9.9,13.3,low+.03),
-     (-10.4,10.5,-1.9),(-9.3,7.5,-1.1),(-7.8,5.6,-.35),
+     (river_center(14.47)+river_half+1.8,14.47,low+.03),(-9.4,13.3,low+.03),
+     (-8.6,10.5,-1.9),(-8.5,7.5,-1.1),(-7.8,5.6,-.35),
      (-5.3,5.4,.03),(-3.8,6,.03)]
 ]
 def rounded_course(points):
@@ -203,13 +203,13 @@ def main_margin(z):
             if min(a[1],b[1])-1.5<=z<=max(a[1],b[1])+1.5:
                 t=max(0,min(1,(z-a[1])/(b[1]-a[1]))) if abs(b[1]-a[1])>.001 else 0
                 ramp_x=a[0]+(b[0]-a[0])*t if abs(b[1]-a[1])>.001 else max(a[0],b[0])
-                edge=max(edge,ramp_x+1.5)
+                edge=max(edge,ramp_x+1.8)
     return edge-shore(1,z)
 main_outline = [(shore(1,z)+main_margin(z),z) for z in range(-34,30)]
-main_outline += [(-6,31),(2,32),(8,31),(15,33),(23,32),(28,29),
-                 (31,24),(32,17),(30.2,10),(33,4),(30.5,-3),
-                 (33,-10),(30,-17),(31,-25),(29,-30),(20,-32),
-                 (10,-32),(2,-34)]
+main_outline += [(-6,31),(2,32),(8,31),(15,33),(24,36),(31,39),
+                 (38,41),(46,39),(49,33),(50,26),(48.5,17),(50,8),
+                 (49,-1),(50,-10),(48,-20),(49,-29),(45,-36),
+                 (35,-39),(23,-38),(12,-37),(2,-39),(-1,-36)]
 platform("MainSettlementGround_0m",main_outline,0,-6,"earth",land)
 west_outline = [(-36,-38),(-31,-40),(shore(-1,-34)-2.6,-34)]
 west_outline += [(shore(-1,z)-2.6,z) for z in range(-33,30)]
@@ -219,8 +219,8 @@ platform("RiverbankLowland_Minus2p4m",west_outline,low,-6,"wet",land)
 upper_outline = [(-9.2,25.0),(-5.8,24.8),(-1,25.1),(3.8,24.9),(7.8,25.5),
                  (9,28.0),(5.5,32),(-1,33),(-7.8,30.5),(-9.6,27)]
 platform("09_AltarHallTerrace_Plus4p8m",upper_outline,high,-0.2,"earth",land)
-elder_outline = [(14,24),(17,23.5),(21,24),(23,26),
-                 (22,30),(18.5,31.3),(14.5,29.5)]
+elder_outline = [(10.5,24.5),(17,24),(23,25),(27,28),(28,35),
+                 (26.5,41),(23.5,42),(19,40.5),(14,37),(11.5,31)]
 platform("10_ElderAndPrivateStore_Plus4p8m",elder_outline,high,-0.2,"earth",land)
 
 # Relative area relationships come from the plan; contours retain the prior cave's natural river and terraces.
@@ -228,18 +228,18 @@ platform("10_ElderAndPrivateStore_Plus4p8m",elder_outline,high,-0.2,"earth",land
 zones = [
     (1,"Evacuation",0,-30,0,4.4,2.0,"earth"),
     (2,"EntranceForecourt",0,-22.6,0,4.2,3.0,"stone"),
-    (3,"MilitaryTraining",19.2,10.8,0.45,4.4,3.8,"stone"),
-    (4,"Residence",5.9,-15.5,0.30,3.8,2.6,"earth"),
-    (5,"KitchenPreparation",17.7,-12.6,0.30,4.2,3.2,"stone"),
-    (6,"Tavern",-4.0,-3.3,0.30,2.8,2.5,"earth"),
-    (7,"Casino",11.8,-0.7,0.30,3.6,2.5,"stone"),
-    (8,"Feast",2.3,10.4,0.30,4.5,3.1,"earth"),
+    (3,"MilitaryTraining",35,16,0,9.5,7.5,"stone"),
+    (4,"Residence",13,-22,0.30,3.8,2.6,"earth"),
+    (5,"KitchenPreparation",28,-20,0,4.5,4.5,"stone"),
+    (6,"Tavern",4,-4,0,8.75,8.75,"earth"),
+    (7,"Casino",35,-4,0,7.5,7.5,"stone"),
+    (8,"Feast",12,14,0,4.5,3.1,"earth"),
     (9,"AltarHall",-1.5,28.5,high,7.2,3.2,"earth"),
-    (10,"Elder",18.3,27.2,high,3.6,3.0,"earth"),
+    (10,"Elder",19,31,high,4.8,4.8,"earth"),
     (11,"Planting",-24,7.8,low,3.3,4.0,"moss"),
     (12,"Warehouse",-2.7,10.4,0.30,2.1,3.2,"stone"),
-    (13,"UnloadingCourt",19.2,-22.6,0,4.4,3.0,"stone"),
-    (14,"PublicHearth",1.5,-2.9,0,3.0,2.5,"stone"),
+    (13,"UnloadingCourt",30,-31,0,4.4,3.0,"stone"),
+    (14,"PublicHearth",19,-4,0,3.0,2.5,"stone"),
     (15,"RiverWorkshop",-24,-10,low,3.5,3.5,"wet"),
 ]
 zone_root = group("08_AreaTerrainReservations_01_to_15")
@@ -381,50 +381,49 @@ for bridge_index,(name,z) in enumerate([("EntranceBridge",-10),("SupplyBridge",1
     x=river_center(z)
     half=river_half+0.5
     # Continuous hidden deck collider lies flush under separate wooden planks.
-    deck=path(name+"TimberDeck",[(x-half,z,low+0.03),(x,z,low+0.03),(x+half,z,low+0.03)],1.85,"wood",check=True)
+    deck=path(name+"TimberDeck",[(x-half,z,low+0.03),(x,z,low+0.03),(x+half,z,low+0.03)],2.4,"wood",check=True)
     for polygon in deck.data.polygons: polygon.material_index=0
     for vertex in deck.data.vertices: vertex.co.z -= 0.10
     count=math.ceil(half*2/0.19)
     for j in range(count):
         px=x-half+(j+.5)*half*2/count
-        timber(name+"_Plank_%02d"%j,px,z,low-.03,half*2/count-.025,1.85,0.12)
+        timber(name+"_Plank_%02d"%j,px,z,low-.03,half*2/count-.025,2.4,0.12)
     for side in (-1,1):
-        timber(name+"_LongBeam_%d"%side,x,z+side*.68,low-.2,half*2+.3,.14,.28)
+        timber(name+"_LongBeam_%d"%side,x,z+side*.92,low-.2,half*2+.3,.14,.28)
         for j,offset in enumerate((-half,-half*.42,half*.42,half)):
             bottom=water_height-2.0
             top=low+1.05
-            timber(name+"_SubmergedPile_%d_%d"%(side,j),x+offset,z+side*.89,
+            timber(name+"_SubmergedPile_%d_%d"%(side,j),x+offset,z+side*1.17,
                    (top+bottom)/2,.14,.14,top-bottom)
-        timber(name+"_Handrail_%d"%side,x,z+side*.89,low+.85,half*2+.15,.09,.12)
-    path(name+"WestLanding",[(-24,z,low+0.03),(x-half,z,low+0.03)],1.85,"wet",check=True)
+        timber(name+"_Handrail_%d"%side,x,z+side*1.17,low+.85,half*2+.15,.09,.12)
+    path(name+"WestLanding",[(-24,z,low+0.03),(x-half,z,low+0.03)],2.2,"wet",check=True)
     approach=bridge_approaches[bridge_index]
-    path(name+"WindingBankRamp",approach,1.85,"path",check=True)
+    path(name+"WindingBankRamp",approach,2.2,"path",check=True)
     # Sloping earth shoulders dissolve the ramp into gravel instead of a squared stair block.
     for side in (-1,1):
         vertices=[]
         for i,(px,pz,h) in enumerate(approach):
             a=Vector(approach[max(0,i-1)][:2]); b=Vector(approach[min(len(approach)-1,i+1)][:2])
             n=Vector((-(b-a).y,(b-a).x)).normalized()*side
-            vertices += [(px+n.x*.95,pz+n.y*.95,h-.015),
-                         (px+n.x*1.8,pz+n.y*1.8,low-.04)]
+            vertices += [(px+n.x*1.12,pz+n.y*1.12,h-.015),
+                         (px+n.x*2.0,pz+n.y*2.0,low-.04)]
         faces=[(2*i,2*i+1,2*i+3,2*i+2) for i in range(len(approach)-1)]
         if side>0: faces=[tuple(reversed(f)) for f in faces]
         mesh(name+"ErodedRampShoulder_%d"%side,vertices,faces,["wet"],parent=river)
     if bridge_index==1:
         path("SupplyBridgeUpperPromenade",[(-3.8,6,.03),(-3.8,6.7,.1),
-             (-3.8,7.15,.33),(-3.8,7.5,.33),(-2.7,9,.33)],1.6,"path",check=True)
+             (-3.8,7.15,.33),(-3.8,7.5,.33),(-2.7,9,.33)],2.2,"path",check=True)
 path("B_WestHallAscent",[(-5.2,14.47,0.03),(-6.8,16.5,0.03),(-10.2,18.8,1.4),(-11.4,22,2.5),
                          (-11.1,24.8,4.05),(-10.2,26,high+0.03),(-9.2,27,high+0.03),(-6.7,27,high+0.03)],2.0,check=True)
 
 # A stays in the center; C follows the far eastern boundary before turning to the hall.
-path("A_CentralPublicApproach",[(0,-30,0.035),(0,-22.6,0.035),(0,-18.47,0.035),
-                               (1.5,-2.9,0.035),(2.3,10.4,0.035),(0.0,15.3,0.035),
-                               (-1.5,14.7,0.035)],3.4,check=False)
-# Keep baseline paths as optional review overlays; their corridors remain clear on the base ground.
-path("C_EasternPerimeterRoute",[(0,-30,0.035),(26.1,-30,0.035),(26.1,-22.6,0.035),
-                               (26.1,-12.6,0.035),(24.0,-8,0.035),(24.0,2.6,0.035),
-                               (26.0,10.8,0.035),(26.0,19.0,0.035),(14.0,19.0,0.035),
-                               (10.5,17.5,0.035),(8.5,14.7,0.035),(5.5,14.7,0.035)],3.0)
+central=[(0,-30,.03),(0,-22.6,.03),(6,-17,.03),(13,-15,.03),
+         (19,-10,.03),(17,-4,.03),(18,4,.03),(12,8.7,.03)]
+peripheral=[(0,-30,.03),(18,-36,.03),(30,-36,.03),(37,-32,.03),
+            (39,-21,.03),(44,-16,.03),(46,-10,.03),(46,2,.03),
+            (47,10,.03),(47,20,.03),(45,25,.03),(36,26,.03),(26,24,.03),(17,19,.03)]
+path("A_CentralPublicApproach",central,2.0,"path",check=True)
+path("C_EasternPerimeterRoute",peripheral,2.0,"path",check=True)
 
 # The ascent winds across two inhabited foothill benches before the ceremonial plateau.
 platform("HallFoothill_LowerLanding_1p2",[(-5.5,17.8),(-3.6,17.7),(-1.8,17.4),(.2,17.65),(1.9,17.45),(3.7,17.8),(5.7,17.8),(6.8,18.7),
@@ -452,53 +451,48 @@ east_ascent=[(17,19,0.03),(14,16.2,0.03),(11.8,16.5,0.3),
              (9,16.7,0.85),(7,17,1.23),(5,18.5,1.23)]
 path("C_LivingQuarterToHallFoothill",east_ascent,2.2,"earth",check=True)
 # A dedicated second path from the east food-hall door to the hearth plaza.
-feast_hearth=[(5.4,9.4,0.33),(6.5,8.1,0.33),(7.4,6.7,0.03),
-             (6.8,4.6,0.03),(5.3,2.3,0.03),(3.8,0.1,0.03),(1.5,-2.9,0.03)]
-path("FeastToHearthGardenWalk",feast_hearth,1.6,"path",check=True)
-bridge_kitchen=[(-5.2,-12,.03),(-2.5,-9.2,.03),(3,-8.8,.03),
-                (8.5,-9.4,.03),(11.3,-10.2,.03),(11.6,-12.6,.03)]
+feast_hearth=[(15.9,13,.03),(17.2,11.8,.03),(18,10.8,.03),
+              (19,8,.03),(20.8,3,.03),(21,-1,.03),(19,-7,.03)]
+path("FeastToHearthGardenWalk",feast_hearth,1.4,"path",check=True)
+bridge_kitchen=[(-5.2,-12,.03),(-3.5,-14.5,.03),(3,-15.5,.03),
+                (18,-15.5,.03),(21,-19,.03),(22.5,-22.325,.03),(24,-22.325,.03)]
 path("BridgeheadToKitchenPromenade",bridge_kitchen,1.8,"path",check=True)
-path("D_SharedHallToElderNeck",[(6.8,26,high+0.03),(10.5,26,high+0.03),
-                               (14.7,26,high+0.03),(17,27.2,high+0.03)],2.6,check=True)
+path("KitchenToHearthWalk",[(27,-15.5,.03),(27,-13,.03),(23,-12,.03),(19,-8,.03)],1.4,"path",check=True)
+path("CasinoCentralLink",[(27.8,-4,.03),(25,-4,.03),(22.4,-4,.03)],1.4,"path",check=True)
+path("TrainingFeastLink",[(35,8.7,.03),(30,8.2,.03),(23,8.2,.03),(17,9,.03),(12,10.4,.03)],1.4,"path",check=True)
+path("WarehouseFeastLink",[(-.8,10.4,.33),(1,10.4,.03),(5.8,10,.03),(8.5,10.5,.03),(12,10.6,.03)],1.4,"path",check=True)
+path("TavernWestDoorApproach",[(-8,3,.03),(-6.5,1,.03),(-4.7,-2.05,.03),(-4,-2.05,.03)],1.4,"path",check=True)
+path("TavernSouthDoorApproach",[(1.725,-14.1,.03),(1.725,-12,.03)],1.4,"path",check=True)
+path("D_SharedHallToElderNeck",[(6.8,26,high+.03),(10.5,26,high+.03),
+                               (12.8,27.625,high+.03),(14.5,27.625,high+.03)],1.6,check=True)
+secret_return=[(22.73,37.65,high+.03),(22.73,38,high+.03),(27.5,37,high+.03),
+               (30,35,4.1),(33,35,3.2),(36,32,2.2),(40,29,1.1),(45,25,.03)]
+path("ElderSecretReturn",secret_return,1.4,"path",check=True)
 
 # Each low shelf has an explicit shallow ramp, keeping the gray cross-connections usable.
-for number in (3,4,5,6,7,8,12):
+for number in (4,12):
     _,name,x,z,h,w,d,_=zones[number-1]
-    if number==8:
-        # A public road traverses the feast's western edge, with a rise and fall.
-        path("A_FeastSouthRamp",[(0,5.5,0.03),(0,7.35,0.33),(0,8.2,0.33)],2.8,parent=zone_objects[number],check=True)
-        path("A_FeastNorthRamp",[(0,12.0,0.33),(0,13.7,0.33),(0,14.6,0.03)],2.8,parent=zone_objects[number],check=True)
-    elif number==12:
-        # Adjacent warehouse and feast reservations share the same shallow shelf height.
-        path("12_WarehouseFeastSaddle",[(-0.8,z,0.33),(-2.7,z,0.33)],2.4,
-             parent=zone_objects[number],check=True)
-    else:
-        # From the right/left access alley to the raised excavation floor.
-        direction=-1 if number in (4,5,7) else 1
-        edge=x+direction*w
-        path("%02d_%sAccessRamp"%(number,name),[(edge+direction*1.9,z,0.03),
-                                               (edge+direction*0.1,z,h+0.03),
-                                               (edge-direction*0.8,z,h+0.03)],2.4,
-             parent=zone_objects[number],check=True)
-
-# Gray links in the plan are preserved as open corridors, not additional river crossings.
+    for side in (-1,1):
+        if number==12 and side==1: continue
+        edge=z+side*d
+        path("%02d_%s%sRamp"%(number,name,"North" if side>0 else "South"),
+             [(x,edge+side*1.9,.03),(x,edge+side*.05,h+.03),(x,edge-side*.8,h+.03)],
+             1.4,parent=zone_objects[number],check=True)
+path("FeastToHallApproach",[(12,18.3,.03),(15,18.3,.03),(17,19,.03)],2.0,"path",check=True)
 clear_routes=[
-    ("EntranceBankRamp",bridge_approaches[0],1.85),
-    ("SupplyBankRamp",bridge_approaches[1],1.85),
-    ("SupplyPromenade",[(-3.8,6,.03),(-3.8,7.15,.33),(-2.7,9,.33)],1.6),
-    ("BridgeKitchen",bridge_kitchen,1.8),
-    ("HallProcession",ascent,2.1),
-    ("LivingQuarterAscent",east_ascent,2.2),
-    ("FoodHallHearthWalk",feast_hearth,1.6),
-    ("A_Central",[(0,-30,0),(0,-22.6,0),(0,-18.47,0),(1.5,-2.9,0),
-                   (2.3,4.5,0),(0,5.8,0),(0,8.2,0.3),(0,12,0.3),(-1.5,14.7,0)],3.5),
-    ("C_East",[(0,-30,0),(26.1,-30,0),(26.1,-22.6,0),(26.1,-12.6,0),
-                (24,-8,0),(24,2.6,0),(26,10.8,0),(26,19,0),(14,19,0),
-                (10.5,17.5,0),(8.5,14.7,0),(5.5,14.7,0)],3.1),
-    ("HearthCasinoLink",[(-4,-3.3,0.3),(1.5,-2.9,0),(11.8,-0.7,0.3),(24,2.6,0)],2.5),
-    ("FeastMilitaryLink",[(6.8,10.4,0),(14.8,10.4,0),(19.2,10.8,0.45),(26,10.8,0)],2.5),
-    ("ResidenceKitchenLink",[(5.9,-15.5,0.3),(12,-15,0),(17.7,-12.6,0.3),(19.2,-22.6,0)],2.4),
+    ("EntranceBankRamp",bridge_approaches[0],2.2),
+    ("SupplyBankRamp",bridge_approaches[1],2.2),
+    ("SupplyPromenade",[(-3.8,6,.03),(-3.8,7.15,.33),(-2.7,9,.33)],2.2),
+    ("BridgeKitchen",bridge_kitchen,1.8),("HallProcession",ascent,2.1),
+    ("LivingQuarterAscent",east_ascent,2.2),("FoodHallHearthWalk",feast_hearth,1.4),
+    ("A_Central",central,2.0),("C_East",peripheral,2.0),
+    ("SecretReturn",secret_return,1.4),
 ]
+# Every authored traversable strip also excludes scatter at its actual centerline.
+for point_a,point_b in zip(route_samples,route_samples[1:]):
+    if point_a["Name"]==point_b["Name"]:
+        clear_routes.append((point_a["Name"],[(point_a["X"],point_a["Z"],point_a["Height"]),
+                            (point_b["X"],point_b["Z"],point_b["Height"])],1.4))
 
 def distance_to_segment(x,z,a,b):
     dx,dz=b[0]-a[0],b[1]-a[1]
@@ -522,8 +516,9 @@ def on_corridor(x,z,margin=0.7):
 walls=group("04_OuterCaveWallsAndInteriorSpurs")
 walls.parent=terrain
 perimeter=[(-41,-34),(-39,-26),(-37,-19),(-35,-12),(-35,-4),(-34,5),(-33,14),(-32,23),
-           (-29,30),(-23,35),(-8,35),(-1,36),(7,36),(15,37),(23,36),(29,33),
-           (34,27),(35,20),(34,13),(36,5),(34,-3),(37,-11),(34,-19),(35,-26)]
+           (-29,30),(-23,35),(-8,37),(-1,38),(7,39),(13,41),(19,44),(26,44),
+           (33,43),(40,42),(47,39),(50,34),(52,27),(51,19),(53,12),(52,4),
+           (53,-4),(52,-12),(51,-21),(52,-29),(49,-36),(42,-40),(34,-41),(24,-41)]
 # Continuous rock beneath the irregular masses closes daylight gaps. The split
 # deliberately leaves the northern river aperture and southern cutaway open.
 for label,points in [("West",perimeter[:10]),("NorthEast",perimeter[10:])]:
@@ -537,11 +532,10 @@ for i,(x,z) in enumerate(perimeter):
              (3.3,3.7,rng.uniform(3,4.5)),rng.uniform(-25,25),walls)
 
 # Low ridges reserve doorways and break sight lines, without populating the plan's guards.
-cover_positions=[(-9.2,-1.1,0,1.8,2.6),(-7.8,12.4,0.3,1.7,2.8),(14.4,1.2,0.3,1.9,2.5),
-                 (5.2,-24,0,1.8,1.6),(-5.0,-24,0,1.8,1.6),
-                 (11.0,-19,0,2.1,2.0),(22.5,-17,0,1.9,2.2),
-                 (9.3,6.5,0,1.8,3.0),(14.0,15.3,0,2.0,2.8),
-                 (-7.7,6.4,0,1.0,2.0)]
+cover_positions=[(-18,-11,low,1.0,1.2),(-18,13,low,1.1,1.0),
+                 (17,-26,0,1.0,1.3),(36,-27,0,1.1,1.6),(44,-19,0,1.0,1.5),
+                 (45,5,0,1.0,1.4),(26,12,0,1.0,1.5),(46,23,0,1.0,1.5),
+                 (27,37,high,1.0,1.5)]
 for i,(x,z,h,w,d) in enumerate(cover_positions):
     if on_corridor(x,z,max(w,d)+.5):
         continue
@@ -603,7 +597,7 @@ for i in range(155):
                  (shore(1,z)+2.8,z,low-0.1),
                  (rng.uniform(0.35,0.65),rng.uniform(0.45,0.8),rng.uniform(0.5,1.2)),rng.uniform(0,360),dressing)
 for number,name,x,z,h,w,d,material in zones:
-    if number in (1,2,14):
+    if number in (1,2,3,5,6,7,10,14):
         continue
     for j in range(3):
         px=x+rng.choice((-1,1))*w*0.85
@@ -624,7 +618,7 @@ for i,(x,z,h) in enumerate([(-28,25,low),(-28,-19,low),(-28,1,low),
 # dry rubble stays at walls, and district centers are left available for buildings.
 decorations=[]
 def detail(prefab,x,z,h,scale=1.0,yaw=-5,group_name="Riverbank"):
-    if on_corridor(x,z,.35):
+    if on_corridor(x,z,.35) or any(n in (3,5,6,7,10) and abs(x-zx)<w+.6 and abs(z-zz)<d+.6 for n,_,zx,zz,_,w,d,_ in zones):
         return
     decorations.append(dict(Prefab="cave_"+prefab+"_01",X=x,Z=z,Height=h,
                             Scale=scale,Yaw=yaw,Name=group_name))
@@ -675,7 +669,7 @@ for i in range(48):
 
 foreground=group("07_SouthEntranceCutaway")
 foreground.parent=terrain
-for i,(x,z) in enumerate([(-39,-36),(-21,-36),(-15,-35),(-5,-34.5),(10,-35),(31,-32)]):
+for i,(x,z) in enumerate([(-39,-36),(-21,-36),(-15,-35),(-5,-34.5),(10,-35),(43,-38)]):
     instance(modules[i%3],"ForegroundRock_%02d"%i,(x,z,-3.7),
              (2.4,2.0,4.1),rng.uniform(-20,20),foreground)
 
@@ -694,8 +688,8 @@ for i,(x,z,w,d,h) in enumerate([
 # Broken paving outlines the gathering place while leaving its central reserve clear.
 for i in range(22):
     angle=2*math.pi*i/22
-    x=1.5+math.cos(angle)*3.65
-    z=-2.9+math.sin(angle)*3.1
+    x=19+math.cos(angle)*3.65
+    z=-4+math.sin(angle)*3.1
     if on_corridor(x,z,.35):
         continue
     instance(modules[i%3],"HearthCourtEdgeStone_%02d"%i,
@@ -723,7 +717,8 @@ def height_map(value):
         return low+(value-low)*(MAIN_ELEVATION-low)/(-low)
     return MAIN_ELEVATION+value*(HALL_ELEVATION-MAIN_ELEVATION)/high
 
-metadata=dict(Zones=[dict(Id=n,Name=name,X=x,Z=z,Height=h) for n,name,x,z,h,*_ in zones],
+metadata=dict(SouthBoundary=[dict(X=x,Z=z,Height=0) for x,z in main_outline[-7:-1]],
+              Zones=[dict(Id=n,Name=name,X=x,Z=z,Height=h) for n,name,x,z,h,*_ in zones],
               Decorations=decorations,LowlandHeight=low,MainlandHeight=MAIN_ELEVATION,
               HighlandHeight=HALL_ELEVATION,WaterHeight=water_height,
               RouteSamples=route_samples,
@@ -733,10 +728,10 @@ metadata=dict(Zones=[dict(Id=n,Name=name,X=x,Z=z,Height=h) for n,name,x,z,h,*_ i
               RiverStart=river_start,RiverEnd=river_end,RiverHalfWidth=river_half,
               BridgeZs=bridge_zs,
               RouteAnchors=[dict(Name=name,X=x,Z=z,Height=h) for name,x,z,h in [
-                  ("O1_EntranceObservation",0,-18.47,0),("O2_SupplyBridgeObservation",-24,14.47,low),
-                  ("O3_PerimeterObservation",24,2.6,0),("SharedEnd_HallToElder",10.5,26,high),
-                  ("PrivateStoreInsideElder",20,28.3,high)]])
-for field in ("Zones", "Decorations", "RouteSamples", "RouteAnchors", "RiverCourse", "WestFork", "EastFork"):
+                  ("O1_EntranceObservation",6,-17,0),("O2_SupplyBridgeObservation",-24,14.47,low),
+                  ("O3_PerimeterObservation",46,2,0),("SharedEnd_HallToElder",10.5,26,high),
+                  ("PrivateStoreInsideElder",22.5,33,high)]])
+for field in ("Zones", "Decorations", "RouteSamples", "RouteAnchors", "RiverCourse", "WestFork", "EastFork", "SouthBoundary"):
     for point in metadata[field]:
         point["X"] *= PLAN_SCALE
         point["Z"] *= PLAN_SCALE
