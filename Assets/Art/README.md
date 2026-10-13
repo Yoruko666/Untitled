@@ -71,5 +71,6 @@
 
 - 原创祭台、先祖雕像、贡品台模块、三组贡品、火炬、符文石柱、垂旗、仪式鼓、香炉、跪拜垫和骨铃架共 13 件实体道具，网格、材质和纹理位于 `Art/{Models,Materials,Textures}/Props/RitualHall`。
 - 整房模块为 `Assets/Prefabs/Props/RitualHall/goblin_ritual_hall_room.prefab`，独立场景为 `Assets/Scenes/Props/GoblinRitualHallDemo.unity`；其余箱桶、油灯、坐垫、供品食材、药瓶与兽骨直接复用素材库。
+- 当前 demo 的火炬、旗帜、壁炬、图腾、仪式挂架、贡品、侧边草席及箱桶提灯共 49 处实例已换为项目像素素材；原制作模型保留为备选。箱桶、铁提灯与金币宝石复用原图封装为 `RitualHall/*_hd2d.prefab`。
 - 按用户草图保留北侧祭坛、U 形贡品台、灰色长老跪拜席和左右各五处火炬；祭坛与贡品台之间的真实开口、下行石阶、半开石盖和地下通道预留表达连接长老私室的暗道。
 - 所有模型与摆放均已保存，运行时不重建。参考图在 `Art/References/RitualHall`，详见 [祭祀大厅 demo 说明](../../docs/goblin-ritual-hall-demo.md)。
