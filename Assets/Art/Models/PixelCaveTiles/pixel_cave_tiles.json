@@ -1,0 +1,145 @@
+{
+  "Modules": [
+    {
+      "Name": "tile_floor_earth",
+      "Slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "Name": "tile_floor_stone",
+      "Slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "Name": "tile_floor_moss",
+      "Slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "Name": "tile_floor_wet",
+      "Slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "Name": "tile_cliff_fill",
+      "Slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "Name": "tile_cliff_edge",
+      "Slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "Name": "tile_cliff_outer_corner",
+      "Slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "Name": "tile_cliff_inner_corner",
+      "Slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "Name": "tile_cliff_double_corner",
+      "Slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "Name": "tile_ramp",
+      "Slots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "Name": "tile_steps",
+      "Slots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "Name": "tile_wall_straight",
+      "Slots": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "Name": "tile_wall_corner",
+      "Slots": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "Name": "tile_wall_end",
+      "Slots": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "Name": "tile_rock_low",
+      "Slots": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "Name": "tile_rock_tall",
+      "Slots": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}
