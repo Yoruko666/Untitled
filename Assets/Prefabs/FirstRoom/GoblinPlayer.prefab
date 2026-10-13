@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75fda899e88cf3c41982318d29ca02a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   Speed: 7.625
   useGravity: 1
 --- !u!143 &4606039558726191949
@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 2905804910513394201}
   - component: {fileID: 3507925804863766209}
   - component: {fileID: 4234856885714963197}
+  - component: {fileID: 5283109644721938001}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -115,7 +116,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252274169156666147}
-  m_Mesh: {fileID: 4300000, guid: 448ddd630bf37254383cff81a1503b46, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b5981683ed0842ef85281705a63d174c, type: 2}
 --- !u!23 &3507925804863766209
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 21d9d16640b4ef54a976991cab76f6bf, type: 2}
+  - {fileID: 2100000, guid: ed26f3b1f9a643a898eee9d9a1c7dca8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -168,7 +169,68 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d4b2f8a1c3e5d7b9f0a2c4e6b8d1f3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   targetCamera: {fileID: 0}
   keepUpright: 0
+--- !u!114 &5283109644721938001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252274169156666147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f7e6aa434f4991a12aa15fef18076a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  movementSource: {fileID: 4606039558726191949}
+  framesPerSecond: 10
+  movementThreshold: 0.1
+  sideAnimation:
+    Material: {fileID: 2100000, guid: ed26f3b1f9a643a898eee9d9a1c7dca8, type: 2}
+    PixelsPerUnit: 470.0
+    Frames:
+    - Region: {x: 27, y: 655, z: 273, w: 381}
+      Pivot: {x: 141.0, y: 4}
+    - Region: {x: 395, y: 653, z: 187, w: 383}
+      Pivot: {x: 87.0, y: 4}
+    - Region: {x: 640, y: 681, z: 277, w: 359}
+      Pivot: {x: 160.5, y: -23}
+    - Region: {x: 976, y: 653, z: 259, w: 383}
+      Pivot: {x: 132.5, y: 4}
+    - Region: {x: 46, y: 110, z: 211, w: 382}
+      Pivot: {x: 109.0, y: 4}
+    - Region: {x: 314, y: 132, z: 279, w: 364}
+      Pivot: {x: 156.5, y: -18}
+    - Region: {x: 703, y: 109, z: 176, w: 384}
+      Pivot: {x: 74.5, y: 4}
+  frontAnimation:
+    Material: {fileID: 2100000, guid: 12bda059f4cc40d19779d4b6d83b4698, type: 2}
+    PixelsPerUnit: 526.25
+    Frames:
+    - Region: {x: 36, y: 625, z: 247, w: 442}
+      Pivot: {x: 129.0, y: 4}
+    - Region: {x: 668, y: 666, z: 248, w: 401}
+      Pivot: {x: 120.5, y: -42}
+    - Region: {x: 357, y: 623, z: 241, w: 444}
+      Pivot: {x: 122.0, y: 4}
+    - Region: {x: 351, y: 122, z: 248, w: 411}
+      Pivot: {x: 130.5, y: -32}
+    - Region: {x: 679, y: 105, z: 219, w: 429}
+      Pivot: {x: 111.0, y: 4}
+  backAnimation:
+    Material: {fileID: 2100000, guid: b7915b6b59f8468ba4d5a3d8512d6844, type: 2}
+    PixelsPerUnit: 522.5
+    Frames:
+    - Region: {x: 40, y: 615, z: 233, w: 429}
+      Pivot: {x: 126.0, y: 4}
+    - Region: {x: 662, y: 635, z: 232, w: 409}
+      Pivot: {x: 125.5, y: -15.5}
+    - Region: {x: 363, y: 624, z: 225, w: 420}
+      Pivot: {x: 122.0, y: 4}
+    - Region: {x: 380, y: 111, z: 231, w: 408}
+      Pivot: {x: 105.5, y: -16.5}
+    - Region: {x: 690, y: 92, z: 195, w: 426}
+      Pivot: {x: 97.5, y: 4}

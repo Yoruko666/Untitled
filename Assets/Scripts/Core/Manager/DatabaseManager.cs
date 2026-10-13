@@ -10,11 +10,20 @@ namespace Untitled
 
         public ItemDatabase ItemDatabase { get; private set; }
 
+        public BubbleDatabase BubbleDatabase { get; private set; }
+
+        public DialogDatabase DialogDatabase { get; private set; }
+
+        public DialogOptionDatabase DialogOptionDatabase { get; private set; }
+
         public override void Initialize()
         {
             base.Initialize();
 
             ItemDatabase = Register(new ItemDatabase(), DatabasePath.ItemDatabase);
+            BubbleDatabase = Register(new BubbleDatabase(), DatabasePath.BubbleDatabase);
+            DialogDatabase = Register(new DialogDatabase(), DatabasePath.DialogDatabase);
+            DialogOptionDatabase = Register(new DialogOptionDatabase(), DatabasePath.DialogOptionDatabase);
         }
 
         public T Register<T>(T database, string address) where T : DatabaseBase

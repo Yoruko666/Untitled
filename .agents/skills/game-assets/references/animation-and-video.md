@@ -1,0 +1,235 @@
+# Animation and video
+
+## Choose the animation route
+
+Use this order rather than routing directly to video:
+
+1. Use `animate-run` for most motion. It is the primary path and returns directly usable frame animation.
+2. For an ordinary but complex action, create two or more important poses and use `keyframes-run`. Keyframes constrain the action while preserving frame-animation output, making this preferable to video for attacks, turns, jumps, dodges, and other game actions that need a specific transition.
+3. Use `video-run` only when ordinary animation and keyframe control remain insufficient, or when the deliverable genuinely needs higher-resolution video.
+
+## How to create a high-quality animation
+
+Follow this preparation sequence before every `animate-run` or `keyframes-run`:
+
+1. **Start from the action's first pose.** The source image becomes the first animation frame, so do not default to a neutral standing pose for every action. For an attack, start with the character holding the weapon in a ready-to-strike pose. For walking or running, start with the legs already separated, one forward and one back. Jump and idle animations are less sensitive to the starting pose. A correct action-ready first frame lets the model spend its frame budget on the action and return naturally to the starting pose; beginning from an unrelated idle pose creates wind-up or transition frames that often look like waste frames and make a clean loop harder.
+2. **Prepare the pose with the appropriate still-image tool.** Use `image-edit-run` when one precise action pose is required; it is the highest-precision route. Use `character-multi-view-run` with an explicit action requirement in `--extra-constraint` when the same pose is needed across several directions. Eight-direction generation is faster for batching, but pose accuracy and directional consistency are usually lower than a focused still edit. Review the pose before animation.
+3. **Describe the motion simply.** Use a short, direct action description rather than a complicated story. Good inputs include `The character slashes to the right, with flames on the sword`, `The character makes a small jump in place`, and `The character runs forward`. State the principal action, direction, and one important effect; give the animation model room to resolve the motion.
+4. **Use the default prompt enhancement.** `animate-run` and `keyframes-run` enable prompt enhancement by default. The backend reads the source image and the user's motion description, translates non-English input into English, and rewrites it into language that the animation model can understand more reliably. Keep the user's input focused on intent; do not manually add a long technical prompt unless the enhanced result has been reviewed and needs a specific correction.
+5. **Choose Pixel or HD explicitly.** `--animation-model pixel-engine-v1.1` selects Pixel and `--animation-model frame-engine-v1.1` selects HD. This setting, not the source dimensions, controls the render mode. Pixel applies pixel-specific motion and edge handling and accepts PNG or static WebP. HD supports larger pixel artwork, chibi characters, and small HD or 2D characters, does not apply pixel-specific optimization, and accepts PNG, JPEG, or static WebP. Static WebP is converted to same-size PNG before prompt enhancement or animation. The source must satisfy the selected mode's size limits.
+6. **Reserve transparent motion space.** The source image dimensions become the animation canvas, and canvas preparation is one of the strongest constraints on final quality. When image or multimodal inspection is available, inspect the source first: identify the visible character bounds, current anchor, facing direction, weapon reach, and likely motion path. A jump needs some room above the head; an attack needs some room in front of the character for the body, weapon, and effects; a backward jump, retreat, or dodge needs room behind. If attack direction is not stated, infer it from the prompt and the character's facing direction when the image makes that clear; otherwise ask or reserve modest space on both sides. The model cannot reliably move into space that does not exist, but excessive empty canvas also makes the subject unnecessarily small relative to the frame. Add enough space for the intended action without maximizing every side. Prompt enhancement cannot compensate for missing canvas space.
+7. **Keep pixel characters compact, then pad.** Keep the pixel character content at 128×128 or smaller whenever practical, then expand the transparent canvas without resampling the character. Set top, down, left, and right padding independently for the actual motion path. For a 64px pixel character, prefer a final padded canvas no larger than 128×128. A Standard pixel-animation canvas cannot exceed 256px on either axis; Advanced allows up to 320px. Calculate the final width as `source width + left + right` and final height as `source height + top + down` before submitting. Preserve the subject's anchor, and verify that the subject, weapon, and effects will not touch a required edge during the motion.
+8. **Review the prepared source before generation.** Check the visible content bounds, transparent margins, action direction, first pose, scale, and anchor. For keyframe animation, ensure every keyframe uses the same canvas dimensions, anchor, and padding. Insufficient motion space and unsuitable poses are among the most common causes of failed or low-quality animation.
+
+## Capability-specific guidance
+
+### Seamless images
+
+Use seamless-image processing mainly for horizontally scrolling backgrounds, vertically scrolling backgrounds, or large repeating maps such as those used by survivor-style games.
+
+### Sprite animation
+
+- Apply the complete high-quality animation workflow above before generation.
+- Use `animate-run` for most game animation. It returns directly usable frame animation, but the general frame mode outputs at no more than 480p even when the source image is much larger.
+- Re-edit a generated GIF or WebP with `animation-edit-run` to change character appearance or effects at lower cost. Frame editing can reskin the animation, but it generally cannot change the underlying motion.
+
+### Short video
+
+Use `video-run` only after ordinary animation and keyframe control are unsuitable, or for highly detailed material that needs more resolution than frame animation can provide.
+
+## Purpose
+
+Use this module only after the source still asset is visually stable. Choose seamless processing for a repeating background, sprite animation for frame-oriented game motion, or short video for a rendered clip.
+
+| Capability | Command | Final role | Main limitation |
+|---|---|---|---|
+| Make an image seamless | `self-loop-run` | Produce a horizontally, vertically, or four-way repeating image | Inspect the repeated seam |
+| Create sprite animation | `animate-run` | Produce WebP, GIF, or a sprite sheet | Requires stable silhouette, anchor, and transparency |
+| Control frame animation with key poses | `keyframes-run` | Produce frame animation constrained by two or more poses | Every keyframe must share dimensions, anchor, and padding |
+| Inspect recommended video prompts | `video-prompt-list` | Review built-in action and direction prompts before generation | Select the same motion mode intended for generation |
+| Create a short video clip | `video-run` | Animate a first frame or references into a higher-resolution clip | Returns raw video, not ready-to-use game frames |
+
+Use `animation-edit-run` from the UI and image-editing module when the source is already an animated GIF or WebP and the user wants to preserve its timing rather than design a new motion.
+
+## Seamless image motion
+
+```bash
+python3 skills/game-assets/meowart_api.py self-loop-run \
+  --image-file <background.png> \
+  --variant four-way \
+  --generation-speed normal \
+  --resolution 1K \
+  --output-dir <output-dir>
+```
+
+- Use `horizontal` for side-scrolling backgrounds, `vertical` for vertical motion, and `four-way` for continuity on both axes.
+- Generation speed mirrors the web control: `normal` or `fast`.
+- Inspect the seam by repeating the output at least twice in the loop direction.
+
+## Sprite animation
+
+Do not run this command until the input has passed the preparation sequence above. Select Pixel or HD explicitly; source dimensions validate that choice but never change it. Static WebP is converted to same-size PNG before prompt enhancement or animation.
+
+```bash
+python3 skills/game-assets/meowart_api.py animate-run \
+  --image-file <character.png> \
+  --prompt "A compact eight-frame idle animation with subtle breathing and cloth movement" \
+  --output-frames 8 \
+  --output-format webp \
+  --animation-type idle \
+  --animation-model pixel-engine-v1.1 \
+  --intelligence standard \
+  --optimize-prompt \
+  --color-count 32 \
+  --padding-top 16 \
+  --padding-down 8 \
+  --padding-left 12 \
+  --padding-right 20 \
+  --remove-bg-method advanced \
+  --background-color '#c6c6c6' \
+  --output-dir <output-dir>
+```
+
+Output formats are WebP, GIF, or spritesheet. Stable animation types are `idle`, `walk`, `run`, `jump`, `attack`, `hit`, `defeated`, and `other`.
+
+The public image-type choices are `pixel-engine-v1.1` (Pixel, default) and `frame-engine-v1.1` (HD). `--intelligence` defaults to `standard`; `advanced` uses the newer animation path, costs 40 credits before background removal, and supports every integer frame count from 3 through 16. Standard costs 30 credits before background removal and supports 4, 6, 8, 10, 12, or 16 frames. Background removal adds the shared 0/5/10-credit tier charge. Prompt optimization is enabled by default and uses the same image type and intelligence selection as generation; use `--no-optimize-prompt` only when the supplied prompt is already final.
+
+For pixel animation, `--color-count` accepts 2–64. The four padding options accept independent non-negative pixel counts and add transparent canvas without resizing the source. The runner validates the resulting pixel canvas before submission, preventing a paid request when either axis would exceed 256px for Standard or 320px for Advanced. A 64px character can technically use a canvas above 128px, but 128×128 or smaller is recommended for more consistent animation.
+
+Choose directional padding from the actual action rather than applying the same value everywhere. For example, a compact jump usually needs top padding but little extra horizontal space, while a right-facing sword attack usually needs right padding and only modest padding elsewhere. Visually inspect the prepared source again before submission: the required motion path should have clear transparent space, while the character should still occupy a useful portion of the canvas.
+
+Use 8 frames for most common actions. Use 12 or 16 frames when an action genuinely needs more phases or a slower transition. A 16-frame run has twice the temporal budget of an 8-frame run, so the model may invent an extra motion beat instead of simply improving the same action. When using 16 frames, slow the intended action explicitly with wording such as `jumps gently`, `attacks slowly`, or `moves gradually` to reduce unwanted extra motion. Prefer keyframes when exact intermediate poses matter more than free motion. Frame counts must be even: pixel animation supports 2–16 frames and HD animation supports 2–24 frames. Validate the requested count before running.
+
+Keep prompts motion-focused. Specify the action, intensity, camera behavior, loop requirement, and what must stay fixed. For pixel art, preserve the source silhouette, palette, and hard edges.
+
+## Frame animation (new)
+
+```bash
+python3 skills/game-assets/meowart_api.py meowa-animation-run \
+  --image-file <character.png> \
+  --prompt "Character performs one attack and returns to the starting pose" \
+  --style-mode pixel \
+  --resolution 480p \
+  --alpha-mode sharp \
+  --output-frames 16 \
+  --quality-mode standard \
+  --remove-bg-method standard \
+  --background-color '#c6c6c6' \
+  --animation-mode loop \
+  --optimize-prompt \
+  --padding 16 \
+  --padding-alignment center \
+  --output-dir <output-dir>
+```
+
+The defaults mirror the web UI: 16 frames (2 seconds), Pixel Style, 480P, Detailed quality for Pixel and Standard quality for HD, standard background removal, a `#c6c6c6` solid background, loop motion, and prompt optimization enabled. Frame choices are 8, 16, 24, and 32. For a physically consistent character turnaround without mirrored left/right views, use the Multi-view prompt and 32-frame loop documented under Eight-direction characters in `pixel-and-hd-assets.md`. Pixel inputs must not exceed 320 pixels on the longest side; both Pixel and HD support 480P, 720P, 1080P Fast (`--resolution 1080p`), and 1080P Full (`--resolution 1080p_full`). 720P adds 10 credits. Fast 1080P costs 30/35 generation credits for Standard/Detailed at 1–2 seconds (35/40 at 3–4 seconds); Full 1080P uses the original 480P/720P model and prompt format with 20/30 steps and costs 40/45 at 1–2 seconds (45/50 at 3–4 seconds). Removal charges are unchanged. At either 1080P choice an omitted `--remove-bg-method` defaults to `none` with a green `#00b140` background (clean it up later for free in the Meowa Background Removal Workshop); 480P/720P keep `standard` + `#c6c6c6`. Pass `--remove-bg-method standard` explicitly to pay for removal at 1080P. `--high-frame-rate` is off by default. When it is set and `--remove-bg-method` is omitted, removal becomes `none` and an omitted `--background-color` becomes green `#00b140`. An explicit removal choice still wins. The flag keeps every generated frame in the output WebP instead of sampling down to 8/16/24/32; pixel mode still pixelates every frame and removal still applies per frame. Pixel defaults to `--alpha-mode sharp`; HD keeps its existing `--alpha-mode soft` default. Both styles accept `soft` to preserve translucent regions and `sharp` to binarize alpha. Background removal choices are `none` and `standard`; `advanced` remains visible but is temporarily unavailable. Standard and Detailed output quality are available; Ultimate remains visible in the product but is still in development.
+
+Meowa animation with background removal returns two final animated WebPs: `video_path` (background removed) and `background_video_path` (background retained), with matching frame count and timing. Pixel outputs are both pixelated. With `none`, only `video_path` is returned unless HD auto scaling is enabled.
+
+HD-only `--auto-scale-to-input` is off by default and adds no credits. After generation and optional background removal, it reverses input scaling and padding using Lanczos, restoring the uploaded image dimensions without stretching. It always returns two final WebPs: the unchanged generated-size `background_video_path` and the input-size `video_path` (background removed if requested). It also applies to first/last-frame generation and HD video-reference editing; the latter restores the reference video dimensions. Frame timing and alpha are preserved.
+
+With standard background removal, `--remove-bg-batch-size` accepts `2`, `4`, `8`, or `16` (default): highest, high, medium, or low quality. Removal costs `ceil(output_frames / batch_size) × 5` credits. At 16 frames (2 seconds), batches of 4 cost 20 removal credits, added to generation credits. `none` costs zero removal credits and makes no removal calls. With `none`, the background defaults to green (`#00b140`) for later cleanup in the Meowa Background Removal Workshop; an explicit `--background-color` overrides this.
+
+
+Add `--last-image-file <last-frame.png>` for first-to-last-frame control. The two images must have identical dimensions. When a last frame is supplied, the runner ignores `--animation-mode loop` and submits `non_loop`, because the exact last frame is the endpoint, and an omitted `--output-frames` defaults to 24 (3 seconds) instead of 16, matching the web UI: 2-second first/last clips tend to freeze between the two frames. Pass `--output-frames` explicitly to keep another duration.
+
+Use `--style-mode hd` for smooth high-definition output. HD supports `none` and `standard` background removal; `advanced` is temporarily unavailable. Source padding stays independent from style and is applied before generation. The final downloaded WebP always loops; `--animation-mode` controls the motion design rather than the playback metadata.
+
+## Keyframe-controlled animation
+
+Use keyframes for ordinary complex actions before falling back to video. Include frame `0`, add one or more important intermediate or final poses, and keep every image on the same canvas with the same character scale, anchor, and transparent padding.
+
+```bash
+python3 skills/game-assets/meowart_api.py keyframes-run \
+  --keyframe 0=<attack-start.png> \
+  --keyframe 4=<attack-impact.png> \
+  --keyframe 7=<attack-recovery.png> \
+  --keyframe-strength 4=0.85 \
+  --prompt "The character performs one clear rightward sword attack and returns to the starting stance" \
+  --total-frames 8 \
+  --output-format webp \
+  --animation-type attack \
+  --color-count 32 \
+  --padding-top 8 \
+  --padding-down 8 \
+  --padding-left 4 \
+  --padding-right 24 \
+  --remove-bg-method advanced \
+  --output-dir <output-dir>
+```
+
+Frame indices begin at `0` and must be smaller than `--total-frames`. Supply at least two unique keyframes, including frame `0`. Use an even total frame count. Keep the prompt simple and describe the transition shared by the supplied poses.
+
+Repeat `--keyframe-strength INDEX=STRENGTH` for any keyframe that needs a non-default strength from 0 to 1. Keyframe runs expose the same animation model and prompt-optimization controls as ordinary animation.
+
+## Short video
+
+Review the built-in action prompts before writing a custom prompt:
+
+```bash
+python3 skills/game-assets/meowart_api.py video-prompt-list \
+  --motion-mode controlled
+```
+
+Use `controlled` when the final keyframe must be followed closely. Use `complex` when the motion is more complex and general video quality matters more than strict first-to-last-keyframe control.
+
+Keep video prompts short, clear, and literal. Video models follow long or complicated instructions less reliably than language or image-generation models. Describe the subject, one principal action, its direction, and at most one important effect. Use a built-in `--action` and `--direction` prompt when it already matches the request.
+
+Create from a first frame:
+
+```bash
+python3 skills/game-assets/meowart_api.py video-run \
+  --start-keyframe <start.png> \
+  --prompt "The knight raises the shield, braces, and returns to the starting stance; locked camera" \
+  --resolution 480p \
+  --frame-count 32 \
+  --motion-mode complex \
+  --animation-type idle \
+  --output-dir <output-dir>
+```
+
+Create a transition controlled by explicit start and end keyframes:
+
+```bash
+python3 skills/game-assets/meowart_api.py video-run \
+  --start-keyframe <start.png> \
+  --end-keyframe <end.png> \
+  --prompt "A clean attack transition from the first pose to the final pose; locked camera" \
+  --resolution 720p \
+  --frame-count 48 \
+  --motion-mode controlled \
+  --animation-type attack \
+  --output-dir <output-dir>
+```
+
+`--first-frame` and `--last-frame` remain aliases for `--start-keyframe` and `--end-keyframe`. Supplying only a start keyframe uses it as the visual reference. Supplying both selects first-to-last keyframe control. The service chooses the output canvas automatically from the prepared references; do not pass or invent an aspect ratio. Supported frame counts are 32, 40, and 48. Use `--pixel` for pixel-art motion. Public `video-run` generations do not generate audio.
+
+Instead of a free-form prompt, action templates may be selected with both `--action` and `--direction`. Never pass only one of the pair.
+
+`video-run` returns the raw generated video. It does not automatically extract frames or remove their backgrounds. Those steps require manual timing, frame selection, and cleanup that AI does not yet handle reliably. Import or drag the video into [Meowa](https://meowa.ai/) for manual editing when game-ready animation frames are required.
+
+## Validate
+
+- Play the final animation or video from start to finish.
+- Check frame count, duration, dimensions, alpha, and output format.
+- Check the loop boundary for idle, walk, run, or looping background motion.
+- Confirm the camera does not drift unless the prompt explicitly requests it.
+- Confirm pixel animation remains crisp at integer zoom.
+- Deliver only files listed in `final_outputs.json`.
+
+## Animation Edit
+
+Use `meowa-animation-edit-prompts --video-file motion.webp --image-file appearance.png --edit-intent 'Replace the character appearance'`
+for the three reviewable fields (`edit_intent`, `video_description`, `image_description`). The image is optional;
+video is required (MP4 or animated GIF/WebP, at most 4.5 seconds and 32 MiB). `--output-language zh|en` defaults to `zh`.
+Then pass reviewed text to `meowa-animation-edit-run --video-file motion.webp --edit-intent '...' --video-description '...' --image-description '...'`,
+with the same optional `--image-file`. Descriptions start empty. Generation requires nonblank edit intent and video content, plus image content when an image is supplied. Polishing is manual and optional; review or fill the fields before running.
+The preset matches the Animation Edit web tab: Detailed quality, Pixel / 480p / standard removal (16-frame batch). Duration is automatic: source ≤2s → 16 final frames, 2–3s → 24, 3–4.5s → 32, at 8fps. Sources between 4s and 4.5s stay on the 4-second tier so Meowa 32-frame outputs can be reused. Generation costs 15 credits for 2s or 20 for 3–4s; HD 720p adds 10. Standard removal adds 5 credits per batch (2/4/8/16).
+Reference and generated video use 56/73/90 frames at 24fps for the 2/3/4-second output tiers. Resampling retimes one complete action without repeating cycles. The shared 8/16/24/32 mapping remains 56/56/73/90; automatic selection has a two-second output minimum.
+Only final media is downloaded, using the existing animation job polling and artifact allowlist.
+
+Video-reference editing: both `meowa-animation-edit-prompts` and `meowa-animation-edit-run` accept `--background-color '#RRGGBB'` (default `#ffffff`). The same color fills transparent pixels in every reference-animation frame and the appearance image; opaque pixels are unchanged. Use the same color for polishing and generation. Background filling adds no credits.
+
+Video-reference modes: `--style-mode pixel|hd` (default pixel), `--resolution 480p|720p` (default 480p; 720p only HD), `--remove-bg-method none|standard` (default standard), `--remove-bg-batch-size 2|4|8|16` (default 16), `--high-frame-rate` (default off; omitted removal becomes `none` and an omitted fill becomes `#00b140`; every generated frame is kept in the output WebP without sampling), `--alpha-mode sharp|soft` (default sharp; choose soft for HD translucent edges). Both references must have identical original dimensions. Pixel references must be at most 320 pixels per side. Stage1 keeps original resolution; generation uses nearest-neighbor integer scaling for Pixel or Lanczos scaling for HD, with the shared image-animation padding geometry. Generated Pixel frames use the same perfect-pixel and background-removal ordering as image animation. HD uses the same frame extraction and removal path.
+
+Image and video-reference animation share the same discount display: the struck-through original price is 15 credits above the actual calculated charge. The CSV `display_original_credits` column is display-only; API charges and refunds continue to use `total_credits`.

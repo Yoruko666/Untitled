@@ -1,0 +1,7917 @@
+{
+  "Zones": [
+    {
+      "Id": 1,
+      "Name": "Evacuation",
+      "X": 0.0,
+      "Z": -60.0,
+      "Height": 2.4,
+      "Width": 17.6,
+      "Depth": 8.0
+    },
+    {
+      "Id": 2,
+      "Name": "EntranceForecourt",
+      "X": 0.0,
+      "Z": -45.2,
+      "Height": 2.4,
+      "Width": 16.8,
+      "Depth": 12.0
+    },
+    {
+      "Id": 3,
+      "Name": "MilitaryTraining",
+      "X": 70.0,
+      "Z": 32.0,
+      "Height": 2.4,
+      "Width": 38.0,
+      "Depth": 30.0
+    },
+    {
+      "Id": 4,
+      "Name": "Residence",
+      "X": 26.0,
+      "Z": -44.0,
+      "Height": 2.8499999999999996,
+      "Width": 15.2,
+      "Depth": 10.4
+    },
+    {
+      "Id": 5,
+      "Name": "KitchenPreparation",
+      "X": 56.0,
+      "Z": -40.0,
+      "Height": 2.4,
+      "Width": 18.0,
+      "Depth": 18.0
+    },
+    {
+      "Id": 6,
+      "Name": "Tavern",
+      "X": 8.0,
+      "Z": -8.0,
+      "Height": 2.4,
+      "Width": 35.0,
+      "Depth": 35.0
+    },
+    {
+      "Id": 7,
+      "Name": "Casino",
+      "X": 70.0,
+      "Z": -8.0,
+      "Height": 2.4,
+      "Width": 30.0,
+      "Depth": 30.0
+    },
+    {
+      "Id": 8,
+      "Name": "Feast",
+      "X": 24.0,
+      "Z": 28.0,
+      "Height": 2.4,
+      "Width": 18.0,
+      "Depth": 12.4
+    },
+    {
+      "Id": 9,
+      "Name": "AltarHall",
+      "X": -3.0,
+      "Z": 57.0,
+      "Height": 9.6,
+      "Width": 28.8,
+      "Depth": 12.8
+    },
+    {
+      "Id": 10,
+      "Name": "Elder",
+      "X": 38.0,
+      "Z": 62.0,
+      "Height": 9.6,
+      "Width": 19.2,
+      "Depth": 19.2
+    },
+    {
+      "Id": 11,
+      "Name": "Planting",
+      "X": -48.0,
+      "Z": 15.6,
+      "Height": -2.4,
+      "Width": 13.2,
+      "Depth": 16.0
+    },
+    {
+      "Id": 12,
+      "Name": "Warehouse",
+      "X": -5.4,
+      "Z": 20.8,
+      "Height": 2.8499999999999996,
+      "Width": 8.4,
+      "Depth": 12.8
+    },
+    {
+      "Id": 13,
+      "Name": "UnloadingCourt",
+      "X": 60.0,
+      "Z": -62.0,
+      "Height": 2.4,
+      "Width": 17.6,
+      "Depth": 12.0
+    },
+    {
+      "Id": 14,
+      "Name": "PublicHearth",
+      "X": 38.0,
+      "Z": -8.0,
+      "Height": 2.4,
+      "Width": 12.0,
+      "Depth": 10.0
+    },
+    {
+      "Id": 15,
+      "Name": "RiverWorkshop",
+      "X": -48.0,
+      "Z": -20.0,
+      "Height": -2.4,
+      "Width": 14.0,
+      "Depth": 14.0
+    }
+  ],
+  "Decorations": [
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -55.92372754413539,
+      "Z": -62.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.1223835398489812,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -56.92372754413539,
+      "Z": -60.8,
+      "Height": -2.32,
+      "Scale": 0.8839800048754005,
+      "Yaw": 227.73578232767053,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -55.92372754413539,
+      "Z": -60.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5581076570027035,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -58.12372754413539,
+      "Z": -62.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -54.253505067274645,
+      "Z": -56.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.4318380012684595,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -55.253505067274645,
+      "Z": -54.8,
+      "Height": -2.32,
+      "Scale": 0.8269339111749346,
+      "Yaw": 239.2489056347487,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -54.253505067274645,
+      "Z": -54.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.1253146592436656,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -56.45350506727465,
+      "Z": -56.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -48.011709658218905,
+      "Z": -50.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.585137357882862,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -49.011709658218905,
+      "Z": -48.8,
+      "Height": -2.32,
+      "Scale": 0.8689682589626904,
+      "Yaw": 29.384184789266584,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -48.011709658218905,
+      "Z": -48.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2353261300493472,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -50.21170965821891,
+      "Z": -50.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -42.354512501359395,
+      "Z": -44.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.3890726146508523,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -43.354512501359395,
+      "Z": -42.8,
+      "Height": -2.32,
+      "Scale": 0.9269520355615352,
+      "Yaw": 169.00252048851058,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -42.354512501359395,
+      "Z": -42.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.589112761734205,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -44.5545125013594,
+      "Z": -44.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -37.72941163223813,
+      "Z": -38.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.3649008026803182,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -38.72941163223813,
+      "Z": -36.8,
+      "Height": -2.32,
+      "Scale": 0.7574014699353525,
+      "Yaw": 274.9837996033005,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -37.72941163223813,
+      "Z": -36.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2104872172390542,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -39.929411632238136,
+      "Z": -38.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -32.3750795836817,
+      "Z": -32.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5572046545302882,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -33.3750795836817,
+      "Z": -30.8,
+      "Height": -2.32,
+      "Scale": 0.8062849650920222,
+      "Yaw": 125.16185021801915,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -32.3750795836817,
+      "Z": -30.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.527783400964407,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -34.575079583681706,
+      "Z": -32.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -32.10426076336793,
+      "Z": -26.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5058645367985881,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -33.10426076336793,
+      "Z": -24.8,
+      "Height": -2.32,
+      "Scale": 0.8580727885333976,
+      "Yaw": 184.9320173897798,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -34.304260763367935,
+      "Z": -26.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -34.54276000360142,
+      "Z": -14.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.3047942683171412,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -35.54276000360142,
+      "Z": -12.8,
+      "Height": -2.32,
+      "Scale": 1.0756266112339332,
+      "Yaw": 252.34452918169754,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -34.54276000360142,
+      "Z": -12.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.4467133185440817,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -36.742760003601425,
+      "Z": -14.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -34.796540895153186,
+      "Z": -8.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2593875438492907,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -35.796540895153186,
+      "Z": -6.8,
+      "Height": -2.32,
+      "Scale": 1.0694179308318112,
+      "Yaw": 64.83987672312522,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -34.796540895153186,
+      "Z": -6.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5085903330396808,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -36.99654089515319,
+      "Z": -8.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -34.155105261517996,
+      "Z": -2.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.4966437514819724,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -35.155105261517996,
+      "Z": -0.8,
+      "Height": -2.32,
+      "Scale": 1.0173269471848054,
+      "Yaw": 266.7719287589733,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -34.155105261517996,
+      "Z": -0.19999999999999996,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5061475074703046,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -36.355105261518,
+      "Z": -2.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -31.59593389297245,
+      "Z": 4.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5918973127205869,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -32.595933892972454,
+      "Z": 5.2,
+      "Height": -2.32,
+      "Scale": 0.8277313703342577,
+      "Yaw": 287.8004388905018,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -31.59593389297245,
+      "Z": 5.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2859415436953539,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -33.79593389297245,
+      "Z": 3.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -30.780552439859918,
+      "Z": 10.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.0320569841097735,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -31.780552439859918,
+      "Z": 11.2,
+      "Height": -2.32,
+      "Scale": 1.0375350559772674,
+      "Yaw": 255.2919162875914,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -30.780552439859918,
+      "Z": 11.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5203933288283198,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -32.98055243985992,
+      "Z": 9.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -31.631930443645636,
+      "Z": 16.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.4942301524831536,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -32.631930443645636,
+      "Z": 17.2,
+      "Height": -2.32,
+      "Scale": 0.7478970547743266,
+      "Yaw": 333.1246636397124,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -31.631930443645636,
+      "Z": 17.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.4633610259442453,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -33.83193044364564,
+      "Z": 15.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -30.448092739191605,
+      "Z": 22.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.574642206856041,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -31.448092739191605,
+      "Z": 23.2,
+      "Height": -2.32,
+      "Scale": 0.7538307220511464,
+      "Yaw": 174.1537083443959,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -30.448092739191605,
+      "Z": 23.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.3295645233940572,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -32.648092739191604,
+      "Z": 21.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -34.60919125262748,
+      "Z": 34.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.1444130226741978,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -35.60919125262748,
+      "Z": 35.2,
+      "Height": -2.32,
+      "Scale": 1.0278971719721555,
+      "Yaw": 118.72184133650477,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -34.60919125262748,
+      "Z": 35.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.4900472924210595,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -37.23373520210184,
+      "Z": 40.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.0072812616741007,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -38.23373520210184,
+      "Z": 41.2,
+      "Height": -2.32,
+      "Scale": 1.0347957722865782,
+      "Yaw": 180.7409725078317,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -37.23373520210184,
+      "Z": 41.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.4957278741287665,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -39.43373520210184,
+      "Z": 39.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -38.99841960476991,
+      "Z": 46.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.0479771411647518,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -39.99841960476991,
+      "Z": 47.2,
+      "Height": -2.32,
+      "Scale": 1.0288092705874217,
+      "Yaw": 271.88639084167437,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -38.99841960476991,
+      "Z": 47.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5109175149424239,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -41.19841960476991,
+      "Z": 45.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -37.71929144179469,
+      "Z": 52.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.0911459301574389,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -38.71929144179469,
+      "Z": 53.2,
+      "Height": -2.32,
+      "Scale": 0.7059251840623607,
+      "Yaw": 119.80191252004224,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -37.71929144179469,
+      "Z": 53.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2049088211664796,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -39.91929144179469,
+      "Z": 51.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -36.96935663962125,
+      "Z": 58.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2933553736847587,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -37.96935663962125,
+      "Z": 59.2,
+      "Height": -2.32,
+      "Scale": 1.052376117218698,
+      "Yaw": 218.91942825419667,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -36.96935663962125,
+      "Z": 59.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.4834354942579928,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_mushroom_brown_01",
+      "X": -39.169356639621256,
+      "Z": 57.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "WestFungalColonies"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -10.04450467001866,
+      "Z": -62.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.0415292116686057,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -9.04450467001866,
+      "Z": -60.8,
+      "Height": -2.32,
+      "Scale": 0.8487831001383588,
+      "Yaw": 56.06972953308751,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -10.04450467001866,
+      "Z": -60.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5914248707120295,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -10.378546283079933,
+      "Z": -56.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.1817643860564588,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -9.378546283079933,
+      "Z": -54.8,
+      "Height": -2.32,
+      "Scale": 0.989167684739716,
+      "Yaw": 358.3357306684695,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -10.378546283079933,
+      "Z": -54.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5104306605770919,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -11.81254176734629,
+      "Z": -50.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.3327458814626016,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -10.81254176734629,
+      "Z": -48.8,
+      "Height": -2.32,
+      "Scale": 0.861329252265743,
+      "Yaw": 305.6930924530229,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -11.81254176734629,
+      "Z": -48.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.3267043615271739,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -14.753913722171621,
+      "Z": -44.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.381498050936663,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -13.753913722171621,
+      "Z": -42.8,
+      "Height": -2.32,
+      "Scale": 0.9173736869717056,
+      "Yaw": 349.97031901620056,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -14.753913722171621,
+      "Z": -42.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5054831795540053,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -16.844210450684873,
+      "Z": -38.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5276440252240282,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -15.844210450684873,
+      "Z": -36.8,
+      "Height": -2.32,
+      "Scale": 0.8370051015149822,
+      "Yaw": 163.86836513108577,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -16.844210450684873,
+      "Z": -36.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.18600965956302,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -14.873600000000003,
+      "Z": -26.0,
+      "Height": 2.4,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -20.819543718541645,
+      "Z": -14.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.0826041103460893,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -19.819543718541645,
+      "Z": -12.8,
+      "Height": -2.32,
+      "Scale": 0.7105588772851302,
+      "Yaw": 99.66117605131394,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -20.819543718541645,
+      "Z": -12.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.1616492732511137,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -16.827172011661812,
+      "Z": -14.0,
+      "Height": 2.4,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -22.31023601900226,
+      "Z": -8.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5686272314546152,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -21.31023601900226,
+      "Z": -6.8,
+      "Height": -2.32,
+      "Scale": 1.025901271370363,
+      "Yaw": 334.7235815856492,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_mushroom_teal_01",
+      "X": -22.31023601900226,
+      "Z": -6.2,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2122282016773245,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -17.92921282798834,
+      "Z": -8.0,
+      "Height": 2.4,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -21.05632424946469,
+      "Z": -2.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.3958421518513053,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -20.05632424946469,
+      "Z": -0.8,
+      "Height": -2.32,
+      "Scale": 1.0570178557355037,
+      "Yaw": 315.4121602154569,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -21.05632424946469,
+      "Z": -0.19999999999999996,
+      "Height": -2.3400000000000003,
+      "Scale": 1.1333277976480942,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -17.326297376093297,
+      "Z": -2.0,
+      "Height": 2.4,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -19.018330947158525,
+      "Z": 4.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.017181292126244,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -18.018330947158525,
+      "Z": 5.2,
+      "Height": -2.32,
+      "Scale": 0.981434942192842,
+      "Yaw": 61.46816014870531,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -19.018330947158525,
+      "Z": 5.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.1606639164977526,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -18.63223185895881,
+      "Z": 10.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.223828049376414,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -13.995555555555555,
+      "Z": 16.0,
+      "Height": 2.4,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -14.077037037037037,
+      "Z": 22.0,
+      "Height": 2.4,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -26.665412796879934,
+      "Z": 46.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.4340234224292157,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_weeds_01",
+      "X": -26.665412796879934,
+      "Z": 47.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.5006900281047872,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -23.684497980641787,
+      "Z": 58.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.4930066951241716,
+      "Yaw": -5,
+      "Name": "BothBankPebbles"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -22.684497980641787,
+      "Z": 59.2,
+      "Height": -2.32,
+      "Scale": 1.0015754140981208,
+      "Yaw": 298.4374730396867,
+      "Name": "WetGround"
+    },
+    {
+      "Prefab": "cave_river_reeds_01",
+      "X": -23.684497980641787,
+      "Z": 59.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.198133559887358,
+      "Yaw": -5,
+      "Name": "BothBankGrowth"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -20.171067418584567,
+      "Z": 58.0,
+      "Height": 2.4,
+      "Scale": 0.55,
+      "Yaw": -5,
+      "Name": "CentralCliffRoots"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -48.592,
+      "Z": -64.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.1,
+      "Yaw": -5,
+      "Name": "ForkWestInner"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -47.792,
+      "Z": -62.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "ForkWestInner"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -46.0,
+      "Z": -58.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.1,
+      "Yaw": -5,
+      "Name": "ForkWestInner"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -45.2,
+      "Z": -56.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "ForkWestInner"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -40.6,
+      "Z": -52.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.1,
+      "Yaw": -5,
+      "Name": "ForkWestInner"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -39.800000000000004,
+      "Z": -50.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "ForkWestInner"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -19.0592,
+      "Z": -64.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.1,
+      "Yaw": -5,
+      "Name": "ForkEastInner"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -19.8592,
+      "Z": -62.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "ForkEastInner"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -18.8,
+      "Z": -58.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.1,
+      "Yaw": -5,
+      "Name": "ForkEastInner"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -19.6,
+      "Z": -56.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "ForkEastInner"
+    },
+    {
+      "Prefab": "cave_river_stones_01",
+      "X": -20.4875,
+      "Z": -52.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.1,
+      "Yaw": -5,
+      "Name": "ForkEastInner"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -21.2875,
+      "Z": -50.8,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "ForkEastInner"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -54.0,
+      "Z": -28.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -52.7,
+      "Z": -26.653646424307365,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -51.4,
+      "Z": -26.54512411707891,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -50.1,
+      "Z": -27.774207987104212,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -56.0,
+      "Z": -8.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -54.7,
+      "Z": -6.653646424307365,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -53.4,
+      "Z": -6.54512411707891,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -52.1,
+      "Z": -7.774207987104212,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -54.0,
+      "Z": 6.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -52.7,
+      "Z": 7.346353575692635,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -51.4,
+      "Z": 7.45487588292109,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -50.1,
+      "Z": 6.225792012895788,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -56.0,
+      "Z": 30.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -54.7,
+      "Z": 31.346353575692635,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -53.4,
+      "Z": 31.45487588292109,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -52.1,
+      "Z": 30.225792012895788,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -52.0,
+      "Z": 44.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -50.7,
+      "Z": 45.34635357569263,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -49.4,
+      "Z": 45.454875882921094,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -48.1,
+      "Z": 44.22579201289579,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_moss_patch_01",
+      "X": -50.0,
+      "Z": 54.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_fern_clump_01",
+      "X": -48.7,
+      "Z": 55.34635357569263,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_ochre_01",
+      "X": -47.4,
+      "Z": 55.454875882921094,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_mushroom_cream_01",
+      "X": -46.1,
+      "Z": 54.22579201289579,
+      "Height": -2.3400000000000003,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "WestValleyClusters"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 58.0,
+      "Z": -50.6,
+      "Height": 2.445,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 53.0,
+      "Z": -2.6,
+      "Height": 2.445,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 56.0,
+      "Z": 12.0,
+      "Height": 2.445,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 58.0,
+      "Z": 11.4,
+      "Height": 2.445,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 55.0,
+      "Z": 13.4,
+      "Height": 2.445,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 56.6,
+      "Z": 12.6,
+      "Height": 2.46,
+      "Scale": 1.1,
+      "Yaw": 45.10239487141831,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 14.0,
+      "Z": -54.0,
+      "Height": 2.445,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 16.0,
+      "Z": -54.6,
+      "Height": 2.445,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 13.0,
+      "Z": -52.6,
+      "Height": 2.445,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 14.6,
+      "Z": -53.4,
+      "Height": 2.46,
+      "Scale": 1.1,
+      "Yaw": 330.9626844499439,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 20.0,
+      "Z": -40.0,
+      "Height": 2.445,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 22.0,
+      "Z": -40.6,
+      "Height": 2.445,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 19.0,
+      "Z": -38.6,
+      "Height": 2.445,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 20.6,
+      "Z": -39.4,
+      "Height": 2.46,
+      "Scale": 1.1,
+      "Yaw": 137.79533526469115,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 8.0,
+      "Z": 60.0,
+      "Height": 9.645,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 10.0,
+      "Z": 59.4,
+      "Height": 9.645,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 7.0,
+      "Z": 61.4,
+      "Height": 9.645,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 8.6,
+      "Z": 60.6,
+      "Height": 9.66,
+      "Scale": 1.1,
+      "Yaw": 355.5408754985341,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_fractured_rock_01",
+      "X": 40.0,
+      "Z": 49.4,
+      "Height": 9.645,
+      "Scale": 1.25,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_grass_01",
+      "X": 42.0,
+      "Z": 48.8,
+      "Height": 9.645,
+      "Scale": 1.15,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_slate_rubble_01",
+      "X": 39.0,
+      "Z": 50.8,
+      "Height": 9.645,
+      "Scale": 1.35,
+      "Yaw": -5,
+      "Name": "DryRubbleCorners"
+    },
+    {
+      "Prefab": "cave_dry_dirt_patch_01",
+      "X": 40.6,
+      "Z": 50.0,
+      "Height": 9.66,
+      "Scale": 1.1,
+      "Yaw": 137.9982206362548,
+      "Name": "GroundVariation"
+    },
+    {
+      "Prefab": "cave_iron_ore_01",
+      "X": -58.0,
+      "Z": 52.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_crystal_rock_01",
+      "X": -56.4,
+      "Z": 53.0,
+      "Height": -2.3400000000000003,
+      "Scale": 0.9,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_iron_ore_01",
+      "X": -56.0,
+      "Z": -40.0,
+      "Height": -2.3400000000000003,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_crystal_rock_01",
+      "X": -54.4,
+      "Z": -39.0,
+      "Height": -2.3400000000000003,
+      "Scale": 0.9,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_iron_ore_01",
+      "X": -12.0,
+      "Z": 60.0,
+      "Height": 9.645,
+      "Scale": 1.2,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_crystal_rock_01",
+      "X": -10.4,
+      "Z": 61.0,
+      "Height": 9.645,
+      "Scale": 0.9,
+      "Yaw": -5,
+      "Name": "MineralSeams"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 20.04048365670984,
+      "Z": -36.91168455549758,
+      "Height": 2.445,
+      "Scale": 0.8102187775769014,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 12.69413295666758,
+      "Z": 14.20683944176811,
+      "Height": 2.445,
+      "Scale": 0.7748268416630135,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 32.21418307047629,
+      "Z": 3.1341557085338465,
+      "Height": 2.445,
+      "Scale": 0.553522863282534,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 16.149852352683514,
+      "Z": -39.409518146587374,
+      "Height": 2.445,
+      "Scale": 0.8483836630281312,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 49.168495002115016,
+      "Z": 0.2189248641879189,
+      "Height": 2.445,
+      "Scale": 0.6185867132239844,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 16.42656963829198,
+      "Z": -44.864165983996294,
+      "Height": 2.445,
+      "Scale": 0.8549099293938165,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 52.24384459353028,
+      "Z": 12.431467022859053,
+      "Height": 2.445,
+      "Scale": 0.7585756562723106,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 13.999535687130734,
+      "Z": -49.972667388223456,
+      "Height": 2.445,
+      "Scale": 0.5539404510989966,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 12.67325931474408,
+      "Z": -42.08418643040731,
+      "Height": 2.445,
+      "Scale": 0.5698790070160561,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 35.07101482374829,
+      "Z": -47.370118481179794,
+      "Height": 2.445,
+      "Scale": 0.665844718010928,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 39.68842125530238,
+      "Z": -54.455439621206125,
+      "Height": 2.445,
+      "Scale": 0.6230676399148171,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 36.60076994306694,
+      "Z": -52.967437118312624,
+      "Height": 2.445,
+      "Scale": 0.8727336023478137,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 34.48021673439439,
+      "Z": -28.18264097242661,
+      "Height": 2.445,
+      "Scale": 0.7560620252662827,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 41.221088455112756,
+      "Z": -28.356031321502492,
+      "Height": 2.445,
+      "Scale": 0.6654378653996292,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 46.2978300787962,
+      "Z": 21.278009125768094,
+      "Height": 2.445,
+      "Scale": 0.8683337710466699,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_small_rocks_01",
+      "X": 50.18454904903149,
+      "Z": 4.433126607300537,
+      "Height": 2.445,
+      "Scale": 0.8422301495434411,
+      "Yaw": -5,
+      "Name": "OpenTerracePebbles"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -16.66717201166181,
+      "Z": -14.0,
+      "Height": 2.4899999999999998,
+      "Scale": 0.68,
+      "Yaw": -5,
+      "Name": "BridgeVistaCliffRoots"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -17.769212827988337,
+      "Z": -8.0,
+      "Height": 2.4899999999999998,
+      "Scale": 0.68,
+      "Yaw": -5,
+      "Name": "BridgeVistaCliffRoots"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -16.463090379008744,
+      "Z": 0.0,
+      "Height": 2.4899999999999998,
+      "Scale": 0.68,
+      "Yaw": -5,
+      "Name": "BridgeVistaCliffRoots"
+    },
+    {
+      "Prefab": "cave_roots_hanging_01",
+      "X": -13.355000000000002,
+      "Z": 20.0,
+      "Height": 2.4899999999999998,
+      "Scale": 0.68,
+      "Yaw": -5,
+      "Name": "BridgeVistaCliffRoots"
+    }
+  ],
+  "LowlandHeight": -2.4,
+  "MainlandHeight": 2.4,
+  "HighlandHeight": 9.6,
+  "WaterHeight": -3.05,
+  "RouteSamples": [
+    {
+      "X": 0.0,
+      "Z": -62.0,
+      "Height": 2.445,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": 0.0,
+      "Z": -64.5,
+      "Height": 2.445,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": 0.0,
+      "Z": -67.0,
+      "Height": 2.445,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": 0.0,
+      "Z": -69.5,
+      "Height": 2.445,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": 0.0,
+      "Z": -72.0,
+      "Height": 2.445,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": 0.0,
+      "Z": -72.0,
+      "Height": 2.445,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -3.0,
+      "Z": -73.0,
+      "Height": 2.445,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -6.0,
+      "Z": -74.0,
+      "Height": 2.445,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -9.0,
+      "Z": -75.0,
+      "Height": 2.445,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -12.0,
+      "Z": -76.0,
+      "Height": 2.445,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -12.0,
+      "Z": -76.0,
+      "Height": 2.445,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -16.0,
+      "Z": -76.5,
+      "Height": 1.2600000000000007,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -20.0,
+      "Z": -77.0,
+      "Height": 0.06000000000000005,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -24.0,
+      "Z": -77.5,
+      "Height": -1.1399999999999997,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -28.0,
+      "Z": -78.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -28.0,
+      "Z": -78.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -34.0,
+      "Z": -78.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -40.0,
+      "Z": -78.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -46.0,
+      "Z": -78.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -52.0,
+      "Z": -78.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -52.0,
+      "Z": -78.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -55.5,
+      "Z": -77.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -59.0,
+      "Z": -76.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -62.5,
+      "Z": -75.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -66.0,
+      "Z": -74.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -66.0,
+      "Z": -74.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -66.0,
+      "Z": -71.5,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -66.0,
+      "Z": -69.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -66.0,
+      "Z": -66.5,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -66.0,
+      "Z": -64.0,
+      "Height": -2.3400000000000003,
+      "Name": "SouthernDryRim"
+    },
+    {
+      "X": -66.0,
+      "Z": -64.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -65.0,
+      "Z": -61.5,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -64.0,
+      "Z": -59.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -63.0,
+      "Z": -56.5,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -62.0,
+      "Z": -54.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -62.0,
+      "Z": -54.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -60.0,
+      "Z": -51.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -58.0,
+      "Z": -48.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -56.0,
+      "Z": -45.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -54.0,
+      "Z": -42.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -54.0,
+      "Z": -42.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -52.5,
+      "Z": -40.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -51.0,
+      "Z": -38.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -49.5,
+      "Z": -36.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -48.0,
+      "Z": -34.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -48.0,
+      "Z": -34.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -48.0,
+      "Z": -30.5,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -48.0,
+      "Z": -27.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -48.0,
+      "Z": -23.5,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -48.0,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_SouthSupplyEntrance"
+    },
+    {
+      "X": -48.0,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": -15.5,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": -11.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": -6.5,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": -2.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": -2.0,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": 2.4000000000000004,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": 6.800000000000001,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": 11.200000000000001,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": 15.600000000000001,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": 15.6,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": 18.935,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": 22.27,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": 25.605,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -48.0,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "B_WestBankSupplyRoute"
+    },
+    {
+      "X": -31.8,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeTimberDeck"
+    },
+    {
+      "X": -30.5,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeTimberDeck"
+    },
+    {
+      "X": -29.200000000000003,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeTimberDeck"
+    },
+    {
+      "X": -27.900000000000002,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeTimberDeck"
+    },
+    {
+      "X": -26.6,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeTimberDeck"
+    },
+    {
+      "X": -26.6,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeTimberDeck"
+    },
+    {
+      "X": -25.3,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeTimberDeck"
+    },
+    {
+      "X": -24.0,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeTimberDeck"
+    },
+    {
+      "X": -22.700000000000003,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeTimberDeck"
+    },
+    {
+      "X": -21.400000000000002,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeTimberDeck"
+    },
+    {
+      "X": -48.0,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWestLanding"
+    },
+    {
+      "X": -43.95,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWestLanding"
+    },
+    {
+      "X": -39.9,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWestLanding"
+    },
+    {
+      "X": -35.85,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWestLanding"
+    },
+    {
+      "X": -31.8,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWestLanding"
+    },
+    {
+      "X": -21.400000000000002,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.359375,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.31875,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.278125000000003,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.2375,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.2375,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.15625,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.075000000000003,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.993750000000002,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.9125,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.9125,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.790625000000002,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.668750000000003,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.546875,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.425,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.425,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.262500000000003,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.1,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.9375,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.775000000000002,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.775000000000002,
+      "Z": -20.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.6625,
+      "Z": -20.03125,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.550000000000004,
+      "Z": -20.0625,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.437500000000004,
+      "Z": -20.09375,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.325000000000003,
+      "Z": -20.125,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.325000000000003,
+      "Z": -20.125,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.262500000000003,
+      "Z": -20.1875,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.200000000000003,
+      "Z": -20.25,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.137500000000003,
+      "Z": -20.3125,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.075000000000003,
+      "Z": -20.375,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.075000000000003,
+      "Z": -20.375,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.062500000000004,
+      "Z": -20.46875,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.050000000000004,
+      "Z": -20.5625,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.0375,
+      "Z": -20.65625,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.025000000000002,
+      "Z": -20.75,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.025000000000002,
+      "Z": -20.75,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.0625,
+      "Z": -20.875,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.1,
+      "Z": -21.0,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.137500000000003,
+      "Z": -21.125,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.175,
+      "Z": -21.25,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.175,
+      "Z": -21.25,
+      "Height": -2.3400000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.20625,
+      "Z": -21.40625,
+      "Height": -2.3253125000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.2375,
+      "Z": -21.5625,
+      "Height": -2.3106250000000004,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.26875,
+      "Z": -21.71875,
+      "Height": -2.2959375000000004,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.3,
+      "Z": -21.875,
+      "Height": -2.2812500000000004,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.3,
+      "Z": -21.875,
+      "Height": -2.2812500000000004,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.325,
+      "Z": -22.0625,
+      "Height": -2.2518750000000005,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.35,
+      "Z": -22.25,
+      "Height": -2.2225000000000006,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.375,
+      "Z": -22.4375,
+      "Height": -2.1931250000000007,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.4,
+      "Z": -22.625,
+      "Height": -2.1637500000000007,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.4,
+      "Z": -22.625,
+      "Height": -2.1637500000000007,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.41875,
+      "Z": -22.84375,
+      "Height": -2.119687500000001,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.4375,
+      "Z": -23.0625,
+      "Height": -2.075625000000001,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.456249999999997,
+      "Z": -23.28125,
+      "Height": -2.0315625,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.474999999999998,
+      "Z": -23.5,
+      "Height": -1.9875000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.474999999999998,
+      "Z": -23.5,
+      "Height": -1.9875000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.487499999999997,
+      "Z": -23.75,
+      "Height": -1.9287500000000004,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.5,
+      "Z": -24.0,
+      "Height": -1.8699999999999997,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.512500000000003,
+      "Z": -24.25,
+      "Height": -1.8112499999999998,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.525000000000002,
+      "Z": -24.5,
+      "Height": -1.7525,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.525000000000002,
+      "Z": -24.5,
+      "Height": -1.7525,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.490625,
+      "Z": -24.75,
+      "Height": -1.6834374999999997,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.456250000000004,
+      "Z": -25.0,
+      "Height": -1.6143749999999994,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.421875000000004,
+      "Z": -25.25,
+      "Height": -1.5453125,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.387500000000003,
+      "Z": -25.5,
+      "Height": -1.4762499999999998,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.387500000000003,
+      "Z": -25.5,
+      "Height": -1.4762499999999998,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.306250000000002,
+      "Z": -25.75,
+      "Height": -1.396875,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.225,
+      "Z": -26.0,
+      "Height": -1.3175,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.14375,
+      "Z": -26.25,
+      "Height": -1.2381249999999997,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.0625,
+      "Z": -26.5,
+      "Height": -1.15875,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.0625,
+      "Z": -26.5,
+      "Height": -1.15875,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.934375,
+      "Z": -26.75,
+      "Height": -1.0690624999999998,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.80625,
+      "Z": -27.0,
+      "Height": -0.9793749999999997,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.678125,
+      "Z": -27.25,
+      "Height": -0.8896875,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.55,
+      "Z": -27.5,
+      "Height": -0.7999999999999998,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.55,
+      "Z": -27.5,
+      "Height": -0.7999999999999998,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.375,
+      "Z": -27.75,
+      "Height": -0.6999999999999997,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.200000000000003,
+      "Z": -28.0,
+      "Height": -0.6000000000000001,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.025000000000002,
+      "Z": -28.25,
+      "Height": -0.5,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.85,
+      "Z": -28.5,
+      "Height": -0.3999999999999999,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.85,
+      "Z": -28.5,
+      "Height": -0.3999999999999999,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.646875,
+      "Z": -28.734375,
+      "Height": -0.30156249999999973,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.44375,
+      "Z": -28.96875,
+      "Height": -0.203125,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.240625,
+      "Z": -29.203125,
+      "Height": -0.10468750000000027,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.0375,
+      "Z": -29.4375,
+      "Height": -0.006250000000000089,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.0375,
+      "Z": -29.4375,
+      "Height": -0.006250000000000089,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.806250000000002,
+      "Z": -29.65625,
+      "Height": 0.09062499999999973,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.575000000000003,
+      "Z": -29.875,
+      "Height": 0.18749999999999956,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.34375,
+      "Z": -30.09375,
+      "Height": 0.2843749999999998,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.1125,
+      "Z": -30.3125,
+      "Height": 0.38124999999999964,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.1125,
+      "Z": -30.3125,
+      "Height": 0.38124999999999964,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -15.853125,
+      "Z": -30.515625,
+      "Height": 0.47656249999999956,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -15.59375,
+      "Z": -30.71875,
+      "Height": 0.5718749999999999,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -15.334375,
+      "Z": -30.921875,
+      "Height": 0.6671874999999998,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -15.075,
+      "Z": -31.125,
+      "Height": 0.7624999999999997,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -15.075,
+      "Z": -31.125,
+      "Height": 0.7624999999999997,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -14.7875,
+      "Z": -31.3125,
+      "Height": 0.8562499999999997,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -14.5,
+      "Z": -31.5,
+      "Height": 0.9499999999999997,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -14.2125,
+      "Z": -31.6875,
+      "Height": 1.0437499999999997,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -13.925,
+      "Z": -31.875,
+      "Height": 1.1374999999999997,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -13.925,
+      "Z": -31.875,
+      "Height": 1.1374999999999997,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -13.6375,
+      "Z": -32.015625,
+      "Height": 1.2196874999999996,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -13.35,
+      "Z": -32.15625,
+      "Height": 1.301875,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -13.0625,
+      "Z": -32.296875,
+      "Height": 1.3840625000000002,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -12.774999999999999,
+      "Z": -32.4375,
+      "Height": 1.46625,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -12.774999999999999,
+      "Z": -32.4375,
+      "Height": 1.46625,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -12.487499999999999,
+      "Z": -32.53125,
+      "Height": 1.5368749999999998,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -12.2,
+      "Z": -32.625,
+      "Height": 1.6075000000000004,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -11.9125,
+      "Z": -32.71875,
+      "Height": 1.678125,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -11.625,
+      "Z": -32.8125,
+      "Height": 1.7487499999999998,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -11.625,
+      "Z": -32.8125,
+      "Height": 1.7487499999999998,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -11.3375,
+      "Z": -32.859375,
+      "Height": 1.8078125000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -11.05,
+      "Z": -32.90625,
+      "Height": 1.8668749999999998,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.7625,
+      "Z": -32.953125,
+      "Height": 1.9259375000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.475,
+      "Z": -33.0,
+      "Height": 1.9849999999999999,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.475,
+      "Z": -33.0,
+      "Height": 1.9849999999999999,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.1875,
+      "Z": -33.0,
+      "Height": 2.0325,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.899999999999999,
+      "Z": -33.0,
+      "Height": 2.0799999999999996,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.612499999999999,
+      "Z": -33.0,
+      "Height": 2.1275,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.325,
+      "Z": -33.0,
+      "Height": 2.1750000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.325,
+      "Z": -33.0,
+      "Height": 2.1750000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.084375,
+      "Z": -32.934375,
+      "Height": 2.210625,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.84375,
+      "Z": -32.86875,
+      "Height": 2.2462500000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.603125,
+      "Z": -32.803124999999994,
+      "Height": 2.281875,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.3625,
+      "Z": -32.7375,
+      "Height": 2.3174999999999994,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.3625,
+      "Z": -32.7375,
+      "Height": 2.3175000000000003,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.168750000000001,
+      "Z": -32.606249999999996,
+      "Height": 2.34125,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.975,
+      "Z": -32.474999999999994,
+      "Height": 2.3649999999999998,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.78125,
+      "Z": -32.34375,
+      "Height": 2.3887499999999995,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.5874999999999995,
+      "Z": -32.2125,
+      "Height": 2.409375,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.5874999999999995,
+      "Z": -32.2125,
+      "Height": 2.409375,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.440625,
+      "Z": -32.015625,
+      "Height": 2.4182812499999997,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.293749999999999,
+      "Z": -31.818749999999998,
+      "Height": 2.4271875,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.146875,
+      "Z": -31.621874999999996,
+      "Height": 2.43609375,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.0,
+      "Z": -31.424999999999997,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.0,
+      "Z": -31.424999999999997,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.9,
+      "Z": -31.162499999999998,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.800000000000001,
+      "Z": -30.9,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.7,
+      "Z": -30.637500000000003,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.6000000000000005,
+      "Z": -30.375000000000004,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.6000000000000005,
+      "Z": -30.375000000000004,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.593750000000001,
+      "Z": -30.103125000000002,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.5875,
+      "Z": -29.831250000000004,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.581250000000001,
+      "Z": -29.559375000000003,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.575000000000001,
+      "Z": -29.2875,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.575000000000001,
+      "Z": -29.2875,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.6625000000000005,
+      "Z": -29.00625,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.75,
+      "Z": -28.725,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.8374999999999995,
+      "Z": -28.44375,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.924999999999999,
+      "Z": -28.1625,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -6.924999999999999,
+      "Z": -28.1625,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.106249999999999,
+      "Z": -27.871875000000003,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.2875,
+      "Z": -27.581250000000004,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.468749999999999,
+      "Z": -27.290625000000002,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.6499999999999995,
+      "Z": -27.000000000000004,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.6499999999999995,
+      "Z": -27.000000000000004,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.925,
+      "Z": -26.700000000000003,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.2,
+      "Z": -26.4,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.475,
+      "Z": -26.099999999999998,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.75,
+      "Z": -25.799999999999997,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.75,
+      "Z": -25.799999999999997,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.95625,
+      "Z": -25.574999999999996,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.162500000000001,
+      "Z": -25.349999999999998,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.36875,
+      "Z": -25.125,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.575000000000001,
+      "Z": -24.9,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.575000000000001,
+      "Z": -24.9,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.7125,
+      "Z": -24.75,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.850000000000001,
+      "Z": -24.6,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.9875,
+      "Z": -24.45,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.125,
+      "Z": -24.3,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.125,
+      "Z": -24.3,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.19375,
+      "Z": -24.225,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.2625,
+      "Z": -24.15,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.33125,
+      "Z": -24.075,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.4,
+      "Z": -24.0,
+      "Height": 2.445,
+      "Name": "EntranceBridgeWindingBankRamp"
+    },
+    {
+      "X": -32.2818808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeTimberDeck"
+    },
+    {
+      "X": -30.981880800000003,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeTimberDeck"
+    },
+    {
+      "X": -29.681880800000002,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeTimberDeck"
+    },
+    {
+      "X": -28.3818808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeTimberDeck"
+    },
+    {
+      "X": -27.0818808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeTimberDeck"
+    },
+    {
+      "X": -27.0818808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeTimberDeck"
+    },
+    {
+      "X": -25.7818808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeTimberDeck"
+    },
+    {
+      "X": -24.4818808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeTimberDeck"
+    },
+    {
+      "X": -23.181880800000002,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeTimberDeck"
+    },
+    {
+      "X": -21.8818808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeTimberDeck"
+    },
+    {
+      "X": -48.0,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWestLanding"
+    },
+    {
+      "X": -44.0704702,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWestLanding"
+    },
+    {
+      "X": -40.140940400000005,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWestLanding"
+    },
+    {
+      "X": -36.2114106,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWestLanding"
+    },
+    {
+      "X": -32.2818808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWestLanding"
+    },
+    {
+      "X": -21.8818808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.8412558,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.8006308,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.760005800000002,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.7193808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.7193808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.6381308,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.556880800000002,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.4756308,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.3943808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.3943808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.2725058,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.150630800000002,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -21.0287558,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.9068808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.9068808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.744380800000002,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.5818808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.4193808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.2568808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.2568808,
+      "Z": 28.94,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -20.127476412500002,
+      "Z": 28.903437500000003,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.998072025,
+      "Z": 28.866875,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.8686676375,
+      "Z": 28.8303125,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.73926325,
+      "Z": 28.793750000000003,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.73926325,
+      "Z": 28.793750000000003,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.642954475,
+      "Z": 28.720625000000002,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.5466457,
+      "Z": 28.6475,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.450336925000002,
+      "Z": 28.574375000000003,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.35402815,
+      "Z": 28.501250000000002,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.35402815,
+      "Z": 28.501250000000002,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.2908149875,
+      "Z": 28.391562500000003,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.227601825,
+      "Z": 28.281875000000003,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.164388662500002,
+      "Z": 28.172187500000003,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.1011755,
+      "Z": 28.062500000000004,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.1011755,
+      "Z": 28.062500000000004,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.07105795,
+      "Z": 27.916250000000005,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.0409404,
+      "Z": 27.770000000000003,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -19.01082285,
+      "Z": 27.62375,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.9807053,
+      "Z": 27.477500000000003,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.9807053,
+      "Z": 27.477500000000003,
+      "Height": -2.3400000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.933117137500002,
+      "Z": 27.2803125,
+      "Height": -2.3253125000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.885528975,
+      "Z": 27.083125000000003,
+      "Height": -2.3106250000000004,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.8379408125,
+      "Z": 26.885937500000004,
+      "Height": -2.2959375000000004,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.790352650000003,
+      "Z": 26.688750000000002,
+      "Height": -2.2812500000000004,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.790352650000003,
+      "Z": 26.688750000000002,
+      "Height": -2.2812500000000004,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.725293875000002,
+      "Z": 26.440625000000004,
+      "Height": -2.2518750000000005,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.6602351,
+      "Z": 26.192500000000003,
+      "Height": -2.2225000000000006,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.595176325,
+      "Z": 25.944375,
+      "Height": -2.1931250000000007,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.53011755,
+      "Z": 25.696250000000003,
+      "Height": -2.1637500000000007,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.53011755,
+      "Z": 25.696250000000003,
+      "Height": -2.1637500000000007,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.4475881625,
+      "Z": 25.3971875,
+      "Height": -2.119687500000001,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.365058775,
+      "Z": 25.098125000000003,
+      "Height": -2.075625000000001,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.2825293875,
+      "Z": 24.7990625,
+      "Height": -2.0315625,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.2,
+      "Z": 24.5,
+      "Height": -1.9875000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.2,
+      "Z": 24.5,
+      "Height": -1.9875000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.1,
+      "Z": 24.15,
+      "Height": -1.9287500000000004,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -18.0,
+      "Z": 23.799999999999997,
+      "Height": -1.8699999999999997,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.9,
+      "Z": 23.45,
+      "Height": -1.8112499999999998,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.8,
+      "Z": 23.099999999999998,
+      "Height": -1.7525,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.8,
+      "Z": 23.099999999999998,
+      "Height": -1.7525,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.721875,
+      "Z": 22.74375,
+      "Height": -1.6834374999999997,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.643749999999997,
+      "Z": 22.387499999999996,
+      "Height": -1.6143749999999994,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.565624999999997,
+      "Z": 22.031249999999996,
+      "Height": -1.5453125,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.487499999999997,
+      "Z": 21.674999999999997,
+      "Height": -1.4762499999999998,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.487499999999997,
+      "Z": 21.674999999999997,
+      "Height": -1.4762499999999998,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.43125,
+      "Z": 21.3125,
+      "Height": -1.396875,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.375,
+      "Z": 20.95,
+      "Height": -1.3175,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.318749999999998,
+      "Z": 20.5875,
+      "Height": -1.2381249999999997,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.2625,
+      "Z": 20.225,
+      "Height": -1.15875,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.2625,
+      "Z": 20.225,
+      "Height": -1.15875,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.228125,
+      "Z": 19.856250000000003,
+      "Height": -1.0690624999999998,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.19375,
+      "Z": 19.4875,
+      "Height": -0.9793749999999997,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.159375,
+      "Z": 19.11875,
+      "Height": -0.8896875,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.125,
+      "Z": 18.75,
+      "Height": -0.7999999999999998,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.125,
+      "Z": 18.75,
+      "Height": -0.7999999999999998,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.1125,
+      "Z": 18.375,
+      "Height": -0.6999999999999997,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.1,
+      "Z": 18.0,
+      "Height": -0.6000000000000001,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.087500000000002,
+      "Z": 17.625,
+      "Height": -0.5,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.075000000000003,
+      "Z": 17.25,
+      "Height": -0.3999999999999999,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.075000000000003,
+      "Z": 17.25,
+      "Height": -0.3999999999999999,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.043750000000003,
+      "Z": 16.909375,
+      "Height": -0.30156249999999973,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -17.012500000000003,
+      "Z": 16.56875,
+      "Height": -0.203125,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.981250000000003,
+      "Z": 16.228125,
+      "Height": -0.10468750000000027,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.950000000000003,
+      "Z": 15.8875,
+      "Height": -0.006250000000000089,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.950000000000003,
+      "Z": 15.8875,
+      "Height": -0.006250000000000089,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.900000000000002,
+      "Z": 15.58125,
+      "Height": 0.09062499999999973,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.85,
+      "Z": 15.275,
+      "Height": 0.18749999999999956,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.8,
+      "Z": 14.96875,
+      "Height": 0.2843749999999998,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.75,
+      "Z": 14.662500000000001,
+      "Height": 0.38124999999999964,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.75,
+      "Z": 14.662500000000001,
+      "Height": 0.38124999999999964,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.68125,
+      "Z": 14.390625000000002,
+      "Height": 0.47656249999999956,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.612499999999997,
+      "Z": 14.118750000000002,
+      "Height": 0.5718749999999999,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.54375,
+      "Z": 13.846875,
+      "Height": 0.6671874999999998,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.474999999999998,
+      "Z": 13.575000000000001,
+      "Height": 0.7624999999999997,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.474999999999998,
+      "Z": 13.575000000000001,
+      "Height": 0.7624999999999997,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.3875,
+      "Z": 13.3375,
+      "Height": 0.8562499999999997,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.299999999999997,
+      "Z": 13.100000000000001,
+      "Height": 0.9499999999999997,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.2125,
+      "Z": 12.8625,
+      "Height": 1.0437499999999997,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.125,
+      "Z": 12.625,
+      "Height": 1.1374999999999997,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -16.125,
+      "Z": 12.625,
+      "Height": 1.1374999999999997,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -15.98125,
+      "Z": 12.440625,
+      "Height": 1.2196874999999996,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -15.837499999999999,
+      "Z": 12.25625,
+      "Height": 1.301875,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -15.69375,
+      "Z": 12.071874999999999,
+      "Height": 1.3840625000000002,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -15.549999999999999,
+      "Z": 11.8875,
+      "Height": 1.46625,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -15.549999999999999,
+      "Z": 11.8875,
+      "Height": 1.46625,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -15.35,
+      "Z": 11.75625,
+      "Height": 1.5368749999999998,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -15.149999999999999,
+      "Z": 11.625,
+      "Height": 1.6075000000000004,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -14.95,
+      "Z": 11.493749999999999,
+      "Height": 1.678125,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -14.75,
+      "Z": 11.362499999999999,
+      "Height": 1.7487499999999998,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -14.75,
+      "Z": 11.362499999999999,
+      "Height": 1.7487499999999998,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -14.49375,
+      "Z": 11.284374999999999,
+      "Height": 1.8078125000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -14.2375,
+      "Z": 11.20625,
+      "Height": 1.8668749999999998,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -13.98125,
+      "Z": 11.128125,
+      "Height": 1.9259375000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -13.725,
+      "Z": 11.05,
+      "Height": 1.9849999999999999,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -13.725,
+      "Z": 11.05,
+      "Height": 1.9849999999999999,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -13.4125,
+      "Z": 11.025,
+      "Height": 2.0325,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -13.1,
+      "Z": 11.0,
+      "Height": 2.0799999999999996,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -12.7875,
+      "Z": 10.975,
+      "Height": 2.1275,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -12.475,
+      "Z": 10.95,
+      "Height": 2.1750000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -12.475,
+      "Z": 10.95,
+      "Height": 2.1750000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -12.19375,
+      "Z": 10.95,
+      "Height": 2.210625,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -11.9125,
+      "Z": 10.95,
+      "Height": 2.2462500000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -11.63125,
+      "Z": 10.950000000000001,
+      "Height": 2.281875,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -11.35,
+      "Z": 10.950000000000001,
+      "Height": 2.3174999999999994,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -11.35,
+      "Z": 10.950000000000001,
+      "Height": 2.3175000000000003,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -11.1,
+      "Z": 10.975000000000001,
+      "Height": 2.34125,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.85,
+      "Z": 11.0,
+      "Height": 2.3649999999999998,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.6,
+      "Z": 11.025,
+      "Height": 2.3887499999999995,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.35,
+      "Z": 11.05,
+      "Height": 2.409375,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.35,
+      "Z": 11.05,
+      "Height": 2.409375,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -10.13125,
+      "Z": 11.100000000000001,
+      "Height": 2.4182812499999997,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.9125,
+      "Z": 11.15,
+      "Height": 2.4271875,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.69375,
+      "Z": 11.2,
+      "Height": 2.43609375,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.475,
+      "Z": 11.25,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.475,
+      "Z": 11.25,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.2875,
+      "Z": 11.325,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -9.1,
+      "Z": 11.399999999999999,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.9125,
+      "Z": 11.475,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.725,
+      "Z": 11.549999999999999,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.725,
+      "Z": 11.549999999999999,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.584375,
+      "Z": 11.60625,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.44375,
+      "Z": 11.662499999999998,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.303125,
+      "Z": 11.718749999999998,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.1625,
+      "Z": 11.774999999999999,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.1625,
+      "Z": 11.774999999999999,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -8.06875,
+      "Z": 11.8125,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.975,
+      "Z": 11.85,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.88125,
+      "Z": 11.8875,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.7875,
+      "Z": 11.925,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.7875,
+      "Z": 11.925,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.740625,
+      "Z": 11.943750000000001,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.69375,
+      "Z": 11.9625,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.646875,
+      "Z": 11.98125,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.6,
+      "Z": 12.0,
+      "Height": 2.445,
+      "Name": "SupplyBridgeWindingBankRamp"
+    },
+    {
+      "X": -7.6,
+      "Z": 12.0,
+      "Height": 2.445,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 12.35,
+      "Height": 2.47125,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 12.7,
+      "Height": 2.4975,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 13.05,
+      "Height": 2.5237499999999997,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 13.4,
+      "Height": 2.55,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 13.4,
+      "Height": 2.55,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 13.625,
+      "Height": 2.63625,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 13.850000000000001,
+      "Height": 2.7225,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 14.075000000000001,
+      "Height": 2.80875,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 14.3,
+      "Height": 2.895,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 14.3,
+      "Height": 2.895,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 14.475000000000001,
+      "Height": 2.895,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 14.65,
+      "Height": 2.895,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 14.825,
+      "Height": 2.895,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 15.0,
+      "Height": 2.895,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.6,
+      "Z": 15.0,
+      "Height": 2.895,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -7.05,
+      "Z": 15.75,
+      "Height": 2.895,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -6.5,
+      "Z": 16.5,
+      "Height": 2.895,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -5.95,
+      "Z": 17.25,
+      "Height": 2.895,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -5.4,
+      "Z": 18.0,
+      "Height": 2.895,
+      "Name": "SupplyBridgeUpperPromenade"
+    },
+    {
+      "X": -10.4,
+      "Z": 28.94,
+      "Height": 2.445,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -11.2,
+      "Z": 29.955000000000002,
+      "Height": 2.445,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -12.0,
+      "Z": 30.97,
+      "Height": 2.445,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -12.8,
+      "Z": 31.985,
+      "Height": 2.445,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -13.6,
+      "Z": 33.0,
+      "Height": 2.445,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -13.6,
+      "Z": 33.0,
+      "Height": 2.445,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -15.299999999999999,
+      "Z": 34.15,
+      "Height": 2.9587499999999998,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -17.0,
+      "Z": 35.3,
+      "Height": 3.4725,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -18.7,
+      "Z": 36.45,
+      "Height": 3.9862499999999996,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -20.4,
+      "Z": 37.6,
+      "Height": 4.5,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -20.4,
+      "Z": 37.6,
+      "Height": 4.5,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -21.0,
+      "Z": 39.2,
+      "Height": 4.9125,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -21.6,
+      "Z": 40.8,
+      "Height": 5.324999999999999,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -22.2,
+      "Z": 42.4,
+      "Height": 5.7375,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -22.8,
+      "Z": 44.0,
+      "Height": 6.15,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -22.8,
+      "Z": 44.0,
+      "Height": 6.15,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -22.65,
+      "Z": 45.4,
+      "Height": 6.731249999999999,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -22.5,
+      "Z": 46.8,
+      "Height": 7.3125,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -22.35,
+      "Z": 48.2,
+      "Height": 7.893749999999999,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -22.2,
+      "Z": 49.6,
+      "Height": 8.475,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -22.2,
+      "Z": 49.6,
+      "Height": 8.475,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -21.75,
+      "Z": 50.2,
+      "Height": 8.7675,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -21.299999999999997,
+      "Z": 50.8,
+      "Height": 9.059999999999999,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -20.849999999999998,
+      "Z": 51.4,
+      "Height": 9.3525,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -20.4,
+      "Z": 52.0,
+      "Height": 9.645,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -20.4,
+      "Z": 52.0,
+      "Height": 9.645,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -19.9,
+      "Z": 52.5,
+      "Height": 9.645,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -19.4,
+      "Z": 53.0,
+      "Height": 9.645,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -18.9,
+      "Z": 53.5,
+      "Height": 9.645,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -18.4,
+      "Z": 54.0,
+      "Height": 9.645,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -18.4,
+      "Z": 54.0,
+      "Height": 9.645,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -17.15,
+      "Z": 54.0,
+      "Height": 9.645,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -15.899999999999999,
+      "Z": 54.0,
+      "Height": 9.645,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -14.65,
+      "Z": 54.0,
+      "Height": 9.645,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": -13.4,
+      "Z": 54.0,
+      "Height": 9.645,
+      "Name": "B_WestHallAscent"
+    },
+    {
+      "X": 0.0,
+      "Z": -60.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 0.0,
+      "Z": -56.3,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 0.0,
+      "Z": -52.6,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 0.0,
+      "Z": -48.900000000000006,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 0.0,
+      "Z": -45.2,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 0.0,
+      "Z": -45.2,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 3.0,
+      "Z": -42.400000000000006,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 6.0,
+      "Z": -39.6,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 9.0,
+      "Z": -36.8,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 12.0,
+      "Z": -34.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 12.0,
+      "Z": -34.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 15.5,
+      "Z": -33.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 19.0,
+      "Z": -32.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 22.5,
+      "Z": -31.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 26.0,
+      "Z": -30.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 26.0,
+      "Z": -30.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 29.0,
+      "Z": -27.5,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 32.0,
+      "Z": -25.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 35.0,
+      "Z": -22.5,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 38.0,
+      "Z": -20.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 38.0,
+      "Z": -20.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 37.0,
+      "Z": -17.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 36.0,
+      "Z": -14.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 35.0,
+      "Z": -11.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 34.0,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 34.0,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 34.5,
+      "Z": -4.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 35.0,
+      "Z": 0.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 35.5,
+      "Z": 4.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 36.0,
+      "Z": 8.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 36.0,
+      "Z": 8.0,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 33.0,
+      "Z": 10.35,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 30.0,
+      "Z": 12.7,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 27.0,
+      "Z": 15.049999999999999,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 24.0,
+      "Z": 17.4,
+      "Height": 2.445,
+      "Name": "A_CentralPublicApproach"
+    },
+    {
+      "X": 0.0,
+      "Z": -60.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 9.0,
+      "Z": -63.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 18.0,
+      "Z": -66.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 27.0,
+      "Z": -69.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 36.0,
+      "Z": -72.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 36.0,
+      "Z": -72.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 42.0,
+      "Z": -72.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 48.0,
+      "Z": -72.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 54.0,
+      "Z": -72.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 60.0,
+      "Z": -72.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 60.0,
+      "Z": -72.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 63.5,
+      "Z": -70.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 67.0,
+      "Z": -68.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 70.5,
+      "Z": -66.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 74.0,
+      "Z": -64.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 74.0,
+      "Z": -64.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 75.0,
+      "Z": -58.5,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 76.0,
+      "Z": -53.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 77.0,
+      "Z": -47.5,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 78.0,
+      "Z": -42.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 78.0,
+      "Z": -42.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 80.5,
+      "Z": -39.5,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 83.0,
+      "Z": -37.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 85.5,
+      "Z": -34.5,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 88.0,
+      "Z": -32.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 88.0,
+      "Z": -32.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 89.0,
+      "Z": -29.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 90.0,
+      "Z": -26.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 91.0,
+      "Z": -23.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 92.0,
+      "Z": -20.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 92.0,
+      "Z": -20.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 92.0,
+      "Z": -14.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 92.0,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 92.0,
+      "Z": -2.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 92.0,
+      "Z": 4.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 92.0,
+      "Z": 4.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 92.5,
+      "Z": 8.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 93.0,
+      "Z": 12.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 93.5,
+      "Z": 16.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 94.0,
+      "Z": 20.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 94.0,
+      "Z": 20.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 94.0,
+      "Z": 25.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 94.0,
+      "Z": 30.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 94.0,
+      "Z": 35.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 94.0,
+      "Z": 40.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 94.0,
+      "Z": 40.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 93.0,
+      "Z": 42.5,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 92.0,
+      "Z": 45.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 91.0,
+      "Z": 47.5,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 90.0,
+      "Z": 50.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 90.0,
+      "Z": 50.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 85.5,
+      "Z": 50.5,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 81.0,
+      "Z": 51.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 76.5,
+      "Z": 51.5,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 72.0,
+      "Z": 52.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 72.0,
+      "Z": 52.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 67.0,
+      "Z": 51.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 62.0,
+      "Z": 50.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 57.0,
+      "Z": 49.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 52.0,
+      "Z": 48.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 52.0,
+      "Z": 48.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 47.5,
+      "Z": 45.5,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 43.0,
+      "Z": 43.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 38.5,
+      "Z": 40.5,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": 34.0,
+      "Z": 38.0,
+      "Height": 2.445,
+      "Name": "C_EasternPerimeterRoute"
+    },
+    {
+      "X": -3.0,
+      "Z": 29.2,
+      "Height": 2.445,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -3.65,
+      "Z": 29.5,
+      "Height": 2.445,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -4.3,
+      "Z": 29.799999999999997,
+      "Height": 2.445,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -4.949999999999999,
+      "Z": 30.099999999999998,
+      "Height": 2.445,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -5.6,
+      "Z": 30.4,
+      "Height": 2.445,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -5.6,
+      "Z": 30.4,
+      "Height": 2.445,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -6.3,
+      "Z": 31.049999999999997,
+      "Height": 2.6399999999999997,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -7.0,
+      "Z": 31.7,
+      "Height": 2.835,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -7.7,
+      "Z": 32.35,
+      "Height": 3.03,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -8.4,
+      "Z": 33.0,
+      "Height": 3.225,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -8.4,
+      "Z": 33.0,
+      "Height": 3.225,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -8.7,
+      "Z": 33.75,
+      "Height": 3.4799999999999995,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -9.0,
+      "Z": 34.5,
+      "Height": 3.735,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -9.3,
+      "Z": 35.25,
+      "Height": 3.99,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -9.6,
+      "Z": 36.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -9.6,
+      "Z": 36.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -8.7,
+      "Z": 36.25,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -7.8,
+      "Z": 36.5,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -6.9,
+      "Z": 36.75,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -6.0,
+      "Z": 37.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -6.0,
+      "Z": 37.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -3.0,
+      "Z": 37.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 0.0,
+      "Z": 37.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 3.0,
+      "Z": 37.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 6.0,
+      "Z": 37.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 6.0,
+      "Z": 37.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 7.5,
+      "Z": 37.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 9.0,
+      "Z": 37.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 10.5,
+      "Z": 37.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 12.0,
+      "Z": 37.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 12.0,
+      "Z": 37.0,
+      "Height": 4.245,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 13.0,
+      "Z": 37.45,
+      "Height": 4.4025,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 14.0,
+      "Z": 37.9,
+      "Height": 4.56,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 15.0,
+      "Z": 38.349999999999994,
+      "Height": 4.717499999999999,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 16.0,
+      "Z": 38.8,
+      "Height": 4.875,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 16.0,
+      "Z": 38.8,
+      "Height": 4.875,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 16.75,
+      "Z": 39.65,
+      "Height": 5.1675,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 17.5,
+      "Z": 40.5,
+      "Height": 5.46,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 18.25,
+      "Z": 41.35,
+      "Height": 5.7525,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 19.0,
+      "Z": 42.2,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 19.0,
+      "Z": 42.2,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 18.25,
+      "Z": 42.900000000000006,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 17.5,
+      "Z": 43.6,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 16.75,
+      "Z": 44.3,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 16.0,
+      "Z": 45.0,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 16.0,
+      "Z": 45.0,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 13.5,
+      "Z": 45.0,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 11.0,
+      "Z": 45.0,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 8.5,
+      "Z": 45.0,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 6.0,
+      "Z": 45.0,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 6.0,
+      "Z": 45.0,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 4.0,
+      "Z": 45.0,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 2.0,
+      "Z": 45.0,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 0.0,
+      "Z": 45.0,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -2.0,
+      "Z": 45.0,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -2.0,
+      "Z": 45.0,
+      "Height": 6.045,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -3.0,
+      "Z": 45.5,
+      "Height": 6.29625,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -4.0,
+      "Z": 46.0,
+      "Height": 6.547499999999999,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -5.0,
+      "Z": 46.5,
+      "Height": 6.79875,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -6.0,
+      "Z": 47.0,
+      "Height": 7.049999999999999,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -6.0,
+      "Z": 47.0,
+      "Height": 7.049999999999999,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -7.75,
+      "Z": 47.6,
+      "Height": 7.69875,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -9.5,
+      "Z": 48.2,
+      "Height": 8.347499999999998,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -11.25,
+      "Z": 48.8,
+      "Height": 8.99625,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -13.0,
+      "Z": 49.4,
+      "Height": 9.645,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -13.0,
+      "Z": 49.4,
+      "Height": 9.645,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -13.0,
+      "Z": 50.55,
+      "Height": 9.645,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -13.0,
+      "Z": 51.7,
+      "Height": 9.645,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -13.0,
+      "Z": 52.85,
+      "Height": 9.645,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": -13.0,
+      "Z": 54.0,
+      "Height": 9.645,
+      "Name": "A_WindingHallProcession"
+    },
+    {
+      "X": 34.0,
+      "Z": 38.0,
+      "Height": 2.445,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 32.5,
+      "Z": 36.6,
+      "Height": 2.445,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 31.0,
+      "Z": 35.2,
+      "Height": 2.445,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 29.5,
+      "Z": 33.8,
+      "Height": 2.445,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 28.0,
+      "Z": 32.4,
+      "Height": 2.445,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 28.0,
+      "Z": 32.4,
+      "Height": 2.445,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 26.9,
+      "Z": 32.55,
+      "Height": 2.5462499999999997,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 25.8,
+      "Z": 32.7,
+      "Height": 2.6475,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 24.700000000000003,
+      "Z": 32.85,
+      "Height": 2.74875,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 23.6,
+      "Z": 33.0,
+      "Height": 2.85,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 23.6,
+      "Z": 33.0,
+      "Height": 2.8499999999999996,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 22.200000000000003,
+      "Z": 33.1,
+      "Height": 3.05625,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 20.8,
+      "Z": 33.2,
+      "Height": 3.2624999999999997,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 19.4,
+      "Z": 33.3,
+      "Height": 3.46875,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 18.0,
+      "Z": 33.4,
+      "Height": 3.675,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 18.0,
+      "Z": 33.4,
+      "Height": 3.675,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 17.0,
+      "Z": 33.55,
+      "Height": 3.8175,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 16.0,
+      "Z": 33.7,
+      "Height": 3.96,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 15.0,
+      "Z": 33.85,
+      "Height": 4.1025,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 14.0,
+      "Z": 34.0,
+      "Height": 4.245,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 14.0,
+      "Z": 34.0,
+      "Height": 4.245,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 13.0,
+      "Z": 34.75,
+      "Height": 4.245,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 12.0,
+      "Z": 35.5,
+      "Height": 4.245,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 11.0,
+      "Z": 36.25,
+      "Height": 4.245,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 10.0,
+      "Z": 37.0,
+      "Height": 4.245,
+      "Name": "C_LivingQuarterToHallFoothill"
+    },
+    {
+      "X": 31.8,
+      "Z": 26.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 32.45,
+      "Z": 25.4,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 33.1,
+      "Z": 24.8,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 33.75,
+      "Z": 24.200000000000003,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 34.4,
+      "Z": 23.6,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 34.4,
+      "Z": 23.6,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 34.8,
+      "Z": 23.1,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 35.2,
+      "Z": 22.6,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 35.6,
+      "Z": 22.1,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 36.0,
+      "Z": 21.6,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 36.0,
+      "Z": 21.6,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 36.5,
+      "Z": 20.200000000000003,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 37.0,
+      "Z": 18.8,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 37.5,
+      "Z": 17.4,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 38.0,
+      "Z": 16.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 38.0,
+      "Z": 16.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 38.9,
+      "Z": 13.5,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 39.8,
+      "Z": 11.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 40.7,
+      "Z": 8.5,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 41.6,
+      "Z": 6.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 41.6,
+      "Z": 6.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 41.7,
+      "Z": 4.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 41.8,
+      "Z": 2.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 41.9,
+      "Z": 0.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 42.0,
+      "Z": -2.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 42.0,
+      "Z": -2.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 41.0,
+      "Z": -5.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 40.0,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 39.0,
+      "Z": -11.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": 38.0,
+      "Z": -14.0,
+      "Height": 2.445,
+      "Name": "FeastToHearthGardenWalk"
+    },
+    {
+      "X": -10.4,
+      "Z": -24.0,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": -9.55,
+      "Z": -25.25,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": -8.7,
+      "Z": -26.5,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": -7.85,
+      "Z": -27.75,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": -7.0,
+      "Z": -29.0,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": -7.0,
+      "Z": -29.0,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": -3.75,
+      "Z": -29.5,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": -0.5,
+      "Z": -30.0,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 2.75,
+      "Z": -30.5,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 6.0,
+      "Z": -31.0,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 6.0,
+      "Z": -31.0,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 13.5,
+      "Z": -31.0,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 21.0,
+      "Z": -31.0,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 28.5,
+      "Z": -31.0,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 36.0,
+      "Z": -31.0,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 36.0,
+      "Z": -31.0,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 37.5,
+      "Z": -32.75,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 39.0,
+      "Z": -34.5,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 40.5,
+      "Z": -36.25,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 42.0,
+      "Z": -38.0,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 42.0,
+      "Z": -38.0,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 42.75,
+      "Z": -39.6625,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 43.5,
+      "Z": -41.325,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 44.25,
+      "Z": -42.9875,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 45.0,
+      "Z": -44.65,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 45.0,
+      "Z": -44.65,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 45.75,
+      "Z": -44.65,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 46.5,
+      "Z": -44.65,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 47.25,
+      "Z": -44.65,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 48.0,
+      "Z": -44.65,
+      "Height": 2.445,
+      "Name": "BridgeheadToKitchenPromenade"
+    },
+    {
+      "X": 54.0,
+      "Z": -31.0,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 54.0,
+      "Z": -29.75,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 54.0,
+      "Z": -28.5,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 54.0,
+      "Z": -27.25,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 54.0,
+      "Z": -26.0,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 54.0,
+      "Z": -26.0,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 52.0,
+      "Z": -25.5,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 50.0,
+      "Z": -25.0,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 48.0,
+      "Z": -24.5,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 46.0,
+      "Z": -24.0,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 46.0,
+      "Z": -24.0,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 44.0,
+      "Z": -22.0,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 42.0,
+      "Z": -20.0,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 40.0,
+      "Z": -18.0,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 38.0,
+      "Z": -16.0,
+      "Height": 2.445,
+      "Name": "KitchenToHearthWalk"
+    },
+    {
+      "X": 55.6,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "CasinoCentralLink"
+    },
+    {
+      "X": 54.2,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "CasinoCentralLink"
+    },
+    {
+      "X": 52.8,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "CasinoCentralLink"
+    },
+    {
+      "X": 51.4,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "CasinoCentralLink"
+    },
+    {
+      "X": 50.0,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "CasinoCentralLink"
+    },
+    {
+      "X": 50.0,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "CasinoCentralLink"
+    },
+    {
+      "X": 48.7,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "CasinoCentralLink"
+    },
+    {
+      "X": 47.4,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "CasinoCentralLink"
+    },
+    {
+      "X": 46.099999999999994,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "CasinoCentralLink"
+    },
+    {
+      "X": 44.8,
+      "Z": -8.0,
+      "Height": 2.445,
+      "Name": "CasinoCentralLink"
+    },
+    {
+      "X": 70.0,
+      "Z": 17.4,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 67.5,
+      "Z": 17.15,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 65.0,
+      "Z": 16.9,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 62.5,
+      "Z": 16.65,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 60.0,
+      "Z": 16.4,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 60.0,
+      "Z": 16.4,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 56.5,
+      "Z": 16.4,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 53.0,
+      "Z": 16.4,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 49.5,
+      "Z": 16.4,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 46.0,
+      "Z": 16.4,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 46.0,
+      "Z": 16.4,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 43.0,
+      "Z": 16.799999999999997,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 40.0,
+      "Z": 17.2,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 37.0,
+      "Z": 17.6,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 34.0,
+      "Z": 18.0,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 34.0,
+      "Z": 18.0,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 31.5,
+      "Z": 18.7,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 29.0,
+      "Z": 19.4,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 26.5,
+      "Z": 20.1,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": 24.0,
+      "Z": 20.8,
+      "Height": 2.445,
+      "Name": "TrainingFeastLink"
+    },
+    {
+      "X": -1.6,
+      "Z": 20.8,
+      "Height": 2.895,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": -0.7000000000000001,
+      "Z": 20.8,
+      "Height": 2.7824999999999998,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 0.19999999999999996,
+      "Z": 20.8,
+      "Height": 2.67,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 1.1,
+      "Z": 20.8,
+      "Height": 2.5575,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 2.0,
+      "Z": 20.8,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 2.0,
+      "Z": 20.8,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 4.4,
+      "Z": 20.6,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 6.8,
+      "Z": 20.4,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 9.2,
+      "Z": 20.2,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 11.6,
+      "Z": 20.0,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 11.6,
+      "Z": 20.0,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 12.95,
+      "Z": 20.25,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 14.3,
+      "Z": 20.5,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 15.65,
+      "Z": 20.75,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 17.0,
+      "Z": 21.0,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 17.0,
+      "Z": 21.0,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 18.75,
+      "Z": 21.05,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 20.5,
+      "Z": 21.1,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 22.25,
+      "Z": 21.15,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": 24.0,
+      "Z": 21.2,
+      "Height": 2.445,
+      "Name": "WarehouseFeastLink"
+    },
+    {
+      "X": -16.0,
+      "Z": 6.0,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -15.25,
+      "Z": 5.0,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -14.5,
+      "Z": 4.0,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -13.75,
+      "Z": 3.0,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -13.0,
+      "Z": 2.0,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -13.0,
+      "Z": 2.0,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -12.1,
+      "Z": 0.4750000000000001,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -11.2,
+      "Z": -1.0499999999999998,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -10.3,
+      "Z": -2.5749999999999993,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -9.4,
+      "Z": -4.1,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -9.4,
+      "Z": -4.1,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -9.05,
+      "Z": -4.1,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -8.7,
+      "Z": -4.1,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -8.35,
+      "Z": -4.1,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": -8.0,
+      "Z": -4.1,
+      "Height": 2.445,
+      "Name": "TavernWestDoorApproach"
+    },
+    {
+      "X": 3.45,
+      "Z": -28.2,
+      "Height": 2.445,
+      "Name": "TavernSouthDoorApproach"
+    },
+    {
+      "X": 3.45,
+      "Z": -27.15,
+      "Height": 2.445,
+      "Name": "TavernSouthDoorApproach"
+    },
+    {
+      "X": 3.45,
+      "Z": -26.1,
+      "Height": 2.445,
+      "Name": "TavernSouthDoorApproach"
+    },
+    {
+      "X": 3.45,
+      "Z": -25.05,
+      "Height": 2.445,
+      "Name": "TavernSouthDoorApproach"
+    },
+    {
+      "X": 3.45,
+      "Z": -24.0,
+      "Height": 2.445,
+      "Name": "TavernSouthDoorApproach"
+    },
+    {
+      "X": 13.6,
+      "Z": 52.0,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 15.45,
+      "Z": 52.0,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 17.3,
+      "Z": 52.0,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 19.15,
+      "Z": 52.0,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 21.0,
+      "Z": 52.0,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 21.0,
+      "Z": 52.0,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 22.15,
+      "Z": 52.8125,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 23.3,
+      "Z": 53.625,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 24.450000000000003,
+      "Z": 54.4375,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 25.6,
+      "Z": 55.25,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 25.6,
+      "Z": 55.25,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 26.450000000000003,
+      "Z": 55.25,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 27.3,
+      "Z": 55.25,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 28.15,
+      "Z": 55.25,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 29.0,
+      "Z": 55.25,
+      "Height": 9.645,
+      "Name": "D_SharedHallToElderNeck"
+    },
+    {
+      "X": 45.46,
+      "Z": 75.3,
+      "Height": 9.645,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 45.46,
+      "Z": 75.475,
+      "Height": 9.645,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 45.46,
+      "Z": 75.65,
+      "Height": 9.645,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 45.46,
+      "Z": 75.825,
+      "Height": 9.645,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 45.46,
+      "Z": 76.0,
+      "Height": 9.645,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 45.46,
+      "Z": 76.0,
+      "Height": 9.645,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 47.845,
+      "Z": 75.5,
+      "Height": 9.645,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 50.230000000000004,
+      "Z": 75.0,
+      "Height": 9.645,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 52.615,
+      "Z": 74.5,
+      "Height": 9.645,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 55.0,
+      "Z": 74.0,
+      "Height": 9.645,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 55.0,
+      "Z": 74.0,
+      "Height": 9.645,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 56.25,
+      "Z": 73.0,
+      "Height": 9.37125,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 57.5,
+      "Z": 72.0,
+      "Height": 9.0975,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 58.75,
+      "Z": 71.0,
+      "Height": 8.823749999999999,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 60.0,
+      "Z": 70.0,
+      "Height": 8.549999999999999,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 60.0,
+      "Z": 70.0,
+      "Height": 8.549999999999999,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 61.5,
+      "Z": 70.0,
+      "Height": 8.2125,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 63.0,
+      "Z": 70.0,
+      "Height": 7.875,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 64.5,
+      "Z": 70.0,
+      "Height": 7.5375,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 66.0,
+      "Z": 70.0,
+      "Height": 7.199999999999999,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 66.0,
+      "Z": 70.0,
+      "Height": 7.199999999999999,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 67.5,
+      "Z": 68.5,
+      "Height": 6.824999999999999,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 69.0,
+      "Z": 67.0,
+      "Height": 6.449999999999999,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 70.5,
+      "Z": 65.5,
+      "Height": 6.075,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 72.0,
+      "Z": 64.0,
+      "Height": 5.7,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 72.0,
+      "Z": 64.0,
+      "Height": 5.7,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 74.0,
+      "Z": 62.5,
+      "Height": 5.2875,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 76.0,
+      "Z": 61.0,
+      "Height": 4.875,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 78.0,
+      "Z": 59.5,
+      "Height": 4.4625,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 80.0,
+      "Z": 58.0,
+      "Height": 4.05,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 80.0,
+      "Z": 58.0,
+      "Height": 4.05,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 82.5,
+      "Z": 56.0,
+      "Height": 3.6487499999999997,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 85.0,
+      "Z": 54.0,
+      "Height": 3.2474999999999996,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 87.5,
+      "Z": 52.0,
+      "Height": 2.84625,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 90.0,
+      "Z": 50.0,
+      "Height": 2.445,
+      "Name": "ElderSecretReturn"
+    },
+    {
+      "X": 26.0,
+      "Z": -53.0,
+      "Height": 2.445,
+      "Name": "04_ResidenceSouthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -52.075,
+      "Height": 2.5575,
+      "Name": "04_ResidenceSouthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -51.150000000000006,
+      "Height": 2.67,
+      "Name": "04_ResidenceSouthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -50.225,
+      "Height": 2.7824999999999998,
+      "Name": "04_ResidenceSouthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -49.300000000000004,
+      "Height": 2.8949999999999996,
+      "Name": "04_ResidenceSouthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -49.300000000000004,
+      "Height": 2.8949999999999996,
+      "Name": "04_ResidenceSouthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -48.875,
+      "Height": 2.8949999999999996,
+      "Name": "04_ResidenceSouthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -48.45,
+      "Height": 2.8949999999999996,
+      "Name": "04_ResidenceSouthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -48.025000000000006,
+      "Height": 2.8949999999999996,
+      "Name": "04_ResidenceSouthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -47.6,
+      "Height": 2.8949999999999996,
+      "Name": "04_ResidenceSouthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -35.0,
+      "Height": 2.445,
+      "Name": "04_ResidenceNorthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -35.925,
+      "Height": 2.5575,
+      "Name": "04_ResidenceNorthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -36.849999999999994,
+      "Height": 2.67,
+      "Name": "04_ResidenceNorthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -37.775,
+      "Height": 2.7824999999999998,
+      "Name": "04_ResidenceNorthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -38.699999999999996,
+      "Height": 2.8949999999999996,
+      "Name": "04_ResidenceNorthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -38.699999999999996,
+      "Height": 2.8949999999999996,
+      "Name": "04_ResidenceNorthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -39.125,
+      "Height": 2.8949999999999996,
+      "Name": "04_ResidenceNorthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -39.55,
+      "Height": 2.8949999999999996,
+      "Name": "04_ResidenceNorthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -39.974999999999994,
+      "Height": 2.8949999999999996,
+      "Name": "04_ResidenceNorthRamp"
+    },
+    {
+      "X": 26.0,
+      "Z": -40.4,
+      "Height": 2.8949999999999996,
+      "Name": "04_ResidenceNorthRamp"
+    },
+    {
+      "X": -5.4,
+      "Z": 10.600000000000001,
+      "Height": 2.445,
+      "Name": "12_WarehouseSouthRamp"
+    },
+    {
+      "X": -5.4,
+      "Z": 11.525000000000002,
+      "Height": 2.5575,
+      "Name": "12_WarehouseSouthRamp"
+    },
+    {
+      "X": -5.4,
+      "Z": 12.450000000000001,
+      "Height": 2.67,
+      "Name": "12_WarehouseSouthRamp"
+    },
+    {
+      "X": -5.4,
+      "Z": 13.375,
+      "Height": 2.7824999999999998,
+      "Name": "12_WarehouseSouthRamp"
+    },
+    {
+      "X": -5.4,
+      "Z": 14.3,
+      "Height": 2.8949999999999996,
+      "Name": "12_WarehouseSouthRamp"
+    },
+    {
+      "X": -5.4,
+      "Z": 14.3,
+      "Height": 2.8949999999999996,
+      "Name": "12_WarehouseSouthRamp"
+    },
+    {
+      "X": -5.4,
+      "Z": 14.725000000000001,
+      "Height": 2.8949999999999996,
+      "Name": "12_WarehouseSouthRamp"
+    },
+    {
+      "X": -5.4,
+      "Z": 15.15,
+      "Height": 2.8949999999999996,
+      "Name": "12_WarehouseSouthRamp"
+    },
+    {
+      "X": -5.4,
+      "Z": 15.575,
+      "Height": 2.8949999999999996,
+      "Name": "12_WarehouseSouthRamp"
+    },
+    {
+      "X": -5.4,
+      "Z": 16.0,
+      "Height": 2.8949999999999996,
+      "Name": "12_WarehouseSouthRamp"
+    },
+    {
+      "X": 24.0,
+      "Z": 36.6,
+      "Height": 2.445,
+      "Name": "FeastToHallApproach"
+    },
+    {
+      "X": 25.5,
+      "Z": 36.6,
+      "Height": 2.445,
+      "Name": "FeastToHallApproach"
+    },
+    {
+      "X": 27.0,
+      "Z": 36.6,
+      "Height": 2.445,
+      "Name": "FeastToHallApproach"
+    },
+    {
+      "X": 28.5,
+      "Z": 36.6,
+      "Height": 2.445,
+      "Name": "FeastToHallApproach"
+    },
+    {
+      "X": 30.0,
+      "Z": 36.6,
+      "Height": 2.445,
+      "Name": "FeastToHallApproach"
+    },
+    {
+      "X": 30.0,
+      "Z": 36.6,
+      "Height": 2.445,
+      "Name": "FeastToHallApproach"
+    },
+    {
+      "X": 31.0,
+      "Z": 36.95,
+      "Height": 2.445,
+      "Name": "FeastToHallApproach"
+    },
+    {
+      "X": 32.0,
+      "Z": 37.3,
+      "Height": 2.445,
+      "Name": "FeastToHallApproach"
+    },
+    {
+      "X": 33.0,
+      "Z": 37.65,
+      "Height": 2.445,
+      "Name": "FeastToHallApproach"
+    },
+    {
+      "X": 34.0,
+      "Z": 38.0,
+      "Height": 2.445,
+      "Name": "FeastToHallApproach"
+    }
+  ],
+  "RiverCourse": [
+    {
+      "X": -24.8,
+      "Z": -30.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -24.9872,
+      "Z": -28.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -25.433600000000002,
+      "Z": -26.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -25.9664,
+      "Z": -24.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -26.4128,
+      "Z": -22.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -26.6,
+      "Z": -20.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -26.710787172011663,
+      "Z": -18.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -26.996501457725948,
+      "Z": -16.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -27.38717201166181,
+      "Z": -14.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -27.812827988338192,
+      "Z": -12.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -28.203498542274055,
+      "Z": -10.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -28.48921282798834,
+      "Z": -8.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -28.6,
+      "Z": -6.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -28.40058309037901,
+      "Z": -4.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -27.886297376093296,
+      "Z": -2.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -27.183090379008746,
+      "Z": 0.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -26.416909620991255,
+      "Z": 2.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -25.713702623906705,
+      "Z": 4.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -25.199416909620993,
+      "Z": 6.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -25.0,
+      "Z": 8.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -24.955555555555556,
+      "Z": 10.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -24.844444444444445,
+      "Z": 12.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -24.7,
+      "Z": 14.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -24.555555555555554,
+      "Z": 16.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -24.444444444444443,
+      "Z": 18.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -24.4,
+      "Z": 20.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -24.637037037037036,
+      "Z": 22.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -25.229629629629628,
+      "Z": 24.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -26.0,
+      "Z": 26.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -26.770370370370372,
+      "Z": 28.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -27.362962962962964,
+      "Z": 30.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -27.6,
+      "Z": 32.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -27.876967930029156,
+      "Z": 34.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -28.59125364431487,
+      "Z": 36.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -29.56793002915452,
+      "Z": 38.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -30.632069970845482,
+      "Z": 40.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -31.608746355685135,
+      "Z": 42.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -32.32303206997085,
+      "Z": 44.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -32.6,
+      "Z": 46.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -32.4544,
+      "Z": 48.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -32.1072,
+      "Z": 50.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -31.6928,
+      "Z": 52.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -31.3456,
+      "Z": 54.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -31.2,
+      "Z": 56.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -30.731067418584566,
+      "Z": 58.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -29.588457044149774,
+      "Z": 60.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -28.168449931412894,
+      "Z": 62.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -26.867327135091195,
+      "Z": 64.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -26.081369709901946,
+      "Z": 66.0,
+      "HalfWidth": 4.2
+    },
+    {
+      "X": -26.0,
+      "Z": 66.8,
+      "HalfWidth": 4.2
+    }
+  ],
+  "WestFork": [
+    {
+      "X": -54.0,
+      "Z": -68.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -53.584,
+      "Z": -66.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -52.592,
+      "Z": -64.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -51.408,
+      "Z": -62.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -50.416,
+      "Z": -60.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -50.0,
+      "Z": -58.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -49.0,
+      "Z": -56.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -46.8,
+      "Z": -54.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -44.6,
+      "Z": -52.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -43.6,
+      "Z": -50.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -42.5392,
+      "Z": -48.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -40.0096,
+      "Z": -46.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -36.9904,
+      "Z": -44.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -34.4608,
+      "Z": -42.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -33.4,
+      "Z": -40.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -32.5056,
+      "Z": -38.0,
+      "HalfWidth": 3.08
+    },
+    {
+      "X": -30.372799999999998,
+      "Z": -36.0,
+      "HalfWidth": 3.36
+    },
+    {
+      "X": -27.8272,
+      "Z": -34.0,
+      "HalfWidth": 3.64
+    },
+    {
+      "X": -25.6944,
+      "Z": -32.0,
+      "HalfWidth": 3.92
+    },
+    {
+      "X": -24.8,
+      "Z": -30.0,
+      "HalfWidth": 4.2
+    }
+  ],
+  "EastFork": [
+    {
+      "X": -15.2,
+      "Z": -68.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -15.1584,
+      "Z": -66.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -15.0592,
+      "Z": -64.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -14.9408,
+      "Z": -62.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -14.8416,
+      "Z": -60.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -14.8,
+      "Z": -58.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -15.1125,
+      "Z": -56.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -15.8,
+      "Z": -54.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -16.4875,
+      "Z": -52.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -16.8,
+      "Z": -50.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -17.2784,
+      "Z": -48.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -18.4192,
+      "Z": -46.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -19.7808,
+      "Z": -44.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -20.921599999999998,
+      "Z": -42.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -21.4,
+      "Z": -40.0,
+      "HalfWidth": 2.8
+    },
+    {
+      "X": -21.7536,
+      "Z": -38.0,
+      "HalfWidth": 3.08
+    },
+    {
+      "X": -22.596799999999998,
+      "Z": -36.0,
+      "HalfWidth": 3.36
+    },
+    {
+      "X": -23.6032,
+      "Z": -34.0,
+      "HalfWidth": 3.64
+    },
+    {
+      "X": -24.4464,
+      "Z": -32.0,
+      "HalfWidth": 3.92
+    },
+    {
+      "X": -24.8,
+      "Z": -30.0,
+      "HalfWidth": 4.2
+    }
+  ],
+  "RiverStart": -30.0,
+  "RiverEnd": 66.8,
+  "RiverHalfWidth": 4.2,
+  "BridgeZs": [
+    -20.0,
+    28.94
+  ],
+  "RouteAnchors": [
+    {
+      "Name": "O1_EntranceObservation",
+      "X": 12.0,
+      "Z": -34.0,
+      "Height": 2.4
+    },
+    {
+      "Name": "O2_SupplyBridgeObservation",
+      "X": -48.0,
+      "Z": 28.94,
+      "Height": -2.4
+    },
+    {
+      "Name": "O3_PerimeterObservation",
+      "X": 92.0,
+      "Z": 4.0,
+      "Height": 2.4
+    },
+    {
+      "Name": "SharedEnd_HallToElder",
+      "X": 21.0,
+      "Z": 52.0,
+      "Height": 9.6
+    },
+    {
+      "Name": "PrivateStoreInsideElder",
+      "X": 45.0,
+      "Z": 66.0,
+      "Height": 9.6
+    }
+  ],
+  "PlanScale": 2.0,
+  "SouthBoundary": [
+    {
+      "X": 98,
+      "Z": -58,
+      "Height": 2.4
+    },
+    {
+      "X": 90,
+      "Z": -72,
+      "Height": 2.4
+    },
+    {
+      "X": 70,
+      "Z": -78,
+      "Height": 2.4
+    },
+    {
+      "X": 46,
+      "Z": -76,
+      "Height": 2.4
+    },
+    {
+      "X": 24,
+      "Z": -74,
+      "Height": 2.4
+    },
+    {
+      "X": 4,
+      "Z": -78,
+      "Height": 2.4
+    }
+  ]
+}

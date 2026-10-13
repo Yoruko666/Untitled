@@ -1,0 +1,213 @@
+---
+name: game-assets
+description: Plan games and create, edit, upgrade, animate, and prepare production-ready game assets with Meowa. Use for Game Designer research and design documents, pixel or HD sprites, consistent variants, multi-view or Spine characters, UI sheets, image and frame edits, Pindou bead art, textures, terrain tilesets, maps, video, sound effects, music, spoken dialogue (TTS or voice clone), bundled Meowa CLI execution, or final game-project deliverable validation.
+---
+
+# Meowa Game Assets
+
+Plan a game or create game-ready visual and audio assets. For game concepts, systems, balance, market research, or structured design documents, use the Game Designer module. For assets, establish the final asset contract first, choose the smallest suitable capability, and combine modules only when the downstream command accepts the upstream output.
+
+For HD frame animation V2, `--auto-scale-to-input` (default off, no extra credits) restores the final animation to the input dimensions with smooth scaling and retains the original animation as a second output. With background removal, only the final transparent animation is resized.
+
+## Establish the asset contract
+
+Determine these requirements before selecting a command:
+
+- Runtime asset type: sprite, prop, UI, texture, tileset, map layer, animation, video, sound, music, or spoken line.
+- Art representation: pixel or HD.
+- Final dimensions, sprite-cell size, count, aspect ratio, transparency, and file format.
+- Deliverable structure: one asset, a variant pack, sprite sheet, directional set, layer set, animation, or reusable atlas.
+
+Single-image jobs return only the final image. Separate pack previews are available only for multiple final images.
+
+Treat preset-defined dimensions and output counts as fixed contracts. Do not imply that prompt wording can override them.
+
+## Choose general generation or a template
+
+**General generation (通用生成)** is the most flexible, direct image API path. Use `general-image-run --generation-model image-2.5|image-2|nano-banana` (default Image2.5). No asset template is imposed: the prompt and optional reference images define the subject, style, count, and composition. It can handle almost any image task, including nine props in one sheet, a character, a complete UI, or a game background, in HD or pixel style.
+
+`general-image-run` replaces the three model-specific commands. Existing users can continue using them with unchanged parameters and defaults:
+
+| Legacy command | Unified command |
+|---|---|
+| `image-2.5-run` | `general-image-run --generation-model image-2.5` |
+| `image-2-run` | `general-image-run --generation-model image-2` |
+| `nano-banana-run` | `general-image-run --generation-model nano-banana` |
+
+Use `general-image-poll --job-id <id>` to recover any of these jobs; `image-2.5-poll`, `image-2-poll`, and `nano-banana-poll` remain compatible. The backend route `/api/gemini/jobs` is a legacy name shared by all three models; the public capability is General generation, not Gemini generation.
+
+**Template-driven HD and pixel generation** adds a template's style, layout, size, and count constraints. Before using any template-dependent capability, tell the user that a template must be selected, discover the current catalog, and list suitable options for their request with the available size, count, style, and preview information. Let the user choose; use an already specified template without asking again. If the available styles do not fit, offer general generation with their prompt and references.
+
+General generation's pixel style does not guarantee the exact sprite dimensions or pixel-grid cleanup of a pixel workflow. Inspect those properties before promising a game-ready sprite. See [Capability routing](references/capability-routing.md) for discovery commands and capability selection.
+
+## Write simple natural-language prompts
+
+Meowa capabilities use advanced generative models that understand ordinary natural language. Describe the required asset as simply and clearly as possible. Include only details that materially affect the deliverable, such as the subject, action, viewpoint, material, or relationship between elements.
+
+Do not use legacy diffusion-style prompt engineering: no long keyword stacks, separate positive and negative prompt blocks, repeated quality terms, token weights, sampler syntax, or excessive camera and rendering jargon. These additions can interfere with the model's own interpretation and reduce consistency. Start with the shortest sufficient prompt, inspect the result, and add one necessary constraint at a time only when the output proves it is needed.
+
+## Apply game-art fundamentals
+
+### Pixel art
+
+- Treat the pixel grid as part of the design, not merely as image resolution.
+- Keep animated characters, monsters, and similar frame-based assets at 128×128 or smaller whenever practical. Larger pixel assets raise animation cost and often reduce generation or frame-edit consistency. Reserve larger pixel canvases mainly for maps, character illustrations, portraits, and other assets that do not need frame animation.
+- When padding a 64px pixel character for animation, prefer a final canvas no larger than 128×128. Padding may be set independently on the top, down, left, and right, but a pixel-animation canvas above 256px on either axis is invalid and must not be submitted.
+- When visual inspection is available, inspect the character bounds, facing direction, and intended motion before choosing animation padding. Leave some top space for jumps and some forward space for attacks; use only enough room for the action rather than making every canvas unnecessarily large.
+- Treat assets from Meowa pixel-generation workflows as already perfectly pixelated. Do not run standalone pixelation on them again.
+- Use pixel-native paths when their style and output contract fit; use general generation for a freer pixel style when templates do not fit.
+- Preview only at integer zoom with nearest-neighbor sampling. Never smooth or shrink pixel art merely for display.
+- Inspect transparency and every sprite-sheet cell at native resolution.
+
+### HD art
+
+- Treat resolution tiers as canvas and detail choices, not guarantees of one universal pixel dimension unless a preset defines it.
+- Preserve smooth contours, material rendering, lighting, silhouette, and transparent-edge quality.
+- Choose aspect ratio and composition for the asset's gameplay use rather than for presentation convenience.
+- Do not treat ordinary downscaling as pixel-art production. Use pixel conversion only when conversion is explicitly requested, and validate the result as a new pixel asset.
+- Inspect actual output dimensions and alpha after generation or editing.
+
+### Shared production rules
+
+- Use transparency only when the runtime asset needs it; backgrounds and repeatable terrain materials may intentionally remain opaque.
+- Keep style, scale, camera, palette, light direction, and anchor conventions consistent across related assets.
+- For HD Isometric and HD Hex tiles, preserve the generated transparent canvas and center anchor, use smooth sampling, and take the footprint from the generation mode: `standard = 1×1`, `tetraploid = 2×2`. Never infer footprint from the outer PNG size. Read the exact placement contract in [Maps, tiles, and textures](references/maps-tiles-and-textures.md) before assembly.
+- Treat source images and downloaded references as inputs, never as generated deliverables.
+- Meowa animation with background removal delivers both removed-background and retained-background final animations; keep both.
+- Prefer a specialized capability when its style and output contract fit the request; otherwise use general generation.
+- Validate the asset at its intended gameplay scale, not only in a large preview.
+
+## Follow common pixel and HD workflows
+
+### Pixel workflow
+
+1. **Characters and props:** use preset-driven `pixel-gen-run` when exact sprite dimensions or the highest available pixel quality matter. Select the target resolution first, describe one readable asset, and add a reference image when art direction or identity must match an existing game.
+2. **Custom-size assets:** use `custom-size-pixel-gen-run` when the user needs one object at a width and height that no fixed preset provides, or wants to regenerate one source image as pixel art at a specified size. Do not use it for asset packs. Prefer text-only generation for stability; reference-guided generation is less reliable, especially for complex sources. Read the prompt and reference guidance in [Pixel and HD assets](references/pixel-and-hd-assets.md) before running it.
+3. **Large pixel assets:** use `large-pixel-gen-run` for larger scenes, illustrations, portraits, buildings, and other compositions that do not fit a small sprite preset.
+4. **Low-cost sprite batches and prototypes:** use the general pixel canvas through `pixel-universal-gen-run` when speed, volume, and low cost matter more than exact per-sprite sizing or maximum fidelity. Its built-in 4:3 `xlarge` mode is optimized for asset packs and provides a freer canvas for generating many differently sized assets at once. Its pixel quality is still lower than preset-driven pixel generation.
+5. **Pixel Universal Generation:** the same command is the pixel-art counterpart to a general Nano Banana-style image workflow. It uses a large 4:3 canvas and supports a normal composition or a top-down game view. Typical uses include converting HD artwork into a new pixel composition, generating pixel scenes or character illustrations, and designing multi-stage building-upgrade artwork.
+6. **Animation:** animate only after the character or prop design is stable. Before running, follow the high-quality animation workflow in [Animation and video](references/animation-and-video.md); it defines prompt preparation, automatic prompt enhancement, explicit Pixel/HD selection, intelligence tiers, and mandatory transparent motion space.
+
+Do not run standalone pixelation after any Meowa pixel-generation command. Pixel outputs are already perfectly pixelated.
+
+### HD workflow
+
+1. **Characters and props:** use an HD preset when the deliverable needs a controlled asset family, count, or composition, and use references for style or identity consistency.
+2. **General or batch generation:** use `general-image-run` (default Image2.5; select Image2 or Nano Banana with `--generation-model`) for scenes, illustrations, portraits, sprite sheets, UI, and batches of art assets. These paths prioritize prompt and reference freedom over a preset asset contract. See [Pixel and HD assets](references/pixel-and-hd-assets.md) for model options and examples.
+3. **Automatic background removal and component segmentation:** use `ui-gen-run` when an HD asset sheet should be generated with background removal and automatic component detection. It can generate UI, ordinary art assets, or a sprite sheet; the result depends primarily on the prompt, not on the name of the module. The public final media remains one aggregate sheet accompanied by component segmentation data.
+
+`ui-gen-run` defaults to Image 2.5 at Standard quality; choose Image 2 explicitly for its Detailed default.
+4. **Animation:** For reference-video editing, Pixel/HD, resolution, alpha and background-removal options mirror the web card (see Animation and video); `--background-color` (default `#ffffff`) fills transparent pixels in both reference inputs; use `meowa-animation-edit-prompts` to prepare editable text and `meowa-animation-edit-run` to generate after filling video content and, if supplied, image content; polishing is manual. See [Animation and video](references/animation-and-video.md). finalize the still asset before animation, then follow the prompt, mode-routing, and motion-canvas checks in [Animation and video](references/animation-and-video.md). Use `meowa-animation-run` for the new 8/16/24/32-frame Pixel or HD path (Pixel and HD support 480P/720P/1080P Fast/1080P Full; `--resolution 1080p` is the existing fast route at 30/35 credits for Standard/Detailed at 1–2 seconds (35/40 at 3–4 seconds), and `1080p_full` uses the original model at 40/45 for 1–2 seconds (45/50 for 3–4 seconds), plus the existing removal fee; `--high-frame-rate` keeps every generated frame in the output WebP instead of sampling to 8fps and defaults removal off with green `#00b140`), or `animate-run` for the established frame-animation path. For an ordinary but complex action, prepare intermediate poses and use `keyframes-run` before considering video. Use `video-run` only as a fallback for motion that frame animation cannot represent or when higher video resolution is required.
+
+## Understand the modules
+
+| Module | Responsibility | Typical role in a production chain |
+|---|---|---|
+| [CLI setup and authentication](meowart_api.md) | Install the runner, configure a Meowa account key locally, and verify the first authenticated request | Read for a new installation or missing authentication |
+| [Capability routing](references/capability-routing.md) | Select the correct capability and public command | Read first for every task |
+| [Game Designer](references/game-design.md) | Research and develop a game concept into persistent Markdown design documents | Use for planning, critique, mechanics, balance, content, or game-design research |
+| [Pixel and HD assets](references/pixel-and-hd-assets.md) | Create base assets and directional characters; perform background removal or pixel conversion | Feed finalized still assets into editing or animation |
+| [UI and image editing](references/ui-and-image-editing.md) | Generate UI sheets, create consistent upgrade variants, extract an aggregate UI sheet, and edit still images or animated frames | Refine or branch an existing visual asset without changing its media role |
+| [Asset cloning](references/ui-and-image-editing.md) | Polish a clone prompt or clone 1, 4, 9, 16, 25, or 36 same-style assets into a complete grid sheet | Keep the sheet intact for user-selected splitting |
+| [Maps, tiles, and textures](references/maps-tiles-and-textures.md) | Create repeatable materials, terrain atlases, isometric or hex tiles, and side-scrolling layers | Build environment assets from materials through map-ready outputs |
+| [Animation and video](references/animation-and-video.md) | Create seamless image loops, sprite animation, or short video clips | Consume a stable, finalized still asset |
+| [Audio](references/audio.md) | Create sound effects, coherent sound packs, music direction, rendered tracks, and spoken lines (described or cloned voices) | Add audio after gameplay timing and visual direction are known |
+| [Running and outputs](references/running-and-outputs.md) | Execute safely, recover interrupted jobs, validate outputs, and hand off final files | Apply to every module |
+
+## Local tools
+
+Local tools live in `scripts/`; invoke them directly with `python3`, independently of `meowart_api.py` and account authentication. Keep the complete Skill folder when installing or updating it. Each tool exposes `--help`.
+
+- **Complex-pattern splitting:** `python3 <skill-dir>/scripts/split-components.py <sheet.png> --output-dir <new-directory>` separates disconnected shapes into transparent PNGs and writes their original placement in `final_outputs.json`. It uses only the Python standard library. Read [local tools](references/local-tools.md) for options and PNG limits.
+- **Map previews:** `scripts/build-map-preview.py` and `scripts/map-preview-server.py`; see [Maps, tiles, and textures](references/maps-tiles-and-textures.md).
+
+For local splitting, use the local-tool instructions directly; API authentication, submission, and polling steps below do not apply.
+
+## Combine modules deliberately
+
+Use these common chains only when each downstream module accepts the preceding file:
+
+- Pixel character: preset discovery → exact-size pixel generation → still edit or background cleanup → directional views when required → sprite animation.
+- Large pixel composition: large-pixel preset discovery → `large-pixel-gen-run` → still edit when required.
+- General pixel composition: `pixel-universal-gen-run` with a normal or top-down view → still edit when required → animate only when the resulting asset is suitably small.
+- HD character or prop: HD generation → still edit → optional background removal → sprite animation or short video.
+- HD batch: `general-image-run` → inspect the generated asset arrangement → use `ui-gen-run` instead when automatic background removal and component segmentation are required.
+- Consistent upgrades or variants: inspect and minimally pad the source canvas when the largest requested change needs more room → use `one-click-upgrade-prompts` for a concise editable prompt list → run `one-click-upgrade-run` with the reviewed prompts → compare style, scale, anchor, and dimensions across every result.
+- Existing animation: animated-frame editing. Do not regenerate it as a new animation unless the user asks for a new motion design.
+- Environment materials: search and download a standard 64×64 texture reference, or generate a new 64×64 seamless texture → choose a foreground-only, background-only, or dual top-down tileset → pass the matching validated texture inputs → remove the unused background for a one-terrain atlas when needed → validate the 4×4 atlas → map integration. A standalone HD image, object render, photo, or scene is not a texture.
+- Isometric or hex environment tiles: inspect map-reference categories → select and download matching built-in references → preview the references when layout or style needs comparison → generate from those references → preview and assemble the final tiles by logical centers → validate the composed map. Do not start these tile generators from arbitrary images. Generate side-scrolling layers directly because that command does not accept downloaded map presets.
+- Side-scrolling environment: define the playable midground, distant background, and near-camera foreground separately → run `side-scrolling-map-run` for pixel layers or `hd-side-scrolling-map-run` for HD layers → open all three final layers in the bundled map preview → validate shared canvas alignment, parallax speed, layer offsets, and any requested horizontal loop.
+- UI: UI generation or extraction → still-image refinement. UI extraction currently returns one aggregate sheet, not separate component files.
+- Audio-visual asset: finalize timing and action first → create matching effects, music, or spoken lines.
+
+Avoid unnecessary chains. Every generative step can change identity, scale, palette, edges, timing, and cost.
+
+## Route and execute
+
+1. For a new installation or missing authentication, read [meowart_api.md](meowart_api.md) and help the user configure the key locally. Never ask them to paste it into chat.
+2. An outdated runner may continue and warns once without blocking. If it then fails and suggests the old version may be the cause, update the complete Skill from the official repository, verify `meowart_api.py --version`, and inspect top-level `--help` for the available `*-poll` recovery command. Use the original job ID and never resubmit the paid task. `general-image-poll` recovers general image jobs for all three models; legacy polling commands remain supported.
+3. Read [capability-routing.md](references/capability-routing.md).
+4. Read the selected capability module; read multiple modules only for an intentional production chain.
+5. Inspect `python3 meowart_api.py <command> --help` for current product options.
+6. Run one primary `*-run` command with a new explicit `--output-dir`.
+7. Apply a downstream edit or post-process only when required by the asset contract.
+8. Open the saved media, inspect `final_outputs.json`, and validate every promised property before handoff.
+9. Pixel isometric `tetraploid` accepts one large reference (visible width > 200 px) or three small references (≤ 200 px); small-tile modes accept only small references. For isometric, hex, dual-grid, or side-scrolling work, start `scripts/map-preview-server.py` with downloaded public references or declared final outputs. Select `hd-isometric` or `hd-hex-isometric` for HD tiles, and declare tetraploid assets as `"footprint": "2x2"` in a JSON library; direct `--image` entries default to `1×1`. For side-scrolling, pass the directory containing the three final layers or a user-owned prefab manifest. Open its temporary loopback URL with the user's browser when browser control is available. Do not make the user browse deep directories, select files, copy paths, or navigate manually.
+
+For account-specific capabilities, run `custom-workflow-list` with the user's locally configured API key, then use `custom-workflow-run --workflow-id <id> --template-id <id> --params-json <file> --project-id <id> --thread-id <id>`. The params file is one JSON object; an `image_upload` value is a local file path. These commands use the authenticated catalog as the only discovery source. The runner downloads only the exact `final_outputs[]` projection and writes a sanitized `final_outputs.json`; it never traverses or persists other job fields or URLs.
+
+For game planning, follow [Game Designer](references/game-design.md). Its realtime token charge is separate from any paid asset tools the planner invokes.
+
+## Keep the public boundary clean
+
+Use `free-credits` to read free-credit eligibility and return the website claim link. The user claims in the browser and completes security verification when required by the server. Status reads do not grant credits. Ordinary accounts receive 10 daily credits automatically on login or balance reads, expiring at the next Beijing midnight. Free-benefit risk accounts manually claim 20 credits per Beijing day, at most five claims, with no additional survey/campaign/referral grants. Valid payments exempt accounts from free-benefit risk; full refunds or chargebacks remove that exemption when no other valid payment remains. Account bans still apply.
+
+- Guide users to configure Meowa account authentication locally when needed, but never request the key itself or expose credentials, raw provider identifiers, arbitrary model names, endpoints, sampling, internal-stage, or raw-request controls. A command may expose a curated product-level `--generation-model` enum when its capability module documents the choices and default.
+- Never overwrite source assets or return input references, internal templates, masks, metadata, debug artifacts, or intermediate files.
+- Return only declared final deliverables.
+- Do not claim dimensions, transparency, seamlessness, directional consistency, component separation, or animation quality until the final files have been inspected.
+
+For Frame Animation V2 removal batch size, quality levels, and per-batch credits, read [Animation and video](references/animation-and-video.md).
+
+Meowa Animation uses `--remove-bg-batch-size 2|4|8|16` (default `16`).
+
+Background removal returns lossless WebP for GIF, WebP and MP4 inputs (MP4 audio is omitted). It accepts animated WebP/GIF or MP4 with `--remove-bg-batch-size 2|4|8|16` (default `16`); HD defaults to General removal (`advanced`, 5 credits per batch); Budget removal (`standard`) costs 2. HD recommends batches of 4. Pixel defaults to General removal (`standard`), requires animation frames at most 256×256 (static images have no 256×256 restriction), and Complex removal (`advanced`) retains its separate frame tiers. See [Pixel and HD assets](references/pixel-and-hd-assets.md).
+
+Pixel background removal supports `--preserve-translucency` (default off) for both General and Complex removal. It skips alpha binarization and preserves soft alpha in PNG/WebP outputs. HD always preserves soft alpha. This option does not change credits.
+
+### 通用生成 `general-image-run`
+
+`general-image-run --prompt "..."` 使用 Image 2.5 Sunburst；默认 `--quality standard`。
+质量仅支持 `standard/detailed/ultimate`，对应网页 普通/精细/极致 与 canonical `low/medium/high`。
+`--resolution 1K|2K` 默认 1K；`--aspect-ratio` 默认 1:1，支持 1:1、3:4、4:3、9:16、16:9。
+可重复 `--reference-image` 传参考图；失败或中断用 `general-image-poll --job-id ...` 恢复，勿重复提交。
+1K 基础积分为 1/5/10，2K 为 2/10/20；每张参考图另加 2 积分，由服务端结算。
+
+通用生成统一使用 `general-image-run`，`--generation-model image-2.5|image-2|nano-banana` 默认 `image-2.5`。万能编辑高清模式默认使用 Image2.5、2K；像素模式默认不变。万能编辑支持 `image-edit-run --generation-model image-2.5`，参数与 `image-2` 相同。普通／精细／极致基础积分：1K 为 1/5/10，2K 为 2/10/20；每张参考图 +2。Image2.5 去背景免费，只提供普通抠图；失败则不去背景、不扣附加费。分区像素化沿用现有附加费。
+万能编辑 `--multi-pixelation` 返回三张像素化结果，不额外收费。`--regional-pixelation` 默认启用多重像素化，可用 `--no-multi-pixelation` 单独关闭；不分区时也可单独开启。
+
+HD hex 公开 `--mode standard`（默认）和 `tetraploid`。七倍体与 Image2 暂时关闭。
+
+Image2.5 通用生成支持 `--remove-bg-method none|standard`，默认 `none`，与网页去背景开关一致。开启后尝试原生透明 PNG，免费；失败则保留原背景、不后处理、不扣附加费。万能编辑选择 Image2.5 时同样免费，高级抠图不可用。重新打开项目或轮询原任务不会再次提交生成。
+
+Video-reference animation accepts MP4 or animated GIF/WebP up to 4.5 seconds. Both edit commands select output duration from the source: ≤2s → 16 frames, ≤3s → 24, ≤4.5s → 32 at 8fps. Sources between 4s and 4.5s stay on the 4-second / 32-frame tier so Meowa 32-frame outputs can be reused. Reference and generation are aligned to 56/73/90 frames at 24fps. See [Animation and video](references/animation-and-video.md) for shared pricing.
+
+修仙定制模板：先用 `custom-workflow-list` 确认账户授权，再用 `custom-workflow-run --workflow-id fixed_pixel_gen --template-id size_32x32|size_64x64|size_128x128 --params-json ...`。
+JSON 的 `generation_provider` 可选 `nanobanana`（默认）、`image2`、`image2_5`，与网页模型选择一致；省略时按服务端 schema 默认值提交。
+仅模型可切换：内部生成固定 1K、1:1，Nano Banana 固定普通模式，GPT Image2 固定精细，GPT Image2.5 固定极致；不接受质量、分辨率或路由参数。
+原有类型、风格、Padding 和额外要求按所选模板提供。GPT Image2.5 使用原生透明，20 积分；其他模型含高级抠图，30 积分。透明失败则任务失败，不追加抠图。
+
+Asset cloning (`asset-clone-run`) uses `--clone-count` in its default prompt (default 1); explicit prompts are preserved. `asset-clone-prompt` also accepts `--clone-count` (default 1) and preserves it when polishing. It defaults to Image2.5, 1K, and Detailed quality in both pixel and HD modes. Nano Banana uses fixed Standard quality and defaults to no background removal; Image2.5 defaults to standard background removal.
+
+素材克隆的模型选择：
+
+- **色彩还原**：GPT Image2.5 色彩层次更丰富，更能还原参考图色系，整体更鲜艳；Nano Banana 配色较保守，可能偏离参考图色系。
+- **形体控制**：Nano Banana 对轮廓、像素边缘和体积尺度的一致性控制更强，适合形体及尺寸约束严格的像素资产；GPT Image2.5 像素质感相对较弱，资产尺寸更容易变化。
+- **去背景**：GPT Image2.5 去背景不收附加积分；Nano Banana（包括 2.1）开启去背景需额外积分，以当前报价为准。
+
+Nano Banana 2.1 is available in general generation: `nano-banana-run --model gemini-nano-banana-2.1 --prompt "..."`. It supports 1K/2K/4K (5/10/20 credits), all 14 aspect ratios, and only `--generation-speed normal` (default). Each reference image adds 2 credits. The default model remains `gemini-3.1-flash-image`.
+
+
+Final downloads use the server-selected URL, including the domestic media domain. Re-query an existing successful job to obtain its current route; never guess a replacement hostname. Small image downloads share a 45-second budget across at most three attempts, and files are saved only after a complete media response. Large media uses bounded inactive reads. `general-image-run` mirrors the web model selector (default Image2.5, Standard, 1K, 1:1, no background removal); `general-image-poll` resumes the original job. Model-specific legacy commands retain the same requests. The runner is statically distributed; there is no remote bootstrap execution.
+
+Domestic ready final files may use `media-cn.meowjito.com`; legacy `media.meowjito.com` links remain valid. Follow the exact server-returned final URL and re-query the job to refresh its route. No storage or provider option is required.

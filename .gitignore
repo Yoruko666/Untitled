@@ -45,3 +45,6 @@ desktop.ini
 
 ## 导表工具生成的 protobuf 桩代码 ##
 tools/.generated/
+
+## Python 缓存 ##
+tools/__pycache__/

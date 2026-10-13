@@ -19,7 +19,7 @@
 ## 目录与代码
 
 - `Assets/Scripts/`：`Core` 放启动、Manager、事件、相机、公共渲染与配表框架；`Gameplay` 放实体和玩法；`Data` 放纯 C# 数据，`Data/Generated` 放 protoc 生成的配表类型；`UI`、`Debug`、`Utils` 按职责使用。
-- `Assets/Scenes/` 放场景，`Prefabs/` 放可复用对象，`Configs/` 放配置（`Configs/Database/Proto` 放 proto 与 `.bytes`），`Art/` 放美术，`Shaders/` 和 `Settings/` 放渲染相关内容，`Input/` 放输入定义，`Config/Table/` 放配表 Excel 源表。
+- `Assets/Scenes/` 放场景，`Prefabs/` 放可复用对象，`Configs/` 放配置（`Configs/Database` 放配表 `.bytes`），`Art/` 放美术，`Shaders/` 和 `Settings/` 放渲染相关内容，`Input/` 放输入定义；`Config/Table/` 与 `Config/Proto/` 放 Assets 外的配表源表与结构定义。
 - Editor 工具放 `Assets/Editor/<Feature>/`；runtime 不依赖 `UnityEditor`。关卡专属脚本、测试、`docs/` 和离线 `tools/` 按需创建，不预建空目录。
 - 沿用 `Untitled` namespace 与已有命名，包括 `Bussiness`。C# 类型、文件及公开成员使用 PascalCase，局部变量和私有字段使用 camelCase，四空格缩进；美术文件使用小写 snake_case。
 - 新增或修改文本使用 UTF-8、LF、一个末尾换行，无行尾空格；不批量格式化无关文件。
@@ -38,7 +38,7 @@
 
 - 配表链路为 Excel 源表 → protobuf 二进制 → Addressables → `DatabaseManager` 内存表，不使用数据库引擎；唯一权威来源是 `Config/Table/*.xlsx`。
 - 源表每个 sheet：第 1 行为字段名（须与 proto 一致）、第 2 行类型说明、第 3 行中文注释，第 4 行起为数据，第一列为主键。
-- proto 放 `Assets/Configs/Database/Proto/*.proto`，`csharp_namespace` 使用 `Untitled.Config`；导出物 `<Table>.bytes` 与之同目录，由 Addressables `Configs` 组加载、地址与文件名一致。
+- proto 放 `Config/Proto/*.proto`，`csharp_namespace` 使用 `Untitled.Config`；`.bytes` 必须落在 `Assets/Configs/Database`（Addressables 只能加载 Assets 内资产），由 `Configs` 组加载、地址与文件名一致。
 - protoc 生成的 C# 位于 `Assets/Scripts/Data/Generated`，不手改；字段改动先改 proto 再重新导出。
 - 离线导出用 `tools/export_config.py`，新增表需在脚本 `TABLES` 注册；导出依赖 `protoc` 与 `openpyxl`，脚本会把生成物换行统一为 LF。
 - 运行框架在 `Assets/Scripts/Core/Database/`：表类继承 `DatabaseBase<TRow>` 并重写 `KeyOf`、`Parse`，Addressables 地址常量集中在 `DatabasePath`，新表在 `DatabaseManager.Initialize` 注册。

@@ -1,7 +1,9 @@
 """Excel 配表导出工具。
 
 把 Config/Table 下的 Excel 源表导出为 protobuf 二进制，
-运行时通过 Addressables 加载 Assets/Configs/Database/Proto 下的 .bytes。
+运行时通过 Addressables 加载 Assets/Configs/Database 下的 .bytes。
+结构定义在 Config/Proto，本工具会先调用 protoc 刷新
+Assets/Scripts/Data/Generated 下的 C# 代码，再导出数据。
 
 用法:
     python tools/export_config.py            # 导出所有表
@@ -12,17 +14,17 @@
     第 2 行   类型说明，仅供策划阅读
     第 3 行   中文注释
     第 4 行起 数据，第一列为主键
-
-同时会调用 protoc 刷新 Assets/Scripts/Data/Generated 下的 C# 代码。
 """
 
+import importlib
 import os
 import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROTO_DIR = os.path.join(ROOT, "Assets", "Configs", "Database", "Proto")
+PROTO_DIR = os.path.join(ROOT, "Config", "Proto")
 TABLE_DIR = os.path.join(ROOT, "Config", "Table")
+BYTES_DIR = os.path.join(ROOT, "Assets", "Configs", "Database")
 CSHARP_OUT_DIR = os.path.join(ROOT, "Assets", "Scripts", "Data", "Generated")
 STUB_DIR = os.path.join(ROOT, "tools", ".generated")
 
@@ -38,6 +40,37 @@ TABLES = {
         "repeated": "items",
         "key": "id",
         "output": "ItemTable.bytes",
+        "module": "item_pb2",
+    },
+    "Bubble": {
+        "workbook": "Bubble.xlsx",
+        "sheet": "Bubble",
+        "table": "BubbleTable",
+        "row": "Bubble",
+        "repeated": "bubbles",
+        "key": "id",
+        "output": "BubbleTable.bytes",
+        "module": "bubble_pb2",
+    },
+    "Dialog": {
+        "workbook": "Dialog.xlsx",
+        "sheet": "Dialog",
+        "table": "DialogTable",
+        "row": "Dialog",
+        "repeated": "dialogs",
+        "key": "id",
+        "output": "DialogTable.bytes",
+        "module": "dialog_pb2",
+    },
+    "DialogOption": {
+        "workbook": "Dialog.xlsx",
+        "sheet": "DialogOption",
+        "table": "DialogOptionTable",
+        "row": "DialogOption",
+        "repeated": "dialogOptions",
+        "key": "id",
+        "output": "DialogOptionTable.bytes",
+        "module": "dialog_pb2",
     },
 }
 
@@ -192,7 +225,7 @@ def export(name, definition, stubs):
         getattr(stubs, definition["row"]),
     )
 
-    output_path = os.path.join(PROTO_DIR, definition["output"])
+    output_path = os.path.join(BYTES_DIR, definition["output"])
     with open(output_path, "wb") as handle:
         handle.write(table.SerializeToString())
 
@@ -206,12 +239,17 @@ def main():
         raise SystemExit(f"未定义的配表：{', '.join(unknown)}；可选：{', '.join(TABLES)}")
 
     run_protoc()
-    import item_pb2 as stubs
 
+    modules = {}
     for name, definition in TABLES.items():
         if requested and name not in requested:
             continue
-        export(name, definition, stubs)
+
+        module_name = definition["module"]
+        if module_name not in modules:
+            modules[module_name] = importlib.import_module(module_name)
+
+        export(name, definition, modules[module_name])
 
 
 if __name__ == "__main__":

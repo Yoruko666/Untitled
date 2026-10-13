@@ -40,6 +40,8 @@ namespace Untitled
 
         private void OnInteract()
         {
+            if (UIManager.Instance.Top != null) return;
+
             Current?.Interact();
         }
 
