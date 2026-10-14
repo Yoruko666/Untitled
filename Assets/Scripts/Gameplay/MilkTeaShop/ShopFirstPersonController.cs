@@ -17,8 +17,11 @@ namespace Untitled
         private float pitch;
         private bool cursorLockedIntent;
         private bool hasFocus = true;
+        private bool uiBlocked, restoreCursor;
+        private int ignoreCursorToggleFrame = -1;
+        public bool UIBlocked => uiBlocked;
 
-        public bool HasControl => hasFocus && cursorLockedIntent && Cursor.lockState == CursorLockMode.Locked;
+        public bool HasControl => !uiBlocked && hasFocus && cursorLockedIntent && Cursor.lockState == CursorLockMode.Locked;
         public Transform Eye => eye;
 
         private void Awake()
@@ -59,6 +62,14 @@ namespace Untitled
             if (!focused) SetCursorLocked(false);
         }
 
+        public void SetUIBlocked(bool blocked)
+        {
+            if (uiBlocked == blocked) return;
+            if (blocked) { restoreCursor = cursorLockedIntent; uiBlocked = true; SetCursorLocked(false); }
+            else { uiBlocked = false; SetCursorLocked(restoreCursor && hasFocus); }
+            ignoreCursorToggleFrame = Time.frameCount;
+        }
+
         public void SetCursorLocked(bool locked)
         {
             cursorLockedIntent = locked;
@@ -68,7 +79,7 @@ namespace Untitled
 
         private void Update()
         {
-            if (inputActions.Shop.ToggleCursor.WasPressedThisFrame()) SetCursorLocked(!cursorLockedIntent);
+            if (!uiBlocked && Time.frameCount != ignoreCursorToggleFrame && inputActions.Shop.ToggleCursor.WasPressedThisFrame()) SetCursorLocked(!cursorLockedIntent);
             if (!controller.enabled || eye == null) return;
 
             Vector2 move = Vector2.zero;

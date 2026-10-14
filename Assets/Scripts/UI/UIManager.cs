@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -12,6 +13,8 @@ namespace Untitled
         private readonly List<PanelBase> stack = new();
 
         private Transform root;
+        public event System.Action<bool> ModalStateChanged;
+        public bool HasOpenPanels => stack.Count > 0;
 
         public IReadOnlyList<PanelBase> OpenPanels => stack;
 
@@ -21,6 +24,7 @@ namespace Untitled
         {
             base.Initialize();
             EventCenter.Subscribe(GameEventType.ToggleESC, OnToggleEsc);
+            SceneManager.sceneUnloaded += OnSceneUnloaded;
         }
 
         public Transform Root
@@ -140,9 +144,9 @@ namespace Untitled
             if (panels.TryGetValue(panelName, out PanelBase instance))
             {
                 panels.Remove(panelName);
+                stacked = stack.Remove(instance);
                 if (instance != null)
                 {
-                    stacked = stack.Remove(instance);
                     UnityEngine.Object.Destroy(instance.gameObject);
                 }
             }
@@ -165,17 +169,34 @@ namespace Untitled
             }
         }
 
+        public void Dispose()
+        {
+            EventCenter.Unsubscribe(GameEventType.ToggleESC, OnToggleEsc);
+            SceneManager.sceneUnloaded -= OnSceneUnloaded;
+            UnloadAll(); ModalStateChanged = null; root = null;
+        }
+        private void OnSceneUnloaded(Scene scene)
+        {
+            var removed = new List<string>();
+            foreach (var entry in panels)
+                if (entry.Value == null || entry.Value.gameObject.scene == scene) removed.Add(entry.Key);
+            foreach (var name in removed) Unload(name);
+            if (root == null || root.gameObject.scene == scene) root = null;
+        }
+
         private void NotifyPause()
         {
             foreach (PanelBase panel in stack)
             {
-                if (!panel.PauseWorld) continue;
+                if (panel == null || !panel.PauseWorld) continue;
 
                 GameManager.Instance.SetPaused(true);
+                ModalStateChanged?.Invoke(HasOpenPanels);
                 return;
             }
 
             GameManager.Instance.SetPaused(false);
+            ModalStateChanged?.Invoke(HasOpenPanels);
         }
 
         private void OnToggleEsc()

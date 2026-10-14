@@ -18,7 +18,7 @@ namespace Untitled
 
         private void OnDestroy()
         {
-            if (inRange) InteractManager.Instance.Exit(this);
+            if (inRange && InteractManager.TryGet(out var manager)) manager.Exit(this);
         }
 
         private void OnTriggerEnter(Collider other)

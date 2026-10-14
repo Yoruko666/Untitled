@@ -156,6 +156,8 @@ namespace Untitled
             CameraController.SetFocusOffset(originalFocusOffset);
         }
 
+        public void EnsureSceneOverlay() { if (Debug.isDebugBuild) CreateOverlay(); }
+
         private void CreateOverlay()
         {
             if (overlay != null) return;

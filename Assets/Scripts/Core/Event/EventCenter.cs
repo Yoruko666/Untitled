@@ -24,6 +24,8 @@ namespace Untitled
     {
         private static readonly Dictionary<GameEventType, Delegate> handlers = new();
 
+        public static void Clear() => handlers.Clear();
+
         // ---------- 0 个参数 ----------
 
         public static void Subscribe(GameEventType eventType, Action handler)
