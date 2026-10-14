@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "zones": 15,
+  "colliderGroundSamples": 1684,
+  "meshColliders": 150,
+  "cameraTargetLinked": true,
+  "sourceXAxis": [
+    1.0,
+    -2.72478378E-08,
+    0.0
+  ],
+  "sourceYAxis": [
+    0.0,
+    -2.38418579E-07,
+    1.0
+  ],
+  "sourceZAxis": [
+    0.0,
+    1.00000048,
+    -4.23855255E-07
+  ],
+  "spawn": [
+    0.0,
+    7.62939453E-06,
+    -53.9999962
+  ],
+  "playerHeight": 1.8
+}

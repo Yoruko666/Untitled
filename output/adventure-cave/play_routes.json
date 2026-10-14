@@ -1,0 +1,42 @@
+{
+  "state": "complete",
+  "activeRoute": "finished",
+  "results": [
+    {
+      "route": "A",
+      "passed": true,
+      "message": "Reached zone 10",
+      "waypoint": 24,
+      "position": [
+        31.8203678,
+        22.0399914,
+        61.99999
+      ],
+      "seconds": 30.030769500001043
+    },
+    {
+      "route": "B",
+      "passed": true,
+      "message": "Reached zone 10",
+      "waypoint": 27,
+      "position": [
+        31.8229885,
+        22.0399933,
+        61.9999924
+      ],
+      "seconds": 48.419625700000324
+    },
+    {
+      "route": "C",
+      "passed": true,
+      "message": "Reached zone 10",
+      "waypoint": 23,
+      "position": [
+        31.8219261,
+        22.0399914,
+        61.9999924
+      ],
+      "seconds": 53.652555399999983
+    }
+  ]
+}
