@@ -99,7 +99,7 @@ namespace Untitled.Editor
             yield return RenderReady();
             hud = FindObjectOfType<UIGameplayHUD>(); var source = FindObjectOfType<UIGameplayReadModel>(); var player = FindObjectOfType<ShopFirstPersonController>();
             Require(hud != null && player != null && !source.Current.Night, "Actual shop HUD attachment failed.");
-            var data = GameManager.Instance.GameData; data.AddMoney(37);
+            var data = GameManager.Instance.GameData; data.AddMoney(37); data.SetDay(4);
             int itemId = DatabaseManager.Instance.ItemDatabase.All.Keys.First(); data.InventoryData.AddItem(itemId, 4);
             source.Publish(new UIHUDData(4, data.Money, false, new UIOrderData("preserved", "抹茶奶茶", "客人", "茶叶", "等待", .4f, false), Array.Empty<UIQuestData>()));
             yield return null;

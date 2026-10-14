@@ -5,10 +5,14 @@ namespace Untitled
     [DefaultExecutionOrder(-1000)]
     public class Bootstrap : MonoBehaviour
     {
+        [SerializeField] private InventorySettings inventorySettings;
+
         private void Awake()
         {
             RegisterManager(new DatabaseManager());
-            RegisterManager(new GameManager());
+            var game = new GameManager();
+            game.Configure(inventorySettings);
+            RegisterManager(game);
             RegisterManager(new InputManager());
             RegisterManager(new UIManager());
             RegisterManager(new InteractManager());
