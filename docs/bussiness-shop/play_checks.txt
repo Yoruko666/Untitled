@@ -1,0 +1,27 @@
+PASS: Continuous route 0: (0.589, 0.025, 1.809)
+PASS: Continuous route 1: (1.339, 0.025, 1.809)
+PASS: Continuous route 2: (-0.689, 0.025, 1.809)
+PASS: Continuous route 3: (-2.590, 0.025, 2.138)
+PASS: Continuous route 4: (-1.760, 0.025, 2.686)
+PASS: Continuous route 5: (0.388, 0.025, 2.686)
+PASS: Continuous route 6: (2.738, 0.025, 2.312)
+PASS: Continuous route 7: (2.161, 0.025, 2.839)
+PASS: Continuous route 8: (2.589, 0.025, 2.062)
+PASS: Continuous route 9: (2.589, 0.025, -3.642)
+PASS: Continuous route 10: (1.712, 0.025, -3.642)
+PASS: PreparationStation center ray; actual=Station_PreparationStation (Untitled.ShopStation)
+PASS: PreparationStation E feedback and scene interface event
+PASS: SealingStation center ray; actual=Station_SealingStation (Untitled.ShopStation)
+PASS: SealingStation E feedback and scene interface event
+PASS: OrderCounter center ray; actual=Station_OrderCounter (Untitled.ShopStation)
+PASS: OrderCounter E feedback and scene interface event
+PASS: DeliveryPoint center ray; actual=Station_DeliveryPoint (Untitled.ShopStation)
+PASS: DeliveryPoint E feedback and scene interface event
+PASS: OrderBoard center ray; actual=Station_OrderBoard (Untitled.ShopStation)
+PASS: OrderBoard E feedback and scene interface event
+PASS: WaterStation center ray; actual=Station_WaterStation (Untitled.ShopStation)
+PASS: WaterStation E feedback and scene interface event
+PASS: StoragePoint center ray; actual=Station_StoragePoint (Untitled.ShopStation)
+PASS: StoragePoint E feedback and scene interface event
+PASS: DungeonEntrance center ray; actual=Station_DungeonEntrance (Untitled.ShopStation)
+PASS: DungeonEntrance E feedback and scene interface event
