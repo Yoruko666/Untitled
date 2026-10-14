@@ -1,5 +1,7 @@
 # WhiteBox：阶段 3 台地地形白盒
 
+> 2026-10-14：`Assets/Scenes/WhiteBox.unity` 已从当前版本移除，本文保留历史设计记录。当前场景参见 [资源索引](project-resource-index.md)。
+
 日期：2026-10-12。场景：`Assets/Scenes/WhiteBox.unity`。
 
 按三级台地参考图和原 `CaveHD2DLocal` 地形 demo，以简单 Cube 和楔形坡道搭出有厚度、有高差的洞穴地形。沿用[阶段 1](cave-stealth-stage1-plan.md)的功能关系和[阶段 2](cave-stealth-stage2-scale-camera.md)的 15° Cinemachine 相机，接入真实 Player。本场景是当前阶段 3 的交付；之前的 `CaveStealthPlan` 平面版本保留作历史参考。
