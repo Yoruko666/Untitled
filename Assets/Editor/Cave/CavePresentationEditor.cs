@@ -17,13 +17,13 @@ namespace Untitled.Editor
         {
             if (EditorApplication.isPlaying) throw new InvalidOperationException("Exit Play Mode first.");
             var scene = EditorSceneManager.GetActiveScene();
-            if (scene.path != "Assets/Scenes/Cave.unity") throw new InvalidOperationException("Open Cave.unity first.");
+            if (scene.path != "Assets/Scenes/Gameplay/Cave.unity") throw new InvalidOperationException("Open Cave.unity first.");
             Shader shader = AssetDatabase.LoadAssetAtPath<Shader>("Assets/Shaders/CaveWater.shader");
             if (shader == null || ShaderUtil.ShaderHasError(shader) || !shader.isSupported)
                 throw new InvalidOperationException("Water shader is unavailable: " + (shader == null ? "missing asset" : string.Join("; ", ShaderUtil.GetShaderMessages(shader).Select(message => message.message))));
-            var map = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<CaveMap>()).Single();
+            var map = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<CaveMap>(true)).Single();
             if (!map.HasEditableLayout) throw new InvalidOperationException("Enable scene Tilemap editing first.");
-            var follow = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<CameraController>()).Single();
+            var follow = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<CameraController>(true)).Single();
             Camera camera = follow.GetComponent<Camera>();
             if (follow.Target == null) throw new InvalidOperationException("Assign the camera target first.");
             Undo.RecordObjects(new UnityEngine.Object[] { camera, camera.transform, follow }, "Apply cave camera");

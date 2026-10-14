@@ -21,7 +21,7 @@ namespace Untitled.EditorTools
         [MenuItem("Untitled/Milk Tea Shop/Create Player Centered Workstation")]
         public static void Create()
         {
-            if (EditorApplication.isPlaying || EditorSceneManager.GetActiveScene().path != "Assets/Scenes/Bussiness.unity")
+            if (EditorApplication.isPlaying || EditorSceneManager.GetActiveScene().path != "Assets/Scenes/Gameplay/Bussiness.unity")
                 throw new InvalidOperationException("Open Bussiness in Edit Mode first.");
             if (File.Exists(ScenePath)) throw new InvalidOperationException("Workstation scene already exists; edit its saved layout.");
             Directory.CreateDirectory("Logs/MilkTeaWorkstation");
@@ -29,12 +29,13 @@ namespace Untitled.EditorTools
             EditorSceneManager.SaveScene(source, "Logs/MilkTeaWorkstation/before_redesign.unity", true);
             EditorSceneManager.SaveScene(source, ScenePath, true);
             var scene = EditorSceneManager.OpenScene(ScenePath);
-            var bindings = Object.FindObjectOfType<ShopSceneBindings>();
+            var bindings = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<ShopSceneBindings>(true)).SingleOrDefault();
             var player = bindings.Player;
-            var oldRoom = scene.GetRootGameObjects().Single(g => g.name == "BussinessShop_Competition_5.8x4.4");
+            var oldRoom = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Transform>(true)).Select(t => t.gameObject).Single(g => g.name == "BussinessShop_Competition_5.8x4.4");
+            Transform roomParent = oldRoom.transform.parent;
             Object.DestroyImmediate(oldRoom);
             CreateGreenMaterial();
-            var room = Group("MilkTeaWorkstation_U", null);
+            var room = Group("MilkTeaWorkstation_U", roomParent);
             Architecture(Group("Architecture", room));
             var tables = Group("U_Worktops", room);
             Prop("work_counter", tables, V(0, 0, 1.22f), 0, true);
@@ -116,7 +117,7 @@ namespace Untitled.EditorTools
             var scene = EditorSceneManager.GetActiveScene();
             if (EditorApplication.isPlaying || scene.path != ScenePath)
                 throw new InvalidOperationException("Open workstation in Edit Mode.");
-            var room = scene.GetRootGameObjects().Single(g => g.name == "MilkTeaWorkstation_U").transform;
+            var room = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Transform>(true)).Select(t => t.gameObject).Single(g => g.name == "MilkTeaWorkstation_U").transform;
             AddReferenceDetails(room);
             PrefabUtility.ApplyPrefabInstance(room.gameObject, InteractionMode.AutomatedAction);
             AssetDatabase.SaveAssets();

@@ -14,7 +14,7 @@ namespace Untitled.EditorTools
     // Explicit, one-time conversion. Saved layout remains editable and is never rebuilt at runtime.
     public static class BussinessCompetitionLayout
     {
-        private const string ScenePath = "Assets/Scenes/Bussiness.unity";
+        private const string ScenePath = "Assets/Scenes/Gameplay/Bussiness.unity";
         private const string Prefabs = "Assets/Prefabs/BussinessShop/";
         private const string Materials = "Assets/Art/Materials/BussinessShop/";
         private const string RoomPath = Prefabs + "bussiness_shop_competition_room.prefab";
@@ -26,8 +26,8 @@ namespace Untitled.EditorTools
             var scene = EditorSceneManager.GetActiveScene();
             if (EditorApplication.isPlaying || scene.path != ScenePath || scene.isDirty)
                 throw new InvalidOperationException("Open saved Bussiness.unity in Edit Mode first.");
-            var oldRoom = scene.GetRootGameObjects().SingleOrDefault(g => g.name == "BussinessShop_8x9");
-            var bindings = Object.FindObjectOfType<ShopSceneBindings>();
+            var oldRoom = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Transform>(true)).Select(t => t.gameObject).SingleOrDefault(g => g.name == "BussinessShop_8x9");
+            var bindings = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<ShopSceneBindings>(true)).SingleOrDefault();
             if (oldRoom == null || bindings == null || bindings.Player == null)
                 throw new InvalidOperationException("Expected the existing 8x9 shop and its FPS bindings. Do not reapply to a compact layout.");
 
@@ -36,7 +36,7 @@ namespace Untitled.EditorTools
             Undo.IncrementCurrentGroup();
             int undoGroup = Undo.GetCurrentGroup();
             Undo.SetCurrentGroupName("Compact Bussiness shop");
-            var room = Group("BussinessShop_Competition_5.8x4.4", null);
+            var room = Group("BussinessShop_Competition_5.8x4.4", oldRoom.transform.parent);
             Architecture(Group("Architecture", room));
             var worktops = Group("Worktops", room);
             Prop("work_counter", worktops, V(-1.35f, 0, 1.65f), 0, true);
@@ -113,11 +113,11 @@ namespace Untitled.EditorTools
             var scene = EditorSceneManager.GetActiveScene();
             if (EditorApplication.isPlaying || scene.path != ScenePath)
                 throw new InvalidOperationException("Open compact Bussiness in Edit Mode.");
-            var room = scene.GetRootGameObjects().Single(g => g.name == "BussinessShop_Competition_5.8x4.4").transform;
+            var room = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Transform>(true)).Select(t => t.gameObject).Single(g => g.name == "BussinessShop_Competition_5.8x4.4").transform;
             Undo.RegisterFullObjectHierarchyUndo(room.gameObject, "Align underground threshold");
             AlignEntrance(room);
             Physics.SyncTransforms();
-            CheckSpace(Object.FindObjectOfType<ShopSceneBindings>());
+            CheckSpace(scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<ShopSceneBindings>(true)).SingleOrDefault());
             PrefabUtility.ApplyPrefabInstance(room.gameObject, InteractionMode.AutomatedAction);
             AssetDatabase.SaveAssets();
             EditorSceneManager.MarkSceneDirty(scene);

@@ -40,11 +40,11 @@ namespace Untitled.EditorTools
         private static void Request()
         {
             if (EditorApplication.isPlaying) throw new InvalidOperationException("Start this check from Edit Mode.");
-            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().path != "Assets/Scenes/Adventure.unity")
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().path != "Assets/Scenes/Gameplay/Adventure.unity")
             {
                 if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().isDirty)
                     throw new InvalidOperationException("Save the current scene before checking Adventure.");
-                EditorSceneManager.OpenScene("Assets/Scenes/Adventure.unity",OpenSceneMode.Single);
+                EditorSceneManager.OpenScene("Assets/Scenes/Gameplay/Adventure.unity",OpenSceneMode.Single);
             }
             AdventureCaveImporter.Validate();
             SessionState.SetBool(RequestKey,true);
