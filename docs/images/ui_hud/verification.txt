@@ -1,0 +1,3 @@
+Unity Editor Play Mode: PASSED
+Errors: 0
+Screenshots: 7

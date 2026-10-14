@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: Panels
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   m_GroupName: Panels
   m_Data:
     m_SerializedData: []
@@ -19,6 +19,21 @@ MonoBehaviour:
   m_SerializeEntries:
   - m_GUID: 18242a2a660c21940b357d1d9e04ea2e
     m_Address: UI_Menu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 539bccf1aed24460d936990de04d767a
+    m_Address: UI_Inventory
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 87425b2d69a4346c58e776e4b7fb1dc3
+    m_Address: UI_Dialogue
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db6302116b2b540e4aae888867cce7ac
+    m_Address: UI_Workstation
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

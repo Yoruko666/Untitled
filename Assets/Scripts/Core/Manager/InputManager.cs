@@ -26,12 +26,24 @@ namespace Untitled
 
         public void EnableInput()
         {
-            inputActions.Enable();
+            inputActions.Player.Enable();
         }
 
         public void DisableInput()
         {
+            inputActions.Player.Disable();
+        }
+
+        public void Dispose()
+        {
+            if (inputActions == null) return;
             inputActions.Disable();
+            inputActions.Player.Move.performed -= OnPlayerMove;
+            inputActions.Player.Move.canceled -= OnPlayerMoveCanceled;
+            inputActions.Player.ESC.performed -= OnEscPerformed;
+            inputActions.Player.Interact.performed -= OnInteractPerformed;
+            inputActions.Player.Scroll.performed -= OnScrollPerformed;
+            inputActions.Dispose(); inputActions = null; MoveInput = Vector2.zero;
         }
 
         private void OnPlayerMove(InputAction.CallbackContext ctx)

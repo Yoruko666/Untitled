@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Untitled
@@ -9,6 +10,10 @@ namespace Untitled
         [SerializeField, Min(0.1f)] private float reach = 2.6f;
         [SerializeField] private LayerMask interactionMask = Physics.DefaultRaycastLayers;
 
+        [SerializeField] private bool showLegacyOverlay = true;
+        public event Action<RaycastInteractable> TargetChanged;
+        public event Action<string> FeedbackChanged;
+        public void SetExternalHUD(bool external) => showLegacyOverlay = !external;
         private InputActions inputActions;
         private Font font;
         private GUIStyle labelStyle;
@@ -28,7 +33,7 @@ namespace Untitled
         private void OnDisable()
         {
             inputActions?.Shop.Interact.Disable();
-            CurrentTarget = null;
+            SetTarget(null);
             LastFeedback = string.Empty;
         }
 
@@ -40,24 +45,33 @@ namespace Untitled
 
         private void Update()
         {
-            CurrentTarget = null;
-            if (player == null || viewCamera == null || !player.HasControl) return;
+            if (player == null || viewCamera == null || !player.HasControl) { SetTarget(null); return; }
+            RaycastInteractable target = null;
             Ray ray = viewCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
             // Only the first solid hit is eligible: walls and furniture occlude interaction.
             if (Physics.Raycast(ray, out RaycastHit hit, reach, interactionMask, QueryTriggerInteraction.Ignore))
             {
                 var candidate = hit.collider.GetComponentInParent<RaycastInteractable>();
-                if (candidate != null && candidate.isActiveAndEnabled) CurrentTarget = candidate;
+                if (candidate != null && candidate.isActiveAndEnabled) target = candidate;
             }
+            SetTarget(target);
             if (CurrentTarget != null && inputActions.Shop.Interact.WasPressedThisFrame())
             {
                 LastFeedback = CurrentTarget.Interact();
                 feedbackUntil = Time.unscaledTime + 3f;
+                FeedbackChanged?.Invoke(LastFeedback);
             }
+        }
+
+        private void SetTarget(RaycastInteractable target)
+        {
+            if (CurrentTarget == target) return;
+            CurrentTarget = target; TargetChanged?.Invoke(target);
         }
 
         private void OnGUI()
         {
+            if (!showLegacyOverlay) return;
             if (labelStyle == null)
             {
                 labelStyle = new GUIStyle(GUI.skin.label)

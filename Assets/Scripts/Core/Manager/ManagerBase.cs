@@ -19,6 +19,9 @@ namespace Untitled
         }
 
         private static T instance;
+        public static bool IsInitialized => instance != null;
+        public static bool TryGet(out T value) { value = instance; return value != null; }
+        public static void ResetInstance() => instance = null;
 
         public virtual void Initialize()
         {

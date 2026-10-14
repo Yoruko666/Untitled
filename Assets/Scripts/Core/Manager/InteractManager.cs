@@ -7,6 +7,7 @@ namespace Untitled
     {
         private readonly List<InteractableBase> candidates = new();
         private int index;
+        public event System.Action<InteractableBase> CurrentChanged;
 
         public InteractableBase Current
         {
@@ -28,6 +29,7 @@ namespace Untitled
         {
             if (interactable == null || candidates.Contains(interactable)) return;
             candidates.Add(interactable);
+            CurrentChanged?.Invoke(Current);
         }
 
         public void Exit(InteractableBase interactable)
@@ -36,6 +38,14 @@ namespace Untitled
 
             if (candidates.Count == 0) index = 0;
             else index = Mathf.Clamp(index, 0, candidates.Count - 1);
+            CurrentChanged?.Invoke(Current);
+        }
+
+        public void Dispose()
+        {
+            EventCenter.Unsubscribe(GameEventType.Interact, OnInteract);
+            EventCenter.Unsubscribe<int>(GameEventType.ScrollSelect, OnScrollSelect);
+            candidates.Clear(); CurrentChanged = null;
         }
 
         private void OnInteract()
@@ -47,10 +57,11 @@ namespace Untitled
 
         private void OnScrollSelect(int direction)
         {
-            if (candidates.Count == 0) return;
+            if (candidates.Count == 0 || (UIManager.TryGet(out var ui) && ui.Top != null)) return;
 
             index = (index + direction) % candidates.Count;
             if (index < 0) index += candidates.Count;
+            CurrentChanged?.Invoke(Current);
         }
     }
 }

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35826dbe94dc548558d70802ab4f320f, type: 3}
+  m_Name: NightTheme
+  m_EditorClassIdentifier:
+  DisplayName: "\u591C\u665A \xB7 \u5730\u4E0B\u63A2\u7D22"
+  Background: {r: 0.0627451, g: 0.105882354, b: 0.16078432, a: 1}
+  Surface: {r: 0.13333334, g: 0.1882353, b: 0.24313726, a: 1}
+  Inset: {r: 0.08627451, g: 0.12941177, b: 0.1764706, a: 1}
+  Border: {r: 0.60784316, g: 0.45490196, b: 0.28235295, a: 1}
+  Text: {r: 0.9647059, g: 0.91764706, b: 0.8117647, a: 1}
+  Muted: {r: 0.7254902, g: 0.76862746, b: 0.78431374, a: 1}
+  Heading: {r: 1, g: 0.84313726, b: 0.46666667, a: 1}
+  Accent: {r: 0.94509804, g: 0.76862746, b: 0.39607844, a: 1}
+  Danger: {r: 0.8509804, g: 0.42352942, b: 0.37254903, a: 1}
+  PrimaryText: {r: 0.1882353, g: 0.12941177, b: 0.078431375, a: 1}
+  SecondaryText: {r: 0.9647059, g: 0.91764706, b: 0.8117647, a: 1}
+  DangerText: {r: 1, g: 0.94509804, b: 0.85490197, a: 1}
+  BodyFont: {fileID: 11400000, guid: 89933876fc54d4b2da06cb3123a622aa, type: 2}
+  TitleFont: {fileID: 11400000, guid: 89933876fc54d4b2da06cb3123a622aa, type: 2}
+  BackgroundSprite: {fileID: 21300000, guid: c5983a42822c84ffca48a3c7601ac1d2, type: 3}
+  PanelSprite: {fileID: 21300000, guid: c5983a42822c84ffca48a3c7601ac1d2, type: 3}
+  BorderSprite: {fileID: 21300000, guid: 7b3595447e110411f9223ff98cb24db4, type: 3}
+  PrimaryButtonSprite: {fileID: 21300000, guid: 9a7709f23bfda413191d7b6c2a2dbfd3,
+    type: 3}
+  SecondaryButtonSprite: {fileID: 21300000, guid: a5c5ea9d57b3448bbb5625df80b55599,
+    type: 3}
+  DangerButtonSprite: {fileID: 21300000, guid: c1889276c39f04f3f9b2e54aaa5c1c35, type: 3}
+  MilkTeaIcon: {fileID: 21300000, guid: a634c7babe9a44fe7886b1e93a96faf5, type: 3}
+  QuestIcon: {fileID: 21300000, guid: 68494a0a246104a7f92871f8e7e8d712, type: 3}
+  CoinIcon: {fileID: 21300000, guid: e9c31b889951645d0bb1a108b4041a95, type: 3}
+  PhaseIcon: {fileID: 21300000, guid: 2a6dbaca649d04269b97368ed170af44, type: 3}
+  ItemFallbackIcon: {fileID: 21300000, guid: 8b9e8496033de4a24971d368ee3cd744, type: 3}
+  NPCPortrait: {fileID: 21300000, guid: 5e4621faf0d85418c830072dee073a91, type: 3}
+  IconStyle: Pixel / Point / Placeholder
+  Spacing: 16
+  Padding: 24
+  SafeMargin: 64

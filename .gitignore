@@ -55,3 +55,7 @@ tools/__pycache__/
 
 # Companion metadata for locally retained Unity package archives
 *.unitypackage.meta
+
+# Embedded MCP package source directory (not a player build output)
+!/Packages/com.coplaydev.unity-mcp/Editor/Tools/Build/
+!/Packages/com.coplaydev.unity-mcp/Editor/Tools/Build/**

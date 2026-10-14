@@ -5,8 +5,9 @@ namespace Untitled
     public class GameData
     {
         public int Money;
-        public InventoryData InventoryData;  
-        public PackageData PackageData; 
+        public event System.Action<int> MoneyChanged;
+        public InventoryData InventoryData;
+        public PackageData PackageData;
 
         public GameData()
         {
@@ -24,6 +25,7 @@ namespace Untitled
             }
 
             Money += amount;
+            MoneyChanged?.Invoke(Money);
         }
 
         public bool TrySpendMoney(int amount)
@@ -37,6 +39,7 @@ namespace Untitled
             if (Money < amount) return false;
 
             Money -= amount;
+            MoneyChanged?.Invoke(Money);
             return true;
         }
     }
