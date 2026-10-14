@@ -1,6 +1,6 @@
 # Adventure：自然化哥布林洞穴接入
 
-场景：`Assets/Scenes/Adventure.unity`。
+场景：`Assets/Scenes/Gameplay/Adventure.unity`。
 
 本次导入自然化后的 `goblin_cave_natural.fbx`，保留 15 个区域、中心 Empty、原高度和 A/B/C 路线。地图通过 ModelImporter 转换为 Unity 的 XZ 地面、Y 高度，1 单位为 1 米。模型与材质分别位于 `Assets/Art/Models/GoblinCave/`、`Assets/Art/Materials/GoblinCave/`。
 

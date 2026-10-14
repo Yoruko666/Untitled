@@ -24,11 +24,17 @@
 
 Build Settings 当前仅启用 `Develop.unity`。其余场景需要在 Editor 中单独打开。
 
+四个主场景按用途放在 `Scenes/Development` 与 `Scenes/Gameplay`，移动时保留原 GUID。其他实验、演示与预览场景保持原位置。
+
+主场景以 `SceneRoot` 为唯一根对象，直属分组按 `Systems`、`Cameras`、`World`、`Lighting`、`UI` 排序，仅保留有内容的分组。系统和场景绑定归 `Systems`；独立相机归 `Cameras`；地图、环境和角色归 `World`；独立灯光及 Volume 归 `Lighting`；Canvas 和 EventSystem 归 `UI`。
+
+已有 Prefab 内部结构保持不变：玩家内部相机、环境内部灯光不单独移出。`Adventure_CaveRuntime` 整体放在 `Systems`，其玩家子对象仍由洞穴导入工具管理。分组使用单位 Transform，重挂对象保留世界变换和现有组件引用。相关 Editor 导入、组装及布局工具使用新路径，并支持在分组内查找禁用对象。
+
 | 场景 | 用途 / 状态 |
 | --- | --- |
-| `Assets/Scenes/Adventure.unity` | 冒险玩法场景 |
-| `Assets/Scenes/Bussiness.unity` | 经营玩法场景 |
-| `Assets/Scenes/Cave.unity` | 洞穴地图入口 |
+| `Assets/Scenes/Gameplay/Adventure.unity` | 冒险玩法场景 |
+| `Assets/Scenes/Gameplay/Bussiness.unity` | 经营玩法场景 |
+| `Assets/Scenes/Gameplay/Cave.unity` | 洞穴地图入口 |
 | `Assets/Scenes/CaveHD2D.unity` | 洞穴方案 / 地形实验场景 |
 | `Assets/Scenes/CaveHD2DLocal.unity` | 洞穴方案 / 地形实验场景 |
 | `Assets/Scenes/CaveStealthPlan.unity` | 洞穴方案 / 地形实验场景 |
@@ -37,7 +43,7 @@ Build Settings 当前仅启用 `Develop.unity`。其余场景需要在 Editor �
 | `Assets/Scenes/CaveTileWorld.unity` | 已保存的 TileWorld 洞穴地图，本次保存其配置状态 |
 | `Assets/Scenes/CaveTileWorldHD2D.unity` | 洞穴方案 / 地形实验场景 |
 | `Assets/Scenes/CaveTileWorldPixelTilePreview.unity` | 素材 / 道具展示场景 |
-| `Assets/Scenes/Develop.unity` | 开发测试入口 |
+| `Assets/Scenes/Development/Develop.unity` | 开发测试入口 |
 | `Assets/Scenes/GoblinCave200.unity` | 已保存的独立洞穴场景，见此前导入提交 |
 | `Assets/Scenes/PixelCaveConnectedRockPreview.unity` | 素材 / 道具展示场景 |
 | `Assets/Scenes/PixelCaveConnectorPreview.unity` | 素材 / 道具展示场景 |

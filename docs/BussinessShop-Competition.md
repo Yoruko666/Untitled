@@ -1,6 +1,6 @@
 # Bussiness 比赛版奶茶店交付
 
-打开 `Assets/Scenes/Bussiness.unity`，进入 Play Mode。WASD 移动、鼠标观察、E 交互、Esc 释放或恢复鼠标。
+打开 `Assets/Scenes/Gameplay/Bussiness.unity`，进入 Play Mode。WASD 移动、鼠标观察、E 交互、Esc 释放或恢复鼠标。
 
 ## 已执行的精简
 
@@ -72,7 +72,7 @@
 
 | 文件 | 内容 |
 |---|---|
-| `Assets/Scenes/Bussiness.unity` | 比赛版环境实例、FPS 出生朝向、六站点引用，场景 GUID 保留 |
+| `Assets/Scenes/Gameplay/Bussiness.unity` | 比赛版环境实例、FPS 出生朝向、六站点引用，场景 GUID 保留 |
 | `Assets/Prefabs/BussinessShop/bussiness_shop_competition_room.prefab` 及 `.meta` | 可编辑的紧凑环境、家具、碰撞、灯光、站点和点位 |
 | `Assets/Editor/MilkTeaShop/BussinessCompetitionLayout.cs` 及 `.meta` | 显式一次性改造菜单，以及入口对齐操作；运行时不重建布局 |
 | `docs/BussinessShop-Competition.md` 与 `docs/bussiness-shop-competition/` | 交付报告、四张截图及两份检查记录 |

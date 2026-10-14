@@ -135,6 +135,6 @@
 
 ## 修改范围与当前状态
 
-落地实施预计涉及 `Assets/Scenes/Bussiness.unity`、新增比赛版环境 Prefab 及 `.meta`；如需独立后处理配置，再新增比赛版 Profile。原道具模型、既有 FPS Prefab、地下城控制器和场景均不需要修改。
+落地实施预计涉及 `Assets/Scenes/Gameplay/Bussiness.unity`、新增比赛版环境 Prefab 及 `.meta`；如需独立后处理配置，再新增比赛版 Profile。原道具模型、既有 FPS Prefab、地下城控制器和场景均不需要修改。
 
 方案已实施；Scene、比赛版环境 Prefab、Editor 改造入口与交付记录已保存。地下入口按实际模型锚点修正到 `(2.695,-0.280,0.550)`，墙体留洞并保留下降台阶。当前交互仍为占位反馈；“前往地下”保留场景切换接入点，实际地下加载需由后续流程任务接通。

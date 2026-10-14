@@ -200,8 +200,8 @@ Point 过滤与 DOF 同时存在并不矛盾：前者决定贴图怎么采样，
 
 | 位置 | 当前职责 |
 | --- | --- |
-| `Assets/Scenes/Develop.unity` | 小房间开发测试 |
-| `Assets/Scenes/Cave.unity` | 洞穴地图与当前透视镜头 |
+| `Assets/Scenes/Development/Develop.unity` | 小房间开发测试 |
+| `Assets/Scenes/Gameplay/Cave.unity` | 洞穴地图与当前透视镜头 |
 | `Assets/Scenes/CaveHD2DLocal.unity` | 本地河谷台地聚落、整图功能占位、多路线空间与 Cinemachine 固定方向镜头 |
 | `Assets/Scripts/Levels/Cave/CaveMap.cs` | 场景 Tilemap 引用、坐标查询与出生点 |
 | `Assets/Editor/Cave/CaveMapBuilder.cs` | 分块地面、墙体、水面与 Collider 的派生生成 |

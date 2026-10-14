@@ -4,7 +4,7 @@
 
 ## 打开与操作
 
-打开 `Assets/Scenes/Bussiness.unity`，进入 Play Mode，聚焦 Game 视图。WASD 移动、鼠标观察、E 交互、Esc 释放／恢复鼠标。玩家在柜台后的员工区出生，眼位高 1.65 米，移动速度 2.8 米/秒。外围墙体和展示门将活动范围限制在奶茶店内。
+打开 `Assets/Scenes/Gameplay/Bussiness.unity`，进入 Play Mode，聚焦 Game 视图。WASD 移动、鼠标观察、E 交互、Esc 释放／恢复鼠标。玩家在柜台后的员工区出生，眼位高 1.65 米，移动速度 2.8 米/秒。外围墙体和展示门将活动范围限制在奶茶店内。
 
 本次通过 Unity MCP 查询场景、编译状态、执行场景组装、调整 Prefab、进入 Play Mode、获取截图和保存结果。没有修改 `MilkTeaShop` 或地下城场景，也没有接入跨场景切换或完整经营流程。
 
@@ -54,7 +54,7 @@
 
 | 路径 | 内容 |
 |---|---|
-| `Assets/Scenes/Bussiness.unity` | 保存的经营场景，原场景 GUID 保留 |
+| `Assets/Scenes/Gameplay/Bussiness.unity` | 保存的经营场景，原场景 GUID 保留 |
 | `Assets/Prefabs/BussinessShop/bussiness_shop_room.prefab` | 可编辑环境、站点、灯光和点位 |
 | `Assets/Prefabs/BussinessShop/` | 41 个道具 Prefab，家具保持嵌套引用 |
 | `Assets/Art/Models/BussinessShop/` | FBX、米制尺寸及材质来源清单 |
