@@ -1,0 +1,8 @@
+PASS Continuous WASD waypoint 0 at (0.000, 0.025, 0.326)
+PASS Continuous WASD waypoint 1 at (-0.378, 0.025, 0.388)
+PASS Continuous WASD waypoint 2 at (-0.443, 0.025, -0.328)
+PASS Continuous WASD waypoint 3 at (0.379, 0.025, -0.394)
+PASS Continuous WASD waypoint 4 at (0.444, 0.025, 0.333)
+PASS Continuous WASD waypoint 5 at (0.055, 0.025, -0.002)
+PASS Continuous WASD waypoint 6 at (0.005, 0.025, -0.684)
+PASS Dungeon boundary at (0.005, 0.052, -1.930)
