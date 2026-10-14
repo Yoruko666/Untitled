@@ -13,7 +13,10 @@ namespace Untitled
         protected override void Update()
         {
             Vector2 moveInput = InputManager.Instance.MoveInput;
-            float speed = Speed * DebugManager.Instance.MoveSpeedMultiplier;
+            float speed = Speed;
+#if UNITY_EDITOR || (DEVELOPMENT_BUILD && UNTITLED_DEVELOPER_TOOLS)
+            if (DebugManager.TryGet(out var debug)) speed *= debug.MoveSpeedMultiplier;
+#endif
             if (movementCamera != null)
             {
                 Vector3 forward = Vector3.ProjectOnPlane(movementCamera.forward, Vector3.up).normalized;

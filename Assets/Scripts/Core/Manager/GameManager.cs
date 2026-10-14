@@ -29,7 +29,24 @@ namespace Untitled
             configuredSavePath = savePath;
         }
 
-        public bool TrySave(out string error) => saveStore.TrySave(GameData.Capture(), out error);
+#if UNITY_EDITOR || (DEVELOPMENT_BUILD && UNTITLED_DEVELOPER_TOOLS)
+        public bool DeveloperStateModified { get; private set; }
+        internal void MarkDeveloperStateModified() => DeveloperStateModified = true;
+        // Only undo a guard raised for an atomic operation rejected before any event fired.
+        internal void RestoreDeveloperSaveGuard(bool previous) => DeveloperStateModified = previous;
+#endif
+
+        public bool TrySave(out string error)
+        {
+#if UNITY_EDITOR || (DEVELOPMENT_BUILD && UNTITLED_DEVELOPER_TOOLS)
+            if (DeveloperStateModified)
+            {
+                error = "调试会话禁止使用普通保存入口。专用测试槽位尚未实现；请停止 Play Mode 后重新开始正常会话。";
+                return false;
+            }
+#endif
+            return saveStore.TrySave(GameData.Capture(), out error);
+        }
 
         public bool TryLoad(out string error)
         {

@@ -16,8 +16,10 @@ namespace Untitled
             RegisterManager(new InputManager());
             RegisterManager(new UIManager());
             RegisterManager(new InteractManager());
+#if UNITY_EDITOR || (DEVELOPMENT_BUILD && UNTITLED_DEVELOPER_TOOLS)
             RegisterManager(new DebugManager());
             if (DebugManager.TryGet(out var debug)) debug.EnsureSceneOverlay();
+#endif
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -28,7 +30,10 @@ namespace Untitled
             if (InteractManager.TryGet(out var interactions)) interactions.Dispose();
             EventCenter.Clear();
             DatabaseManager.ResetInstance(); GameManager.ResetInstance(); InputManager.ResetInstance();
-            UIManager.ResetInstance(); InteractManager.ResetInstance(); DebugManager.ResetInstance();
+            UIManager.ResetInstance(); InteractManager.ResetInstance();
+#if UNITY_EDITOR || (DEVELOPMENT_BUILD && UNTITLED_DEVELOPER_TOOLS)
+            DebugManager.ResetInstance();
+#endif
             Time.timeScale = 1;
         }
         private void OnApplicationQuit()
