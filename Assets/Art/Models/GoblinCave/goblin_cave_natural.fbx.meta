@@ -1,0 +1,224 @@
+fileFormatVersion: 2
+guid: 1bfcf4f75c949544fa461f5ee6a81e66
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Deep_Rock
+    second: {fileID: 2100000, guid: bfd17782ec2b80f4198b1b7930e5e4fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Path_Stone
+    second: {fileID: 2100000, guid: 1f7d649bf90bab14c80e167f99eff6e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L0_Variant0
+    second: {fileID: 2100000, guid: 84d5e17650d8db24c805c0cead38b64e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L0_Variant1
+    second: {fileID: 2100000, guid: 6c091b0ca4c570b4d93393da1a8133bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L0_Variant2
+    second: {fileID: 2100000, guid: ecdc52d3bf08a0c4b9a54e552c05d0fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L1_Variant0
+    second: {fileID: 2100000, guid: e634c8918df645f488527364712ce680, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L1_Variant1
+    second: {fileID: 2100000, guid: 3b510ba1b7e32464687b1960eb30e47d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L1_Variant2
+    second: {fileID: 2100000, guid: f54224e3a55d81e42bae2c20ef338e76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L2_Variant0
+    second: {fileID: 2100000, guid: eab40058343904b45b2a8f327b808749, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L2_Variant1
+    second: {fileID: 2100000, guid: 5f508c2cfafdb914ca0a222b5ded0df5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L2_Variant2
+    second: {fileID: 2100000, guid: af52fec19d348124bb01f42c37f963ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L3_Variant0
+    second: {fileID: 2100000, guid: deb1093da2e37e7449b86ec249590a8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L3_Variant1
+    second: {fileID: 2100000, guid: f6173bd6d3185d84992c1e6fa2cadca9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L3_Variant2
+    second: {fileID: 2100000, guid: 3af93c4d9fcf1014f90eee9cfc71b068, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L4_Variant0
+    second: {fileID: 2100000, guid: 131f393679467a848a63f32502ffacc4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L4_Variant1
+    second: {fileID: 2100000, guid: 43e2c37e078dcd84cb7789938da4a9c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Rock_L4_Variant2
+    second: {fileID: 2100000, guid: e0ffcc21651c1884bad6f3ae10aa39de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Wall_Basalt
+    second: {fileID: 2100000, guid: 297ca52faa1b7a2418c5fc806bb9cc2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Wall_Basalt_Light
+    second: {fileID: 2100000, guid: 70a26e17cb8b6094989ff03653758598, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Water_Placeholder
+    second: {fileID: 2100000, guid: f09382814f6e13d4d9f9089d13b61ecb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Wood_Planks
+    second: {fileID: 2100000, guid: e4c11d2cae9eb60438fedfa3842e1d76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Wood_Planks_Light
+    second: {fileID: 2100000, guid: e1551a74a840e3348b756c3e95887737, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GC_Wood_Structure
+    second: {fileID: 2100000, guid: 99fc2ac0a60bfa642bfef89b356e209e, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName:
+    rigImportErrors:
+    rigImportWarnings:
+    animationImportErrors:
+    animationImportWarnings:
+    animationRetargetingWarnings:
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 1
+    preserveHierarchy: 1
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName:
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData:
+  assetBundleName:
+  assetBundleVariant:

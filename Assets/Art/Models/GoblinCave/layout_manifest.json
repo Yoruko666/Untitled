@@ -1,0 +1,2566 @@
+{
+  "stage": "naturalized",
+  "config": {
+    "seed": 20261014,
+    "levels": [
+      0.0,
+      4.0,
+      9.0,
+      15.0,
+      22.0
+    ],
+    "player_height": 1.8,
+    "player_radius": 0.35,
+    "main_width": 4.6,
+    "west_width": 3.0,
+    "east_width": 2.8,
+    "secondary_width": 2.8,
+    "final_width": 3.2,
+    "step_max_rise": 0.18,
+    "step_min_tread": 0.25,
+    "max_slope_deg": 36.0,
+    "sample_spacing": 0.2,
+    "ground_tolerance": 0.22,
+    "platform_gray_thickness": 2.4,
+    "rock_floor": -9.0,
+    "water_z": -7.5,
+    "plank_length": 0.48,
+    "plank_thickness": 0.2,
+    "pier_spacing": 5.0,
+    "rail_height": 1.0,
+    "wall_x": 58.0,
+    "wall_y_min": -64.0,
+    "wall_y_max": 77.0,
+    "render_x": 1600,
+    "render_y": 1800,
+    "render_samples": 32,
+    "camera_iso": [
+      119.0,
+      -177.0,
+      217.0
+    ],
+    "camera_target": [
+      0.0,
+      7.0,
+      7.0
+    ],
+    "iso_scale": 210.0,
+    "iso_render_x": 2000,
+    "iso_render_y": 1800,
+    "font": "C:/Windows/Fonts/simhei.ttf"
+  },
+  "zones": [
+    {
+      "id": 1,
+      "slug": "Extraction",
+      "name": "撤离集结区",
+      "x": 0,
+      "y": -54,
+      "width": 16.0,
+      "depth": 10.0,
+      "level": 0,
+      "z": 0.0
+    },
+    {
+      "id": 2,
+      "slug": "Entrance",
+      "name": "入口前厅",
+      "x": 0,
+      "y": -38,
+      "width": 16.0,
+      "depth": 12.0,
+      "level": 0,
+      "z": 0.0
+    },
+    {
+      "id": 3,
+      "slug": "Barracks",
+      "name": "军营训练区",
+      "x": 37,
+      "y": 31,
+      "width": 18.0,
+      "depth": 18.0,
+      "level": 2,
+      "z": 9.0
+    },
+    {
+      "id": 4,
+      "slug": "Dormitory",
+      "name": "住宿休息区",
+      "x": 19,
+      "y": -29,
+      "width": 14.0,
+      "depth": 10.0,
+      "level": 1,
+      "z": 4.0
+    },
+    {
+      "id": 5,
+      "slug": "Kitchen",
+      "name": "厨房备料区",
+      "x": 37,
+      "y": -20,
+      "width": 16.0,
+      "depth": 14.0,
+      "level": 1,
+      "z": 4.0
+    },
+    {
+      "id": 6,
+      "slug": "Tavern",
+      "name": "酒馆",
+      "x": -15,
+      "y": 3,
+      "width": 16.0,
+      "depth": 14.0,
+      "level": 2,
+      "z": 9.0
+    },
+    {
+      "id": 7,
+      "slug": "Gambling",
+      "name": "赌博场",
+      "x": 29,
+      "y": 7,
+      "width": 16.0,
+      "depth": 14.0,
+      "level": 2,
+      "z": 9.0
+    },
+    {
+      "id": 8,
+      "slug": "Dining",
+      "name": "聚餐区",
+      "x": 7,
+      "y": 31,
+      "width": 20.0,
+      "depth": 16.0,
+      "level": 3,
+      "z": 15.0
+    },
+    {
+      "id": 9,
+      "slug": "Altar",
+      "name": "祭坛大厅",
+      "x": 0,
+      "y": 60,
+      "width": 26.0,
+      "depth": 16.0,
+      "level": 4,
+      "z": 22.0
+    },
+    {
+      "id": 10,
+      "slug": "Elder",
+      "name": "长老住处",
+      "x": 32,
+      "y": 62,
+      "width": 20.0,
+      "depth": 16.0,
+      "level": 4,
+      "z": 22.0
+    },
+    {
+      "id": 11,
+      "slug": "Planting",
+      "name": "种植区",
+      "x": -38,
+      "y": 24,
+      "width": 18.0,
+      "depth": 18.0,
+      "level": 2,
+      "z": 9.0
+    },
+    {
+      "id": 12,
+      "slug": "Warehouse",
+      "name": "仓库",
+      "x": -15,
+      "y": 31,
+      "width": 16.0,
+      "depth": 16.0,
+      "level": 3,
+      "z": 15.0
+    },
+    {
+      "id": 13,
+      "slug": "Unloading",
+      "name": "卸货庭院",
+      "x": 35,
+      "y": -42,
+      "width": 16.0,
+      "depth": 12.0,
+      "level": 0,
+      "z": 0.0
+    },
+    {
+      "id": 14,
+      "slug": "Hearth",
+      "name": "公共火塘",
+      "x": 6,
+      "y": 3,
+      "width": 18.0,
+      "depth": 18.0,
+      "level": 2,
+      "z": 9.0
+    },
+    {
+      "id": 15,
+      "slug": "RiverWorkshop",
+      "name": "河岸工坊",
+      "x": -38,
+      "y": -18,
+      "width": 18.0,
+      "depth": 16.0,
+      "level": 1,
+      "z": 4.0
+    }
+  ],
+  "junctions": {
+    "JA_O1": [
+      0,
+      -28,
+      0
+    ],
+    "JA_EntryBridge": [
+      3,
+      -17,
+      4
+    ],
+    "JC_Unloading": [
+      53,
+      -42,
+      0
+    ],
+    "JC_Gambling": [
+      51,
+      7,
+      9
+    ]
+  },
+  "paths": [
+    {
+      "id": "A_01_02",
+      "route": "A",
+      "a": 1,
+      "b": 2,
+      "w": 4.6,
+      "p": [
+        [
+          0,
+          -50,
+          0.0
+        ],
+        [
+          0,
+          -43,
+          0.0
+        ]
+      ],
+      "modes": [
+        "rock"
+      ]
+    },
+    {
+      "id": "A_02_O1",
+      "route": "A",
+      "a": 2,
+      "b": "JA_O1",
+      "w": 4.6,
+      "p": [
+        [
+          0,
+          -33,
+          0.0
+        ],
+        [
+          0,
+          -28,
+          0.0
+        ]
+      ],
+      "modes": [
+        "rock"
+      ]
+    },
+    {
+      "id": "A_O1_Entry",
+      "route": "A",
+      "a": "JA_O1",
+      "b": "JA_EntryBridge",
+      "w": 4.6,
+      "p": [
+        [
+          0,
+          -28,
+          0.0
+        ],
+        [
+          3,
+          -17,
+          4.0
+        ]
+      ],
+      "modes": [
+        "stairs"
+      ]
+    },
+    {
+      "id": "A_Entry_14",
+      "route": "A",
+      "a": "JA_EntryBridge",
+      "b": 14,
+      "w": 4.6,
+      "p": [
+        [
+          3,
+          -17,
+          4.0
+        ],
+        [
+          6,
+          -5,
+          9.0
+        ]
+      ],
+      "modes": [
+        "stairs"
+      ]
+    },
+    {
+      "id": "A_14_08",
+      "route": "A",
+      "a": 14,
+      "b": 8,
+      "w": 4.6,
+      "p": [
+        [
+          6,
+          11,
+          9.0
+        ],
+        [
+          7,
+          24,
+          15.0
+        ]
+      ],
+      "modes": [
+        "stairs"
+      ]
+    },
+    {
+      "id": "A_08_09",
+      "route": "A",
+      "a": 8,
+      "b": 9,
+      "w": 4.6,
+      "p": [
+        [
+          7,
+          38,
+          15.0
+        ],
+        [
+          3,
+          53,
+          22.0
+        ]
+      ],
+      "modes": [
+        "stairs"
+      ]
+    },
+    {
+      "id": "B_01_15",
+      "route": "B",
+      "a": 1,
+      "b": 15,
+      "w": 3.0,
+      "p": [
+        [
+          -7,
+          -54,
+          0.0
+        ],
+        [
+          -42,
+          -54,
+          0.0
+        ],
+        [
+          -42,
+          -43,
+          1.5
+        ],
+        [
+          -38,
+          -27,
+          4.0
+        ],
+        [
+          -38,
+          -25,
+          4.0
+        ]
+      ],
+      "modes": [
+        "rock",
+        "ramp",
+        "ramp",
+        "rock"
+      ]
+    },
+    {
+      "id": "B_15_11",
+      "route": "B",
+      "a": 15,
+      "b": 11,
+      "w": 3.0,
+      "p": [
+        [
+          -38,
+          -11,
+          4.0
+        ],
+        [
+          -38,
+          7,
+          7.3
+        ],
+        [
+          -38,
+          16,
+          9.0
+        ]
+      ],
+      "modes": [
+        "ramp",
+        "stairs"
+      ]
+    },
+    {
+      "id": "B_11_12_SupplyBridge",
+      "route": "B",
+      "a": 11,
+      "b": 12,
+      "w": 3.0,
+      "p": [
+        [
+          -38,
+          32,
+          9.0
+        ],
+        [
+          -38,
+          44,
+          15.0
+        ],
+        [
+          -23,
+          44,
+          15.0
+        ],
+        [
+          -21,
+          36,
+          15.0
+        ]
+      ],
+      "modes": [
+        "stairs",
+        "bridge",
+        "rock"
+      ]
+    },
+    {
+      "id": "B_12_09",
+      "route": "B",
+      "a": 12,
+      "b": 9,
+      "w": 3.0,
+      "p": [
+        [
+          -14,
+          38,
+          15.0
+        ],
+        [
+          -10,
+          54,
+          22.0
+        ],
+        [
+          -8,
+          58,
+          22.0
+        ]
+      ],
+      "modes": [
+        "stairs",
+        "rock"
+      ]
+    },
+    {
+      "id": "C_01_03",
+      "route": "C",
+      "a": 1,
+      "b": 3,
+      "w": 2.8,
+      "p": [
+        [
+          7,
+          -54,
+          0.0
+        ],
+        [
+          53,
+          -54,
+          0.0
+        ],
+        [
+          53,
+          -42,
+          0.0
+        ],
+        [
+          53,
+          -34,
+          0.0
+        ],
+        [
+          51,
+          -23,
+          4.0
+        ],
+        [
+          51,
+          -2,
+          9.0
+        ],
+        [
+          51,
+          7,
+          9.0
+        ],
+        [
+          51,
+          31,
+          9.0
+        ],
+        [
+          45,
+          31,
+          9.0
+        ]
+      ],
+      "modes": [
+        "rock",
+        "rock",
+        "rock",
+        "stairs",
+        "ramp",
+        "rock",
+        "rock",
+        "rock"
+      ]
+    },
+    {
+      "id": "C_03_09",
+      "route": "C",
+      "a": 3,
+      "b": 9,
+      "w": 2.8,
+      "p": [
+        [
+          45,
+          31,
+          9.0
+        ],
+        [
+          51,
+          31,
+          9.0
+        ],
+        [
+          51,
+          46,
+          9.0
+        ],
+        [
+          37,
+          49,
+          14.0
+        ],
+        [
+          20,
+          51,
+          20.0
+        ],
+        [
+          11,
+          57,
+          22.0
+        ]
+      ],
+      "modes": [
+        "rock",
+        "bridge",
+        "stairs",
+        "stairs",
+        "stairs"
+      ]
+    },
+    {
+      "id": "Final_09_10",
+      "route": "Final",
+      "a": 9,
+      "b": 10,
+      "w": 3.2,
+      "p": [
+        [
+          12,
+          62,
+          22.0
+        ],
+        [
+          23,
+          62,
+          22.0
+        ]
+      ],
+      "modes": [
+        "bridge"
+      ]
+    },
+    {
+      "id": "Switch_15_EntryBridge",
+      "route": "Switch",
+      "a": 15,
+      "b": "JA_EntryBridge",
+      "w": 3.0,
+      "p": [
+        [
+          -30,
+          -18,
+          4.0
+        ],
+        [
+          -16,
+          -18,
+          4.0
+        ],
+        [
+          -13,
+          -17,
+          4.0
+        ],
+        [
+          3,
+          -17,
+          4.0
+        ]
+      ],
+      "modes": [
+        "bridge",
+        "rock",
+        "bridge"
+      ]
+    },
+    {
+      "id": "Switch_O1_04",
+      "route": "Switch",
+      "a": "JA_O1",
+      "b": 4,
+      "w": 2.8,
+      "p": [
+        [
+          0,
+          -28,
+          0.0
+        ],
+        [
+          4,
+          -28,
+          0.0
+        ],
+        [
+          13,
+          -29,
+          4.0
+        ]
+      ],
+      "modes": [
+        "rock",
+        "stairs"
+      ]
+    },
+    {
+      "id": "Switch_04_05",
+      "route": "Switch",
+      "a": 4,
+      "b": 5,
+      "w": 2.8,
+      "p": [
+        [
+          25,
+          -29,
+          4.0
+        ],
+        [
+          30,
+          -23,
+          4.0
+        ]
+      ],
+      "modes": [
+        "rock"
+      ]
+    },
+    {
+      "id": "Switch_05_13",
+      "route": "Switch",
+      "a": 5,
+      "b": 13,
+      "w": 2.8,
+      "p": [
+        [
+          35,
+          -26,
+          4.0
+        ],
+        [
+          35,
+          -37,
+          0.0
+        ]
+      ],
+      "modes": [
+        "stairs"
+      ]
+    },
+    {
+      "id": "Switch_13_Outer",
+      "route": "Switch",
+      "a": 13,
+      "b": "JC_Unloading",
+      "w": 2.8,
+      "p": [
+        [
+          42,
+          -42,
+          0.0
+        ],
+        [
+          53,
+          -42,
+          0.0
+        ]
+      ],
+      "modes": [
+        "rock"
+      ]
+    },
+    {
+      "id": "Switch_06_14",
+      "route": "Switch",
+      "a": 6,
+      "b": 14,
+      "w": 2.8,
+      "p": [
+        [
+          -8,
+          3,
+          9.0
+        ],
+        [
+          -2,
+          3,
+          9.0
+        ]
+      ],
+      "modes": [
+        "rock"
+      ]
+    },
+    {
+      "id": "Switch_14_07",
+      "route": "Switch",
+      "a": 14,
+      "b": 7,
+      "w": 2.8,
+      "p": [
+        [
+          14,
+          5,
+          9.0
+        ],
+        [
+          22,
+          5,
+          9.0
+        ]
+      ],
+      "modes": [
+        "rock"
+      ]
+    },
+    {
+      "id": "Switch_07_Outer",
+      "route": "Switch",
+      "a": 7,
+      "b": "JC_Gambling",
+      "w": 2.8,
+      "p": [
+        [
+          36,
+          7,
+          9.0
+        ],
+        [
+          51,
+          7,
+          9.0
+        ]
+      ],
+      "modes": [
+        "rock"
+      ]
+    },
+    {
+      "id": "Switch_12_08",
+      "route": "Switch",
+      "a": 12,
+      "b": 8,
+      "w": 2.8,
+      "p": [
+        [
+          -8,
+          31,
+          15.0
+        ],
+        [
+          -2,
+          31,
+          15.0
+        ]
+      ],
+      "modes": [
+        "rock"
+      ]
+    },
+    {
+      "id": "Switch_08_03",
+      "route": "Switch",
+      "a": 8,
+      "b": 3,
+      "w": 2.8,
+      "p": [
+        [
+          16,
+          31,
+          15.0
+        ],
+        [
+          29,
+          31,
+          9.0
+        ]
+      ],
+      "modes": [
+        "stairs"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "path": "A_01_02",
+      "route": "A",
+      "mode": "rock",
+      "a": [
+        0.0,
+        -50.0,
+        0.0
+      ],
+      "b": [
+        0.0,
+        -43.0,
+        0.0
+      ],
+      "width": 4.6,
+      "slope": 0.0,
+      "obj": "RockPassage_A_01_02_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "A_02_O1",
+      "route": "A",
+      "mode": "rock",
+      "a": [
+        0.0,
+        -33.0,
+        0.0
+      ],
+      "b": [
+        0.0,
+        -28.0,
+        0.0
+      ],
+      "width": 4.6,
+      "slope": 0.0,
+      "obj": "RockPassage_A_02_O1_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "A_O1_Entry",
+      "route": "A",
+      "mode": "rock",
+      "a": [
+        0.0,
+        -28.0,
+        0.0
+      ],
+      "b": [
+        0.6272727251052856,
+        -25.700000762939453,
+        0.0
+      ],
+      "width": 4.6,
+      "slope": 0,
+      "obj": "LandingApproach_A_O1_Entry_01_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "A_O1_Entry",
+      "route": "A",
+      "mode": "rock",
+      "a": [
+        2.372727394104004,
+        -19.299999237060547,
+        4.0
+      ],
+      "b": [
+        3.0,
+        -17.0,
+        4.0
+      ],
+      "width": 4.6,
+      "slope": 0,
+      "obj": "LandingApproach_A_O1_Entry_01_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "A_O1_Entry",
+      "route": "A",
+      "mode": "stairs",
+      "a": [
+        0.6272727251052856,
+        -25.700000762939453,
+        0.0
+      ],
+      "b": [
+        2.372727394104004,
+        -19.299999237060547,
+        4.0
+      ],
+      "width": 4.6,
+      "slope": 31.089021170101926,
+      "obj": "Stairs_A_O1_Entry_01",
+      "step_count": 23,
+      "tread": 0.28842388836821403,
+      "rise": 0.17391304347826086
+    },
+    {
+      "path": "A_Entry_14",
+      "route": "A",
+      "mode": "rock",
+      "a": [
+        3.0,
+        -17.0,
+        4.0
+      ],
+      "b": [
+        3.575000047683716,
+        -14.699999809265137,
+        4.0
+      ],
+      "width": 4.6,
+      "slope": 0,
+      "obj": "LandingApproach_A_Entry_14_01_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "A_Entry_14",
+      "route": "A",
+      "mode": "rock",
+      "a": [
+        5.644721984863281,
+        -6.421111106872559,
+        9.0
+      ],
+      "b": [
+        6.0,
+        -5.0,
+        9.0
+      ],
+      "width": 4.6,
+      "slope": 0,
+      "obj": "LandingApproach_A_Entry_14_01_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "A_Entry_14",
+      "route": "A",
+      "mode": "stairs",
+      "a": [
+        3.575000047683716,
+        -14.699999809265137,
+        4.0
+      ],
+      "b": [
+        5.644721984863281,
+        -6.421111106872559,
+        9.0
+      ],
+      "width": 4.6,
+      "slope": 30.366612689451326,
+      "obj": "Stairs_A_Entry_14_01",
+      "step_count": 28,
+      "tread": 0.30477439599461914,
+      "rise": 0.17857142857142858
+    },
+    {
+      "path": "A_14_08",
+      "route": "A",
+      "mode": "rock",
+      "a": [
+        6.0,
+        11.0,
+        9.0
+      ],
+      "b": [
+        6.101001262664795,
+        12.31301498413086,
+        9.0
+      ],
+      "width": 4.6,
+      "slope": 0,
+      "obj": "LandingApproach_A_14_08_01_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "A_14_08",
+      "route": "A",
+      "mode": "rock",
+      "a": [
+        6.899479389190674,
+        22.693235397338867,
+        15.0
+      ],
+      "b": [
+        7.0,
+        24.0,
+        15.0
+      ],
+      "width": 4.6,
+      "slope": 0,
+      "obj": "LandingApproach_A_14_08_01_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "A_14_08",
+      "route": "A",
+      "mode": "stairs",
+      "a": [
+        6.101001262664795,
+        12.31301498413086,
+        9.0
+      ],
+      "b": [
+        6.899479389190674,
+        22.693235397338867,
+        15.0
+      ],
+      "width": 4.6,
+      "slope": 29.955700650627904,
+      "obj": "Stairs_A_14_08_01",
+      "step_count": 34,
+      "tread": 0.3062025235360209,
+      "rise": 0.17647058823529413
+    },
+    {
+      "path": "A_08_09",
+      "route": "A",
+      "mode": "rock",
+      "a": [
+        7.0,
+        38.0,
+        15.0
+      ],
+      "b": [
+        6.6436448097229,
+        39.33633041381836,
+        15.0
+      ],
+      "width": 4.6,
+      "slope": 0,
+      "obj": "LandingApproach_A_08_09_01_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "A_08_09",
+      "route": "A",
+      "mode": "rock",
+      "a": [
+        3.3032479286193848,
+        51.86281967163086,
+        22.0
+      ],
+      "b": [
+        3.0,
+        53.0,
+        22.0
+      ],
+      "width": 4.6,
+      "slope": 0,
+      "obj": "LandingApproach_A_08_09_01_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "A_08_09",
+      "route": "A",
+      "mode": "stairs",
+      "a": [
+        6.6436448097229,
+        39.33633041381836,
+        15.0
+      ],
+      "b": [
+        3.3032479286193848,
+        51.86281967163086,
+        22.0
+      ],
+      "width": 4.6,
+      "slope": 28.366710430017445,
+      "obj": "Stairs_A_08_09_01",
+      "step_count": 39,
+      "tread": 0.33241607963453135,
+      "rise": 0.1794871794871795
+    },
+    {
+      "path": "B_01_15",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -7.0,
+        -54.0,
+        0.0
+      ],
+      "b": [
+        -42.0,
+        -54.0,
+        0.0
+      ],
+      "width": 3.0,
+      "slope": 0.0,
+      "obj": "RockPassage_B_01_15_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_01_15",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -42.0,
+        -54.0,
+        0.0
+      ],
+      "b": [
+        -42.0,
+        -52.5,
+        0.0
+      ],
+      "width": 3.0,
+      "slope": 0,
+      "obj": "LandingApproach_B_01_15_02_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_01_15",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -42.0,
+        -44.5,
+        1.5
+      ],
+      "b": [
+        -42.0,
+        -43.0,
+        1.5
+      ],
+      "width": 3.0,
+      "slope": 0,
+      "obj": "LandingApproach_B_01_15_02_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_01_15",
+      "route": "B",
+      "mode": "ramp",
+      "a": [
+        -42.0,
+        -52.5,
+        0.0
+      ],
+      "b": [
+        -42.0,
+        -44.5,
+        1.5
+      ],
+      "width": 3.0,
+      "slope": 10.619655276155134,
+      "obj": "Ramp_B_01_15_02",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_01_15",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -42.0,
+        -43.0,
+        1.5
+      ],
+      "b": [
+        -41.625,
+        -41.5,
+        1.5
+      ],
+      "width": 3.0,
+      "slope": 0,
+      "obj": "LandingApproach_B_01_15_03_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_01_15",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -38.375,
+        -28.5,
+        4.0
+      ],
+      "b": [
+        -38.0,
+        -27.0,
+        4.0
+      ],
+      "width": 3.0,
+      "slope": 0,
+      "obj": "LandingApproach_B_01_15_03_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_01_15",
+      "route": "B",
+      "mode": "ramp",
+      "a": [
+        -41.625,
+        -41.5,
+        1.5
+      ],
+      "b": [
+        -38.375,
+        -28.5,
+        4.0
+      ],
+      "width": 3.0,
+      "slope": 10.56794229817309,
+      "obj": "Ramp_B_01_15_03",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_01_15",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -38.0,
+        -27.0,
+        4.0
+      ],
+      "b": [
+        -38.0,
+        -25.0,
+        4.0
+      ],
+      "width": 3.0,
+      "slope": 0.0,
+      "obj": "RockPassage_B_01_15_04",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_15_11",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -38.0,
+        -11.0,
+        4.0
+      ],
+      "b": [
+        -38.0,
+        -9.829290390014648,
+        4.0
+      ],
+      "width": 3.0,
+      "slope": 0,
+      "obj": "LandingApproach_B_15_11_01_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_15_11",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -38.0,
+        5.5,
+        7.300000190734863
+      ],
+      "b": [
+        -38.0,
+        7.0,
+        7.300000190734863
+      ],
+      "width": 3.0,
+      "slope": 0,
+      "obj": "LandingApproach_B_15_11_01_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_15_11",
+      "route": "B",
+      "mode": "ramp",
+      "a": [
+        -38.0,
+        -9.829290390014648,
+        4.0
+      ],
+      "b": [
+        -38.0,
+        5.5,
+        7.300000190734863
+      ],
+      "width": 3.0,
+      "slope": 12.14889378572895,
+      "obj": "Ramp_B_15_11_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_15_11",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -38.0,
+        7.0,
+        7.300000190734863
+      ],
+      "b": [
+        -38.0,
+        8.5,
+        7.300000190734863
+      ],
+      "width": 3.0,
+      "slope": 0,
+      "obj": "LandingApproach_B_15_11_02_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_15_11",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -38.0,
+        14.731390953063965,
+        9.0
+      ],
+      "b": [
+        -38.0,
+        16.0,
+        9.0
+      ],
+      "width": 3.0,
+      "slope": 0,
+      "obj": "LandingApproach_B_15_11_02_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_15_11",
+      "route": "B",
+      "mode": "ramp",
+      "a": [
+        -38.0,
+        8.5,
+        7.300000190734863
+      ],
+      "b": [
+        -38.0,
+        14.731390953063965,
+        9.0
+      ],
+      "width": 3.0,
+      "slope": 15.259650565421142,
+      "obj": "Ramp_B_15_11_02_Natural",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_11_12_SupplyBridge",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -38.0,
+        32.0,
+        9.0
+      ],
+      "b": [
+        -38.0,
+        33.41191101074219,
+        9.0
+      ],
+      "width": 3.0,
+      "slope": 0,
+      "obj": "LandingApproach_B_11_12_SupplyBridge_01_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_11_12_SupplyBridge",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -38.0,
+        42.5,
+        15.0
+      ],
+      "b": [
+        -38.0,
+        44.0,
+        15.0
+      ],
+      "width": 3.0,
+      "slope": 0,
+      "obj": "LandingApproach_B_11_12_SupplyBridge_01_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_11_12_SupplyBridge",
+      "route": "B",
+      "mode": "stairs",
+      "a": [
+        -38.0,
+        33.41191101074219,
+        9.0
+      ],
+      "b": [
+        -38.0,
+        42.5,
+        15.0
+      ],
+      "width": 3.0,
+      "slope": 33.43298423753615,
+      "obj": "Stairs_B_11_12_SupplyBridge_01",
+      "step_count": 34,
+      "tread": 0.26729673497817097,
+      "rise": 0.17647058823529413
+    },
+    {
+      "path": "B_11_12_SupplyBridge",
+      "route": "B",
+      "mode": "bridge",
+      "a": [
+        -38.0,
+        44.0,
+        15.0
+      ],
+      "b": [
+        -23.0,
+        44.0,
+        15.0
+      ],
+      "width": 3.0,
+      "slope": 0.0,
+      "obj": "Bridge_B_11_12_SupplyBridge_02",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_11_12_SupplyBridge",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -23.0,
+        44.0,
+        15.0
+      ],
+      "b": [
+        -21.0,
+        36.0,
+        15.0
+      ],
+      "width": 3.0,
+      "slope": 0.0,
+      "obj": "RockPassage_B_11_12_SupplyBridge_03",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_12_09",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -14.0,
+        38.0,
+        15.0
+      ],
+      "b": [
+        -13.695196151733398,
+        39.219215393066406,
+        15.0
+      ],
+      "width": 3.0,
+      "slope": 0,
+      "obj": "LandingApproach_B_12_09_01_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_12_09",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -10.375,
+        52.5,
+        22.0
+      ],
+      "b": [
+        -10.0,
+        54.0,
+        22.0
+      ],
+      "width": 3.0,
+      "slope": 0,
+      "obj": "LandingApproach_B_12_09_01_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "B_12_09",
+      "route": "B",
+      "mode": "stairs",
+      "a": [
+        -13.695196151733398,
+        39.219215393066406,
+        15.0
+      ],
+      "b": [
+        -10.375,
+        52.5,
+        22.0
+      ],
+      "width": 3.0,
+      "slope": 27.08248107568073,
+      "obj": "Stairs_B_12_09_01",
+      "step_count": 39,
+      "tread": 0.3510133187529765,
+      "rise": 0.1794871794871795
+    },
+    {
+      "path": "B_12_09",
+      "route": "B",
+      "mode": "rock",
+      "a": [
+        -10.0,
+        54.0,
+        22.0
+      ],
+      "b": [
+        -8.0,
+        58.0,
+        22.0
+      ],
+      "width": 3.0,
+      "slope": 0.0,
+      "obj": "RockPassage_B_12_09_02",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_01_03",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        7.0,
+        -54.0,
+        0.0
+      ],
+      "b": [
+        53.0,
+        -54.0,
+        0.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_C_01_03_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_01_03",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        53.0,
+        -54.0,
+        0.0
+      ],
+      "b": [
+        53.0,
+        -42.0,
+        0.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_C_01_03_02",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_01_03",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        53.0,
+        -42.0,
+        0.0
+      ],
+      "b": [
+        53.0,
+        -34.0,
+        0.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_C_01_03_03",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_01_03",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        53.0,
+        -34.0,
+        0.0
+      ],
+      "b": [
+        52.745452880859375,
+        -32.599998474121094,
+        0.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_C_01_03_04_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_01_03",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        51.254547119140625,
+        -24.399999618530273,
+        4.0
+      ],
+      "b": [
+        51.0,
+        -23.0,
+        4.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_C_01_03_04_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_01_03",
+      "route": "C",
+      "mode": "stairs",
+      "a": [
+        52.745452880859375,
+        -32.599998474121094,
+        0.0
+      ],
+      "b": [
+        51.254547119140625,
+        -24.399999618530273,
+        4.0
+      ],
+      "width": 2.8,
+      "slope": 25.638055309493804,
+      "obj": "Stairs_C_01_03_04",
+      "step_count": 23,
+      "tread": 0.36236667249434734,
+      "rise": 0.17391304347826086
+    },
+    {
+      "path": "C_01_03",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        51.0,
+        -23.0,
+        4.0
+      ],
+      "b": [
+        51.0,
+        -21.600000381469727,
+        4.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_C_01_03_05_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_01_03",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        51.0,
+        -3.4000000953674316,
+        9.0
+      ],
+      "b": [
+        51.0,
+        -2.0,
+        9.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_C_01_03_05_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_01_03",
+      "route": "C",
+      "mode": "ramp",
+      "a": [
+        51.0,
+        -21.600000381469727,
+        4.0
+      ],
+      "b": [
+        51.0,
+        -3.4000000953674316,
+        9.0
+      ],
+      "width": 2.8,
+      "slope": 15.361615698312715,
+      "obj": "Ramp_C_01_03_05",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_01_03",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        51.0,
+        -2.0,
+        9.0
+      ],
+      "b": [
+        51.0,
+        7.0,
+        9.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_C_01_03_06",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_01_03",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        51.0,
+        7.0,
+        9.0
+      ],
+      "b": [
+        51.0,
+        31.0,
+        9.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_C_01_03_07",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_01_03",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        51.0,
+        31.0,
+        9.0
+      ],
+      "b": [
+        45.0,
+        31.0,
+        9.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_C_01_03_08",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_03_09",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        45.0,
+        31.0,
+        9.0
+      ],
+      "b": [
+        51.0,
+        31.0,
+        9.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_C_01_03_08",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_03_09",
+      "route": "C",
+      "mode": "bridge",
+      "a": [
+        51.0,
+        31.0,
+        9.0
+      ],
+      "b": [
+        51.0,
+        46.0,
+        9.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "Bridge_C_03_09_02",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_03_09",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        51.0,
+        46.0,
+        9.0
+      ],
+      "b": [
+        49.599998474121094,
+        46.29999923706055,
+        9.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_C_03_09_03_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_03_09",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        38.400001525878906,
+        48.70000076293945,
+        14.0
+      ],
+      "b": [
+        37.0,
+        49.0,
+        14.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_C_03_09_03_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_03_09",
+      "route": "C",
+      "mode": "stairs",
+      "a": [
+        49.599998474121094,
+        46.29999923706055,
+        9.0
+      ],
+      "b": [
+        38.400001525878906,
+        48.70000076293945,
+        14.0
+      ],
+      "width": 2.8,
+      "slope": 23.582185334671927,
+      "obj": "Stairs_C_03_09_03",
+      "step_count": 28,
+      "tread": 0.40908050665432644,
+      "rise": 0.17857142857142858
+    },
+    {
+      "path": "C_03_09",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        37.0,
+        49.0,
+        14.0
+      ],
+      "b": [
+        35.599998474121094,
+        49.16470718383789,
+        14.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_C_03_09_04_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_03_09",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        21.399999618530273,
+        50.83529281616211,
+        20.0
+      ],
+      "b": [
+        20.0,
+        51.0,
+        20.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_C_03_09_04_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_03_09",
+      "route": "C",
+      "mode": "stairs",
+      "a": [
+        35.599998474121094,
+        49.16470718383789,
+        14.0
+      ],
+      "b": [
+        21.399999618530273,
+        50.83529281616211,
+        20.0
+      ],
+      "width": 2.8,
+      "slope": 22.7649255854919,
+      "obj": "Stairs_C_03_09_04",
+      "step_count": 34,
+      "tread": 0.42052737512539157,
+      "rise": 0.17647058823529413
+    },
+    {
+      "path": "C_03_09",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        20.0,
+        51.0,
+        20.0
+      ],
+      "b": [
+        18.600000381469727,
+        51.93333435058594,
+        20.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_C_03_09_05_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_03_09",
+      "route": "C",
+      "mode": "rock",
+      "a": [
+        13.150253295898438,
+        55.566497802734375,
+        22.0
+      ],
+      "b": [
+        11.0,
+        57.0,
+        22.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_C_03_09_05_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "C_03_09",
+      "route": "C",
+      "mode": "ramp",
+      "a": [
+        18.600000381469727,
+        51.93333435058594,
+        20.0
+      ],
+      "b": [
+        13.150253295898438,
+        55.566497802734375,
+        22.0
+      ],
+      "width": 2.8,
+      "slope": 16.980248004344148,
+      "obj": "Ramp_C_03_09_05_Natural",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Final_09_10",
+      "route": "Final",
+      "mode": "bridge",
+      "a": [
+        12.0,
+        62.0,
+        22.0
+      ],
+      "b": [
+        23.0,
+        62.0,
+        22.0
+      ],
+      "width": 3.2,
+      "slope": 0.0,
+      "obj": "Bridge_Final_09_10_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_15_EntryBridge",
+      "route": "Switch",
+      "mode": "bridge",
+      "a": [
+        -30.0,
+        -18.0,
+        4.0
+      ],
+      "b": [
+        -16.0,
+        -18.0,
+        4.0
+      ],
+      "width": 3.0,
+      "slope": 0.0,
+      "obj": "Bridge_Switch_15_EntryBridge_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_15_EntryBridge",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        -16.0,
+        -18.0,
+        4.0
+      ],
+      "b": [
+        -13.0,
+        -17.0,
+        4.0
+      ],
+      "width": 3.0,
+      "slope": 0.0,
+      "obj": "RockPassage_Switch_15_EntryBridge_02",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_15_EntryBridge",
+      "route": "Switch",
+      "mode": "bridge",
+      "a": [
+        -13.0,
+        -17.0,
+        4.0
+      ],
+      "b": [
+        3.0,
+        -17.0,
+        4.0
+      ],
+      "width": 3.0,
+      "slope": 0.0,
+      "obj": "Bridge_Switch_15_EntryBridge_03",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_O1_04",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        0.0,
+        -28.0,
+        0.0
+      ],
+      "b": [
+        4.0,
+        -28.0,
+        0.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_Switch_O1_04_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_O1_04",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        4.0,
+        -28.0,
+        0.0
+      ],
+      "b": [
+        5.400000095367432,
+        -28.155555725097656,
+        0.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_Switch_O1_04_02_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_O1_04",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        11.87114143371582,
+        -28.874570846557617,
+        4.0
+      ],
+      "b": [
+        13.0,
+        -29.0,
+        4.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_Switch_O1_04_02_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_O1_04",
+      "route": "Switch",
+      "mode": "stairs",
+      "a": [
+        5.400000095367432,
+        -28.155555725097656,
+        0.0
+      ],
+      "b": [
+        11.87114143371582,
+        -28.874570846557617,
+        4.0
+      ],
+      "width": 2.8,
+      "slope": 31.5644171642105,
+      "obj": "Stairs_Switch_O1_04_02",
+      "step_count": 23,
+      "tread": 0.283085393830099,
+      "rise": 0.17391304347826086
+    },
+    {
+      "path": "Switch_04_05",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        25.0,
+        -29.0,
+        4.0
+      ],
+      "b": [
+        30.0,
+        -23.0,
+        4.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_Switch_04_05_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_05_13",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        35.0,
+        -26.0,
+        4.0
+      ],
+      "b": [
+        35.0,
+        -27.175418853759766,
+        4.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_Switch_05_13_01_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_05_13",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        35.0,
+        -35.888763427734375,
+        0.0
+      ],
+      "b": [
+        35.0,
+        -37.0,
+        0.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_Switch_05_13_01_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_05_13",
+      "route": "Switch",
+      "mode": "stairs",
+      "a": [
+        35.0,
+        -27.175418853759766,
+        4.0
+      ],
+      "b": [
+        35.0,
+        -35.888763427734375,
+        0.0
+      ],
+      "width": 2.8,
+      "slope": 24.658245008889704,
+      "obj": "Stairs_Switch_05_13_01",
+      "step_count": 23,
+      "tread": 0.37884106843367865,
+      "rise": 0.17391304347826086
+    },
+    {
+      "path": "Switch_13_Outer",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        42.0,
+        -42.0,
+        0.0
+      ],
+      "b": [
+        53.0,
+        -42.0,
+        0.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_Switch_13_Outer_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_06_14",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        -8.0,
+        3.0,
+        9.0
+      ],
+      "b": [
+        -2.0,
+        3.0,
+        9.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_Switch_06_14_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_14_07",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        14.0,
+        5.0,
+        9.0
+      ],
+      "b": [
+        22.0,
+        5.0,
+        9.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_Switch_14_07_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_07_Outer",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        36.0,
+        7.0,
+        9.0
+      ],
+      "b": [
+        51.0,
+        7.0,
+        9.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_Switch_07_Outer_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_12_08",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        -8.0,
+        31.0,
+        15.0
+      ],
+      "b": [
+        -2.0,
+        31.0,
+        15.0
+      ],
+      "width": 2.8,
+      "slope": 0.0,
+      "obj": "RockPassage_Switch_12_08_01",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_08_03",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        16.0,
+        31.0,
+        15.0
+      ],
+      "b": [
+        17.44886016845703,
+        31.0,
+        15.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_Switch_08_03_01_Start",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_08_03",
+      "route": "Switch",
+      "mode": "rock",
+      "a": [
+        27.700706481933594,
+        31.0,
+        9.0
+      ],
+      "b": [
+        29.0,
+        31.0,
+        9.0
+      ],
+      "width": 2.8,
+      "slope": 0,
+      "obj": "LandingApproach_Switch_08_03_01_End",
+      "step_count": null,
+      "tread": null,
+      "rise": null
+    },
+    {
+      "path": "Switch_08_03",
+      "route": "Switch",
+      "mode": "stairs",
+      "a": [
+        17.44886016845703,
+        31.0,
+        15.0
+      ],
+      "b": [
+        27.700706481933594,
+        31.0,
+        9.0
+      ],
+      "width": 2.8,
+      "slope": 30.338749951660915,
+      "obj": "Stairs_Switch_08_03_01",
+      "step_count": 34,
+      "tread": 0.30152489157284007,
+      "rise": 0.17647058823529413
+    }
+  ],
+  "export": {
+    "axis_forward": "-Z",
+    "axis_up": "Y",
+    "global_scale": 1,
+    "apply_unit_scale": true,
+    "apply_scale_options": "FBX_SCALE_UNITS",
+    "bake_space_transform": false,
+    "triangulated": true
+  }
+}
