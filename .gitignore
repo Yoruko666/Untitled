@@ -52,3 +52,6 @@ tools/__pycache__/
 ## 本地参考资源 ##
 /Assets/Art/Models/Octopath/
 /Assets/Art/Models/Octopath.meta
+
+# Companion metadata for locally retained Unity package archives
+*.unitypackage.meta
