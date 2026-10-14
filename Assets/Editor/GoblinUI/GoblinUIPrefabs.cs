@@ -59,8 +59,9 @@ namespace Untitled.Editor
             image.raycastTarget = true;
             var control = image.gameObject.AddComponent<UnityEngine.UI.Button>(); control.targetGraphic = image;
             var icon = Image(image.transform, "Icon", null, 18, 16, 28, 28); icon.gameObject.SetActive(false);
-            var text = Text(image.transform, "Label", label, 20, 0, width - 40, height, 24);
-            Stretch(text.rectTransform, 20, 4, 20, 6); text.alignment = TextAlignmentOptions.Center;
+            float inset = width < 100 ? 4 : 20;
+            var text = Text(image.transform, "Label", label, inset, 0, width - 2 * inset, height, 24);
+            Stretch(text.rectTransform, inset, 4, inset, 6); text.alignment = TextAlignmentOptions.Center;
             UnityEngine.Object.DestroyImmediate(text.GetComponent<UIThemeGraphic>());
             var button = image.gameObject.AddComponent<UIButton>(); button.Configure(style, text, icon); button.ApplyTheme(day);
             return button;

@@ -15,6 +15,7 @@ namespace Untitled.UI
         public TMP_FontAsset BodyFont, TitleFont;
         public Sprite BackgroundSprite, PanelSprite, BorderSprite, PrimaryButtonSprite, SecondaryButtonSprite, DangerButtonSprite;
         public Sprite MilkTeaIcon, QuestIcon, CoinIcon, PhaseIcon;
+        public Sprite ItemFallbackIcon, NPCPortrait;
         public string IconStyle = "Pixel / Point / Placeholder";
         public float Spacing = 16f;
         public float Padding = 24f;

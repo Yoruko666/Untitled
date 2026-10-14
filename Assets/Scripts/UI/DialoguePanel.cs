@@ -3,11 +3,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Untitled.Config;
+using Untitled.UI;
 
 namespace Untitled
 {
     public class DialoguePanel : PanelBase
     {
+        [SerializeField] private UIDialogueBox dialogueView;
         [SerializeField] private TMP_Text speakerText;
         [SerializeField] private TMP_Text lineText;
         [SerializeField] private Button nextButton;
@@ -17,9 +19,18 @@ namespace Untitled
 
         private readonly List<Button> optionButtons = new();
         private Dialog currentNode;
+        private readonly Dictionary<string, int> choiceTargets = new();
+        public void ConfigureView(UIDialogueBox view) => dialogueView = view;
 
         protected override void OnInit()
         {
+            if (dialogueView != null)
+            {
+                dialogueView.ContinueRequested.AddListener(OnNext);
+                dialogueView.CloseRequested.AddListener(OnLeave);
+                dialogueView.ChoiceRequested.AddListener(OnChoice);
+                return;
+            }
             if (nextButton != null) nextButton.onClick.AddListener(OnNext);
             if (closeButton != null) closeButton.onClick.AddListener(OnLeave);
         }
@@ -40,7 +51,21 @@ namespace Untitled
         {
             ClearOptions();
             currentNode = null;
+            choiceTargets.Clear();
         }
+
+        private void OnDestroy()
+        {
+            if (dialogueView != null)
+            {
+                dialogueView.ContinueRequested.RemoveListener(OnNext);
+                dialogueView.CloseRequested.RemoveListener(OnLeave);
+                dialogueView.ChoiceRequested.RemoveListener(OnChoice);
+            }
+            if (nextButton != null) nextButton.onClick.RemoveListener(OnNext);
+            if (closeButton != null) closeButton.onClick.RemoveListener(OnLeave);
+        }
+        private void OnChoice(string id) { if (choiceTargets.TryGetValue(id, out var target)) Advance(target); }
 
         private void OnNext()
         {
@@ -70,6 +95,20 @@ namespace Untitled
 
             List<DialogOption> options = DatabaseManager.Instance.DialogOptionDatabase.GetOptions(id);
             bool hasOptions = options != null && options.Count > 0;
+            choiceTargets.Clear();
+            if (dialogueView != null)
+            {
+                var displayChoices = new List<UIDialogueChoice>();
+                if (hasOptions) foreach (var option in options)
+                {
+                    string key = option.Id.ToString();
+                    choiceTargets[key] = option.NextId;
+                    displayChoices.Add(new UIDialogueChoice(key, option.Text));
+                }
+                dialogueView.Bind(new UIDialogueData(node.Speaker, node.Text, null, displayChoices));
+                dialogueView.FocusDefault();
+                return;
+            }
             if (nextButton != null) nextButton.gameObject.SetActive(!hasOptions);
             if (hasOptions) CreateOptions(options);
         }

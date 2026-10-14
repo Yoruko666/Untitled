@@ -39,6 +39,8 @@ MonoBehaviour:
   QuestIcon: {fileID: 21300000, guid: 68494a0a246104a7f92871f8e7e8d712, type: 3}
   CoinIcon: {fileID: 21300000, guid: e9c31b889951645d0bb1a108b4041a95, type: 3}
   PhaseIcon: {fileID: 21300000, guid: 509542ad8e6be4f098c289b4f4cf37d1, type: 3}
+  ItemFallbackIcon: {fileID: 21300000, guid: 8b9e8496033de4a24971d368ee3cd744, type: 3}
+  NPCPortrait: {fileID: 21300000, guid: 5e4621faf0d85418c830072dee073a91, type: 3}
   IconStyle: Pixel / Point / Placeholder
   Spacing: 16
   Padding: 24

@@ -14,15 +14,17 @@ namespace Untitled.UI
         [SerializeField] private UIButtonStyle style;
         [SerializeField] private TMP_Text label;
         [SerializeField] private Image icon;
+        [SerializeField] private bool panelSurface;
         public UnityEvent Clicked = new UnityEvent();
         public Button Control => GetComponent<Button>();
         public UIButtonStyle Style => style;
 
-        public void Configure(UIButtonStyle value, TMP_Text text, Image image = null)
+        public void Configure(UIButtonStyle value, TMP_Text text, Image image = null, bool usePanelSurface = false)
         {
             style = value;
             label = text;
             icon = image;
+            panelSurface = usePanelSurface;
         }
         protected override void OnEnable()
         {
@@ -60,14 +62,14 @@ namespace Untitled.UI
             var image = Control.targetGraphic as Image;
             if (image != null)
             {
-                image.sprite = style == UIButtonStyle.Primary ? theme.PrimaryButtonSprite :
+                image.sprite = panelSurface ? theme.PanelSprite : style == UIButtonStyle.Primary ? theme.PrimaryButtonSprite :
                     style == UIButtonStyle.Danger ? theme.DangerButtonSprite : theme.SecondaryButtonSprite;
                 image.type = Image.Type.Sliced;
             }
             if (label != null)
             {
                 label.font = theme.BodyFont;
-                label.color = style == UIButtonStyle.Primary ? theme.PrimaryText :
+                label.color = panelSurface ? theme.Text : style == UIButtonStyle.Primary ? theme.PrimaryText :
                     style == UIButtonStyle.Danger ? theme.DangerText : theme.SecondaryText;
             }
             var colors = ColorBlock.defaultColorBlock;

@@ -176,7 +176,7 @@ namespace Untitled.Editor
             }
             demo.Theme.ApplyDay();
         }
-        private Texture2D CaptureGameView(int width, int height)
+        public static Texture2D CaptureGameView(int width, int height)
         {
             // In the Editor, WaitForEndOfFrame/ScreenCapture can observe the outer window
             // after Game View rendering. Read the actual fixed-resolution Game View target.
