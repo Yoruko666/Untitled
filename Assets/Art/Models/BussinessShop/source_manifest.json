@@ -1,0 +1,1089 @@
+{
+  "materials": [
+    {
+      "name": "AmberGlow",
+      "color": [
+        1.0,
+        0.5699999928474426,
+        0.11999999731779099,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Berry",
+      "color": [
+        0.6600000262260437,
+        0.15000000596046448,
+        0.10999999940395355,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Black",
+      "color": [
+        0.02199999988079071,
+        0.027000000700354576,
+        0.03200000151991844,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Board",
+      "color": [
+        0.035999998450279236,
+        0.05900000035762787,
+        0.052000001072883606,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Chalk",
+      "color": [
+        0.9700000286102295,
+        0.8600000143051147,
+        0.6100000143051147,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Clay",
+      "color": [
+        0.38999998569488525,
+        0.1599999964237213,
+        0.06599999964237213,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "ClearPlastic",
+      "color": [
+        0.7599999904632568,
+        0.8399999737739563,
+        0.7599999904632568,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.1599999964237213
+    },
+    {
+      "name": "Cream",
+      "color": [
+        0.9100000262260437,
+        0.7900000214576721,
+        0.5699999928474426,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "DarkWood",
+      "color": [
+        0.06499999761581421,
+        0.01899999938905239,
+        0.00800000037997961,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Glass",
+      "color": [
+        0.47999998927116394,
+        0.6899999976158142,
+        0.5899999737739563,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.30000001192092896
+    },
+    {
+      "name": "Green",
+      "color": [
+        0.28999999165534973,
+        0.4699999988079071,
+        0.10000000149011612,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Honey",
+      "color": [
+        0.3199999928474426,
+        0.11500000208616257,
+        0.03700000047683716,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Ink",
+      "color": [
+        0.11999999731779099,
+        0.07000000029802322,
+        0.03500000014901161,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Iron",
+      "color": [
+        0.04500000178813934,
+        0.052000001072883606,
+        0.061000000685453415,
+        1.0
+      ],
+      "metallic": 0.6499999761581421,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Label",
+      "color": [
+        0.9100000262260437,
+        0.7099999785423279,
+        0.4099999964237213,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Leaf",
+      "color": [
+        0.15000000596046448,
+        0.3199999928474426,
+        0.057999998331069946,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "LeafDark",
+      "color": [
+        0.06400000303983688,
+        0.18000000715255737,
+        0.03799999877810478,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "LeafLight",
+      "color": [
+        0.4000000059604645,
+        0.5699999928474426,
+        0.14000000059604645,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Matcha",
+      "color": [
+        0.33000001311302185,
+        0.46000000834465027,
+        0.14000000059604645,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Mint",
+      "color": [
+        0.4300000071525574,
+        0.6399999856948853,
+        0.4300000071525574,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Oak",
+      "color": [
+        0.49000000953674316,
+        0.22499999403953552,
+        0.07199999690055847,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Orange",
+      "color": [
+        0.9700000286102295,
+        0.3799999952316284,
+        0.03500000014901161,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "OrangeLight",
+      "color": [
+        1.0,
+        0.5799999833106995,
+        0.07000000029802322,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Paper",
+      "color": [
+        0.7799999713897705,
+        0.5799999833106995,
+        0.33000001311302185,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Pearl",
+      "color": [
+        0.08500000089406967,
+        0.03400000184774399,
+        0.012000000104308128,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.30000001192092896
+    },
+    {
+      "name": "PortalGlow",
+      "color": [
+        0.2199999988079071,
+        0.949999988079071,
+        0.02500000037252903,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Screen",
+      "color": [
+        0.3700000047683716,
+        0.5699999928474426,
+        0.18000000715255737,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Soil",
+      "color": [
+        0.04500000178813934,
+        0.027000000700354576,
+        0.014000000432133675,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Steel",
+      "color": [
+        0.3400000035762787,
+        0.3799999952316284,
+        0.4000000059604645,
+        1.0
+      ],
+      "metallic": 0.6499999761581421,
+      "roughness": 0.30000001192092896
+    },
+    {
+      "name": "Stone",
+      "color": [
+        0.2800000011920929,
+        0.2199999988079071,
+        0.1599999964237213,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Stone2",
+      "color": [
+        0.3799999952316284,
+        0.2800000011920929,
+        0.18000000715255737,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "Tea",
+      "color": [
+        0.6700000166893005,
+        0.38999998569488525,
+        0.17000000178813934,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.30000001192092896
+    },
+    {
+      "name": "Walnut",
+      "color": [
+        0.11999999731779099,
+        0.03400000184774399,
+        0.013000000268220901,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    },
+    {
+      "name": "White",
+      "color": [
+        0.8799999952316284,
+        0.8600000143051147,
+        0.7799999713897705,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    }
+  ],
+  "assets": [
+    {
+      "name": "store_sign",
+      "anchor": "wall",
+      "dimensions": [
+        1.7265510559082031,
+        0.14030000567436218,
+        0.4248233735561371
+      ],
+      "materials": [
+        "Honey",
+        "DarkWood",
+        "Iron",
+        "Chalk"
+      ]
+    },
+    {
+      "name": "pendant_lamp_a",
+      "anchor": "ceiling",
+      "dimensions": [
+        0.35163742303848267,
+        0.35163742303848267,
+        1.0440000295639038
+      ],
+      "materials": [
+        "Iron",
+        "AmberGlow"
+      ]
+    },
+    {
+      "name": "pendant_lamp_b",
+      "anchor": "ceiling",
+      "dimensions": [
+        0.28834268450737,
+        0.28834268450737,
+        0.8560800552368164
+      ],
+      "materials": [
+        "Iron",
+        "AmberGlow"
+      ]
+    },
+    {
+      "name": "pendant_lamp_c",
+      "anchor": "ceiling",
+      "dimensions": [
+        0.36921924352645874,
+        0.36921924352645874,
+        1.0961999893188477
+      ],
+      "materials": [
+        "Iron",
+        "AmberGlow"
+      ]
+    },
+    {
+      "name": "glass_double_door",
+      "anchor": "floor",
+      "dimensions": [
+        1.7000000476837158,
+        0.19699999690055847,
+        2.259999990463257
+      ],
+      "materials": [
+        "Walnut",
+        "Honey",
+        "Steel",
+        "Cream",
+        "Glass",
+        "Oak"
+      ]
+    },
+    {
+      "name": "wood_window",
+      "anchor": "wall",
+      "dimensions": [
+        1.4800000190734863,
+        0.30000001192092896,
+        1.385000228881836
+      ],
+      "materials": [
+        "Walnut",
+        "Honey",
+        "Glass",
+        "Cream"
+      ]
+    },
+    {
+      "name": "basement_portal",
+      "anchor": "floor",
+      "dimensions": [
+        2.3299999237060547,
+        0.8727999925613403,
+        2.5550003051757812
+      ],
+      "materials": [
+        "Stone",
+        "Stone2",
+        "Walnut",
+        "Honey",
+        "Ink",
+        "Black",
+        "PortalGlow",
+        "Green",
+        "Leaf",
+        "Iron"
+      ]
+    },
+    {
+      "name": "menu_blackboard",
+      "anchor": "wall",
+      "dimensions": [
+        0.75,
+        0.09100000560283661,
+        0.9550000429153442
+      ],
+      "materials": [
+        "Board",
+        "Honey",
+        "Walnut",
+        "Chalk",
+        "LeafLight"
+      ]
+    },
+    {
+      "name": "notice_board",
+      "anchor": "wall",
+      "dimensions": [
+        1.2699999809265137,
+        0.10199800133705139,
+        0.9050000905990601
+      ],
+      "materials": [
+        "Board",
+        "Honey",
+        "Walnut",
+        "Paper",
+        "Berry",
+        "Ink",
+        "Label",
+        "Green",
+        "Leaf"
+      ]
+    },
+    {
+      "name": "world_log",
+      "anchor": "wall",
+      "dimensions": [
+        0.8999999761581421,
+        0.09100000560283661,
+        0.9950000047683716
+      ],
+      "materials": [
+        "Label",
+        "Honey",
+        "Walnut",
+        "Ink",
+        "Green",
+        "Leaf"
+      ]
+    },
+    {
+      "name": "square_table_set",
+      "anchor": "floor",
+      "dimensions": [
+        1.8977999687194824,
+        0.7799999713897705,
+        0.9959084987640381
+      ],
+      "materials": [
+        "Oak",
+        "Walnut",
+        "Honey",
+        "Berry",
+        "Cream",
+        "ClearPlastic",
+        "Pearl",
+        "Green",
+        "Ink",
+        "Leaf"
+      ]
+    },
+    {
+      "name": "round_table_set",
+      "anchor": "floor",
+      "dimensions": [
+        1.957800030708313,
+        0.9200000166893005,
+        1.0122305154800415
+      ],
+      "materials": [
+        "Oak",
+        "Honey",
+        "Walnut",
+        "Tea",
+        "Cream",
+        "ClearPlastic",
+        "Berry",
+        "Pearl",
+        "Green",
+        "Ink",
+        "Leaf"
+      ]
+    },
+    {
+      "name": "wooden_bench",
+      "anchor": "floor",
+      "dimensions": [
+        1.4449999332427979,
+        0.45168206095695496,
+        0.4357195496559143
+      ],
+      "materials": [
+        "Honey",
+        "Walnut"
+      ]
+    },
+    {
+      "name": "cup_sealing_machine",
+      "anchor": "countertop",
+      "dimensions": [
+        0.4300000071525574,
+        0.5299999713897705,
+        0.6579999923706055
+      ],
+      "materials": [
+        "Iron",
+        "Steel",
+        "Honey",
+        "Black",
+        "OrangeLight",
+        "Cream",
+        "Berry",
+        "Orange",
+        "Label",
+        "Oak"
+      ]
+    },
+    {
+      "name": "pos_terminal",
+      "anchor": "countertop",
+      "dimensions": [
+        0.3400000035762787,
+        0.23000000417232513,
+        0.3944847881793976
+      ],
+      "materials": [
+        "Iron",
+        "Black",
+        "Screen",
+        "Chalk",
+        "Cream",
+        "Orange",
+        "Ink",
+        "Berry",
+        "Green"
+      ]
+    },
+    {
+      "name": "straw_holder",
+      "anchor": "countertop",
+      "dimensions": [
+        0.11599999666213989,
+        0.11599999666213989,
+        0.23055961728096008
+      ],
+      "materials": [
+        "Cream",
+        "Berry",
+        "Orange",
+        "Green",
+        "Paper",
+        "Pearl"
+      ]
+    },
+    {
+      "name": "cup_shelf",
+      "anchor": "countertop",
+      "dimensions": [
+        0.7599999904632568,
+        0.27000001072883606,
+        0.5320000052452087
+      ],
+      "materials": [
+        "Walnut",
+        "DarkWood",
+        "Honey",
+        "Cream",
+        "Paper",
+        "Mint",
+        "Tea",
+        "Label",
+        "Ink"
+      ]
+    },
+    {
+      "name": "tea_dispenser_01",
+      "anchor": "countertop",
+      "dimensions": [
+        0.4137820303440094,
+        0.426733136177063,
+        0.5680000185966492
+      ],
+      "materials": [
+        "Steel",
+        "Iron",
+        "Black",
+        "Label",
+        "Ink"
+      ]
+    },
+    {
+      "name": "tea_dispenser_02",
+      "anchor": "countertop",
+      "dimensions": [
+        0.4137820303440094,
+        0.426733136177063,
+        0.5680000185966492
+      ],
+      "materials": [
+        "Steel",
+        "Iron",
+        "Black",
+        "Label",
+        "Ink"
+      ]
+    },
+    {
+      "name": "tea_dispenser_03",
+      "anchor": "countertop",
+      "dimensions": [
+        0.4137820303440094,
+        0.426733136177063,
+        0.5680000185966492
+      ],
+      "materials": [
+        "Iron",
+        "Black",
+        "Label",
+        "Ink"
+      ]
+    },
+    {
+      "name": "syrup_pumps",
+      "anchor": "countertop",
+      "dimensions": [
+        0.3720000088214874,
+        0.08715640008449554,
+        0.3199999928474426
+      ],
+      "materials": [
+        "Tea",
+        "Black",
+        "Steel",
+        "Honey",
+        "Label",
+        "Ink",
+        "Matcha",
+        "Green",
+        "Iron",
+        "Berry"
+      ]
+    },
+    {
+      "name": "ingredient_bins",
+      "anchor": "countertop",
+      "dimensions": [
+        0.7000000476837158,
+        0.41449999809265137,
+        0.49799999594688416
+      ],
+      "materials": [
+        "White",
+        "Steel",
+        "Label",
+        "Ink",
+        "Pearl",
+        "Cream"
+      ]
+    },
+    {
+      "name": "blender",
+      "anchor": "countertop",
+      "dimensions": [
+        0.24686524271965027,
+        0.2240000069141388,
+        0.44599997997283936
+      ],
+      "materials": [
+        "Iron",
+        "Black",
+        "Green",
+        "Orange",
+        "Berry",
+        "ClearPlastic",
+        "Tea",
+        "Steel"
+      ]
+    },
+    {
+      "name": "finished_boba",
+      "anchor": "countertop",
+      "dimensions": [
+        0.4749999940395355,
+        0.11022882908582687,
+        0.27014949917793274
+      ],
+      "materials": [
+        "Tea",
+        "Cream",
+        "ClearPlastic",
+        "Berry",
+        "Pearl",
+        "Green",
+        "Ink",
+        "Leaf",
+        "Matcha"
+      ]
+    },
+    {
+      "name": "paper_cups",
+      "anchor": "countertop",
+      "dimensions": [
+        0.3240000009536743,
+        0.11099319905042648,
+        0.13759808242321014
+      ],
+      "materials": [
+        "Cream",
+        "Green",
+        "Ink",
+        "Leaf",
+        "OrangeLight"
+      ]
+    },
+    {
+      "name": "ingredient_jars",
+      "anchor": "countertop",
+      "dimensions": [
+        0.5245599746704102,
+        0.08058000355958939,
+        0.18080000579357147
+      ],
+      "materials": [
+        "Tea",
+        "Cream",
+        "Paper",
+        "Label",
+        "Ink",
+        "Matcha",
+        "Pearl",
+        "Berry"
+      ]
+    },
+    {
+      "name": "fruit_crate",
+      "anchor": "floor",
+      "dimensions": [
+        0.6050000190734863,
+        0.49779999256134033,
+        0.3424113392829895
+      ],
+      "materials": [
+        "Honey",
+        "Walnut",
+        "Oak",
+        "Iron",
+        "OrangeLight",
+        "Leaf",
+        "Orange",
+        "Mint",
+        "Ink"
+      ]
+    },
+    {
+      "name": "ice_bin",
+      "anchor": "countertop",
+      "dimensions": [
+        0.46000000834465027,
+        0.47450000047683716,
+        0.5480000376701355
+      ],
+      "materials": [
+        "White",
+        "Steel",
+        "Label",
+        "Ink"
+      ]
+    },
+    {
+      "name": "topping_bin",
+      "anchor": "countertop",
+      "dimensions": [
+        0.46000000834465027,
+        0.47450000047683716,
+        0.5480000376701355
+      ],
+      "materials": [
+        "White",
+        "Steel",
+        "Label",
+        "Ink",
+        "Tea"
+      ]
+    },
+    {
+      "name": "potted_plant",
+      "anchor": "floor",
+      "dimensions": [
+        0.6323865652084351,
+        0.6650940179824829,
+        0.7002086043357849
+      ],
+      "materials": [
+        "Clay",
+        "Honey",
+        "Soil",
+        "LeafDark",
+        "Leaf",
+        "LeafLight",
+        "Green"
+      ]
+    },
+    {
+      "name": "wall_vines",
+      "anchor": "wall",
+      "dimensions": [
+        0.9808506965637207,
+        0.027955589815974236,
+        0.8862053751945496
+      ],
+      "materials": [
+        "LeafDark",
+        "Leaf",
+        "Green",
+        "LeafLight",
+        "Walnut"
+      ]
+    },
+    {
+      "name": "tissue_dispenser",
+      "anchor": "countertop",
+      "dimensions": [
+        0.23250000178813934,
+        0.27299895882606506,
+        0.35128355026245117
+      ],
+      "materials": [
+        "White",
+        "Iron",
+        "Black",
+        "Cream",
+        "Label",
+        "Ink"
+      ]
+    },
+    {
+      "name": "cardboard_box",
+      "anchor": "floor",
+      "dimensions": [
+        0.4909999966621399,
+        0.4584994316101074,
+        0.47450000047683716
+      ],
+      "materials": [
+        "Paper",
+        "Label",
+        "OrangeLight",
+        "Ink",
+        "Leaf",
+        "Honey"
+      ]
+    },
+    {
+      "name": "wooden_crate",
+      "anchor": "floor",
+      "dimensions": [
+        0.6549999713897705,
+        0.5190000534057617,
+        0.3499999940395355
+      ],
+      "materials": [
+        "Honey",
+        "Walnut",
+        "Oak",
+        "Iron"
+      ]
+    },
+    {
+      "name": "ingredient_sack",
+      "anchor": "floor",
+      "dimensions": [
+        0.4932856559753418,
+        0.35347577929496765,
+        0.577567994594574
+      ],
+      "materials": [
+        "Paper",
+        "Honey",
+        "Green",
+        "Ink",
+        "Leaf"
+      ]
+    },
+    {
+      "name": "trash_bin",
+      "anchor": "floor",
+      "dimensions": [
+        0.3330000042915344,
+        0.3330000042915344,
+        0.5075000524520874
+      ],
+      "materials": [
+        "Iron",
+        "Steel",
+        "White",
+        "Black",
+        "Cream"
+      ]
+    },
+    {
+      "name": "takeout_bags",
+      "anchor": "countertop",
+      "dimensions": [
+        0.4204999804496765,
+        0.1994982361793518,
+        0.3529234528541565
+      ],
+      "materials": [
+        "Paper",
+        "Honey",
+        "OrangeLight",
+        "Ink",
+        "Leaf"
+      ]
+    },
+    {
+      "name": "storage_cabinet",
+      "anchor": "floor",
+      "dimensions": [
+        0.7199999690055847,
+        0.36000001430511475,
+        1.125
+      ],
+      "materials": [
+        "Walnut",
+        "DarkWood",
+        "Honey",
+        "Cream",
+        "Label",
+        "Ink",
+        "Tea",
+        "Paper",
+        "Matcha"
+      ]
+    },
+    {
+      "name": "display_shelf",
+      "anchor": "countertop",
+      "dimensions": [
+        0.7400000095367432,
+        0.28999999165534973,
+        0.5227999687194824
+      ],
+      "materials": [
+        "Walnut",
+        "DarkWood",
+        "Honey",
+        "Tea",
+        "Cream",
+        "Paper",
+        "Label",
+        "Ink",
+        "Berry",
+        "Matcha"
+      ]
+    },
+    {
+      "name": "work_counter",
+      "anchor": "floor",
+      "dimensions": [
+        1.7950000762939453,
+        0.6710000038146973,
+        0.9000000357627869
+      ],
+      "materials": [
+        "Oak",
+        "Walnut",
+        "Honey",
+        "Iron",
+        "Ink",
+        "DarkWood"
+      ]
+    },
+    {
+      "name": "sink_counter",
+      "anchor": "floor",
+      "dimensions": [
+        1.5,
+        0.656000018119812,
+        1.1969999074935913
+      ],
+      "materials": [
+        "Iron",
+        "Black",
+        "Steel"
+      ]
+    }
+  ],
+  "source_package": "MilkTeaShop_Package.zip",
+  "import_notes": "Meters, Y-up Unity export; floor/countertop anchors placed at lowest mesh point; lamps retain ceiling anchor. Both dining chair pairs rotated inward from source package. Source ZIP and BLEND files unchanged."
+}
