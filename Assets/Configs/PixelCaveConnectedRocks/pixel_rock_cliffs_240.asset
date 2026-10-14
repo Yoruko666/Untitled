@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8967f5d29d0ef694ea719091a0894d43, type: 3}
   m_Name: pixel_rock_cliffs_240
   m_EditorClassIdentifier:
-  previewThumbnail: {fileID: 0}
+  previewThumbnail: {fileID: 2800000, guid: d50505fdddfeb5b40a37ad86836e4a05, type: 3}
   gridtype: 1
   DUALGRD_cornerTile: {fileID: 2719532316066232156, guid: de58c5a646004dd8bc34f138dd7eb98c,
     type: 3}
