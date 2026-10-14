@@ -1,0 +1,32 @@
+Unity 2022.3.62f3c1 / MilkTeaShop / Play Mode Input System integration
+Initial failures diagnosed; final affected checks supersede earlier results.
+
+PASS: Eye height 1.65m
+PASS: WASD movement and grounded gravity
+PASS: Mouse yaw and pitch through Shop.Look: yaw 36, pitch 348
+PASS: Esc releases cursor
+PASS: Released cursor suspends movement/look/interaction
+PASS: Esc restores cursor lock
+PASS: Pitch clamps at 80 degrees
+PASS: Continuous walk route waypoint 0: (1.335, 0.025, -2.850)
+PASS: Continuous walk route waypoint 1: (1.335, 0.025, 2.736)
+PASS: Continuous walk route waypoint 2: (-0.587, 0.025, 2.736)
+PASS: Continuous walk route waypoint 3: (-0.587, 0.025, 2.415)
+PASS: Continuous walk route waypoint 4: (-0.587, 0.025, 3.178)
+PASS: Continuous walk route waypoint 5: (-0.587, 0.025, 2.862)
+PASS: Continuous walk route waypoint 6: (2.137, 0.075, 2.862)
+PASS: Continuous walk route waypoint 7: (2.137, 0.025, 1.564)
+PASS: Continuous walk route waypoint 8: (2.137, 0.025, 1.311)
+PASS: Continuous walk route waypoint 9: (0.961, 0.025, 1.311)
+PASS: Continuous walk route waypoint 10: (0.961, 0.025, -2.792)
+PASS: Continuous walk route waypoint 11: (-3.085, 0.025, -2.792)
+PASS: Continuous walk route waypoint 12: (-3.085, 0.025, -3.240)
+PASS: Counter center-ray target
+PASS: E executes counter feedback
+PASS: Preparation center-ray target
+PASS: E executes preparation feedback
+PASS: Hatch center-ray target
+PASS: E executes hatch feedback without scene transition
+PASS: Out-of-reach object does not show prompt
+PASS: Solid wall occludes target
+PASS: Front wall blocks CharacterController
