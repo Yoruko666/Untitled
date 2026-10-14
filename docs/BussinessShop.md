@@ -1,5 +1,7 @@
 # Bussiness 奶茶店场景交付
 
+本文记录初版 8 × 9 米布局。当前 `Bussiness.unity` 已精简为比赛版，打开场景和验收请以 [比赛版交付](BussinessShop-Competition.md) 为准。
+
 ## 打开与操作
 
 打开 `Assets/Scenes/Bussiness.unity`，进入 Play Mode，聚焦 Game 视图。WASD 移动、鼠标观察、E 交互、Esc 释放／恢复鼠标。玩家在柜台后的员工区出生，眼位高 1.65 米，移动速度 2.8 米/秒。外围墙体和展示门将活动范围限制在奶茶店内。

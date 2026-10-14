@@ -1,0 +1,6 @@
+PASS Spawn center ray selects PreparationStation at 1.65m eye height.
+PASS Continuous WASD route to DungeonEntrance in 0.64s
+PASS Center ray selects DungeonEntrance
+PASS E feedback and StationRequested event: DungeonEntrance
+PASS Continuous WASD route reaches the grounded entrance threshold.
+PASS Recess blocker keeps player inside at (2.930, 0.052, 0.517)
