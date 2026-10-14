@@ -11,23 +11,19 @@ namespace Untitled.UI
         [SerializeField] private UIInventoryDataSource inventory;
         [SerializeField] private Sprite itemIcon;
         private GameData game;
+        private GameSession session;
         private InteractManager interactions;
         private UIHUDData current;
-        // Display cache only. Gameplay remains authoritative; this cache is not a save system.
-        private static UIHUDData sessionDisplay;
         public UIHUDData Current => current;
         public event Action<UIHUDData> Changed;
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetDisplay() => sessionDisplay = null;
         public void Configure(bool isNight, UIInventoryDataSource inventorySource, ShopSceneBindings bindings = null, ShopRaycastInteractor interactor = null, Sprite fallback = null)
         { night = isNight; inventory = inventorySource; shop = bindings; shopInteractor = interactor; itemIcon = fallback; }
         private void Start()
         {
             if (!GameManager.TryGet(out var manager)) return;
             game = manager.GameData; game.MoneyChanged += OnMoney;
-            if (DatabaseManager.TryGet(out var db)) inventory.Initialize(game.InventoryData.Items, db.ItemDatabase, address => itemIcon, "仓库");
-            var cached = sessionDisplay;
-            Publish(new UIHUDData(cached?.Day ?? 1, game.Money, night, cached?.Order, cached?.Quests, cached?.Health, cached?.Resource, cached?.Quickbar));
+            session = manager.Session; session.Changed += RefreshSession;
+            RefreshSession();
             if (shopInteractor != null)
             {
                 shopInteractor.SetExternalHUD(true);
@@ -39,6 +35,7 @@ namespace Untitled.UI
         private void OnDestroy()
         {
             if (game != null) game.MoneyChanged -= OnMoney;
+            if (session != null) session.Changed -= RefreshSession;
             if (shopInteractor != null) { shopInteractor.TargetChanged -= OnShopTarget; shopInteractor.SetExternalHUD(false); }
             if (interactions != null) interactions.CurrentChanged -= OnTarget;
             if (shop != null) shop.StationRequested -= OnStation;
@@ -46,11 +43,36 @@ namespace Untitled.UI
         public void Publish(UIHUDData display)
         {
             if (display == null) return;
-            current = new UIHUDData(display.Day, game != null ? game.Money : display.Coins, night, display.Order, display.Quests,
+            if (session != null && !session.IsReady) return;
+            night = session != null ? session.Phase == GamePhase.Night : night;
+            current = new UIHUDData(session?.Day ?? display.Day, game != null ? game.Money : display.Coins, night, session != null ? SessionOrder() : display.Order, display.Quests,
                 display.Health, display.Resource, display.Quickbar, display.Prompt, display.Alert);
-            sessionDisplay = current; Changed?.Invoke(current);
+            Changed?.Invoke(current);
         }
-        private void OnMoney(int amount) { if (current != null) Publish(current); }
+        private UIOrderData SessionOrder()
+        {
+            var order = session.Order;
+            if (string.IsNullOrEmpty(order.Id)) return null;
+            return new UIOrderData(order.Id, "订单 " + order.Id, "", "", order.Completed ? "已完成" : "进行中",
+                order.Progress, !order.Completed);
+        }
+        private void RefreshSession()
+        {
+            if (session == null || !session.IsReady) return;
+            if (inventory != null && DatabaseManager.TryGet(out var db))
+            {
+                inventory.Initialize(game.InventoryData.Items, db.ItemDatabase, address => itemIcon, "仓库");
+                inventory.Publish();
+                if (UIManager.TryGet(out var ui) && ui.IsOpen("UI_Inventory")) ui.Open("UI_Inventory", inventory.Current);
+            }
+            Publish(new UIHUDData(session.Day, game.Money, session.Phase == GamePhase.Night, SessionOrder(), null));
+            if (UIManager.TryGet(out var panels) && panels.IsOpen("UI_Workstation")) panels.Open("UI_Workstation", current.Order);
+        }
+        private void OnMoney(int amount)
+        {
+            if (session != null && !session.IsReady) { current = null; return; }
+            if (current != null) Publish(current);
+        }
         private void SetPrompt(string text)
         { if (current != null) Publish(new UIHUDData(current.Day, current.Coins, night, current.Order, current.Quests, current.Health, current.Resource, current.Quickbar, text, current.Alert)); }
         private void OnShopTarget(RaycastInteractable target) => SetPrompt(target != null ? target.Prompt : null);

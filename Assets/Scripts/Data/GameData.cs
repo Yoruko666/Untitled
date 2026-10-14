@@ -42,5 +42,11 @@ namespace Untitled
             MoneyChanged?.Invoke(Money);
             return true;
         }
+
+        internal void RestoreMoney(int amount)
+        {
+            Money = amount;
+            MoneyChanged?.Invoke(Money);
+        }
     }
 }

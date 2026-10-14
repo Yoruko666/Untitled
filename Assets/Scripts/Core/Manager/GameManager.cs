@@ -5,6 +5,7 @@ namespace Untitled
     public class GameManager : ManagerBase<GameManager>
     {
         public GameData GameData;
+        public GameSession Session { get; private set; }
 
         public bool IsPaused { get; private set; }
 
@@ -12,6 +13,7 @@ namespace Untitled
         {
             base.Initialize();
             GameData = new GameData();
+            Session = new GameSession(GameData);
         }
 
         public void SetPaused(bool paused)

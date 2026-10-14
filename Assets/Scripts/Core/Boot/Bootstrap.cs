@@ -8,7 +8,11 @@ namespace Untitled
         private void Awake()
         {
             RegisterManager(new DatabaseManager());
+            bool newSession = !GameManager.IsInitialized;
             RegisterManager(new GameManager());
+            if (newSession && UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Adventure")
+                GameManager.Instance.Session.SetProgress(1, GamePhase.Night);
+            RegisterManager(new SaveManager(GameManager.Instance.Session, SaveStorage.Default(), new GamePhaseRestorer()));
             RegisterManager(new InputManager());
             RegisterManager(new UIManager());
             RegisterManager(new InteractManager());
@@ -24,6 +28,7 @@ namespace Untitled
             if (InteractManager.TryGet(out var interactions)) interactions.Dispose();
             EventCenter.Clear();
             DatabaseManager.ResetInstance(); GameManager.ResetInstance(); InputManager.ResetInstance();
+            SaveManager.ResetInstance();
             UIManager.ResetInstance(); InteractManager.ResetInstance(); DebugManager.ResetInstance();
             Time.timeScale = 1;
         }
