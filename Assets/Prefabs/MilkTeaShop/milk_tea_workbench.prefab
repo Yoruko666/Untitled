@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6400953815878977873}
   - component: {fileID: 7545774833511240358}
+  - component: {fileID: 3584482043075339991}
   m_Layer: 0
   m_Name: milk_tea_workbench
   m_TagString: Untagged
@@ -54,6 +55,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.2800002, y: 1.511, z: 0.883}
   m_Center: {x: 0, y: 0.7555, z: 0}
+--- !u!114 &3584482043075339991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6388483797019235694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e7f1a1eae00594fb7607a399c81a09, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  prompt: "\u5236\u4F5C\u53F0 \xB7 \u5236\u4F5C\u5976\u8336"
+  feedback: "\u5236\u4F5C\u53F0\u5DF2\u54CD\u5E94\u3002\u5976\u8336\u5236\u4F5C\u7CFB\u7EDF\u5F85\u63A5\u5165\u3002"
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &6132646008700113130
 PrefabInstance:
   m_ObjectHideFlags: 0

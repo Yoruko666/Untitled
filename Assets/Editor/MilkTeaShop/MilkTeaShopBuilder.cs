@@ -52,17 +52,22 @@ namespace Untitled.EditorTools
             Place("wooden_crate", props, V(2.23f, 0, 4.22f));
             Place("wooden_barrel", props, V(3.30f, 0, 3.20f));
             BuildHatch(Group("03_UndergroundEntrancePlaceholder", room));
-            Transform markers = Group("04_ReservedPoints_NoGameplay", room);
+            Transform markers = Group("04_ReservedPoints", room);
             Marker("PlayerSpawn", markers, V(0.65f, 0.02f, -2.85f));
             Marker("CustomerStand_01", markers, V(-0.65f, 0.02f, 0.18f));
             Marker("CustomerStand_02", markers, V(-0.65f, 0.02f, -1.02f));
             Marker("CustomerStand_03", markers, V(-0.65f, 0.02f, -2.22f));
-            Marker("MilkTeaInteraction_PlayerSide", markers, V(-0.65f, 0.02f, 3.24f));
-            Marker("CashierInteraction_PlayerSide", markers, V(-0.65f, 0.02f, 2.35f));
-            Marker("UndergroundEntrance_Approach", markers, V(2.20f, 0.02f, 1.50f));
-            Marker("ShopEntrance_ClosedForDay1", markers, V(-3.15f, 0.02f, -3.30f));
-            BuildPlayerAndCamera(room);
+            Marker("PreparationStation", markers, V(-0.65f, 0.02f, 3.24f));
+            Marker("OrderCounter", markers, V(-0.65f, 0.02f, 2.35f));
+            Marker("DungeonEntrance", markers, V(2.20f, 0.02f, 1.50f));
+            Marker("CustomerSpawn", markers, V(-3.15f, 0.02f, -3.30f));
+            Marker("DeliveryPoint", markers, V(0.9f, 0.02f, 1.25f));
             BuildLighting(Group("06_Lighting", room));
+            MilkTeaShopFirstPersonSetup.ConfigureInterior(room);
+            MilkTeaShopFirstPersonSetup.ConfigureInteractionPrefabs();
+            MilkTeaShopFirstPersonSetup.ConfigureHatch(room);
+            MilkTeaShopFirstPersonSetup.SaveRoomPrefab(room);
+            MilkTeaShopFirstPersonSetup.CreatePlayer(markers.Find("PlayerSpawn").position);
             AssetDatabase.SaveAssets();
             if (!EditorSceneManager.SaveScene(scene, ScenePath)) throw new IOException("Scene save failed.");
             Selection.activeGameObject = room.gameObject;
@@ -214,51 +219,6 @@ namespace Untitled.EditorTools
             Group(name, parent).localPosition = position;
         }
 
-        private static void BuildPlayerAndCamera(Transform room)
-        {
-            Transform presentation = Group("05_PlayerAndFixedCamera", room);
-            Transform focus = Group("FixedCameraFocus", presentation);
-            focus.localPosition = V(0, 0.45f, 0.25f);
-            var cameraGo = Group("Main Camera", presentation).gameObject;
-            cameraGo.tag = "MainCamera";
-            var camera = cameraGo.AddComponent<Camera>();
-            cameraGo.AddComponent<AudioListener>();
-            camera.orthographic = true;
-            camera.orthographicSize = 5.85f;
-            camera.nearClipPlane = 0.1f;
-            camera.farClipPlane = 60;
-            camera.clearFlags = CameraClearFlags.SolidColor;
-            camera.backgroundColor = new Color(0.29f, 0.34f, 0.29f);
-            var control = cameraGo.AddComponent<CameraController>();
-            control.SetTarget(focus);
-            control.SetViewAngle(50);
-            control.SetYawAngle(0);
-            control.SetDistance(20);
-            cameraGo.transform.SetPositionAndRotation(focus.position + Quaternion.Euler(50, 0, 0) * Vector3.back * 20, Quaternion.Euler(50, 0, 0));
-            var data = cameraGo.AddComponent<UniversalAdditionalCameraData>();
-            data.renderPostProcessing = false;
-            var source = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/PixelPerson64Placeholder.prefab");
-            var player = (GameObject)PrefabUtility.InstantiatePrefab(source, presentation);
-            player.name = "Player_Test_ExistingController";
-            player.transform.localPosition = V(0.65f, 0.02f, -2.85f);
-            var controller = player.GetComponent<CharacterController>();
-            controller.enabled = true;
-            controller.height = 1.8f;
-            controller.center = V(0, 0.9f, 0);
-            controller.radius = 0.28f;
-            controller.skinWidth = 0.025f;
-            controller.stepOffset = 0.15f;
-            Transform visual = player.GetComponentInChildren<MeshRenderer>().transform;
-            visual.localPosition = V(0, 0.9f, 0);
-            visual.localScale = V(1.8f, 1.8f, 1);
-            var billboard = new SerializedObject(visual.GetComponent<SpriteBillboard>());
-            billboard.FindProperty("targetCamera").objectReferenceValue = camera;
-            billboard.ApplyModifiedPropertiesWithoutUndo();
-            var movement = new SerializedObject(player.AddComponent<CaveBlockoutPlayer>());
-            movement.FindProperty("moveSpeed").floatValue = 2.8f;
-            movement.ApplyModifiedPropertiesWithoutUndo();
-        }
-
         private static void BuildLighting(Transform parent)
         {
             RenderSettings.skybox = null;
@@ -312,7 +272,7 @@ namespace Untitled.EditorTools
                 lines.Add(name + " bounds (X,Y,Z): " + BoundsOf(prefab).size.ToString("F4"));
             }
             Physics.SyncTransforms();
-            string[] points = { "PlayerSpawn", "CustomerStand_01", "CustomerStand_02", "CustomerStand_03", "MilkTeaInteraction_PlayerSide", "CashierInteraction_PlayerSide", "UndergroundEntrance_Approach", "ShopEntrance_ClosedForDay1" };
+            string[] points = { "PlayerSpawn", "CustomerSpawn", "OrderCounter", "PreparationStation", "DeliveryPoint", "DungeonEntrance" };
             foreach (string name in points)
             {
                 Vector3 p = all.Single(t => t.name == name).position;

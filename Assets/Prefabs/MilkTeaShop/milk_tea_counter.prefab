@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8455174386942660823}
   - component: {fileID: 8665222357640175682}
+  - component: {fileID: 2001354910742433042}
   m_Layer: 0
   m_Name: milk_tea_counter
   m_TagString: Untagged
@@ -54,6 +55,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.3, y: 1.3663871, z: 0.97150004}
   m_Center: {x: 0, y: 0.68319356, z: 0}
+--- !u!114 &2001354910742433042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548530966123214679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e7f1a1eae00594fb7607a399c81a09, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  prompt: "\u6536\u94F6\u67DC\u53F0 \xB7 \u67E5\u770B\u8BA2\u5355"
+  feedback: "\u67DC\u53F0\u5DF2\u54CD\u5E94\u3002\u8BA2\u5355\u7CFB\u7EDF\u5F85\u63A5\u5165\u3002"
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &6164417162599627030
 PrefabInstance:
   m_ObjectHideFlags: 0
