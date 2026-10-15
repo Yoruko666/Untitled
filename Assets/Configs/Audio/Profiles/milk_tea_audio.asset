@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a8cba4f33ff9944bcaa66653d62007, type: 3}
+  m_Name: milk_tea_audio
+  m_EditorClassIdentifier:
+  bgm: {fileID: 11400000, guid: a37ebdf7fdcb8ec49904d5040d58160a, type: 2}
+  ambience: {fileID: 11400000, guid: c347613a8fa101d47b1d6c12f0ca7991, type: 2}
+  fadeSeconds: 1.5

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91aef3f85f28824db33118988d845e7, type: 3}
+  m_Name: audio_settings
+  m_EditorClassIdentifier:
+  mixer: {fileID: 24100000, guid: 8128e2441da5d9647b1301832ed12131, type: 2}
+  bgmGroup: {fileID: 7041598581309984638, guid: 8128e2441da5d9647b1301832ed12131,
+    type: 2}
+  sfxGroup: {fileID: -4100867795215824851, guid: 8128e2441da5d9647b1301832ed12131,
+    type: 2}
+  uiGroup: {fileID: -4411787270107664517, guid: 8128e2441da5d9647b1301832ed12131,
+    type: 2}
+  ambienceGroup: {fileID: 5262588827103655610, guid: 8128e2441da5d9647b1301832ed12131,
+    type: 2}
+  sfxVoices: 16
+  uiVoices: 4
+  scenes:
+  - ScenePath: Assets/Scenes/Gameplay/Bussiness.unity
+    Profile: {fileID: 11400000, guid: 4450f1c3b4b21504bb6d50c51e9a6553, type: 2}
+  - ScenePath: Assets/Scenes/BussinessWorkstation.unity
+    Profile: {fileID: 11400000, guid: 4450f1c3b4b21504bb6d50c51e9a6553, type: 2}
+  - ScenePath: Assets/Scenes/MilkTeaShop.unity
+    Profile: {fileID: 11400000, guid: 4450f1c3b4b21504bb6d50c51e9a6553, type: 2}
+  - ScenePath: Assets/Scenes/MilkTeaShopReference.unity
+    Profile: {fileID: 11400000, guid: 4450f1c3b4b21504bb6d50c51e9a6553, type: 2}
+  - ScenePath: Assets/Scenes/Gameplay/Adventure.unity
+    Profile: {fileID: 11400000, guid: 6233d4e4f7cd692408514d1f72a068e0, type: 2}
+  - ScenePath: Assets/Scenes/Gameplay/Cave.unity
+    Profile: {fileID: 11400000, guid: 6233d4e4f7cd692408514d1f72a068e0, type: 2}
+  - ScenePath: Assets/Scenes/GoblinCave200.unity
+    Profile: {fileID: 11400000, guid: 6233d4e4f7cd692408514d1f72a068e0, type: 2}
+  - ScenePath: Assets/Scenes/Audio/AudioSystemDemo.unity
+    Profile: {fileID: 11400000, guid: 4450f1c3b4b21504bb6d50c51e9a6553, type: 2}

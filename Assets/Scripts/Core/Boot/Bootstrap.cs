@@ -7,6 +7,7 @@ namespace Untitled
     {
         private void Awake()
         {
+            AudioManager.EnsureInitialized();
             RegisterManager(new DatabaseManager());
             bool newSession = !GameManager.IsInitialized;
             RegisterManager(new GameManager());
