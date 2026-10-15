@@ -14,7 +14,7 @@ namespace Untitled.EditorTools
 {
     public static class AdventureCaveImporter
     {
-        private const string ScenePath = "Assets/Scenes/Adventure.unity";
+        private const string ScenePath = "Assets/Scenes/Gameplay/Adventure.unity";
         private const string ModelPath = "Assets/Art/Models/GoblinCave/goblin_cave_natural.fbx";
         private const string LayoutPath = "Assets/Art/Models/GoblinCave/layout_manifest.json";
         private const string MaterialsFolder = "Assets/Art/Materials/GoblinCave";
@@ -62,11 +62,12 @@ namespace Untitled.EditorTools
             AssetDatabase.SaveAssets();
             importer.SaveAndReimport();
             Scene scene = EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
-            // A repeat import replaces only the roots owned by this operation.
-            foreach (GameObject old in scene.GetRootGameObjects().Where(go => go.name == "Adventure_GoblinCave" || go.name == "Adventure_CaveRuntime"))
+            // A repeat import replaces only the subtrees owned by this operation.
+            foreach (GameObject old in scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Transform>(true)).Select(t => t.gameObject).Where(go => go.name == "Adventure_GoblinCave" || go.name == "Adventure_CaveRuntime").ToArray())
                 Undo.DestroyObjectImmediate(old);
             var level = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(ModelPath));
             level.name = "Adventure_GoblinCave";
+            Undo.SetTransformParent(level.transform, SceneGroup(scene, "World"), "Organize adventure environment");
             Undo.RegisterCreatedObjectUndo(level, "Import adventure cave");
             foreach (MeshFilter filter in level.GetComponentsInChildren<MeshFilter>(true))
             {
@@ -83,7 +84,8 @@ namespace Untitled.EditorTools
                 throw new InvalidOperationException("FBX units or up-axis are incorrect.");
             var runtime = new GameObject("Adventure_CaveRuntime");
             Undo.RegisterCreatedObjectUndo(runtime, "Create cave scene bindings");
-            if (Object.FindObjectOfType<Bootstrap>() == null) runtime.AddComponent<Bootstrap>();
+            Undo.SetTransformParent(runtime.transform, SceneGroup(scene, "Systems"), "Organize adventure runtime");
+            if (!scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Bootstrap>(true)).Any()) runtime.AddComponent<Bootstrap>();
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/FirstRoom/GoblinPlayer.prefab");
             var playerObject = (GameObject)PrefabUtility.InstantiatePrefab(prefab, runtime.transform);
             playerObject.name = "Player";
@@ -97,7 +99,7 @@ namespace Untitled.EditorTools
             controller.stepOffset = 0.28f; controller.slopeLimit = 45f; controller.skinWidth = 0.04f;
             controller.minMoveDistance = 0f;
             playerObject.transform.position = markers[0].position + Vector3.up * 0.15f;
-            Camera camera = Camera.main;
+            Camera camera = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Camera>(true)).SingleOrDefault(c => c.CompareTag("MainCamera"));
             if (camera == null) throw new InvalidOperationException("Adventure needs its existing Main Camera.");
             var follow = camera.GetComponent<CameraController>() ?? Undo.AddComponent<CameraController>(camera.gameObject);
             Vector3 north = markers[8].position - markers[0].position;
@@ -130,7 +132,7 @@ namespace Untitled.EditorTools
                 zoneNames.GetArrayElementAtIndex(i).stringValue = (string)zones[i]["name"];
             }
             sessionData.ApplyModifiedProperties();
-            Light sun = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<Light>()).FirstOrDefault();
+            Light sun = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<Light>(true)).FirstOrDefault();
             if (sun != null) { sun.intensity = 1.1f; sun.transform.rotation = Quaternion.Euler(50,-30,0); sun.shadows = LightShadows.Soft; }
             RenderSettings.skybox = null; RenderSettings.ambientMode = AmbientMode.Trilight;
             RenderSettings.ambientSkyColor = new Color(.42f,.46f,.49f);
@@ -148,10 +150,37 @@ namespace Untitled.EditorTools
             Debug.Log("[AdventureCave] Imported, Player and camera connected, scene saved.");
         }
 
+        private static Transform SceneGroup(Scene scene, string name)
+        {
+            var root = scene.GetRootGameObjects().SingleOrDefault(g => g.name == "SceneRoot");
+            if (root == null)
+            {
+                root = new GameObject("SceneRoot");
+                Undo.RegisterCreatedObjectUndo(root, "Create scene root");
+            }
+            var group = root.transform.Cast<Transform>().SingleOrDefault(t => t.name == name);
+            if (group == null)
+            {
+                var go = new GameObject(name);
+                Undo.RegisterCreatedObjectUndo(go, "Create scene group");
+                go.transform.SetParent(root.transform, false);
+                group = go.transform;
+            }
+            var order = new[] { "Systems", "Cameras", "World", "Lighting", "UI" };
+            int index = 0;
+            foreach (string entry in order)
+            {
+                var child = root.transform.Cast<Transform>().SingleOrDefault(t => t.name == entry);
+                if (child != null) child.SetSiblingIndex(index++);
+            }
+            return group;
+        }
+
         [MenuItem("Untitled/Adventure/Validate Cave Integration")]
         public static void Validate()
         {
-            var session = Object.FindObjectOfType<AdventureCaveSession>();
+            var scene = SceneManager.GetActiveScene();
+            var session = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<AdventureCaveSession>(true)).SingleOrDefault();
             if (session == null || session.ZoneMarkers.Length != 15) throw new InvalidOperationException("Missing cave bindings.");
             Transform[] markers = session.ZoneMarkers;
             Vector3 yAxis = (markers[1].position - markers[0].position) / 16f;
@@ -181,7 +210,7 @@ namespace Untitled.EditorTools
             Directory.CreateDirectory(ReportFolder);
             File.WriteAllText(ReportFolder+"/integration.json", JObject.FromObject(new {
                 passed = true, zones = markers.Length, colliderGroundSamples = samples,
-                meshColliders = GameObject.Find("Adventure_GoblinCave").GetComponentsInChildren<MeshCollider>().Length,
+                meshColliders = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Transform>(true)).Select(t => t.gameObject).Single(go => go.name == "Adventure_GoblinCave").GetComponentsInChildren<MeshCollider>(true).Length,
                 cameraTargetLinked = target, sourceXAxis = new[] { xAxis.x,xAxis.y,xAxis.z },
                 sourceYAxis = new[] { yAxis.x,yAxis.y,yAxis.z }, sourceZAxis = new[] { zAxis.x,zAxis.y,zAxis.z },
                 spawn = new[] { markers[0].position.x,markers[0].position.y,markers[0].position.z },

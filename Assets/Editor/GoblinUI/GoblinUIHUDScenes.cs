@@ -47,8 +47,8 @@ namespace Untitled.Editor
             var demo = EditorSceneManager.OpenScene(HUDScenePath);
             EnsureEvents();
             EditorSceneManager.SaveScene(demo);
-            IntegrateScene("Assets/Scenes/Bussiness.unity", false);
-            IntegrateScene("Assets/Scenes/Adventure.unity", true);
+            IntegrateScene("Assets/Scenes/Gameplay/Bussiness.unity", false);
+            IntegrateScene("Assets/Scenes/Gameplay/Adventure.unity", true);
             Debug.Log("GOBLIN_UI_HUD_BUILD_INTEGRATION_OK");
         }
         public static void RepairHUDVisuals()
@@ -119,7 +119,8 @@ namespace Untitled.Editor
         }
         private static void EnsureEvents()
         {
-            var events = UnityEngine.Object.FindObjectOfType<EventSystem>();
+            var events = SceneManager.GetActiveScene().GetRootGameObjects()
+                .SelectMany(go => go.GetComponentsInChildren<EventSystem>(true)).SingleOrDefault();
             if (events == null)
             {
                 var go = new GameObject("Goblin UI EventSystem"); go.SetActive(false);
@@ -147,14 +148,33 @@ namespace Untitled.Editor
         private static void IntegrateScene(string path, bool isNight)
         {
             var scene = EditorSceneManager.OpenScene(path); string before = CameraFingerprint();
-            var existing = UnityEngine.Object.FindObjectOfType<UIGameplayHUD>();
+            var existing = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<UIGameplayHUD>(true)).SingleOrDefault();
             var root = existing != null ? existing.gameObject : (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(Prefabs + (isNight ? "/UI_NightHUD.prefab" : "/UI_DayHUD.prefab")));
             var source = root.GetComponent<UIGameplayReadModel>();
-            var shop = UnityEngine.Object.FindObjectOfType<ShopSceneBindings>(); var ray = UnityEngine.Object.FindObjectOfType<ShopRaycastInteractor>();
+            var shop = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<ShopSceneBindings>(true)).SingleOrDefault();
+            var ray = scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<ShopRaycastInteractor>(true)).SingleOrDefault();
             source.Configure(isNight, root.GetComponent<UIInventoryDataSource>(), shop, ray, bagIcon);
             root.GetComponent<UIWorldInputBridge>().Configure(shop != null ? shop.Player : null);
-            if (UnityEngine.Object.FindObjectOfType<Bootstrap>() == null) new GameObject("Goblin UI Session Bootstrap").AddComponent<Bootstrap>();
+            if (!scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<Bootstrap>(true)).Any()) new GameObject("Goblin UI Session Bootstrap").AddComponent<Bootstrap>();
             EnsureEvents();
+            var sceneRoot = scene.GetRootGameObjects().SingleOrDefault(go => go.name == "SceneRoot");
+            if (sceneRoot != null)
+            {
+                var ui = sceneRoot.transform.Cast<Transform>().SingleOrDefault(t => t.name == "UI");
+                if (ui == null)
+                {
+                    var go = new GameObject("UI");
+                    Undo.RegisterCreatedObjectUndo(go, "Create scene UI group");
+                    go.transform.SetParent(sceneRoot.transform, false);
+                    ui = go.transform;
+                }
+                Undo.SetTransformParent(root.transform, ui, "Organize gameplay HUD");
+                foreach (var events in scene.GetRootGameObjects().SelectMany(go => go.GetComponentsInChildren<EventSystem>(true)).ToArray())
+                    if (events.transform.parent == null) Undo.SetTransformParent(events.transform, ui, "Organize UI events");
+                var systems = sceneRoot.transform.Cast<Transform>().Single(t => t.name == "Systems");
+                foreach (var bootstrap in scene.GetRootGameObjects().Where(go => go.GetComponent<Bootstrap>() != null).ToArray())
+                    Undo.SetTransformParent(bootstrap.transform, systems, "Organize UI bootstrap");
+            }
             if (CameraFingerprint() != before) throw new InvalidOperationException("UI integration changed existing cameras.");
             EditorSceneManager.SaveScene(scene); AssetDatabase.SaveAssets();
             Debug.Log("GOBLIN_UI_CAMERA_PRESERVED " + path);

@@ -1,0 +1,20 @@
+PASS Spawn center ray selects PreparationStation at 1.65m eye height.
+PASS Continuous WASD route to PreparationStation in 0.14s
+PASS Continuous WASD route to OrderBoard in 0.08s
+PASS Continuous WASD route to SealingStation in 0.40s
+PASS Continuous WASD route to DeliveryPoint in 0.22s
+PASS Continuous WASD route to StoragePoint in 0.59s
+PASS Continuous WASD route to DungeonEntrance in 0.36s
+PASS Center ray selects PreparationStation
+PASS E feedback and StationRequested event: PreparationStation
+PASS Center ray selects OrderBoard
+PASS E feedback and StationRequested event: OrderBoard
+PASS Center ray selects SealingStation
+PASS E feedback and StationRequested event: SealingStation
+PASS Center ray selects DeliveryPoint
+PASS E feedback and StationRequested event: DeliveryPoint
+PASS Center ray selects StoragePoint
+PASS E feedback and StationRequested event: StoragePoint
+PASS Center ray selects DungeonEntrance
+PASS E feedback and StationRequested event: DungeonEntrance
+PASS Closed front boundary blocks player at Z=-1.895

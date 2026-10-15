@@ -1,0 +1,13 @@
+PASS Spawn ray selects preparation; ingredient target viewport=(0.515, 0.487, 1.364)
+PASS Stationary ray PreparationStation, pitch=12.5
+PASS Stationary E feedback and event PreparationStation
+PASS Stationary ray OrderBoard, pitch=1.5
+PASS Stationary E feedback and event OrderBoard
+PASS Stationary ray StoragePoint, pitch=7.5
+PASS Stationary E feedback and event StoragePoint
+PASS Stationary ray SealingStation, pitch=14.7
+PASS Stationary E feedback and event SealingStation
+PASS Stationary ray DeliveryPoint, pitch=20.4
+PASS Stationary E feedback and event DeliveryPoint
+PASS Stationary ray DungeonEntrance, pitch=16.7
+PASS Stationary E feedback and event DungeonEntrance

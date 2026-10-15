@@ -13,7 +13,7 @@ namespace Untitled.EditorTools
 {
     public static class BussinessShopBuilder
     {
-        private const string ScenePath = "Assets/Scenes/Bussiness.unity";
+        private const string ScenePath = "Assets/Scenes/Gameplay/Bussiness.unity";
         private const string Models = "Assets/Art/Models/BussinessShop/";
         private const string Materials = "Assets/Art/Materials/BussinessShop/";
         private const string Prefabs = "Assets/Prefabs/BussinessShop/";
@@ -31,7 +31,7 @@ namespace Untitled.EditorTools
             if (EditorApplication.isPlaying) throw new InvalidOperationException("Exit Play Mode first.");
             var scene = EditorSceneManager.GetActiveScene();
             if (scene.path != ScenePath) throw new InvalidOperationException("Open Bussiness.unity first.");
-            if (scene.GetRootGameObjects().Any(g => g.name == "BussinessShop_8x9"))
+            if (scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Transform>(true)).Select(t => t.gameObject).Any(g => g.name == "BussinessShop_8x9" || g.name == "BussinessShop_Competition_5.8x4.4"))
                 throw new InvalidOperationException("Shop already assembled. Edit the saved scene/prefab directly.");
             Directory.CreateDirectory("Logs/BussinessShop");
             EditorSceneManager.SaveScene(scene, "Logs/BussinessShop/before_assembly.unity", true);
@@ -40,10 +40,10 @@ namespace Untitled.EditorTools
             Directory.CreateDirectory(Prefabs);
             AssetDatabase.Refresh();
             PrepareAssets();
-            foreach (var go in scene.GetRootGameObjects().Where(g => g.name == "Main Camera" || g.name == "Directional Light"))
+            foreach (var go in scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Transform>(true)).Select(t => t.gameObject).Where(g => g.name == "Main Camera" || g.name == "Directional Light").ToArray())
                 Object.DestroyImmediate(go);
             stations.Clear();
-            Transform shop = Group("BussinessShop_8x9", null);
+            Transform shop = Group("BussinessShop_8x9", SceneGroup("World"));
             BuildArchitecture(Group("01_Architecture", shop));
             Transform markers = Group("02_LayoutPoints", shop);
             Transform playerSpawn = Point("PlayerSpawn", markers, V(-0.75f, 0.025f, 2.15f));
@@ -54,10 +54,11 @@ namespace Untitled.EditorTools
             PrefabUtility.SaveAsPrefabAssetAndConnect(shop.gameObject, Prefabs + "bussiness_shop_room.prefab", InteractionMode.AutomatedAction);
             var player = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/MilkTeaShop/milk_tea_shop_player.prefab"));
             player.name = "Bussiness_FirstPersonPlayer";
+            Undo.SetTransformParent(player.transform, SceneGroup("World"), "Organize shop player");
             player.transform.SetPositionAndRotation(playerSpawn.position, Quaternion.Euler(0, 180, 0));
             var camera = player.GetComponentInChildren<Camera>();
             camera.GetUniversalAdditionalCameraData().renderPostProcessing = true;
-            var bindings = Group("BussinessShop_SystemBindings", null).gameObject.AddComponent<ShopSceneBindings>();
+            var bindings = Group("BussinessShop_SystemBindings", SceneGroup("Systems")).gameObject.AddComponent<ShopSceneBindings>();
             var settings = new SerializedObject(bindings);
             settings.FindProperty("player").objectReferenceValue = player.GetComponent<ShopFirstPersonController>();
             settings.FindProperty("playerSpawn").objectReferenceValue = playerSpawn;
@@ -141,6 +142,31 @@ namespace Untitled.EditorTools
             var bounds = renderers[0].bounds;
             foreach (var renderer in renderers.Skip(1)) bounds.Encapsulate(renderer.bounds);
             return bounds;
+        }
+
+        private static Transform SceneGroup(string name)
+        {
+            var scene = EditorSceneManager.GetActiveScene();
+            var root = scene.GetRootGameObjects().SingleOrDefault(g => g.name == "SceneRoot");
+            if (root == null)
+            {
+                root = new GameObject("SceneRoot");
+                Undo.RegisterCreatedObjectUndo(root, "Create scene root");
+            }
+            var group = root.transform.Cast<Transform>().SingleOrDefault(t => t.name == name);
+            if (group == null)
+            {
+                group = Group(name, root.transform);
+                Undo.RegisterCreatedObjectUndo(group.gameObject, "Create scene group");
+            }
+            var order = new[] { "Systems", "Cameras", "World", "Lighting", "UI" };
+            int index = 0;
+            foreach (string entry in order)
+            {
+                var child = root.transform.Cast<Transform>().SingleOrDefault(t => t.name == entry);
+                if (child != null) child.SetSiblingIndex(index++);
+            }
+            return group;
         }
 
         private static Transform Group(string name, Transform parent)
@@ -332,7 +358,7 @@ namespace Untitled.EditorTools
         {
             var scene = EditorSceneManager.GetActiveScene();
             if (scene.path != ScenePath) throw new InvalidOperationException("Open Bussiness first.");
-            var bindings = Object.FindObjectOfType<ShopSceneBindings>();
+            var bindings = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<ShopSceneBindings>(true)).SingleOrDefault();
             Physics.SyncTransforms();
             var lines = new List<string> { "Interior 8x9x3.2m. Staff aisle approx 2.1m. Right access lane approx 2.1m before storage." };
             var points = bindings.Stations.Select(s => s.ApproachPoint).Concat(new[] { bindings.PlayerSpawn, bindings.CustomerSpawn });

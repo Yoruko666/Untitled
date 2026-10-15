@@ -94,7 +94,7 @@ namespace Untitled.Editor
             }
             GoblinUIPlayModeVerification.SetResolution(1920, 1080); yield return null; yield return null;
             // Load actual authored gameplay scenes with their original players and cameras.
-            var shopLoad = EditorSceneManager.LoadSceneAsyncInPlayMode("Assets/Scenes/Bussiness.unity", new LoadSceneParameters(LoadSceneMode.Single));
+            var shopLoad = EditorSceneManager.LoadSceneAsyncInPlayMode("Assets/Scenes/Gameplay/Bussiness.unity", new LoadSceneParameters(LoadSceneMode.Single));
             while (!shopLoad.isDone) yield return null;
             yield return RenderReady();
             hud = FindObjectOfType<UIGameplayHUD>(); var source = FindObjectOfType<UIGameplayReadModel>(); var player = FindObjectOfType<ShopFirstPersonController>();
@@ -117,7 +117,7 @@ namespace Untitled.Editor
             Require(UIManager.Instance.Top is UIShopWorkPanel && UIManager.Instance.Top.GetComponent<UIShopWorkPanel>().View.Data.Id == "preserved", "Preparation did not receive order snapshot.");
             UIManager.Instance.CloseAll(); yield return null; yield return null;
             Capture("shop_hud_1920x1080", new Vector2Int(1920, 1080));
-            var caveLoad = EditorSceneManager.LoadSceneAsyncInPlayMode("Assets/Scenes/Adventure.unity", new LoadSceneParameters(LoadSceneMode.Single));
+            var caveLoad = EditorSceneManager.LoadSceneAsyncInPlayMode("Assets/Scenes/Gameplay/Adventure.unity", new LoadSceneParameters(LoadSceneMode.Single));
             while (!caveLoad.isDone) yield return null;
             yield return RenderReady();
             source = FindObjectOfType<UIGameplayReadModel>(); hud = FindObjectOfType<UIGameplayHUD>();
