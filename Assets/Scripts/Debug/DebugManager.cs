@@ -1,3 +1,4 @@
+#if UNITY_EDITOR || (DEVELOPMENT_BUILD && UNTITLED_DEVELOPER_TOOLS)
 using Cinemachine;
 using UnityEngine;
 
@@ -167,3 +168,4 @@ namespace Untitled
         }
     }
 }
+#endif

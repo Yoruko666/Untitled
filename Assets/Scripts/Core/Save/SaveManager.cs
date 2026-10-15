@@ -20,6 +20,10 @@ namespace Untitled
 
         public SaveResult Save()
         {
+#if UNITY_EDITOR || (DEVELOPMENT_BUILD && UNTITLED_DEVELOPER_TOOLS)
+            if (GameManager.TryGet(out var manager) && ReferenceEquals(manager.GameData, session.GameData) && manager.DeveloperStateModified)
+                return SaveResult.Fail(SaveError.NotReady, "Developer-modified sessions cannot overwrite ordinary saves.");
+#endif
             if (busy) return SaveResult.Fail(SaveError.Busy, "Restore in progress.");
             if (!session.IsReady) return SaveResult.Fail(SaveError.NotReady, "Session is not ready.");
             return storage.Save(session.Capture());

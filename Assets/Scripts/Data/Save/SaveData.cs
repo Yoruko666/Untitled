@@ -4,8 +4,6 @@ using UnityEngine;
 
 namespace Untitled
 {
-    public enum GamePhase { Day = 0, Night = 1 }
-
     [Serializable]
     public sealed class SaveData
     {
@@ -19,6 +17,9 @@ namespace Untitled
         public StorySaveData Story;
         public UnlockSaveData Unlocks;
         public UndergroundSaveData Underground;
+        public List<ItemStackSaveData> Package;
+        public List<string> AcceptedOrders;
+        public List<string> CompletedOrders;
 
         public static SaveData NewGame() => new SaveData
         {
@@ -29,7 +30,10 @@ namespace Untitled
             Order = new OrderSaveData { Id = "" },
             Story = new StorySaveData { Flags = new List<string>() },
             Unlocks = new UnlockSaveData { AbilityIds = new List<string>() },
-            Underground = new UndergroundSaveData { Flags = new List<string>() }
+            Underground = new UndergroundSaveData { Flags = new List<string>() },
+            Package = new List<ItemStackSaveData>(),
+            AcceptedOrders = new List<string>(),
+            CompletedOrders = new List<string>()
         };
     }
 

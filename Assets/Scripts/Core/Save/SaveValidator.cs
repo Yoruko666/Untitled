@@ -17,15 +17,26 @@ namespace Untitled
             var ids = new HashSet<int>();
             foreach (var item in data.Inventory.Items)
                 if (item == null || item.Id <= 0 || item.Quantity <= 0 || !ids.Add(item.Id)) return Invalid("Invalid or duplicate item.");
-            var order = data.Order;
-            if (order == null || order.Id == null || order.Id.Length > 128
-                || float.IsNaN(order.Progress) || float.IsInfinity(order.Progress) || order.Progress < 0 || order.Progress > 1
-                || (order.Completed && order.Progress != 1)
-                || (order.Id.Length == 0 && (order.Progress != 0 || order.Completed))) return Invalid("Invalid order.");
+            if (!ValidOrder(data.Order)) return Invalid("Invalid order.");
             if (!ValidIds(data.Story?.Flags) || !ValidIds(data.Unlocks?.AbilityIds) || !ValidIds(data.Underground?.Flags))
                 return Invalid("Invalid module IDs.");
+            // Added fields are optional when reading the original schema-v1 slot.
+            if ((data.AcceptedOrders != null && !ValidIds(data.AcceptedOrders))
+                || (data.CompletedOrders != null && !ValidIds(data.CompletedOrders))) return Invalid("Invalid order IDs.");
+            if (data.Package != null)
+            {
+                if (data.Package.Count > 10000) return Invalid("Invalid package.");
+                ids.Clear();
+                foreach (var item in data.Package)
+                    if (item == null || item.ItemId <= 0 || item.Count <= 0 || !ids.Add(item.ItemId)) return Invalid("Invalid package item.");
+            }
             return SaveResult.Ok();
         }
+
+        internal static bool ValidOrder(OrderSaveData order) => order != null && order.Id != null && order.Id.Length <= 128
+            && !float.IsNaN(order.Progress) && !float.IsInfinity(order.Progress) && order.Progress >= 0 && order.Progress <= 1
+            && (!order.Completed || order.Progress == 1)
+            && (order.Id.Length != 0 || (order.Progress == 0 && !order.Completed));
 
         private static bool ValidIds(List<string> values)
         {

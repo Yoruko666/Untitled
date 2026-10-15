@@ -14,8 +14,13 @@ namespace Untitled.UI
         private GameSession session;
         private InteractManager interactions;
         private UIHUDData current;
+        // Presentation metadata only; persistent gameplay state lives in GameData.
+        private static UIHUDData sessionDisplay;
+        private static string displayedSessionOrderId;
         public UIHUDData Current => current;
         public event Action<UIHUDData> Changed;
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetDisplay() { sessionDisplay = null; displayedSessionOrderId = null; }
         public void Configure(bool isNight, UIInventoryDataSource inventorySource, ShopSceneBindings bindings = null, ShopRaycastInteractor interactor = null, Sprite fallback = null)
         { night = isNight; inventory = inventorySource; shop = bindings; shopInteractor = interactor; itemIcon = fallback; }
         private void Start()
@@ -44,9 +49,10 @@ namespace Untitled.UI
         {
             if (display == null) return;
             if (session != null && !session.IsReady) return;
-            night = session != null ? session.Phase == GamePhase.Night : night;
-            current = new UIHUDData(session?.Day ?? display.Day, game != null ? game.Money : display.Coins, night, session != null ? SessionOrder() : display.Order, display.Quests,
+            current = new UIHUDData(session?.Day ?? display.Day, game != null ? game.Money : display.Coins, night, session != null ? SessionOrder() ?? display.Order : display.Order, display.Quests,
                 display.Health, display.Resource, display.Quickbar, display.Prompt, display.Alert);
+            sessionDisplay = current;
+            displayedSessionOrderId = session?.Order.Id;
             Changed?.Invoke(current);
         }
         private UIOrderData SessionOrder()
@@ -61,16 +67,19 @@ namespace Untitled.UI
             if (session == null || !session.IsReady) return;
             if (inventory != null && DatabaseManager.TryGet(out var db))
             {
-                inventory.Initialize(game.InventoryData.Items, db.ItemDatabase, address => itemIcon, "仓库");
+                inventory.Initialize(game.InventoryData, db.ItemDatabase, address => itemIcon, "仓库");
                 inventory.Publish();
                 if (UIManager.TryGet(out var ui) && ui.IsOpen("UI_Inventory")) ui.Open("UI_Inventory", inventory.Current);
             }
-            Publish(new UIHUDData(session.Day, game.Money, session.Phase == GamePhase.Night, SessionOrder(), null));
+            var cached = current ?? sessionDisplay;
+            var cachedOrder = displayedSessionOrderId == session.Order.Id ? cached?.Order : null;
+            Publish(new UIHUDData(session.Day, game.Money, night, SessionOrder() ?? cachedOrder, cached?.Quests,
+                cached?.Health, cached?.Resource, cached?.Quickbar, cached?.Prompt, cached?.Alert ?? false));
             if (UIManager.TryGet(out var panels) && panels.IsOpen("UI_Workstation")) panels.Open("UI_Workstation", current.Order);
         }
         private void OnMoney(int amount)
         {
-            if (session != null && !session.IsReady) { current = null; return; }
+            if (session != null && !session.IsReady) { current = null; sessionDisplay = null; return; }
             if (current != null) Publish(current);
         }
         private void SetPrompt(string text)

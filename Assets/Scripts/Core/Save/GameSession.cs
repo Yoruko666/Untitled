@@ -3,43 +3,41 @@ using System.Collections.Generic;
 
 namespace Untitled
 {
-    /// <summary>Scene-independent state; existing economy and warehouse remain authoritative.</summary>
+    /// <summary>Save/scene lifecycle over the single shared GameData instance.</summary>
     public sealed class GameSession
     {
-        private SaveData state = SaveData.NewGame();
         public GameData GameData { get; }
-        public int Day => state.Progress.Day;
-        public GamePhase Phase => state.Progress.Phase;
+        public int Day => GameData.Day;
+        public GamePhase Phase => GameData.Phase;
         public bool IsReady { get; private set; } = true;
-        public OrderSaveData Order => new OrderSaveData { Id = state.Order.Id, Progress = state.Order.Progress, Completed = state.Order.Completed };
-        public IReadOnlyList<string> StoryFlags => state.Story.Flags.AsReadOnly();
+        public OrderSaveData Order => GameData.Order;
+        public IReadOnlyList<string> StoryFlags => GameData.StoryFlags;
         public event Action Changed;
 
-        public GameSession(GameData gameData) { GameData = gameData ?? throw new ArgumentNullException(nameof(gameData)); }
+        public GameSession(GameData gameData)
+        {
+            GameData = gameData ?? throw new ArgumentNullException(nameof(gameData));
+            GameData.StateChanged += OnStateChanged;
+        }
+
+        private void OnStateChanged() { if (IsReady) Changed?.Invoke(); }
 
         public void SetProgress(int day, GamePhase phase)
         {
             if (day < 1 || day > 7 || !Enum.IsDefined(typeof(GamePhase), phase)) throw new ArgumentOutOfRangeException(nameof(day));
-            state.Progress.Day = day; state.Progress.Phase = phase;
-            if (IsReady) Changed?.Invoke();
+            GameData.SetProgress(day, phase);
         }
 
         public void SetOrder(string id, float progress, bool completed)
         {
-            var candidate = Capture();
-            candidate.Order = new OrderSaveData { Id = id, Progress = progress, Completed = completed };
-            var result = SaveValidator.Validate(candidate);
-            if (!result.Success) throw new ArgumentException(result.Message);
-            state.Order = candidate.Order;
-            if (IsReady) Changed?.Invoke();
+            if (!GameData.SetOrder(id, progress, completed)) throw new ArgumentException("Invalid order.");
         }
 
         public void SetStoryFlag(string id, bool enabled)
         {
             if (string.IsNullOrWhiteSpace(id) || id.Length > 128) throw new ArgumentException("Invalid story ID.", nameof(id));
-            if (enabled && !state.Story.Flags.Contains(id)) state.Story.Flags.Add(id);
-            else if (!enabled) state.Story.Flags.Remove(id);
-            if (IsReady) Changed?.Invoke();
+            if (enabled) GameData.SetStoryFlag(id);
+            else GameData.RemoveStoryFlag(id);
         }
 
         public SaveData Capture()
@@ -50,9 +48,12 @@ namespace Untitled
             foreach (var item in GameData.InventoryData.Items)
                 data.Inventory.Items.Add(item == null ? null : new InventoryItemSaveData { Id = item.Id, Quantity = item.Num });
             data.Order = Order;
-            data.Story.Flags.AddRange(state.Story.Flags);
-            data.Unlocks.AbilityIds.AddRange(state.Unlocks.AbilityIds);
-            data.Underground.Flags.AddRange(state.Underground.Flags);
+            data.Story.Flags.AddRange(GameData.StoryFlags);
+            data.Unlocks.AbilityIds.AddRange(GameData.UnlockedAbilities);
+            data.Underground.Flags.AddRange(GameData.UndergroundFlags);
+            data.Package = GameData.PackageData.Capture();
+            data.AcceptedOrders = new List<string>(GameData.AcceptedOrders);
+            data.CompletedOrders = new List<string>(GameData.CompletedOrders);
             return data;
         }
 
@@ -60,18 +61,20 @@ namespace Untitled
         {
             var result = SaveValidator.Validate(data);
             if (!result.Success) throw new ArgumentException(result.Message);
+            var shared = new GameStateSaveData
+            {
+                Version = GameStateSaveData.CurrentVersion, Day = data.Progress.Day, Phase = data.Progress.Phase,
+                Money = data.Economy.Coins, Inventory = new List<ItemStackSaveData>(), Package = data.Package,
+                AcceptedOrders = data.AcceptedOrders, CompletedOrders = data.CompletedOrders,
+                Order = data.Order, StoryFlags = data.Story.Flags, UnlockedAbilities = data.Unlocks.AbilityIds,
+                UndergroundFlags = data.Underground.Flags
+            };
+            foreach (var item in data.Inventory.Items)
+                shared.Inventory.Add(new ItemStackSaveData { ItemId = item.Id, Count = item.Quantity });
             IsReady = false;
-            // Copy each module: caller-owned DTOs must never become live state.
-            state = SaveData.NewGame();
-            state.Progress.Day = data.Progress.Day; state.Progress.Phase = data.Progress.Phase;
-            state.Order = new OrderSaveData { Id = data.Order.Id, Progress = data.Order.Progress, Completed = data.Order.Completed };
-            state.Story.Flags.AddRange(data.Story.Flags);
-            state.Unlocks.AbilityIds.AddRange(data.Unlocks.AbilityIds);
-            state.Underground.Flags.AddRange(data.Underground.Flags);
-            GameData.InventoryData.Clear();
-            foreach (var item in data.Inventory.Items) GameData.InventoryData.AddItem(item.Id, item.Quantity);
-            GameData.PackageData.Clear();
-            GameData.RestoreMoney(data.Economy.Coins);
+            // Retain valid stacks even after a capacity reduction.
+            if (!GameData.TryRestore(shared, out int skipped)) throw new ArgumentException("Invalid shared state.");
+            if (skipped > 0) UnityEngine.Debug.LogWarning($"[GameSession] 恢复时跳过 {skipped} 条无效物品记录。");
         }
 
         internal void CompleteRestore() { IsReady = true; Changed?.Invoke(); }

@@ -24,6 +24,8 @@ namespace Untitled
 
         public SaveResult Validate(GamePhase phase)
         {
+            if (phase != GamePhase.Day && phase != GamePhase.Night)
+                return SaveResult.Fail(SaveError.PhaseUnavailable, "No scene flow is available for this phase.");
             string scene = SceneFor(phase);
             if (SceneManager.GetActiveScene().name == scene || Application.CanStreamedLevelBeLoaded(scene)) return SaveResult.Ok();
             return SaveResult.Fail(SaveError.PhaseUnavailable, "Add the phase scene to Build Settings: " + scene);
@@ -31,6 +33,8 @@ namespace Untitled
 
         public async Task EnterAsync(GameSession session)
         {
+            var validation = Validate(session.Phase);
+            if (!validation.Success) throw new InvalidOperationException(validation.Message);
             string scene = SceneFor(session.Phase);
             if (SceneManager.GetActiveScene().name != scene)
             {

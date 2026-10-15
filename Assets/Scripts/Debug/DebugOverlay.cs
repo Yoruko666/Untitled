@@ -1,3 +1,4 @@
+#if UNITY_EDITOR || (DEVELOPMENT_BUILD && UNTITLED_DEVELOPER_TOOLS)
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -224,3 +225,4 @@ namespace Untitled
         }
     }
 }
+#endif

@@ -223,8 +223,8 @@ namespace Untitled.Tests
         public void InvalidInputNeverReplacesValidSave()
         {
             Assert.IsTrue(manager.Save().Success); string before = File.ReadAllText(storage.MainPath);
-            session.GameData.Money = -1;
-            Assert.AreEqual(SaveError.InvalidData, manager.Save().Error);
+            var invalid = session.Capture(); invalid.Economy.Coins = -1;
+            Assert.AreEqual(SaveError.InvalidData, storage.Save(invalid).Error);
             Assert.AreEqual(before, File.ReadAllText(storage.MainPath));
         }
 
