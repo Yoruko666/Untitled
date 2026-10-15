@@ -42,8 +42,8 @@ namespace Untitled.EditorTools
             var room = Group("MilkTeaShop_Reference_3x7m", null);
             Architecture(Group("01_Architecture", room));
             var markers = Group("02_LayoutPoints", room);
-            Transform spawn = Point("PlayerSpawn", markers, V(0, .025f, -3.60f));
-            Transform customer = Point("CustomerSpawn", markers, V(-.65f, .025f, -3.62f));
+            Transform spawn = Point("PlayerSpawn", markers, V(0, .025f, -2.16f));
+            Transform customer = Point("CustomerSpawn", markers, V(.1f, .025f, -4.4f));
             var work = Group("03_Workstations", room);
             stations.Clear();
             Workstations(work, markers);
@@ -55,13 +55,15 @@ namespace Untitled.EditorTools
             player.name = "MilkTeaReference_FirstPersonPlayer";
             player.transform.SetPositionAndRotation(spawn.position, Quaternion.identity);
             var controller = player.GetComponent<ShopFirstPersonController>();
-            controller.Eye.localPosition = V(0, 1.55f, 0);
-            controller.Eye.localRotation = Quaternion.Euler(8.5f, 0, 0);
+            controller.Eye.localPosition = V(0, 1.6f, 0);
+            controller.Eye.localRotation = Quaternion.Euler(12, 0, 0);
             var camera = player.GetComponentInChildren<Camera>();
             camera.fieldOfView = 64;
             camera.nearClipPlane = .04f;
             camera.farClipPlane = 35;
             camera.allowHDR = true;
+            camera.clearFlags = CameraClearFlags.SolidColor;
+            camera.backgroundColor = new Color(.34f, .39f, .37f);
             var cameraData = camera.GetUniversalAdditionalCameraData();
             cameraData.renderPostProcessing = true;
             cameraData.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
@@ -178,6 +180,7 @@ namespace Untitled.EditorTools
                 props[info.name] = PrefabUtility.SaveAsPrefabAsset(root, Prefabs + info.name + ".prefab");
                 Object.DestroyImmediate(root);
             }
+            props["pos_terminal"] = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/BussinessShop/pos_terminal.prefab");
         }
 
         private static Transform Group(string name, Transform parent)
@@ -254,26 +257,44 @@ namespace Untitled.EditorTools
             foreach (float side in new[] { -1f, 1f })
                 for (int segment = 0; segment < 4; segment++)
                 {
-                    float length = segment == 3 ? 1 : 2;
+                    float length = segment == 0 ? .4f : segment == 3 ? 1 : 2;
                     var wall = Prop("wall_module", parent, Vector3.zero, side < 0 ? -90 : 90, true, V(length / 2, 1, 1));
                     wall.name = (side < 0 ? "LeftWall_" : "RightWall_") + segment;
-                    FitMin(wall, V(side < 0 ? -1.7545f : 1.5f, 0, -4 + segment * 2));
+                    FitMin(wall, V(side < 0 ? -1.7545f : 1.5f, 0, segment == 0 ? -2.4f : -4 + segment * 2));
                 }
             for (int x = 0; x < 2; x++)
                 for (int z = 0; z < 4; z++)
                 {
-                    var ceiling = Prop("ceiling_module", parent, Vector3.zero, 0, true, V(.75f, 1, z == 3 ? .5f : 1));
+                    var ceiling = Prop("ceiling_module", parent, Vector3.zero, 0, true, V(.75f, 1, z == 0 ? .3f : z == 3 ? .5f : 1));
                     ceiling.name = "Ceiling_" + x + "_" + z;
-                    FitMin(ceiling, V(-1.5f + x * 1.5f, 3.2f, -4 + z * 2));
+                    FitMin(ceiling, V(-1.5f + x * 1.5f, 3.2f, z == 0 ? -2.6f : -4 + z * 2));
                 }
-            Box("FrontWall", parent, V(0, 1.6f, -4.12f), V(3.5f, 3.2f, .24f), "BeigePlaster");
+            for (int x = 0; x < 5; x++)
+                for (int z = 0; z < 2; z++)
+                {
+                    var tile = Prop("floor_tile", parent, Vector3.zero, 0, true);
+                    tile.name = "CustomerFloor_" + x + "_" + z;
+                    FitMin(tile, V(-2.5f + x, -.08f, -6 + z));
+                }
+            foreach (float x in new[] { -2.5f, 1.5f })
+                FitMin(Prop("floor_tile", parent, Vector3.zero, 0, true), V(x, -.08f, -4));
+            Box("CourtyardGround", parent, V(0, -.16f, -8), V(16, .12f, 12), "Grout", false);
+            var bounds = Group("CustomerAreaBounds", parent);
+            Solid("ForecourtEnd", bounds, V(0, 1, -6.05f), V(5.2f, 2, .1f));
+            foreach (float side in new[] { -1f, 1f })
+            {
+                Solid("ForecourtSide", bounds, V(side * 2.55f, 1, -4.5f), V(.1f, 2, 3));
+                Solid("ForecourtShoulder", bounds, V(side * 2, 1, -2.95f), V(1, 2, .1f));
+                Solid("OpeningSide", bounds, V(side * 1.55f, 1, -2.7f), V(.1f, 2, .6f));
+                Box("FrontTimberPost", parent, V(side * 1.48f, 1.6f, -2.5f), V(.12f, 3.2f, .12f), "Walnut");
+            }
             Box("RearWallLeft", parent, V(-1.19f, 1.6f, 3.10f), V(.83f, 3.2f, .20f), "BeigePlaster");
             Box("RearWallRight", parent, V(1.19f, 1.6f, 3.10f), V(.83f, 3.2f, .20f), "BeigePlaster");
             Box("RearDoorHeader", parent, V(0, 2.83f, 3.10f), V(1.55f, .74f, .20f), "BeigePlaster");
             Prop("arch_wall_infill", parent, V(0, 0, 2.96f));
             foreach (float side in new[] { -1f, 1f })
             {
-                Box("TimberCrownMoulding", parent, V(side * 1.49f, 3.145f, -.5f), V(.14f, .12f, 7), "Walnut", false);
+                Box("TimberCrownMoulding", parent, V(side * 1.49f, 3.145f, .2f), V(.14f, .12f, 5.6f), "Walnut", false);
             }
             foreach (float z in new[] { -2.1f, .2f, 2.5f })
             {
@@ -283,11 +304,12 @@ namespace Untitled.EditorTools
             foreach (float x in new[] { -.92f, .92f })
                 for (int i = 0; i < 4; i++)
                 {
-                    var beam = Prop("wooden_beam", parent, Vector3.zero, -90, false, V(i == 3 ? .5f : 1, 1, 1));
-                    FitMin(beam, V(x - .12f, 3.02f, -4 + i * 2));
+                    var beam = Prop("wooden_beam", parent, Vector3.zero, -90, false, V(i == 0 ? .3f : i == 3 ? .5f : 1, 1, 1));
+                    FitMin(beam, V(x - .12f, 3.02f, i == 0 ? -2.6f : -4 + i * 2));
                 }
-            Prop("wood_window", parent, V(-1.45f, 1.16f, .55f), -90);
-            Prop("wood_window", parent, V(-1.45f, 1.16f, 2.05f), -90);
+            FitMin(Prop("wooden_beam", parent, Vector3.zero, 0, false, V(1.5f, 1, 1)), V(-1.5f, 2.97f, -2.67f));
+            Prop("wood_window", parent, V(-1.45f, 1.58f, .55f), -90);
+            Prop("wood_window", parent, V(-1.45f, 1.58f, 2.05f), -90);
         }
 
         private static Transform Station(string id, ShopStationKind kind, string prompt, Vector3 approach, Transform parent, Transform points)
@@ -311,29 +333,29 @@ namespace Untitled.EditorTools
             Prop("inset_topping_counter", preparation, V(-1.15f, 0, -1f), -90, true);
             var prepBack = Prop("galley_counter", preparation, V(-1.15f, 0, .8175f), -90, true);
             prepBack.name = "TeaPreparationCounter";
-            Prop("tea_dispenser", preparation, V(-1.16f, .9f, .37f), -90, true);
-            Prop("tea_dispenser_green", preparation, V(-1.16f, .9f, .92f), -90, true);
-            Prop("syrup_pumps", preparation, V(-1.405f, .925f, -.28f), -90);
-            Prop("syrup_pumps", preparation, V(-1.405f, .925f, -.85f), -90);
-            Prop("blender", preparation, V(-1.15f, .90f, 1.39f), -90);
+            Prop("tea_dispenser", preparation, V(-1.25f, .9f, .63f), -90, true);
+            Prop("tea_dispenser_green", preparation, V(-1.25f, .9f, 1.10f), -90, true);
+            Prop("syrup_pumps", preparation, V(-1.35f, .9f, .15f), -90);
+            Prop("blender", preparation, V(-1.22f, .90f, 1.52f), -90);
+            Box("PreparationMat", preparation, V(-.98f, .914f, .15f), V(.25f, .025f, .40f), "CabinetInset", false);
 
             var water = Station("WaterStation", ShopStationKind.Water, "清洗区 · 检查水槽", V(-.25f, .025f, 2.18f), parent, points);
             Prop("sink_counter", water, V(-1.15f, 0, 2.34f), -90, true, V(.82f, 1, 1));
-            var order = Station("OrderBoard", ShopStationKind.OrderBoard, "饮品菜单 · 查看订单入口", V(-.2f, .025f, -1.28f), parent, points);
-            Prop("menu_triptych", order, V(-1.36f, .935f, -1.15f), -65, true);
+            var order = Station("OrderBoard", ShopStationKind.OrderBoard, "饮品菜单 · 查看订单入口", V(.1f, .025f, -3.8f), parent, points);
+            Prop("menu_triptych", order, V(.24f, 1.98f, -2.72f), 0, true, Vector3.one * .83f);
 
             var sealing = Station("SealingStation", ShopStationKind.Sealing, "封杯机 · 检查设备", V(.25f, .025f, -.15f), parent, points);
             Prop("galley_counter", sealing, V(1.15f, 0, -.95f), 90, true);
             Prop("galley_counter", sealing, V(1.15f, 0, .845f), 90, true);
-            Prop("cup_sealing_machine", sealing, V(1.15f, .9f, -.10f), 25, true);
+            Prop("cup_sealing_machine", sealing, V(1.15f, .9f, -.10f), 90, true);
             Prop("clear_cup_stack", sealing, V(.99f, .9f, -.67f));
             Prop("clear_cup_stack", sealing, V(1.30f, .9f, .47f));
             Prop("straw_holder", sealing, V(1.12f, .9f, .70f));
 
-            var delivery = Station("DeliveryPoint", ShopStationKind.Delivery, "出杯托盘 · 查看成品", V(.18f, .025f, -1.3f), parent, points);
-            Box("WoodenDeliveryTray", delivery, V(1.10f, .922f, -1.37f), V(.52f, .044f, .66f), "Oak", false);
-            Prop("finished_boba", delivery, V(.99f, .944f, -1.35f), 90, true);
-            Prop("takeout_bags", delivery, V(1.29f, .944f, -1.35f), 90, true);
+            var delivery = Station("DeliveryPoint", ShopStationKind.Delivery, "取餐区 · 交付成品", V(-.28f, .025f, -2.2f), parent, points);
+            Box("WoodenDeliveryTray", delivery, V(-.28f, 1.076f, -2.98f), V(.59f, .04f, .38f), "Oak", false);
+            Prop("finished_boba", delivery, V(-.28f, 1.098f, -2.98f), 0, true);
+            Prop("takeout_bags", sealing, V(1.25f, .9f, -1.45f), 90, true);
 
             var storage = Station("StoragePoint", ShopStationKind.Storage, "冰箱 · 查看原料仓储", V(.14f, .025f, 2.16f), parent, points);
             Prop("tall_refrigerator", storage, V(1.14f, 0, 2.62f), 0, true);
@@ -344,9 +366,12 @@ namespace Untitled.EditorTools
             Solid("StoneJambRight", dungeon, V(.57f, .67f, 3.04f), V(.24f, 1.34f, .38f));
             Prop("cave_lantern", dungeon, V(-.49f, 1.10f, 3.66f), -55);
 
-            var counter = Station("OrderCounter", ShopStationKind.OrderCounter, "服务台 · 查看接单位置", V(.1f, .025f, -3.6f), parent, points);
+            var counter = Station("OrderCounter", ShopStationKind.OrderCounter, "收银区 · 查看接单位置", V(.45f, .025f, -2.2f), parent, points);
             Prop("serving_counter", counter, V(.42f, 0, -2.95f), 0, true, V(.8f, 1, 1));
+            Prop("pos_terminal", counter, V(.46f, 1.055f, -2.84f), 180, true);
             Point("StaffPassage", points, V(-1.07f, .025f, -2.95f));
+            Point("CustomerQueue", points, V(.1f, .025f, -4.4f));
+            Point("CustomerPickup", points, V(-.28f, .025f, -3.55f));
         }
 
         private static void Dress(Transform parent)
@@ -354,9 +379,9 @@ namespace Untitled.EditorTools
             Prop("wall_storage_shelf", parent, V(-1.44f, 1.62f, -1.13f), -90);
             Prop("ingredient_jars", parent, V(-1.32f, 1.704f, -1.2f), -90);
             Prop("ingredient_jars", parent, V(-1.32f, 2.29f, -1.54f), -90);
-            Prop("takeout_bags", parent, V(-1.32f, 2.29f, -.79f), -90);
-            Prop("potted_plant", parent, V(-1.30f, 2.29f, -1.28f), 0, false, Vector3.one * .4f);
-            Prop("wall_vines", parent, V(-1.445f, 1.92f, -1.02f), -90, false, Vector3.one * .58f);
+            Prop("takeout_bags", parent, V(-1.32f, 2.29f, -.93f), -90);
+            Prop("potted_plant", parent, V(-1.30f, 2.29f, -.53f), 0, false, Vector3.one * .4f);
+            Prop("wall_vines", parent, V(-1.445f, 1.92f, -.53f), -90, false, Vector3.one * .58f);
             Prop("wall_storage_shelf", parent, V(1.44f, 1.89f, -.3f), 90);
             Prop("ingredient_jars", parent, V(1.32f, 2.56f, -.49f), 90);
             Prop("takeout_bags", parent, V(1.32f, 1.974f, -.12f), 90);
@@ -364,12 +389,10 @@ namespace Untitled.EditorTools
             Prop("potted_plant", parent, V(1.29f, 2.56f, .22f), 0, false, Vector3.one * .43f);
             Prop("wall_vines", parent, V(1.445f, 2.03f, .14f), 90, false, Vector3.one * .64f);
             Prop("cup_shelf", parent, V(1.32f, 1.34f, 1.27f), 90);
-            Prop("tissue_dispenser", parent, V(1.18f, .9f, 1.32f), 35, false, Vector3.one * .75f);
-            Prop("potted_plant", parent, V(-1.23f, .9f, 1.59f), 0, false, Vector3.one * .57f);
-            Prop("potted_plant", parent, V(-1.30f, .94f, -1.76f), 15, false, Vector3.one * .42f);
-            Prop("straw_holder", parent, V(-.34f, 1.055f, -2.93f));
-            Prop("clear_cup_stack", parent, V(-.52f, 1.055f, -2.75f), 0, false, Vector3.one * .7f);
-            Prop("takeout_bags", parent, V(.99f, 1.055f, -2.8f));
+            Prop("tissue_dispenser", parent, V(1.02f, 1.055f, -2.98f), 0, false, Vector3.one * .6f);
+            Prop("potted_plant", parent, V(-2.15f, 0, -4.5f), 0, true, Vector3.one * .8f);
+            Prop("potted_plant", parent, V(2.15f, 0, -4.5f), 15, true, Vector3.one * .8f);
+            Prop("straw_holder", parent, V(1.27f, 1.055f, -3f));
             Prop("wooden_crate", parent, V(1.16f, 0, 1.95f), 0, false, Vector3.one * .6f);
         }
 

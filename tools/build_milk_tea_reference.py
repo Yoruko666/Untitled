@@ -9,6 +9,7 @@ import re
 from pathlib import Path
 
 import bpy
+import bmesh
 from mathutils import Matrix, Vector
 
 
@@ -285,8 +286,8 @@ for i in range(3):
         cylinder("Menu bullet", (x - .105, -.041, z), .009, .004, "Ink", 12, (math.pi / 2, 0, 0))
         box("Menu rule", (x + .02, -.042, z), (.16, .004, .006), "Honey", .001)
 box("Menu oak ledge", (0, -.035, .024), (1.35, .16, .048), "Oak", .012)
-for x in (-.52, .52):
-    rod("Rear menu support", (x, .025, .63), (x, .23, .015), .013, "Walnut")
+for x in (-.49, .49):
+    rod("Menu suspension rod", (x, .025, .80), (x, .025, 1.24), .006, "Iron")
 
 asset("wall_storage_shelf")
 for x in (-.67, .67):
@@ -300,7 +301,7 @@ for z in (.055, .64):
         rod("Angled shelf bracket", (x, .10, z - .14), (x, -.17, z - .015), .013, "Iron")
 
 asset("clear_cup_stack")
-# Open double-sided tapered shell and separate rims give an actual hollow cup.
+# Six nested cups have closed bottoms, inner walls and separate lip rings.
 vertices, faces = [], []
 segments = 32
 for radius, z in ((.035, 0), (.050, .28), (.0475, .28), (.033, .004)):
@@ -311,18 +312,27 @@ for ring in range(3):
     for i in range(segments):
         j = (i + 1) % segments
         faces.append((ring * segments + i, ring * segments + j, (ring + 1) * segments + j, (ring + 1) * segments + i))
+faces += [tuple(reversed(range(segments))), tuple(3 * segments + i for i in range(segments))]
 mesh = bpy.data.meshes.new("Hollow tapered cup")
 mesh.from_pydata(vertices, [], faces)
 mesh.materials.append(materials["CupClear"])
-obj = bpy.data.objects.new("Hollow tapered cup", mesh)
-current.objects.link(obj)
-for i in range(12):
-    bpy.ops.mesh.primitive_torus_add(major_segments=32, minor_segments=6, location=(0, 0, .28 + i * .009), major_radius=.05, minor_radius=.0018)
+for i in range(6):
+    obj = bpy.data.objects.new("Nested hollow cup", mesh.copy())
+    obj.location.z = i * .018
+    current.objects.link(obj)
+    bpy.ops.mesh.primitive_torus_add(major_segments=32, minor_segments=6, location=(0, 0, .28 + i * .018), major_radius=.05, minor_radius=.0018)
     move_to_asset(bpy.context.object, "Nested cup rim", "CupClear")
 
 asset("cave_entrance")
 copy_collection(source_collections["07_basement_portal"], current,
                 exclude=lambda obj: obj.type == "FONT" or obj.name.startswith(("Arched_recessed", "Portal_sign", "Goblin", "Glow", "Eye", "Smile", "Side_switch", "Switch_plate")) or any(slot.material and "PortalGlow" in slot.material.name for slot in obj.material_slots))
+for obj in current.objects:
+    if obj.type == "MESH" and obj.name.startswith("Passage_inner_"):
+        obj.data.transform(obj.matrix_world)
+        obj.matrix_world = Matrix.Identity(4)
+        for vertex in obj.data.vertices:
+            if .14 < vertex.co.y < .18:
+                vertex.co.y = .19
 # The corrected arch opens onto modeled rock and descending treads rather than
 # the source's closed black recess. Front door frame remains source geometry.
 for i in range(6):
@@ -330,14 +340,14 @@ for i in range(6):
 for side in (-1, 1):
     for i in range(6):
         for level in range(3):
-            rock = sphere("Cave wall outcrop", (side * (.86 + random.uniform(-.07, .06)), .49 + i * .36, .25 + level * .65 - i * .04), .47, "RockDark" if (i + level) % 3 else "RockWarm", 1)
+            rock = sphere("Cave wall outcrop", (side * (1.04 + random.uniform(-.07, .06)), .98 + i * .36, .25 + level * .65 - i * .04), .47, "RockDark" if (i + level) % 3 else "RockWarm", 1)
             rock.scale = (.63, .81, 1.03)
     for i in range(4):
         rod("Stair handrail post", (side * .58, .53 + i * .43, -.07 - i * .145), (side * .58, .53 + i * .43, .72 - i * .145), .018, "DarkWood")
     rod("Descending timber handrail", (side * .58, .37, .78), (side * .58, 1.97, .24), .029, "Honey")
 for i in range(5):
-    rock = sphere("Cave vault", (0, .43 + i * .42, 2.0 - i * .04), .64, "RockDark", 1)
-    rock.scale = (1.4, .7, .52)
+    rock = sphere("Cave vault", (0, .95 + i * .42, 2.15 - i * .04), .64, "RockDark", 1)
+    rock.scale = (1.4, .7, .4)
 box("Tunnel far darkness", (0, 2.68, .61), (2.0, .12, 3.1), "RockDark", .03)
 box("Tunnel deep floor", (0, 1.5, -.78), (1.6, 2.7, .12), "RockDark", .02)
 for obj in current.objects:
@@ -347,12 +357,12 @@ for obj in current.objects:
 asset("arch_wall_infill")
 for index in range(12):
     a, b = index * math.pi / 12, (index + 1) * math.pi / 12
-    points = [(.468 * math.cos(a), 1.3 + .65 * math.sin(a)),
-              (.468 * math.cos(b), 1.3 + .65 * math.sin(b)),
-              (.468 * math.cos(b), 2.6), (.468 * math.cos(a), 2.6)]
-    panel_shape("Plaster above arch", points, .06, "BeigePlaster").location.y = .19
+    points = [(.48 * math.cos(a), 1.3 + .666 * math.sin(a)),
+              (.48 * math.cos(b), 1.3 + .666 * math.sin(b)),
+              (.48 * math.cos(b), 2.6), (.48 * math.cos(a), 2.6)]
+    panel_shape("Plaster above arch", points, .06, "BeigePlaster").location.y = .235
 for side in (-1, 1):
-    box("Plaster beside arch", (side * .6215, .19, 1.3), (.307, .06, 2.6), "BeigePlaster", 0)
+    box("Plaster beside arch", (side * .6275, .235, 1.3), (.295, .06, 2.6), "BeigePlaster", 0)
 
 asset("cave_lantern")
 box("Lantern wall plate", (0, .025, .22), (.105, .04, .23), "Iron", .009)
@@ -374,6 +384,19 @@ for i in range(10):
 for x in (-.87, 0, .87):
     box("Counter face inset", (x, -.253, .50), (.78, .022, .73), "CabinetInset", .008)
     box("Counter face top trim", (x, -.27, .88), (.8, .02, .036), "Walnut", .005)
+
+# Closed solids need consistent outward winding before bevel evaluation / FBX.
+for collection in asset_collections.values():
+    for obj in collection.objects:
+        if obj.type != "MESH":
+            continue
+        bm = bmesh.new()
+        bm.from_mesh(obj.data)
+        if all(edge.is_manifold for edge in bm.edges):
+            bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces))
+            bm.to_mesh(obj.data)
+            obj.data.update()
+        bm.free()
 
 # Material metadata is shared by every exported FBX; Unity explicitly remaps it
 # to editable URP materials instead of relying on Blender's procedural nodes.
