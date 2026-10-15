@@ -181,6 +181,7 @@ namespace Untitled.EditorTools
                 Object.DestroyImmediate(root);
             }
             props["pos_terminal"] = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/BussinessShop/pos_terminal.prefab");
+            props["menu_blackboard"] = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/BussinessShop/menu_blackboard.prefab");
         }
 
         private static Transform Group(string name, Transform parent)
@@ -308,8 +309,6 @@ namespace Untitled.EditorTools
                     FitMin(beam, V(x - .12f, 3.02f, i == 0 ? -2.6f : -4 + i * 2));
                 }
             FitMin(Prop("wooden_beam", parent, Vector3.zero, 0, false, V(1.5f, 1, 1)), V(-1.5f, 2.97f, -2.67f));
-            Prop("wood_window", parent, V(-1.45f, 1.58f, .55f), -90);
-            Prop("wood_window", parent, V(-1.45f, 1.58f, 2.05f), -90);
         }
 
         private static Transform Station(string id, ShopStationKind kind, string prompt, Vector3 approach, Transform parent, Transform points)
@@ -349,8 +348,8 @@ namespace Untitled.EditorTools
             Prop("galley_counter", sealing, V(1.15f, 0, .845f), 90, true);
             Prop("cup_sealing_machine", sealing, V(1.15f, .9f, -.10f), 90, true);
             Prop("clear_cup_stack", sealing, V(.99f, .9f, -.67f));
-            Prop("clear_cup_stack", sealing, V(1.30f, .9f, .47f));
-            Prop("straw_holder", sealing, V(1.12f, .9f, .70f));
+            Prop("clear_cup_stack", sealing, V(1.28f, .9f, -.67f));
+            Prop("straw_holder", sealing, V(1.15f, .9f, -.95f));
 
             var delivery = Station("DeliveryPoint", ShopStationKind.Delivery, "取餐区 · 交付成品", V(-.28f, .025f, -2.2f), parent, points);
             Box("WoodenDeliveryTray", delivery, V(-.28f, 1.076f, -2.98f), V(.59f, .04f, .38f), "Oak", false);
@@ -376,19 +375,20 @@ namespace Untitled.EditorTools
 
         private static void Dress(Transform parent)
         {
-            Prop("wall_storage_shelf", parent, V(-1.44f, 1.62f, -1.13f), -90);
-            Prop("ingredient_jars", parent, V(-1.32f, 1.704f, -1.2f), -90);
-            Prop("ingredient_jars", parent, V(-1.32f, 2.29f, -1.54f), -90);
-            Prop("takeout_bags", parent, V(-1.32f, 2.29f, -.93f), -90);
-            Prop("potted_plant", parent, V(-1.30f, 2.29f, -.53f), 0, false, Vector3.one * .4f);
-            Prop("wall_vines", parent, V(-1.445f, 1.92f, -.53f), -90, false, Vector3.one * .58f);
-            Prop("wall_storage_shelf", parent, V(1.44f, 1.89f, -.3f), 90);
-            Prop("ingredient_jars", parent, V(1.32f, 2.56f, -.49f), 90);
-            Prop("takeout_bags", parent, V(1.32f, 1.974f, -.12f), 90);
-            Prop("cardboard_box", parent, V(1.31f, 1.974f, -.71f), 15, false, Vector3.one * .45f);
-            Prop("potted_plant", parent, V(1.29f, 2.56f, .22f), 0, false, Vector3.one * .43f);
-            Prop("wall_vines", parent, V(1.445f, 2.03f, .14f), 90, false, Vector3.one * .64f);
-            Prop("cup_shelf", parent, V(1.32f, 1.34f, 1.27f), 90);
+            Prop("wall_storage_shelf", parent, V(-1.44f, 1.25f, -1.13f), -90);
+            Prop("ingredient_jars", parent, V(-1.32f, 1.3325f, -1.2f), -90);
+            Prop("ingredient_jars", parent, V(-1.32f, 1.7525f, -1.54f), -90);
+            Prop("takeout_bags", parent, V(-1.32f, 1.7525f, -.93f), -90);
+            Prop("potted_plant", parent, V(-1.30f, 1.7525f, -.53f), 0, false, Vector3.one * .4f);
+            Prop("wall_vines", parent, V(-1.445f, 1.3212f, -.53f), -90, false, Vector3.one * .58f);
+            Prop("wall_storage_shelf", parent, V(1.44f, 1.25f, 1.0f), 90);
+            Prop("ingredient_jars", parent, V(1.32f, 1.3325f, .70f), 90);
+            Prop("takeout_bags", parent, V(1.32f, 1.7525f, .57f), 90);
+            Prop("cardboard_box", parent, V(1.30f, 1.3325f, 1.36f), 15, false, Vector3.one * .36f);
+            Prop("potted_plant", parent, V(1.29f, 1.7525f, 1.49f), 0, false, Vector3.one * .43f);
+            Prop("wall_vines", parent, V(1.445f, 1.2663f, 1.49f), 90, false, Vector3.one * .64f);
+            Prop("mascot_figurine", parent, V(1.32f, 1.7525f, 1.08f), 90, false, Vector3.one * .45f);
+            Prop("menu_blackboard", parent, V(1.445f, 1.34f, -1.23f), 90);
             Prop("tissue_dispenser", parent, V(1.02f, 1.055f, -2.98f), 0, false, Vector3.one * .6f);
             Prop("potted_plant", parent, V(-2.15f, 0, -4.5f), 0, true, Vector3.one * .8f);
             Prop("potted_plant", parent, V(2.15f, 0, -4.5f), 15, true, Vector3.one * .8f);

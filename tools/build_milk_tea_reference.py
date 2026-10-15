@@ -131,6 +131,7 @@ selected = {
     "45_floor_tile": "floor_tile",
     "46_ceiling_module": "ceiling_module",
     "47_wooden_beam": "wooden_beam",
+    "49_mascot_figurine": "mascot_figurine",
 }
 with bpy.data.libraries.load(str(SOURCE), link=False) as (src, dst):
     dst.collections = list(selected) + ["41_work_counter", "07_basement_portal"]
@@ -291,10 +292,10 @@ for x in (-.49, .49):
 
 asset("wall_storage_shelf")
 for x in (-.67, .67):
-    box("Black metal upright", (x, .105, .44), (.043, .052, 1.01), "Iron", .006)
-    for z in (.10, .78):
+    box("Black metal upright", (x, .105, .3575), (.043, .052, .845), "Iron", .006)
+    for z in (.10, .615):
         cylinder("Shelf wall fixing", (x, .073, z), .016, .009, "Steel", 12, (math.pi / 2, 0, 0))
-for z in (.055, .64):
+for z in (.055, .475):
     box("Oak shelf", (0, -.055, z), (1.5, .34, .055), "Oak", .012)
     box("Shelf front lip", (0, -.229, z + .027), (1.52, .033, .078), "Honey", .007)
     for x in (-.67, .67):
